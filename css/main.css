@@ -117,6 +117,14 @@ div.main header div.datos {
   float: right;
   text-align: right;
 }
+div.main header p {
+  font-size: 120%;
+  margin-bottom: 0em;
+}
+div.main header a {
+  font-size: 80%;
+  text-decoration: none;
+}
 
 
 /* Menu */
