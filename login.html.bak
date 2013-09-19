@@ -1,0 +1,200 @@
+<!DOCTYPE HTML>
+<html lang="Es_mx">
+  <head>
+    <!--<link rel="stylesheet" type="text/css" href="estilos.css">-->
+    <meta charset="UTF-8" />
+    <title>Algun titulo</title>
+    <style type="text/css">
+      body { margin: 0; padding: 0; }
+      html {
+          background: #F7F7F9;
+      }
+      h1, img { 
+          float: left; 
+          margin: auto 0;
+          width: 49%; 
+      }
+      header.content {
+          background: #DFDFDF;
+          border: 1px #B3B3B3 solid;
+          margin-top: 15%; 
+          margin-bottom: 6px;
+          border-radius: 4px;
+      }
+      footer {
+          bottom: 0;
+          box-shadow: 0 0 30px #B7B7B7,
+                      0 0 60px #B0B0B0 inset;
+          margin: 0 auto;
+          position: fixed;
+          width: 100%;
+      }
+      /** {
+          border: 1px #000 solid;
+      }*/
+      fieldset {
+          border: 6px solid #DFDFDF;
+          margin: 0;
+          padding: 0;
+      }
+      .clear {
+          clear: both;
+      }
+      .content {
+          color: #505050;
+          margin: 0 auto;
+          max-width: 400px;
+          min-width: 200px;
+          text-align: center;
+          width: 50%;
+      }
+      section.content form.form-login {
+          background: #FDFDFD;
+          border: 1px #B3B3B3 solid;
+          border-radius: 3px 3px 0 3px;
+          box-shadow: 0 0 10px #B7B7B7;
+          margin: 0;
+          padding: 0;
+      }
+      fieldset div.logon-field { 
+          margin-top: 20px; 
+          margin-bottom: 20px;
+      }
+      div.logon-field div.input-content {
+          background: #FFF;
+          border: 1px solid #DFDFDF;
+          margin: auto;
+          margin-bottom: 2px;
+          min-width: 184px;
+          width: 75%;
+      }
+      div.input-content div.login-icon {
+          background: #FDFDFD;
+          float: left;
+          height: 32px;
+          width: 32px;
+          border-collapse: 
+      }
+      div.input-content input#login,
+      div.input-content input#password {
+          border: none;
+          float: left;
+          font-family: Helvetica, sans-serif;
+          font-weight: bolder;
+          height: 30px;
+          padding: 0 5px;
+          margin: 2px 2px 2px 0px;
+          color: #505050;
+          width: 76%;
+      }
+      div.input-content input:focus {
+          background: #FEFFFF;
+          border-color: #E4FBFF;
+          box-shadow: inset 0 1px 5px #FEFFE7,
+                            0 1px #FDFFD2;
+          outline: none;/*quita el molesto borde anaranjado*/
+      }
+      input.button-signUI {
+          background: #DFDFDF;
+          border: 1px #B3B3B3 solid;
+          color: #505050;
+          font-family: Helvetica;
+          float: right;
+      }
+      input#signIn {
+          border-top: none;
+          border-radius: 0 0 3px 3px;
+          font-size: 13px;
+          font-weight: bolder;
+          height: 30px;
+          margin: 0;
+          padding: 0 20px;
+          position: relative;
+          right: -1px;
+      }
+      input#signUp {
+          border-radius: 3px;
+          box-shadow: 0 0 7px #B7B7B7;
+          font-size: 14px;
+          height: 28px;
+          padding: 0 10px;
+          margin: 2px;
+      }
+      input#forgotPassword {
+          background: #6D6D6D;
+          border: 1px #5A5A5A solid;
+          border-radius: 4px;
+          box-shadow: 0 0 7px #B7B7B7;
+          color: #FFF;
+          font-family: Helvetica;
+          font-size: 14px;
+          font-weight: bolder;
+          float: left;
+          height: 26px;
+          margin-top: 4px;
+          padding: 0 8px;
+      }
+      input#forgotPassword:hover {
+          height: 32px;
+          padding-bottom: 6px;
+      }
+      input#forgotPassword:active {
+          background: #4D4D4D;
+          box-shadow: inset 0 1px 5px #4E4E4E;
+      }
+      input#signUp:hover,
+      input#signIn:hover {
+          height: 36px;
+          padding-bottom: 6px;
+      }
+      input#signIn:active,
+      input#signUp:active {
+          background: #8E8E8E;
+          color: #FFF;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <header class="content">
+        <img src="" alt="logo maniacon" width="49%" />
+        <h1>Pagina</h1>
+        <div class="clear"></div>
+      </header>
+      <section class="content">
+        <form class="form-login">
+          <fieldset>
+            <label class="warning"></label>
+            <div class="logon-field">
+              <label for="login">Usuario</label>
+              <div class="input-content">
+                <div class="login-icon" id="user-icon"></div>
+                <input charset="UTF-8" id="login" name="login" placeholder="Nombre@dominio" type="text" />
+                <div class="clear"></div>
+              </div>
+            </div>
+            <div class="logon-field">
+              <label for="input-content">Contrase&ntilde;a</label>
+              <div class="input-content">
+                <div class="login-icon" id="password-icon"></div>
+                <input charset="UTF-8" id="password" name="password" placeholder="Contrase&ntilde;a" type="password" />
+                <div class="clear"></div>
+              </div>
+            </div>
+          </fieldset>
+          <div>
+            <input class="button-signUI" id="signIn" name="SignIn" value="Entrar" type="submit" />
+            <input class="button-signUI" id="signUp" name="signUp" value="Registrarse" type="submit" />
+            <input id="forgotPassword" name="forgotPassword" value="Perdi mi contrase&ntilde;a" type="submit" />
+            <!--<div class="clear"></div>-->
+          </div>
+        </form>
+        <div class="clear"></div>
+      </section>
+      <section class="content" id="description">
+        <h3>Descripcion de la pagina algo corta para que no se vea mucha fregadera</h3>
+      </section>
+      <footer><h4 class="content">copyright</h4></footer>
+    </div>
+  </body>
+</html>

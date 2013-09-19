@@ -101,6 +101,18 @@ html {
   background: #eee;
 }
 
+h1, img {
+  float: left;
+  margin: auto 0;
+  width: 49%;
+}
+
+fieldset {
+  border: 6px solid #DFDFDF;
+  margin: 0;
+  padding: 0;
+}
+
 div.main {
   width: 1000px;
   margin: 0 auto;
@@ -108,6 +120,14 @@ div.main {
 
 
 /* Header */
+div.login header.content {
+  background: #DFDFDF;
+  border: 1px #B3B3B3 solid;
+  margin-top: 15%;
+  margin-bottom: 6px;
+  border-radius: 4px;
+}
+
 div.main header div.logo {
   float: left;
   font-size: 250%;
@@ -145,7 +165,123 @@ div.main nav ul li a:hover {
 }
 
 
-/* Articulo */
+/* Login */
+div.login .content {
+  color: #505050;
+  margin: 0 auto;
+  max-width: 400px;
+  min-width: 200px;
+  text-align: center;
+  width: 50%;
+}
+
+section.content form.form-login {
+  background: #ddd;
+  border: 1px #B3B3B3 solid;
+  border-radius: 3px 3px 0 3px;
+  box-shadow: 0 0 10px #B7B7B7;
+  margin: 0;
+  padding: 0;
+}
+
+div.login fieldset div.logon-field {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+div.login div.logon-field div.input-content {
+  background: #FFF;
+  border: 1px solid #DFDFDF;
+  margin: auto;
+  margin-bottom: 2px;
+  min-width: 184px;
+  width: 75%;
+}
+div.login div.input-content div.login-icon {
+  background: #FDFDFD;
+  float: left;
+  height: 32px;
+  width: 32px;
+  border-collapse: 
+}
+div.login div.input-content input#login,
+div.login div.input-content input#password {
+  border: none;
+  float: left;
+  font-family: Helvetica, sans-serif;
+  font-weight: bolder;
+  height: 30px;
+  padding: 0 5px;
+  margin: 2px 2px 2px 0px;
+  color: #505050;
+  width: 76%;
+}
+div.login div.input-content input:focus {
+  background: #FEFFFF;
+  border-color: #E4FBFF;
+  box-shadow: inset 0 1px 5px #FEFFE7,
+                    0 1px #FDFFD2;
+  outline: none;/*quita el molesto borde anaranjado*/
+}
+div.login input.button-signUI {
+  background: #DFDFDF;
+  border: 1px #B3B3B3 solid;
+  color: #505050;
+  font-family: Helvetica;
+  float: right;
+}
+div.login input#signIn {
+  border-top: none;
+  border-radius: 0 0 3px 3px;
+  font-size: 13px;
+  font-weight: bolder;
+  height: 30px;
+  margin: 0;
+  padding: 0 20px;
+  position: relative;
+  right: -1px;
+}
+div.login input#signUp {
+  border-radius: 3px;
+  box-shadow: 0 0 7px #B7B7B7;
+  font-size: 14px;
+  height: 28px;
+  padding: 0 10px;
+  margin: 2px;
+}
+div.login input#forgotPassword {
+  background: #6D6D6D;
+  border: 1px #5A5A5A solid;
+  border-radius: 4px;
+  box-shadow: 0 0 7px #B7B7B7;
+  color: #FFF;
+  font-family: Helvetica;
+  font-size: 14px;
+  font-weight: bolder;
+  float: left;
+  height: 26px;
+  margin-top: 4px;
+  padding: 0 8px;
+}
+div.login input#forgotPassword:hover {
+  height: 32px;
+  padding-bottom: 6px;
+}
+div.login input#forgotPassword:active {
+  background: #4D4D4D;
+  box-shadow: inset 0 1px 5px #4E4E4E;
+}
+div.login input#signUp:hover,
+div.login input#signIn:hover {
+  height: 36px;
+  padding-bottom: 6px;
+}
+div.login input#signIn:active,
+div.login input#signUp:active {
+  background: #8E8E8E;
+  color: #FFF;
+}
+
+/* Article */
 div.main article {
   width: 60%;
   margin: 0 auto;
@@ -167,13 +303,20 @@ div.main article table tbody td {
 
 
 /* Footer */
+div.login footer {
+  bottom: 0;
+  box-shadow: 0 0 30px #B7B7B7,
+              0 0 60px #B0B0B0 inset;
+  margin: 0 auto;
+  position: fixed;
+  width: 100%;
+}
+
 div.main footer {
   border: 1px solid #aaa;
   background: #ddd;
   text-align: center;
 }
-
-
 
 
 
