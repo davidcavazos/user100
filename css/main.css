@@ -272,7 +272,58 @@ footer {
 
 
 
+@media screen and (max-width:500px){
+  table, thead, tr, th, tbody, td {
+    display: block;
+  }
+  header div.logo img {
+    width: 32px;
+  }
+  div.main header div.logo {
+    font-size: 150%;
+  }
+  div.main {
+    width: 90%;
+    min-width: 150px;
+  }
+  div.main header {
+    height: 80px;
+  }
+  div.main header div.datos {
+    //float: left;
+    //text-align: left;
+    display: block;
+  }
+  div.main header p {
+    font-size: 100%;
+  }
+   div.main header a {
+    font-size: 70%;
+   }
 
+  div.main article {
+    width: 90%;
+  }
+  td {
+    border: none;
+    border-bottom: 1px #B3B3B3 solid;
+    position: relative;
+    padding-left: 45%;
+  }
+  thead tr {
+    display: none;
+  }
+  td:before {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 55%;
+    white-space: nowrap;
+  }
+  td:nth-of-type(1):before {content: "Alumno";}
+  td:nth-of-type(2):before {content: "Calificacion";}
+  td:nth-of-type(3):before {content: "Asistencia";}
+}
 
 
 
