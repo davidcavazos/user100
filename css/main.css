@@ -96,14 +96,69 @@ textarea {
 .clear {
   clear: both;
 }
-
 html {
-  background: #eee;
-}
+  height: 100%;
+  background: #eeeeee;
+  background: -moz-radial-gradient(center, circle cover,  #eeeeee 0%, #eeeeee 80%, #d0d0d0 100%);
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#eeeeee), color-stop(80%,#eeeeee), color-stop(100%,#d0d0d0));
+  background: -webkit-radial-gradient(center, circle cover,  #eeeeee 0%,#eeeeee 80%,#d0d0d0 100%);
+  background: -o-radial-gradient(center, circle cover,  #eeeeee 0%,#eeeeee 80%,#d0d0d0 100%);
+  background: -ms-radial-gradient(center, circle cover,  #eeeeee 0%,#eeeeee 80%,#d0d0d0 100%);
+  background: radial-gradient(circle at center,  #eeeeee 0%,#eeeeee 80%,#d0d0d0 100%);
 
-div.main {
-  width: 1000px;
+  color: #505050;
+}
+a {
+  text-decoration: none;
+  color: #505050;
+}
+a:hover {
+  color: #5050a0;
+}
+h1 {
+  margin: auto 0;
+}
+hr {
+  float: none;
+  width: 100%;
+  height: 1px;
+  border: none;
+  background-color: #aaa;
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    right bottom,
+    color-stop(0, rgb(238,238,238)),
+    color-stop(0.2, rgb(170,170,170)),
+    color-stop(0.8, rgb(170,170,170)),
+    color-stop(1, rgb(238,238,238))
+  );
+  background-image: -moz-linear-gradient(
+    left center,
+    rgb(238,238,238) 0%,
+    rgb(170,170,170) 20%,
+    rgb(170,170,170) 80%,
+    rgb(238,238,238) 100%
+  );
+}
+input {
+  border: none;
+  color: #505050;
+  background: #FEFFFF;
+}
+input.button {
+  background: #eee;
+  border: 0px;
+  color: #505050;
+  font-size: 13px;
+  font-weight: bold;
+  height: 25px;
   margin: 0 auto;
+}
+div.main {
+  width: 70%;
+  margin: 0 auto;
+  min-width: 500px;
 }
 
 
@@ -117,54 +172,106 @@ div.main header div.datos {
   float: right;
   text-align: right;
 }
+div.main header p {
+  font-size: 120%;
+  margin-bottom: 0em;
+}
+div.main header a {
+  font-size: 80%;
+  text-decoration: none;
+}
 
 
 /* Menu */
 div.main nav ul {
-  background: #ccc;
-  border: 1px solid #aaa;
   list-style-type: none;
 }
 div.main nav ul li {
   float: left;
-  margin: 0 3%;
-}
-div.main nav ul li a {
-  text-decoration: none;
-}
-div.main nav ul li a:hover {
-  background-color: grey;
+  margin: 0 3.5%;
 }
 
 
-/* Articulo */
+/* Login */
+div.login header.content {
+  margin-top: 10%;
+  margin-bottom: 6px;
+}
+div.login .content {
+  margin: 0 auto;
+  max-width: 400px;
+  min-width: 200px;
+  text-align: center;
+  width: 50%;
+}
+section.content form.form-login {
+  margin: 0;
+  padding: 0;
+}
+div.login fieldset div.logon-field {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+div.login div.logon-field div.input-content {
+  background: #FEFFFF;
+  margin: auto;
+  margin-bottom: 2px;
+  min-width: 184px;
+  width: 75%;
+}
+div.login div.input-content input#login,
+div.login div.input-content input#password {
+  border: none;
+  font-weight: bolder;
+  height: 30px;
+  padding-left: 20px;
+  margin: 2px 2px 2px 0px;
+  color: #505050;
+  background: #FEFFFF;
+  width: 93%;
+}
+div.login div.input-content input:focus {
+  background: #FEFFFF;
+  border-color: #E4FBFF;
+  box-shadow: inset 0 1px 5px #FEFFE7,
+                    0 1px #FDFFD2;
+  outline: none;/*quita el molesto borde anaranjado*/
+}
+div.login section.content#description {
+  padding-top: 40px;
+}
+
+
+/* Article */
 div.main article {
   width: 60%;
   margin: 0 auto;
 }
-
 div.main article table {
   border-collapse: collapse;
   width: 100%;
   margin: 0 auto;
+  box-shadow: 0 3px 20px #B7B7B7;
 }
 div.main article table thead tr {
-  border: 1px solid black;
+  border: 1px solid #aaa;
   background: #ccc;
 }
 div.main article table tbody td {
-  border: 1px solid black;
+  border: 1px solid #aaa;
   text-align: center;
 }
 
 
 /* Footer */
-div.main footer {
-  border: 1px solid #aaa;
-  background: #ddd;
+footer {
+  background: #cbcbcb;
+  bottom: 0;
+  box-shadow: 0 0 35px #B7B7B7;
+  position: fixed;
+  width: 100%;
   text-align: center;
 }
-
 
 
 
