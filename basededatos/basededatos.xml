@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!-- SQL XML created by WWW SQL Designer, http://code.google.com/p/wwwsqldesigner/ -->
-<!-- Active URL: http://ondras.zarovi.cz/sql/demo -->
+<!-- Active URL: http://ondras.zarovi.cz/sql/demo/ -->
 <sql>
 <datatypes db="mysql">
 	<group label="Numeric" color="rgb(238,238,170)">
@@ -42,6 +42,12 @@
 <datatype>VARCHAR(15)</datatype>
 <default>NULL</default><relation table="calificaciones" row="usuario" />
 </row>
+<row name="nombres" null="1" autoincrement="0">
+<datatype>VARCHAR(50)</datatype>
+<default>NULL</default></row>
+<row name="apellidos" null="1" autoincrement="0">
+<datatype>VARCHAR(50)</datatype>
+<default>NULL</default></row>
 <row name="password" null="1" autoincrement="0">
 <datatype>VARCHAR(64)</datatype>
 <default>NULL</default></row>
@@ -78,7 +84,7 @@
 <part>id_calificaciones</part>
 </key>
 </table>
-<table x="264" y="224" name="curso">
+<table x="292" y="275" name="curso">
 <row name="nrc" null="1" autoincrement="1">
 <datatype>VARCHAR(5)</datatype>
 <default>NULL</default></row>
@@ -102,7 +108,7 @@
 <part>ciclo</part>
 </key>
 </table>
-<table x="448" y="190" name="ciclo_escolar">
+<table x="502" y="247" name="ciclo_escolar">
 <row name="ciclo" null="1" autoincrement="1">
 <datatype>VARCHAR(5)</datatype>
 <default>NULL</default><relation table="curso" row="ciclo" />
@@ -138,7 +144,7 @@
 <part>id_asistencias</part>
 </key>
 </table>
-<table x="633" y="193" name="detalle_ciclo_escolar">
+<table x="706" y="202" name="detalle_ciclo_escolar">
 <row name="ciclo" null="1" autoincrement="1">
 <datatype>VARCHAR(5)</datatype>
 <default>NULL</default><relation table="ciclo_escolar" row="ciclo" />
@@ -199,3 +205,4 @@
 </key>
 </table>
 </sql>
+
