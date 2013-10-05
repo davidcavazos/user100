@@ -259,6 +259,14 @@ footer {
   text-align: center;
 }
 
+table.calificaciones,
+table.asistencias {
+  overflow-x: scroll;
+  display: block;
+}
+#tareas, #asistencias {
+  display: none;
+}
 
 @media screen and (max-width:500px){
   div.main {
@@ -294,6 +302,13 @@ footer {
   thead tr {
     display: none;
   }
+  td#tareas, 
+  td#asistencias { 
+    background: #ccc; 
+    display: block; 
+    text-align: left; 
+    font-weight: bold;
+  } 
   td:before {
     position: absolute;
     top: 1px;
@@ -311,12 +326,31 @@ footer {
   table.resumen td:nth-of-type(3):before {
     content: "Asistencia";
   }
+  table.calificaciones td:nth-of-type(1):before,
+  table.asistencias td:nth-of-type(1):before {
+    content: "Codigo";
+    background-color: #ccc;
+  }
+  table.calificaciones td:nth-of-type(2):before,
+  table.asistencias td:nth-of-type(2):before {
+    content: "Nombre";
+  }
+  table.calificaciones td:nth-of-type(3):before,
+  table.asistencias td:nth-of-type(3):before {
+    content: "Carrera";
+  }
+  table.calificaciones td.total-celda:before,
+  table.asistencias td.total-celda:before {
+    content: "Total";
+  }
 }
 
-
-
-
-
+@media screen and (max-width: 780px) {
+  article {
+    width: 84%;
+    margin: 0 auto;
+  }
+}
 
 
 /* ==========================================================================
