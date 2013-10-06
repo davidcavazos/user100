@@ -182,6 +182,15 @@ input.button {
 input#login, input#password {
   width: 75%;
 }
+select {
+  border: 1px solid #aaa;
+  height: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 20px;
+  color: #555;
+  background: transparent;
+}
 
 
 div.main {
@@ -302,13 +311,13 @@ table.asistencias {
   thead tr {
     display: none;
   }
-  td#tareas, 
-  td#asistencias { 
-    background: #ccc; 
-    display: block; 
-    text-align: left; 
+  td#tareas,
+  td#asistencias {
+    background: #ccc;
+    display: block;
+    text-align: left;
     font-weight: bold;
-  } 
+  }
   td:before {
     position: absolute;
     top: 1px;
