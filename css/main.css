@@ -295,6 +295,10 @@ textarea {
   margin: 0;
   padding: 0;
 }
+#datosCurso tr td input {
+  background: transparent;
+  border: 1px #CCCCC9 solid;
+}
 
 @media screen and (max-width:500px){
   div.main {
