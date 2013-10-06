@@ -299,7 +299,9 @@ textarea {
   background: transparent;
   border: 1px #CCCCC9 solid;
 }
-table.datosCurso tbody tr td input {
+table.datosCurso tbody tr td input,
+table.modificarAlumnos tbody tr td input,
+table.modificarAlumnos tbody tr td select {
   display: block;
   margin: 0;
   width: 100%;
@@ -363,7 +365,8 @@ table.datosCurso tbody tr td input {
   table.resumen td:nth-of-type(3):before {
     content: "Asistencia";
   }
-  table.datosCurso td:nth-of-type(1):before {
+  table.datosCurso td:nth-of-type(1):before,
+  table.modificarAlumnos td:nth-of-type(1):before {
     content: "select Item";
     background-color: #ccc;
   }
@@ -372,6 +375,15 @@ table.datosCurso tbody tr td input {
   }
   table.datosCurso td:nth-of-type(3):before {
     content: "Porcentaje";
+  }
+  table.modificarAlumnos td:nth-of-type(2):before {
+    content: "Codigo";
+  }
+  table.modificarAlumnos td:nth-of-type(3):before {
+    content: "Nombre";
+  }
+  table.modificarAlumnos td:nth-of-type(4):before {
+    content: "curso";
   }
   table.calificaciones td:nth-of-type(1):before,
   table.asistencias td:nth-of-type(1):before {
