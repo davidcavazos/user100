@@ -186,7 +186,7 @@ select {
   border: 1px solid #aaa;
   height: 30px;
   padding-left: 15px;
-  padding-right: 15px;
+  /*padding-right: 15px;*/
   margin-bottom: 20px;
   color: #555;
   background: transparent;
@@ -299,6 +299,12 @@ textarea {
   background: transparent;
   border: 1px #CCCCC9 solid;
 }
+table.datosCurso tbody tr td input {
+  display: block;
+  margin: 0;
+  width: 100%;
+  padding: 0;
+}
 
 @media screen and (max-width:500px){
   div.main {
@@ -320,7 +326,6 @@ textarea {
    header a {
     font-size: 70%;
   }
-
   article {
     width: 95%;
   }
@@ -357,6 +362,16 @@ textarea {
   }
   table.resumen td:nth-of-type(3):before {
     content: "Asistencia";
+  }
+  table.datosCurso td:nth-of-type(1):before {
+    content: "select Item";
+    background-color: #ccc;
+  }
+  table.datosCurso td:nth-of-type(2):before {
+    content: "Evaluación";
+  }
+  table.datosCurso td:nth-of-type(3):before {
+    content: "Porcentaje";
   }
   table.calificaciones td:nth-of-type(1):before,
   table.asistencias td:nth-of-type(1):before {
