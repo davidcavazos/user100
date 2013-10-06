@@ -276,6 +276,25 @@ table.asistencias {
 #tareas, #asistencias {
   display: none;
 }
+#contenedorButton input.button {
+  background: #DFDFDF;
+  border: 1px #CACACA solid;
+  font-size: 14px;
+  font-weight: bold;
+}
+textarea {
+  min-width: 240px;
+  resize: auto;
+}
+#seleccionDeCiclo {
+  height: 32px;
+  width: 224px;
+}
+#datosCurso tr td,
+#datosCurso tr td input {
+  margin: 0;
+  padding: 0;
+}
 
 @media screen and (max-width:500px){
   div.main {
@@ -348,8 +367,8 @@ table.asistencias {
   table.asistencias td:nth-of-type(3):before {
     content: "Carrera";
   }
-  table.calificaciones td.total-celda:before,
-  table.asistencias td.total-celda:before {
+  table.calificaciones td.celda-total:before,
+  table.asistencias td.celda-total:before {
     content: "Total";
   }
 }
