@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="../css/normalize.css">
     <link rel="stylesheet" href="../css/main.css">
     <script src="../js/vendor/modernizr-2.6.2.min.js"></script>
+    <script src="validarlogin.js"></script>
   </head>
   <body>
     <!--[if lt IE 7]>
@@ -46,7 +47,7 @@
             <br />
           </fieldset>
           <div>
-            <input class="button" id="signin" name="signin" value="Login" type="button" /> |
+            <input class="button" id="signin" name="signin" value="Login" type="button" onclick="validarCampos()" /> |
             <input class="button" id="forgotpass" name="forgotPassword" value="Recuperar contrase&ntilde;a" type="button" onclick="location='passperdida.html'" />
           </div>
         </form>
