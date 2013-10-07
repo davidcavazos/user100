@@ -54,10 +54,10 @@
               <h1>Lista de ciclos</h1>
               <div>
                 <ul>
-                  <li><a href="#">Ciclo - 2013B</a></li>
-                  <li><a href="#">Ciclo - 2014A</a></li>
-                  <li><a href="#">Ciclo - 2014B</a></li>
-                  <li><a href="#">Ciclo - 2015A</a></li>
+                  <li><a href="#">Ciclo - 2013B</a></li></br>
+                  <li><a href="#">Ciclo - 2014A</a></li></br>
+                  <li><a href="#">Ciclo - 2014B</a></li></br>
+                  <li><a href="#">Ciclo - 2015A</a></li></br>
                 </ul>
               </div>
             </article>

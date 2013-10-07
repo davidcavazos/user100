@@ -74,7 +74,7 @@
 	  	<ul>
 			<li><a href="<?php echo $host?>cursos/listadecursos.php">Lista</a></li>
 			<li><a href="<?php echo $host?>cursos/nuevocurso.php">Nuevo</a></li>	
-			<li><a href="<?php echo $host?>cursos/cursosdeprofesor.php">Mis cursos</a></li>	
+			<li><a href="<?php echo $host?>cursos/cursodeprofesor.php">Mis cursos</a></li>	
 		</ul>
           </li>
 	  <li>

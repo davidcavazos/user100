@@ -53,9 +53,9 @@
               <h1>Lista de cursos</h1>
               <div>
                 <ul>
-                  <li><a href="#">Curso - Prog. Web</a></li>
-                  <li><a href="#">Curso - Compiladores</a></li>
-                  <li><a href="#">Curso - Programacion de Sistemas</a></li>
+                  <li><a href="#">Curso - Prog. Web</a></li></br>
+                  <li><a href="#">Curso - Compiladores</a></li></br>
+                  <li><a href="#">Curso - Programacion de Sistemas</a></li></br>
                 </ul>
               </div>
             </article>
