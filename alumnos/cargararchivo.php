@@ -9,7 +9,7 @@
 	<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Mudle - Registrar</title>
+    <title>Mudle - Cargar Archivo</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
 
@@ -45,56 +45,35 @@
 
       <?php
 		include_once(MENUMAESTRO)
-	?>      <article>
-        <form action="index.html" method="POST" id="registroAlumno">
-          <h1>Registrar Nuevo Alumno</h1>
-          <fieldset>
-            <!--Codigo-->
-            <div class="logon-field">
-              <label for="input-content">Codigo</label>
-              <div class="input-content">
-                <input charset="UTF-8" id="codigo" name="codigo" placeholder="Codigo" type="text" onblur="analiza('codigo','^[0-9]{9}$')" />
-              </div>
-            </div>
-              <!--Nombre-->
-            <div class="logon-field">
-              <label for="input-content">Nombre(s)</label>
-              <div class="input-content">
-                <input charset="UTF-8" id="nombre" name="nombre" placeholder="Nombre(s)" type="text" onblur="analiza('nombre','^[ a-zA-Z]{3,}$')"/>
-              </div>
-            </div>
-            <!--Apellido-->
-            <div class="logon-field">
-              <label for="input-content">Apellidos</label>
-              <div class="input-content">
-                <input charset="UTF-8" id="apellido" name="apellido" placeholder="Apellidos" type="text" onblur="analiza('apellido','^[ a-zA-Z]{3,}$')"/>
-              </div>
-            </div>
-            <!--E-mail-->
-            <div class="logon-field">
-              <label for="input-content">Email</label>
-              <div class="input-content">
-                <input charset="UTF-8" id="email" name="email" placeholder="E-mail" type="text" onblur="analiza('email','^[a-zA-Z0-9]{1,}@[a-zA-Z]{1,}.[a-zA-Z]{1,}$')"/>
-              </div>
-            </div>
-            <!--Carrera-->
-            <label for="input-content">Carrera</label></br>
-            <select id="carreras" name="carreras" onblur="analizaCombo('carreras')" onchange="analizaCombo('carreras')">
-              <option value="com"  id="0">---Seleccionar---</option>
-              <option value="com"  id="1">Ing. en Computacion</option>
-              <option value="inf"  id="2">Lic. en Informatica</option>
-              <option value="qui"  id="3">Lic. en Quimica</option>
-              <option value="come" id="4">Ing. en Comunicaciones y Electronica</option>
-            </select>
-            </br>
-            </br>
-            </br>
+	?>      
+	<h1>Cargar Alumnos por medio de archivo</h1>
+	<article>
+	</br>
+	</br>        
+	    <input type="file" id="files" name="files[]" multiple />
+		<output id="list"></output>
 
-	    
-            <input class="button" id="registrar" name="registrar" value="Registrar" type="button" onclick="validarCampos('registroAlumno')" /> 
-          </fieldset>
-        </form>
-      </article>
+		<script>
+		  function handleFileSelect(evt) {
+		    var files = evt.target.files; // FileList object
+
+		    // files is a FileList of File objects. List some properties.
+		    var output = [];
+		    for (var i = 0, f; f = files[i]; i++) {
+		      output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
+				  f.size, ' bytes, last modified: ',
+				  f.lastModifiedDate.toLocaleDateString(), '</li>');
+		    }
+		    document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+		  }
+
+		  document.getElementById('files').addEventListener('change', handleFileSelect, false);
+		</script>	
+		</br>
+		</br>
+	
+            <input class="button" id="Cargar" name="Cargar" value="Cargar" type="button" onclick="" /> 
+           </article>
     </div>
 
     <footer>Copyright - About us</footer>
