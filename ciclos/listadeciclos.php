@@ -1,28 +1,29 @@
 <?php
-	include_once("archivosphp/constantes.php");
+	include_once("../archivosphp/constantes.php")
 ?>
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-	<head>
+  <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Mudle - Resumen</title>
+    <title>Mudle - Lista de Ciclos</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <link rel="shortcut icon" href="img/pluma16.png">
-    <link rel="apple-touch-icon-precomposed" href="img/pluma128.png">
-    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="img/pluma57.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/pluma72.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/pluma114.png" />
+    <link rel="shortcut icon" href="../img/pluma16.png">
+    <link rel="apple-touch-icon-precomposed" href="../img/pluma128.png">
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="../img/pluma57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../img/pluma72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../img/pluma114.png" />
 
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/main.css">
-    <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <script src="../js/vendor/modernizr-2.6.2.min.js"></script>
   </head>
   <body>
     <!--[if lt IE 7]>
@@ -33,7 +34,7 @@
     <div class="main">
       <header>
         <div class="logo">
-          <img src="img/pluma64.png" /> Mudle
+          <img src="../img/pluma64.png" /> Mudle
         </div>
         <div class="datos">
           <p>Nombre Usuario</p>
@@ -44,44 +45,36 @@
       </header>
 
       <?php
-		include_once("menu/menumaestro.php")
+		include_once(MENUMAESTRO)
 	?>
-      <article>
-        <h1>Resumen</h1>
-        <table class="resumen">
-          <thead>
-            <tr>
-              <th>Alumno</th>
-              <th>Calificaciones</th>
-              <th>Asistencias</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Gustavo Rodrigo Guillen Villarreal</td>
-              <td>90%</td>
-              <td>90%</td>
-            </tr>
-            <tr>
-              <td>David Cavazos Woo</td>
-              <td>100%</td>
-              <td>100%</td>
-            </tr>
-            <tr>
-              <td>Stefan Rodriguez</td>
-              <td>100%</td>
-              <td>100%</td>
-            </tr>
-          </tbody>
-        </table>
-        <br />
-        <br />
-      </article>
+
+      <nav>
+        <ul>
+          <li><a href="nuevoCiclo.html">Registrar Ciclo</a></li>
+          <div class="clear"></div>
+        </ul>
+        <hr />
+      </nav>
+        <div>
+          <section>
+            <article>
+              <h1>Lista de ciclos</h1>
+              <div>
+                <ul>
+                  <li><a href="descripcionDeCiclo.html">Ciclo - algo</a></li>
+                  <li><a href="descripcionDeCiclo.html">Ciclo - algo</a></li>
+                  <li><a href="descripcionDeCiclo.html">Ciclo - algo</a></li>
+                  <li><a href="descripcionDeCiclo.html">Ciclo - algo</a></li>
+                </ul>
+              </div>
+            </article>
+          </section>
+        </div>
     </div>
 
     <footer>Copyright - About us</footer>
 
-    <!--
+    <!-- asdf
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
     <script src="js/plugins.js"></script>
