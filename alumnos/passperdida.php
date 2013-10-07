@@ -1,16 +1,13 @@
-<?php
-	include_once("../archivosphp/constantes.php")
-?>
-
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<html>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Mudle - Lista de Ciclos</title>
+    <title>Mudle - Login</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
 
@@ -31,43 +28,31 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="main">
+    <div class="login">
       <header>
-        <div class="logo">
-          <img src="../img/pluma64.png" /> Mudle
-        </div>
-        <div class="datos">
-          <p>Nombre Usuario</p>
-          <a href="#">Perfil</a> |
-          <a href="#">Logout</a>
-        </div>
-        <div class="clear"></div>
+        <img src="../img/pluma128.png" alt="Mudle" />
       </header>
 
-      <?php
-		include_once(MENUMAESTRO)
-	?>
-
-        <div>
-          <section>
-            <article>
-              <h1>Lista de ciclos</h1>
-              <div>
-                <ul>
-                  <li><a href="#">Ciclo - 2013B</a></li>
-                  <li><a href="#">Ciclo - 2014A</a></li>
-                  <li><a href="#">Ciclo - 2014B</a></li>
-                  <li><a href="#">Ciclo - 2015A</a></li>
-                </ul>
-              </div>
-            </article>
-          </section>
-        </div>
+      <section>
+        <form>
+          <fieldset>
+            <br />
+            <h1>Recuperar Contraseña</h1>
+            <br />
+            <label for="login">Codigo</label>
+            <br />
+            <input charset="UTF-8" id="login" name="login" placeholder="codigo" type="text" />
+          </fieldset>
+          <div>
+            <input class="button" id="recuperarpass" name="recuperarpass" value="Recuperar contrase&ntilde;a" type="button" />
+          </div>
+        </form>
+      </section>
     </div>
 
     <footer>Copyright - About us</footer>
 
-    <!-- asdf
+    <!--
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
     <script src="js/plugins.js"></script>

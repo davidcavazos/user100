@@ -4,11 +4,12 @@
 ?>
 <nav>
 	<ul>
-          <li><a href="index.php">Resumen</a></li>
+          <li><a href="<?php echo $host?>index.php">Resumen</a></li>
           <li><a href="<?php echo $host?>calificaciones/calificaciones.php">Calificaciones</a></li>
           <li><a href="<?php echo $host?>asistencias/asistencias.php">Asistencias</a></li>
-          <li><a href="<?php echo $host?>cursos/cursodeprofesor.php">Cursos</a></li>
-          <li><a href="<?php echo $host?>cursos/nuevocurso.php">Alta Curso</a></li>
+          <li><a href="<?php echo $host?>ciclos/listadeciclos.php">Ciclos</a></li>
+          <li><a href="<?php echo $host?>cursos/listadecursos.php">Cursos</a></li>
+	  <li><a href="<?php echo $host?>alumnos/registrar.php">Alumnos</a></li>
           <div class="clear"></div>
         </ul>
         <hr />

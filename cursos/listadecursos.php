@@ -47,22 +47,15 @@
       <?php
 		include_once(MENUMAESTRO)
 	?>
-      <nav>
-        <ul>
-          <li><a href="nuevoCurso.html">Registrar Curso</a></li>
-          <div class="clear"></div>
-        </ul>
-        <hr />
-      </nav>
         <div>
           <section>
             <article>
               <h1>Lista de cursos</h1>
               <div>
                 <ul>
-                  <li><a href="descripcionDeCurso.html">Curso - Prog. Web</a></li>
-                  <li><a href="descripcionDeCurso.html">Curso - algo</a></li>
-                  <li><a href="descripcionDeCurso.html">Curso - algo</a></li>
+                  <li><a href="#">Curso - Prog. Web</a></li>
+                  <li><a href="#">Curso - Compiladores</a></li>
+                  <li><a href="#">Curso - Programacion de Sistemas</a></li>
                 </ul>
               </div>
             </article>
