@@ -12,15 +12,16 @@
     <meta name="viewport" content="width=device-width">
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <link rel="shortcut icon" href="img/pluma16.png">
-    <link rel="apple-touch-icon-precomposed" href="img/pluma128.png">
-    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="img/pluma57.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/pluma72.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/pluma114.png" />
+    <link rel="shortcut icon" href="../img/pluma16.png">
+    <link rel="apple-touch-icon-precomposed" href="../img/pluma128.png">
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="../img/pluma57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../img/pluma72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../img/pluma114.png" />
 
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/main.css">
-    <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <script src="../js/vendor/modernizr-2.6.2.min.js"></script>
+    <script src="validarlogin.js"></script>
   </head>
   <body>
     <!--[if lt IE 7]>
@@ -30,21 +31,24 @@
     <!-- Add your site or application content here -->
     <div class="login">
       <header>
-        <img src="img/pluma128.png" alt="Mudle" />
+        <img src="../img/pluma128.png" alt="Mudle" />
       </header>
 
       <section>
         <form>
           <fieldset>
-            <br />
-            <h1>Recuperar Contraseña</h1>
-            <br />
             <label for="login">Codigo</label>
             <br />
-            <input charset="UTF-8" id="login" name="login" placeholder="codigo" type="text" />
+            <input charset="UTF-8" id="login" name="login" placeholder="Codigo" type="text" />
+            <br />
+            <label for="password">Contrase&ntilde;a</label>
+            <br />
+            <input charset="UTF-8" id="password" name="password" placeholder="Contrase&ntilde;a" type="password" />
+            <br />
           </fieldset>
           <div>
-            <input class="button" id="recuperarpass" name="recuperarpass" value="Recuperar contrase&ntilde;a" type="button" />
+            <input class="button" id="signin" name="signin" value="Login" type="button" onclick="validarCampos()" /> |
+            <input class="button" id="forgotpass" name="forgotPassword" value="Recuperar contrase&ntilde;a" type="button" onclick="location='passperdida.html'" />
           </div>
         </form>
       </section>

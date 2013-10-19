@@ -1,5 +1,5 @@
 <?php
-	include_once("constantes.php");
+	include_once("../archivosphp/constantes.php");
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -9,20 +9,21 @@
 	<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Mudle - Resumen</title>
+    <title>Mudle - Registrar</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <link rel="shortcut icon" href="img/pluma16.png">
-    <link rel="apple-touch-icon-precomposed" href="img/pluma128.png">
-    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="img/pluma57.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/pluma72.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/pluma114.png" />
+    <link rel="shortcut icon" href="../img/pluma16.png">
+    <link rel="apple-touch-icon-precomposed" href="../img/pluma128.png">
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="../img/pluma57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../img/pluma72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../img/pluma114.png" />
 
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/main.css">
-    <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <script src="../js/vendor/modernizr-2.6.2.min.js"></script>
+	<script src="validar.js"></script>
   </head>
   <body>
     <!--[if lt IE 7]>
@@ -33,7 +34,7 @@
     <div class="main">
       <header>
         <div class="logo">
-          <img src="img/pluma64.png" /> Mudle
+          <img src="../img/pluma64.png" /> Mudle
         </div>
         <div class="datos">
           <p>Nombre Usuario</p>
@@ -45,8 +46,7 @@
 
       <?php
 		include_once(MENUMAESTRO)
-	?>
-      <article>
+	?>      <article>
         <form action="index.html" method="POST" id="registroAlumno">
           <h1>Registrar Nuevo Alumno</h1>
           <fieldset>
@@ -90,6 +90,8 @@
             </br>
             </br>
             </br>
+
+	    
             <input class="button" id="registrar" name="registrar" value="Registrar" type="button" onclick="validarCampos('registroAlumno')" /> 
           </fieldset>
         </form>

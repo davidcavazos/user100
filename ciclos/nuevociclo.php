@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="../css/normalize.css">
     <link rel="stylesheet" href="../css/main.css">
     <script src="../js/vendor/modernizr-2.6.2.min.js"></script>
+    <script src="validarnuevociclo.js"></script>
   </head>
   <body>
     <!--[if lt IE 7]>
@@ -54,7 +55,7 @@
                 <fieldset>
                   <label>Ciclo escolar</label>
                   <br />
-                  <select id="seleccionDeCiclo" name="nuevoCicloEscolar">
+                  <select id="seleccionDeCiclo" name="seleccionDeCiclo" onblur="analizaCombo('seleccionDeCiclo')" onchange="analizaCombo('seleccionDeCiclo')">
                     <option id="0" disable="disable">-Seleccionar-</option>
                     <option id="1">2014-A</option>
                     <option id="2">2014-B</option>
@@ -66,12 +67,12 @@
                   <div>
                     <label for="inicioCiclo">Fecha De Inicio</label>
                     <br />
-                    <input charset="utf-8" id="inicioCiclo" name="inicioCiclo" type="text" />
+                    <input charset="utf-8" id="inicioCiclo" name="inicioCiclo" placeholder="dd-mm-aaaa" type="text" onblur="validarFecha('inicioCiclo')"/>
                   </div>
                   <div>
                     <label for="finCiclo">Fecha De Finalización</label>
                     <br />
-                    <input charset="utf-8" id="finCiclo" name="finCiclo" type="text" />
+                    <input charset="utf-8" id="finCiclo" name="finCiclo" placeholder="dd-mm-aaaa" type="text" onblur="validarFecha('finCiclo')"/>
                   </div>
                 </fieldset>
               </form>
@@ -82,7 +83,7 @@
                 <label>Agregar Días Festivos</label>
                 <br />
                 <div id="contenedorButton">
-                  <input charset="utf-8" id="diaFestivo" name="diaFestivo" type="text" />
+                  <input charset="utf-8" id="diaFestivo" name="diaFestivo" placeholder="dd-mm-aaaa" type="text" onblur="validarFecha('diaFestivo')" />
                   <input class="button" id="agregarDiaFestivo" name="agregarDiaFestivo" type="button" value="+" />
                   <input class="button" id="quitarDiaFestivo" name="quitarDiaFestivo" type="button" value="-" />
                 </div>
@@ -91,7 +92,7 @@
                   <br />
                   <textarea id="descripcion" name="descripcion" rows="5" cols="20"></textarea>
                 </div>
-                <input class="button" id="guardarCiclo" name="guardarCiclo" type="button" value="Guardar" />
+                <input class="button" id="guardarCiclo" name="guardarCiclo" type="button" value="Guardar" onclick="validarCampos()"/>
                 <input class="button" id="cancelar" name="cancelar" type="button" value="Cancelar" />
               </form>
             </article>

@@ -1,25 +1,28 @@
+<?php
+	include_once("../archivosphp/constantes.php");
+?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-  <head>
+	<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Mudle - Resumen</title>
+    <title>Mudle - Cargar Archivo</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <link rel="shortcut icon" href="img/pluma16.png">
-    <link rel="apple-touch-icon-precomposed" href="img/pluma128.png">
-    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="img/pluma57.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/pluma72.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/pluma114.png" />
+    <link rel="shortcut icon" href="../img/pluma16.png">
+    <link rel="apple-touch-icon-precomposed" href="../img/pluma128.png">
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="../img/pluma57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../img/pluma72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../img/pluma114.png" />
 
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/main.css">
-    <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <script src="../js/vendor/modernizr-2.6.2.min.js"></script>
   </head>
   <body>
     <!--[if lt IE 7]>
@@ -30,7 +33,7 @@
     <div class="main">
       <header>
         <div class="logo">
-          <img src="img/pluma64.png" /> Mudle
+          <img src="../img/pluma64.png" /> Mudle
         </div>
         <div class="datos">
           <p>Nombre Usuario</p>
@@ -40,53 +43,42 @@
         <div class="clear"></div>
       </header>
 
-      <nav>
-        <ul>
-          <li><a href="index.html">Resumen</a></li>
-          <li><a href="calificaciones.html">Calificaciones</a></li>
-          <li><a href="asistencias.html">Asistencias</a></li>
-          <li><a href="registrar.html">Registrar</a></li>
-          <div class="clear"></div>
-        </ul>
-        <hr />
-      </nav>
+      <?php
+		include_once(MENUMAESTRO)
+	?>      
+	<h1>Cargar Alumnos por medio de archivo</h1>
+	<article>
+	</br>
+	</br>        
+	    <input type="file" id="files" name="files[]" multiple />
+		<output id="list"></output>
 
-      <article>
-        <h1>Resumen</h1>
-        <table class="resumen">
-          <thead>
-            <tr>
-              <th>Alumno</th>
-              <th>Calificaciones</th>
-              <th>Asistencias</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Gustavo Rodrigo Guillen Villarreal</td>
-              <td>90%</td>
-              <td>90%</td>
-            </tr>
-            <tr>
-              <td>David Cavazos Woo</td>
-              <td>100%</td>
-              <td>100%</td>
-            </tr>
-            <tr>
-              <td>Stefan Rodriguez</td>
-              <td>100%</td>
-              <td>100%</td>
-            </tr>
-          </tbody>
-        </table>
-        <br />
-        <br />
-      </article>
+		<script>
+		  function handleFileSelect(evt) {
+		    var files = evt.target.files; // FileList object
+
+		    // files is a FileList of File objects. List some properties.
+		    var output = [];
+		    for (var i = 0, f; f = files[i]; i++) {
+		      output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
+				  f.size, ' bytes, last modified: ',
+				  f.lastModifiedDate.toLocaleDateString(), '</li>');
+		    }
+		    document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+		  }
+
+		  document.getElementById('files').addEventListener('change', handleFileSelect, false);
+		</script>	
+		</br>
+		</br>
+	
+            <input class="button" id="Cargar" name="Cargar" value="Cargar" type="button" onclick="" /> 
+           </article>
     </div>
 
     <footer>Copyright - About us</footer>
 
-    <!--
+    <!-- asdf
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
     <script src="js/plugins.js"></script>

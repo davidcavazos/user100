@@ -48,23 +48,16 @@
 		include_once(MENUMAESTRO)
 	?>
 
-      <nav>
-        <ul>
-          <li><a href="nuevoCiclo.html">Registrar Ciclo</a></li>
-          <div class="clear"></div>
-        </ul>
-        <hr />
-      </nav>
         <div>
           <section>
             <article>
               <h1>Lista de ciclos</h1>
               <div>
                 <ul>
-                  <li><a href="descripcionDeCiclo.html">Ciclo - algo</a></li>
-                  <li><a href="descripcionDeCiclo.html">Ciclo - algo</a></li>
-                  <li><a href="descripcionDeCiclo.html">Ciclo - algo</a></li>
-                  <li><a href="descripcionDeCiclo.html">Ciclo - algo</a></li>
+                  <li><a href="#">Ciclo - 2013B</a></li></br>
+                  <li><a href="#">Ciclo - 2014A</a></li></br>
+                  <li><a href="#">Ciclo - 2014B</a></li></br>
+                  <li><a href="#">Ciclo - 2015A</a></li></br>
                 </ul>
               </div>
             </article>

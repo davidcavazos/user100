@@ -1,0 +1,78 @@
+# Pantallas
+[x] Login
+    - textbox: codigo
+    - textbox: password
+    - boton: login
+    - link: recuperar contrasenia
+[x] Recuperacion de contrasenias
+    - textbox: email
+    - boton: recuperar
+[ ] Header
+    - Logout
+[ ] Menu Maestro
+    - Mis Cursos (consultar, agregar, modificar, eliminar?)
+    - Usuarios (consultar, agregar, modificar, eliminar?) - alumnos
+[ ] Menu Alumno
+    - Mis Cursos (consultar)
+[ ] Menu Admin
+    - Ciclos escolares (consultar, agregar, modificar, eliminar?)
+    - Usuarios (consultar, agregar, modificar, eliminar?) - maestros
+[ ] Tabla
+    - textbox: filtro (matchear un string con cualquier campo en la tabla)
+    - tabla: con campos editables
+    - espacio para botones
+[ ] Ciclos escolares (Form)
+    - combobox: ciclo seleccionado
+    - textbox: nombre ciclo
+    - textbox: fecha inicio
+    - textbox: fecha fin
+    - boton: agregar dia festivo {
+      - textbox: dia festivo
+      - textbox: descripcion dia festivo
+    }
+    - boton: eliminar dia festivo
+    + boton: agregar ciclo
+    - boton: guardar cambios
+    - boton: eliminar ciclo (?)
+[ ] Mis Cursos (Form)
+    - combobox: ciclo
+    - combobox: curso
+    - boton: ver asistencias
+    - tabla: checkbox, num_lista, codigo, nombre, carrera, rubros, total
+    + boton: agregar rubro
+    + boton: agregar rubro con subtabla
+    - boton: eliminar rubros seleccionados
+    + boton: agregar alumno
+    + boton: inscribir alumnos desde archivo CSV
+    - boton: eliminar alumnos seleccionados
+
+    - textbox: nrc
+    - textbox: nombre de la materia
+    - textbox: seccion
+    - boton: agregar dia clase {
+      - combobox: dia
+      - combobox: hora inicio
+      - combobox: hora fin
+    }
+    - boton: eliminar dia clase
+    - combobox (?): academia
+    + boton: agregar curso
+    - boton: clonar
+    - boton: eliminar curso (?)
+[ ] Evaluacion por rubro (Tabla)
+    - tabla: checkbox, num_lista, codigo, nombre, carrera, criterios, subtotal
+    + boton: agregar criterio
+    - boton: eliminar criterios seleccionados
+    - boton: regresar a evaluacion
+[ ] Asistencias (Tabla)
+    - boton: ver evaluacion
+    - tabla: num_lista, codigo, nombre, carrera, meses, porcentaje
+[ ] Asistencias por mes (Tabla)
+    - tabla: checkbox, num_lista, codigo, nombre, carrera, dias, porcentaje
+    - boton: poner asistencia a seleccionados
+    - boton: quitar asistencia de seleccionados
+    - boton: regresar a asistencias
+[ ] Usuarios (Tabla)
+    - tabla: checkbox, num_lista, codigo, nombre, carrera
+    + boton: registrar usuario
+    - boton: eliminar usuarios seleccionados (?)

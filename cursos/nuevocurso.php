@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="../css/normalize.css">
     <link rel="stylesheet" href="../css/main.css">
     <script src="../js/vendor/modernizr-2.6.2.min.js"></script>
+    <script src="validarcurso.js"></script>
   </head>
   <body>
     <!--[if lt IE 7]>
@@ -55,23 +56,23 @@
                   <div>
                     <label for="nombreNuevoCurso">Nombre del curso</label>
                     <br />
-                    <input charset="utf-8" id="nombreNuevoCurso" name="nombreNuevoCurso" type="text" />
+                    <input charset="utf-8" id="nombreNuevoCurso" name="nombreNuevoCurso" type="text" placeholder="Taller de programacion web" onblur="analiza('nombreNuevoCurso','^[ a-zA-Z]{3,}$')"/>
                   </div>
                   <div>
                     <label for="seccionDeCurso">Sección</label>
                     <br />
-                    <input charset="utf-8" id="seccionDeCurso" name="seccionDeCurso" type="text" />
+                    <input charset="utf-8" id="seccionDeCurso" onblur="analiza('seccionDeCurso','^[a-zA-Z0-9]{3}$')" name="seccionDeCurso" type="text" placeholder="D03" />
                   </div>
                   <div>
                     <label for="nrcDelCurso">NRC Del Curso</label>
                     <br />
-                    <input charset="utf-8" id="nrcDelCurso" name="nrcDelCurso" type="text" />
+                    <input charset="utf-8" id="nrcDelCurso" name="nrcDelCurso" type="text" onblur="analiza('nrcDelCurso','^[0-9]{5}$')"  placeholder="12345"/>
                   </div>
                   <div>
                     <label for="cicloDelCurso">Ciclo escolar</label>
                     <br />
-                    <select id="cicloDelCurso" name="cicloDelCurso">
-                      <option id="0" disabled="disabled" selected="selected">-Seleccionar-</option>
+                    <select id="cicloDelCurso" name="cicloDelCurso" onblur="analizaCombo('cicloDelCurso')" onchange="analizaCombo('cicloDelCurso')">
+                      <option id="0" disabled="disabled" selected="selected" >-Seleccionar-</option>
                       <option id="1">2014-A</option>
                       <option id="2">2014-B</option>
                       <option id="3">2015-A</option>
@@ -80,14 +81,14 @@
                   </div>
                   <h4>Días De Clase</h4>
                   <div id="contenedorButton">
-                    <select id="dia-Semana" name="dia-semana">
+                    <select id="diaSemana" name="diaSemana" name="cicloDelCurso" onblur="analizaCombo('diaSemana')" onchange="analizaCombo('diaSemana')">
                       <option id="0" disabled="disabled" selected="selected">Seleccione un dia</option>
                       <option id="3">Miercoles</option>
                       <option id="4">Jueves</option>
                       <option id="5">Viernes</option>
                       <option id="6">Sabado</option>
                     </select>
-                    <select id="horasPorDia" name="horasPorDia">
+                    <select id="horasPorDia" name="horasPorDia" name="cicloDelCurso" onblur="analizaCombo('horasPorDia')" onchange="analizaCombo('horasPorDia')">
                       <option id="0" disabled="disabled" selected="selected">Seleccionar Hrs/dia</option>
                       <option id="1">1 Hr</option>
                       <option id="2">2 Hrs</option>
@@ -96,45 +97,8 @@
                     </select>
                     <input class="button" id="agregarDiaDeClase" name="agregarDiaDeClase" type="button" value="+" />
                   </div>
-                  <div id="contenedorButton">
-                    <select id="dia-Semana" name="dia-semana">
-                      <option id="0" disabled="disabled" selected="selected">Seleccione un dia</option>
-                      <option id="2" selected="selected">Martes</option>
-                      <option id="3">Miercoles</option>
-                      <option id="4">Jueves</option>
-                      <option id="5">Viernes</option>
-                      <option id="6">Sabado</option>
-                    </select>
-                    <select id="horasPorDia" name="horasPorDia">
-                      <option id="0" disabled="disabled" selected="selected">Seleccionar Hrs/dia</option>
-                      <option id="1" selected="selected">1 Hr</option>
-                      <option id="2">2 Hrs</option>
-                      <option id="3">3 Hrs</option>
-                      <option id="4">4 Hrs</option>
-                    </select>
-                    <input class="button" id="agregarDiaDeClase" name="agregarDiaDeClase" type="button" value="+" />
-                    <input class="button" id="quitarDiaDeClase" name="quitarDiaDeClase" type="button" value="-" />
-                  </div>
-                  <div id="contenedorButton">
-                    <select id="dia-Semana" name="dia-semana">
-                      <option id="0" disabled="disabled" selected="selected">Seleccione un dia</option>
-                      <option id="1" selected="selected">Lunes</option>
-                      <option id="3">Miercoles</option>
-                      <option id="4">Jueves</option>
-                      <option id="5">Viernes</option>
-                      <option id="6">Sabado</option>
-                    </select>
-                    <select id="horasPorDia" name="horasPorDia">
-                      <option id="0" disabled="disabled" selected="selected">Seleccionar Hrs/dia</option>
-                      <option id="1">1 Hr</option>
-                      <option id="2" selected="selected">2 Hrs</option>
-                      <option id="3">3 Hrs</option>
-                      <option id="4">4 Hrs</option>
-                    </select>
-                    <input class="button" id="agregarDiaDeClase" name="agregarDiaDeClase" type="button" value="+" />
-                    <input class="button" id="quitarDiaDeClase" name="quitarDiaDeClase" type="button" value="-" />
-                  </div>
-                  <input class="button" id="guardarCurso" name="guardarCurso" type="button" value="Guardar" />
+                    
+                  <input class="button" id="guardarCurso" name="guardarCurso" type="button" value="Guardar" onclick="validarCampos()"/>
                   <input class="button" id="cancelar" name="cancelar" type="button" value="Cancelar" />
                 </fieldset>
               </form>
