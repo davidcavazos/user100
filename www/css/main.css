@@ -173,7 +173,9 @@ input {
   color: #555;
   background: #fff;
 }
-input.button {
+button {
+  border: none;
+  font-weight: bold;
   background: #eee;
   font-size: 13px;
   padding-left: 5px;
