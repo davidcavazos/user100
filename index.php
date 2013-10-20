@@ -5,6 +5,10 @@ switch (htmlspecialchars($_GET['ctl'])) {
     require_once('ctl/MisCursosCtl.php');
     $ctl = new MisCursosCtl('MisCursos', 'Mis Cursos');
     break;
+  case 'asistencias':
+    require_once('ctl/AsistenciasCtl.php');
+    $ctl = new AsistenciasCtl('Asistencias', 'Asistencias');
+    break;
   case 'ciclos':
     require_once('ctl/CiclosCtl.php');
     $ctl = new CiclosCtl('Ciclos', 'Ciclos');
