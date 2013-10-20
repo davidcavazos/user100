@@ -164,7 +164,7 @@ h1 {
   margin: auto;
 }
 input {
-  border: none;
+  border: 1px solid #ddd;
   font-weight: bold;
   height: 30px;
   padding-left: 15px;
@@ -172,6 +172,7 @@ input {
   margin-bottom: 10px;
   color: #555;
   background: #fff;
+  box-shadow: 0 0 5px #ddd inset;
 }
 button {
   border: 1px solid #aaa;
