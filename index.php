@@ -14,8 +14,8 @@ switch (htmlspecialchars($_GET['ctl'])) {
     $ctl = new UsuariosCtl('Usuarios', 'Usuarios');
     break;
   case 'recuperar_password':
-    require_once('ctl/LoginCtl.php');
-    $ctl = new LoginCtl('Login', 'Login');
+    require_once('ctl/RecuperarPasswordCtl.php');
+    $ctl = new RecuperarPasswordCtl('RecuperarPassword', 'Recuperar Contrase&ntilde;a');
     break;
   case 'login':
   default:
