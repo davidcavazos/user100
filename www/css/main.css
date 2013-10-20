@@ -156,9 +156,14 @@ hr {
 a {
   color: #555;
   text-decoration: none;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -ms-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
 }
 a:hover {
-  color: #55a;
+  color: #55c;
 }
 h1 {
   margin: auto;
@@ -173,6 +178,14 @@ input {
   color: #555;
   background: #fff;
   box-shadow: 0 0 8px #ddd inset;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -ms-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+input:hover {
+  box-shadow: 0 0 10px #ccc inset;
 }
 button {
   border: 1px solid #aaa;
@@ -183,6 +196,14 @@ button {
   padding: 5px 10px 5px 10px;
   margin-bottom: 10px;
   box-shadow: 0 1px 8px #ccc;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -ms-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+button:hover {
+  box-shadow: 0 1px 10px #aaa;
 }
 button[disabled] {
   border: 1px solid #ccc;
@@ -199,6 +220,15 @@ select {
   color: #555;
   background: transparent;
   box-shadow: 0 1px 8px #ccc;
+  cursor: pointer;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -ms-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+select:hover {
+  box-shadow: 0 1px 10px #aaa;
 }
 
 
@@ -244,8 +274,9 @@ nav ul {
 }
 nav ul li {
   float: left;
-  margin: 0 3.5%;
+  font: bold 12px/18px sans-serif;
   font-weight: bold;
+  margin: 0 3.5%;
 }
 
 
