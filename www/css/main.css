@@ -173,11 +173,15 @@ input {
   color: #555;
   background: #fff;
 }
-input.button {
+button {
+  border: none;
+  font-weight: bold;
+  color: #555;
   background: #eee;
   font-size: 13px;
   padding-left: 5px;
   padding-right: 5px;
+  margin-bottom: 20px;
 }
 input#login, input#password {
   width: 75%;

@@ -3,11 +3,9 @@
 
 # TEAM
 
-    <name> -- <role> -- <twitter>
-
-# THANKS
-
-    <name>
+  Cavazos Woo, David
+  Guillen Villarreal, Gustavo Rodrigo
+  Rodriguez Mejia, Stefhan Alejandro
 
 # TECHNOLOGY COLOPHON
 
