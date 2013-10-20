@@ -10,4 +10,35 @@
     </select>
   </div>
 
+  <form>
+    <fieldset>
+      <label>Ciclo</label>
+      <br />
+      <input charset="UTF-8" type="text" placeholder="Ciclo" />
+      <br />
+
+      <label>Fecha Inicio</label>
+      <br />
+      <input charset="UTF-8" type="text" placeholder="dd-mm-aaaa" />
+      <br />
+
+      <label>Fecha Fin</label>
+      <br />
+      <input charset="UTF-8" type="text" placeholder="dd-mm-aaaa" />
+      <br />
+
+      <label>Dias Festivos</label>
+      <button type="button">+</button>
+      <button type="button" disabled>-</button>
+      <br />
+      {DIAS_FESTIVOS}
+    </fieldset>
+    <br />
+
+    <div>
+      <button type="button" disabled>Agregar Ciclo</button>
+      <button type="button" disabled>Guardar Cambios</button>
+    </div>
+  </form>
+
 </article>
