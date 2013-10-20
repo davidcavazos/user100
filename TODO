@@ -1,3 +1,7 @@
+# Funcionalidad
+[ ] Validaciones de formularios
+[ ] Base de datos
+
 # Pantallas
 [x] Login
     - textbox: codigo
@@ -7,14 +11,14 @@
 [x] Recuperacion de contrasenias
     - textbox: email
     - boton: recuperar
-[ ] Header
+[x] Header
     - Logout
-[ ] Menu Maestro
+[x] Menu Maestro
     - Mis Cursos (consultar, agregar, modificar, eliminar?)
     - Usuarios (consultar, agregar, modificar, eliminar?) - alumnos
-[ ] Menu Alumno
+[x] Menu Alumno
     - Mis Cursos (consultar)
-[ ] Menu Admin
+[x] Menu Admin
     - Ciclos escolares (consultar, agregar, modificar, eliminar?)
     - Usuarios (consultar, agregar, modificar, eliminar?) - maestros
 [ ] Tabla
