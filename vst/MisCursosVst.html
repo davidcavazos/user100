@@ -1,0 +1,88 @@
+<article>
+  <h1>Mis Cursos</h1>
+
+  <div>
+    <select>
+      <option>2013B</option>
+      <option>2013A</option>
+      <option>2012B</option>
+      <option>2012A</option>
+    </select>
+
+    <select>
+      <option>Programacion Web</option>
+      <option>Compiladores</option>
+      <option>Inteligencia Artificial</option>
+    </select>
+
+    <button type="button" onclick="location='?ctl=asistencias'">Ver Asistencias</button>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Lista</th>
+        <th>Codigo</th>
+        <th>Nombre</th>
+        <th>Carrera</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{X}</td>
+        <td>{LISTA}</td>
+        <td>{CODIGO}</td>
+        <td>{NOMBRE}</td>
+        <td>{CARRERA}</td>
+        <td>{TOTAL}</td>
+      </tr>
+    </tbody>
+  </table>
+  <br />
+
+  <div>
+    <button type="button">Agregar Rubro</button>
+    <button type="button">Agregar Subtabla</button>
+    <button type="button" disabled>Eliminar Rubros</button>
+  </div>
+
+  <div>
+    <button type="button">Inscribir Alumno</button>
+    <button type="button">Leer Alumnos de CSV</button>
+    <button type="button" disabled>Desinscribir Alumnos</button>
+  </div>
+
+  <form>
+    <fieldset>
+      <h3>Informacion del curso</h3>
+      <label>NRC</label>
+      <br />
+      <input charset="UTF-8" type="text" placeholder="NRC" />
+      <br />
+
+      <label>Materia</label>
+      <br />
+      <input charset="UTF-8" type="text" placeholder="Materia" />
+      <br />
+
+      <label>Seccion</label>
+      <br />
+      <input charset="UTF-8" type="text" placeholder="Seccion" />
+      <br />
+
+      <label>Horarios</label>
+      <button type="button">+</button>
+      <button type="button" disabled>-</button>
+      <br />
+      {HORARIO}
+    </fieldset>
+  </form>
+  <br />
+
+  <div>
+    <button type="button">Clonar Curso</button>
+    <button type="button" disabled>Agregar Curso</button>
+  </div>
+</article>
