@@ -38,9 +38,9 @@
 		<type label="Bit" length="0" sql="bit" quote=""/>
 	</group>
 </datatypes><table x="305" y="34" name="usuario">
-<row name="usuario" null="1" autoincrement="1">
+<row name="codigo" null="1" autoincrement="0">
 <datatype>VARCHAR(15)</datatype>
-<default>NULL</default><relation table="calificaciones" row="usuario" />
+<default>NULL</default><relation table="calificaciones" row="codigo" />
 </row>
 <row name="nombres" null="1" autoincrement="0">
 <datatype>VARCHAR(50)</datatype>
@@ -64,14 +64,14 @@
 <datatype>TINYINT(1)</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
-<part>usuario</part>
+<part>codigo</part>
 </key>
 </table>
-<table x="61" y="174" name="calificaciones">
-<row name="id_calificaciones" null="1" autoincrement="0">
+<table x="76" y="218" name="calificaciones">
+<row name="id_grupo" null="1" autoincrement="0">
 <datatype>SMALLINT</datatype>
 <default>NULL</default></row>
-<row name="usuario" null="1" autoincrement="1">
+<row name="codigo" null="1" autoincrement="0">
 <datatype>VARCHAR(15)</datatype>
 <default>NULL</default></row>
 <row name="nrc" null="1" autoincrement="0">
@@ -79,15 +79,18 @@
 <default>NULL</default><relation table="curso" row="nrc" />
 </row>
 <key type="PRIMARY" name="">
-<part>usuario</part>
+<part>codigo</part>
 <part>nrc</part>
-<part>id_calificaciones</part>
+<part>id_grupo</part>
 </key>
 </table>
-<table x="292" y="275" name="curso">
-<row name="nrc" null="1" autoincrement="1">
+<table x="322" y="410" name="curso">
+<row name="nrc" null="0" autoincrement="0">
 <datatype>VARCHAR(5)</datatype>
-<default>NULL</default></row>
+<default>'NULL'</default></row>
+<row name="ciclo" null="0" autoincrement="0">
+<datatype>VARCHAR(5)</datatype>
+<default>'NULL'</default></row>
 <row name="nombre_materia" null="1" autoincrement="0">
 <datatype>VARCHAR(30)</datatype>
 <default>NULL</default></row>
@@ -100,18 +103,15 @@
 <row name="carga_horaria" null="1" autoincrement="0">
 <datatype>TINYINT(1)</datatype>
 <default>NULL</default></row>
-<row name="ciclo" null="1" autoincrement="0">
-<datatype>VARCHAR(5)</datatype>
-<default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>nrc</part>
 <part>ciclo</part>
 </key>
 </table>
-<table x="502" y="247" name="ciclo_escolar">
-<row name="ciclo" null="1" autoincrement="1">
+<table x="509" y="362" name="ciclo_escolar">
+<row name="ciclo" null="0" autoincrement="0">
 <datatype>VARCHAR(5)</datatype>
-<default>NULL</default><relation table="curso" row="ciclo" />
+<default>'NULL'</default><relation table="curso" row="ciclo" />
 </row>
 <row name="fecha_inicio" null="1" autoincrement="0">
 <datatype>DATE</datatype>
@@ -119,35 +119,33 @@
 <row name="fecha_fin" null="1" autoincrement="0">
 <datatype>DATE</datatype>
 <default>NULL</default></row>
-<row name="new field" null="1" autoincrement="0">
-<datatype>TINYINT</datatype>
-<default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>ciclo</part>
 </key>
 </table>
-<table x="500" y="46" name="asistencias">
-<row name="id_asistencias" null="1" autoincrement="0">
+<table x="504" y="207" name="asistencias">
+<row name="id_grupo" null="1" autoincrement="0">
 <datatype>SMALLINT</datatype>
-<default>NULL</default></row>
-<row name="usuario" null="1" autoincrement="1">
+<default>NULL</default><relation table="calificaciones" row="id_grupo" />
+</row>
+<row name="codigo" null="1" autoincrement="0">
 <datatype>VARCHAR(15)</datatype>
-<default>NULL</default><relation table="usuario" row="usuario" />
+<default>NULL</default><relation table="usuario" row="codigo" />
 </row>
 <row name="nrc" null="1" autoincrement="0">
 <datatype>VARCHAR(5)</datatype>
 <default>NULL</default><relation table="curso" row="nrc" />
 </row>
 <key type="PRIMARY" name="">
-<part>usuario</part>
+<part>codigo</part>
 <part>nrc</part>
-<part>id_asistencias</part>
+<part>id_grupo</part>
 </key>
 </table>
 <table x="706" y="202" name="detalle_ciclo_escolar">
-<row name="ciclo" null="1" autoincrement="1">
+<row name="ciclo" null="0" autoincrement="0">
 <datatype>VARCHAR(5)</datatype>
-<default>NULL</default><relation table="ciclo_escolar" row="ciclo" />
+<default>'NULL'</default><relation table="ciclo_escolar" row="ciclo" />
 </row>
 <row name="dia_no_efectivo" null="1" autoincrement="0">
 <datatype>DATE</datatype>
@@ -160,12 +158,15 @@
 </key>
 </table>
 <table x="70" y="344" name="detalle_curso">
-<row name="nrc" null="1" autoincrement="1">
+<row name="nrc" null="1" autoincrement="0">
 <datatype>VARCHAR(5)</datatype>
 <default>NULL</default><relation table="curso" row="nrc" />
 </row>
 <row name="dia" null="1" autoincrement="0">
 <datatype>VARCHAR(10)</datatype>
+<default>NULL</default></row>
+<row name="horas_por_dia" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
 <default>NULL</default></row>
 <row name="horario" null="1" autoincrement="0">
 <datatype>VARCHAR(15)</datatype>
@@ -174,10 +175,10 @@
 <part>nrc</part>
 </key>
 </table>
-<table x="661" y="40" name="detalle_lista">
-<row name="id_asistencias" null="1" autoincrement="1">
+<table x="721" y="40" name="detalle_lista">
+<row name="id_grupo" null="1" autoincrement="0">
 <datatype>SMALLINT</datatype>
-<default>NULL</default><relation table="asistencias" row="id_asistencias" />
+<default>NULL</default><relation table="asistencias" row="id_grupo" />
 </row>
 <row name="dia_asistencia" null="1" autoincrement="0">
 <datatype>DATE</datatype>
@@ -186,13 +187,13 @@
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
-<part>id_asistencias</part>
+<part>id_grupo</part>
 </key>
 </table>
 <table x="26" y="34" name="detalle_calificaciones">
-<row name="id_calificaciones" null="1" autoincrement="1">
-<datatype>TINYINT</datatype>
-<default>NULL</default><relation table="calificaciones" row="id_calificaciones" />
+<row name="id_grupo" null="1" autoincrement="0">
+<datatype>SMALLINT</datatype>
+<default>NULL</default><relation table="calificaciones" row="id_grupo" />
 </row>
 <row name="numero_tarea" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
@@ -201,7 +202,7 @@
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
-<part>id_calificaciones</part>
+<part>id_grupo</part>
 </key>
 </table>
 </sql>
