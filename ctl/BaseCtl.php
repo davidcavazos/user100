@@ -14,12 +14,7 @@ abstract class BaseCtl {
   }
 
   public function ejecutar() {
-    require_once($this->mdlFile);
-    $mdl = new $this->mdlClass();
-    $vst = $this->generarHeader() .
-           $this->generarBody() .
-           $this->generarFooter();
-    echo $vst;
+    $this->mostrar();
   }
 
   public function generarHeader() {
@@ -34,6 +29,13 @@ abstract class BaseCtl {
 
   public function generarFooter() {
     return file_get_contents('vst/BaseFooterVst.html');
+  }
+
+  public function mostrar() {
+    $vst = $this->generarHeader() .
+           $this->generarBody() .
+           $this->generarFooter();
+    echo $vst;
   }
 }
 

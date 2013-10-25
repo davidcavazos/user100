@@ -1,4 +1,5 @@
 <?php
+//mail("stefhan.rodriguez@hotmail.com", "D:", "enviado desde PHP ;)");
 
 switch (htmlspecialchars($_GET['ctl'])) {
   case 'mis_cursos':
