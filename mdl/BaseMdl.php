@@ -1,6 +1,6 @@
 <?php
 
-class MisCursosMdl {
+class BaseMdl {
   private $driver;
 
   function __construct() {
@@ -10,8 +10,8 @@ class MisCursosMdl {
     }
   }
 
-  function datos() {
-    $query = 'SELECT * FROM curso';
+  function datos($table) {
+    $query = "SELECT * FROM $table";
     $r = $this->driver->query($query);
     $rows = array();
     while ($row = $r->fetch_assoc()) {

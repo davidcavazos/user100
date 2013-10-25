@@ -14,8 +14,8 @@ class MisCursosCtl extends BaseCtl {
   }
 
   public function generarBody() {
-    require_once($this->mdlFile);
-    $mdl = new $this->mdlClass();
+    require_once('mdl/UsuariosMdl.php');
+    $mdl = new UsuariosMdl();
 
     $body = file_get_contents($this->vstFile);
 
@@ -23,17 +23,17 @@ class MisCursosCtl extends BaseCtl {
     $final_fila = strrpos($body, '</tr>') + 5;
     $fila = substr($body, $inicio_fila, $final_fila - $inicio_fila);
 
-    $datos = $mdl->datos();
+    $datos = $mdl->datos('usuario');
     $filas = '';
     foreach ($datos as $row) {
       $new_fila = $fila;
       $dict = array(
-        '{X}' => $row['x'],
+        '{X}' => '<input type="checkbox">',
         '{LISTA}' => $row['lista'],
         '{CODIGO}' => $row['codigo'],
-        '{NOMBRE}' => $row['nombre'],
+        '{NOMBRE}' => $row['apellidos'] . ', ' . $row['nombres'],
         '{CARRERA}' => $row['carrera'],
-        '{TOTAL}' => $row['total'],
+        '{TOTAL}' => '0'
       );
       $new_fila = strtr($new_fila, $dict);
       $filas .= $new_fila;

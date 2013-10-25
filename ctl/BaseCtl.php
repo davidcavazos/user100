@@ -2,14 +2,10 @@
 
 abstract class BaseCtl {
   protected $titulo;
-  protected $mdlClass;
-  protected $mdlFile;
   protected $vstFile;
 
   public function __construct($pagina, $titulo) {
     $this->titulo = $titulo;
-    $this->mdlClass = $pagina . 'Mdl';
-    $this->mdlFile = 'mdl/' . $pagina . 'Mdl.php';
     $this->vstFile = 'vst/' . $pagina . 'Vst.html';
   }
 
