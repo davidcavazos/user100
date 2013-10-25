@@ -187,6 +187,12 @@ input {
 input:hover {
   box-shadow: 0 0 0.8em #ccf inset;
 }
+input:focus {
+  outline-color: #aaf;
+}
+input#login, input#password {
+  width: 75%;
+}
 button {
   border: 1px solid #aaa;
   font-weight: bold;
@@ -206,13 +212,13 @@ button:hover {
   color: #558;
   box-shadow: 0 0.1em 0.8em #aaf;
 }
+button:focus {
+  outline-color: #aaf;
+}
 button[disabled] {
   border: 1px solid #ccc;
   color: #aaa;
   box-shadow: none;
-}
-input#login, input#password {
-  width: 75%;
 }
 select {
   border: 1px solid #aaa;
@@ -231,6 +237,9 @@ select {
 select:hover {
   color: #558;
   box-shadow: 0 0.1em 0.8em #aaf;
+}
+select:focus {
+  outline-color: #aaf;
 }
 
 
