@@ -5,8 +5,6 @@ class MisCursosCtl extends BaseCtl {
   public function ejecutar() {
     $this->mostrar();
 
-    require_once($this->mdlFile);
-    $mdl = new $this->mdlClass();
     switch (htmlspecialchars($_GET['act'])) {
       case 'display':
       default:
@@ -23,18 +21,22 @@ class MisCursosCtl extends BaseCtl {
     $final_fila = strrpos($body, '</tr>') + 5;
     $fila = substr($body, $inicio_fila, $final_fila - $inicio_fila);
 
-    $datos = $mdl->datos('usuario');
+    $datos = $mdl->datos('SELECT * FROM usuario ORDER BY codigo');
     $filas = '';
+    $num = 1;
     foreach ($datos as $row) {
+      if ($row['activo'] === 'false') {
+        continue;
+      }
       $new_fila = $fila;
       $dict = array(
-        '{X}' => '<input type="checkbox">',
-        '{LISTA}' => $row['lista'],
+        '{X}' => $num,
         '{CODIGO}' => $row['codigo'],
         '{NOMBRE}' => $row['apellidos'] . ', ' . $row['nombres'],
         '{CARRERA}' => $row['carrera'],
         '{TOTAL}' => '0'
       );
+      $num += 1;
       $new_fila = strtr($new_fila, $dict);
       $filas .= $new_fila;
     }

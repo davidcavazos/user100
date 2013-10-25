@@ -39,7 +39,7 @@ CREATE TABLE `calificaciones` (
   `id_grupo` SMALLINT NULL DEFAULT NULL,
   `codigo` VARCHAR(15) NULL DEFAULT NULL,
   `nrc` VARCHAR(5) NULL DEFAULT NULL,
-  PRIMARY KEY (`codigo`, `nrc`, `id_grupo`)
+  PRIMARY KEY (`id_grupo`)
 );
 
 -- ---
@@ -56,7 +56,7 @@ CREATE TABLE `curso` (
   `seccion` VARCHAR(5) NULL DEFAULT NULL,
   `academia` VARCHAR(30) NULL DEFAULT NULL,
   `carga_horaria` TINYINT(1) NULL DEFAULT NULL,
-  PRIMARY KEY (`nrc`, `ciclo`)
+  PRIMARY KEY (`nrc`)
 );
 
 -- ---
@@ -84,7 +84,7 @@ CREATE TABLE `asistencias` (
   `id_grupo` SMALLINT NULL DEFAULT NULL,
   `codigo` VARCHAR(15) NULL DEFAULT NULL,
   `nrc` VARCHAR(5) NULL DEFAULT NULL,
-  PRIMARY KEY (`codigo`, `nrc`, `id_grupo`)
+  PRIMARY KEY (`id_grupo`)
 );
 
 -- ---
@@ -148,15 +148,15 @@ CREATE TABLE `detalle_calificaciones` (
 -- Foreign Keys 
 -- ---
 
-ALTER TABLE `usuario` ADD FOREIGN KEY (codigo) REFERENCES `calificaciones` (`codigo`);
+ALTER TABLE `calificaciones` ADD FOREIGN KEY (codigo) REFERENCES `usuario` (`codigo`);
 ALTER TABLE `calificaciones` ADD FOREIGN KEY (nrc) REFERENCES `curso` (`nrc`);
 ALTER TABLE `ciclo_escolar` ADD FOREIGN KEY (ciclo) REFERENCES `curso` (`ciclo`);
 ALTER TABLE `asistencias` ADD FOREIGN KEY (id_grupo) REFERENCES `calificaciones` (`id_grupo`);
+ALTER TABLE `asistencias` ADD FOREIGN KEY (id_grupo) REFERENCES `detalle_lista` (`id_grupo`);
 ALTER TABLE `asistencias` ADD FOREIGN KEY (codigo) REFERENCES `usuario` (`codigo`);
 ALTER TABLE `asistencias` ADD FOREIGN KEY (nrc) REFERENCES `curso` (`nrc`);
-ALTER TABLE `detalle_ciclo_escolar` ADD FOREIGN KEY (ciclo) REFERENCES `ciclo_escolar` (`ciclo`);
+ALTER TABLE `detalle_ciclo_escolar` ADD FOREIGN KEY (ciclo) REFERENCES `curso` (`ciclo`);
 ALTER TABLE `detalle_curso` ADD FOREIGN KEY (nrc) REFERENCES `curso` (`nrc`);
-ALTER TABLE `detalle_lista` ADD FOREIGN KEY (id_grupo) REFERENCES `asistencias` (`id_grupo`);
 ALTER TABLE `detalle_calificaciones` ADD FOREIGN KEY (id_grupo) REFERENCES `calificaciones` (`id_grupo`);
 
 -- ---

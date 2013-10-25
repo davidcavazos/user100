@@ -4,8 +4,7 @@
   <table>
     <thead>
       <tr>
-        <th></th>
-        <th>Lista</th>
+        <th><input type="checkbox"></th>
         <th>Codigo</th>
         <th>Nombre</th>
         <th>Carrera</th>
@@ -13,8 +12,7 @@
     </thead>
     <tbody>
       <tr>
-        <td>{X}</td>
-        <td>{LISTA}</td>
+        <td><input type="checkbox" id="{X}"> <label for="{X}">{X}</label></td>
         <td>{CODIGO}</td>
         <td>{NOMBRE}</td>
         <td>{CARRERA}</td>
@@ -24,7 +22,42 @@
   <br />
 
   <div>
-    <button type="button">Registrar Usuario</button>
-    <button type="button" disabled>Eliminar Usuarios</button>
+    <button type="button" onclick='toggle_modal()'>Registrar Usuario</button>
+    <button type="button" disabled>Marcar como inactivos</button>
+  </div>
+
+  <div id="modal">
+    <form action="index.php?ctl=usuarios&act=alta" method="post">
+      <fieldset>
+        <h3>Agregar Usuario</h3>
+        <label>Codigo</label>
+        <br />
+        <input type="text" name='codigo' placeholder="Codigo" />
+        <br />
+
+        <label>Nombres</label>
+        <br />
+        <input type="text" name='nombres' placeholder="Nombres" />
+        <br />
+
+        <label>Apellidos</label>
+        <br />
+        <input type="text" name='apellidos' placeholder="Apellidos" />
+        <br />
+
+        <label>Carrera</label>
+        <select name='carrera'>
+          <option>COM</option>
+          <option>INF</option>
+        </select>
+        <br />
+        <br />
+
+        <div>
+          <button type="submit" disabled>Agregar</button>
+          <button type="button" onclick="toggle_modal()">Cancelar</button>
+        </div>
+      </fieldset>
+    </form>
   </div>
 </article>
