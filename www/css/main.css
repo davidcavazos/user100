@@ -177,7 +177,7 @@ input {
   margin-bottom: 10px;
   color: #555;
   background: #fff;
-  box-shadow: 0 0 8px #ddd inset;
+  box-shadow: 0 0 0.5em #ddd inset;
   -webkit-transition: all 0.2s linear;
   -moz-transition: all 0.2s linear;
   -ms-transition: all 0.2s linear;
@@ -185,7 +185,7 @@ input {
   transition: all 0.2s linear;
 }
 input:hover {
-  box-shadow: 0 0 10px #ccf inset;
+  box-shadow: 0 0 0.8em #ccf inset;
 }
 button {
   border: 1px solid #aaa;
@@ -195,7 +195,7 @@ button {
   font-size: 13px;
   padding: 5px 10px 5px 10px;
   margin-bottom: 10px;
-  box-shadow: 0 1px 8px #ccc;
+  box-shadow: 0 0.1em 0.5em #ccc;
   -webkit-transition: all 0.2s linear;
   -moz-transition: all 0.2s linear;
   -ms-transition: all 0.2s linear;
@@ -203,7 +203,8 @@ button {
   transition: all 0.2s linear;
 }
 button:hover {
-  box-shadow: 0 1px 10px #aaf;
+  color: #558;
+  box-shadow: 0 0.1em 0.8em #aaf;
 }
 button[disabled] {
   border: 1px solid #ccc;
@@ -219,7 +220,7 @@ select {
   margin-bottom: 10px;
   color: #555;
   background: transparent;
-  box-shadow: 0 1px 8px #ccc;
+  box-shadow: 0 0.1em 0.5em #ccc;
   cursor: pointer;
   -webkit-transition: all 0.2s linear;
   -moz-transition: all 0.2s linear;
@@ -228,7 +229,8 @@ select {
   transition: all 0.2s linear;
 }
 select:hover {
-  box-shadow: 0 1px 10px #aaf;
+  color: #558;
+  box-shadow: 0 0.1em 0.8em #aaf;
 }
 
 
@@ -288,7 +290,7 @@ table {
   border-collapse: collapse;
   width: 100%;
   margin: auto;
-  box-shadow: 0 3px 18px #aaa;
+  box-shadow: 0 0.2em 1em #aaa;
 }
 thead tr {
   border: 1px solid #aaa;
@@ -303,7 +305,7 @@ tbody td {
 footer {
   background: #cbcbcb;
   bottom: 0;
-  box-shadow: 0 0 35px #bbb;
+  box-shadow: 0 0 2em #bbb;
   position: fixed;
   width: 100%;
   text-align: center;
