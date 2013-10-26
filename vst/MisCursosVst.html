@@ -16,7 +16,9 @@
   <table>
     <thead>
       <tr>
-        <th><input type="checkbox"></th>
+        <th>
+          <input type="checkbox" id="select_all" onclick="toggle_select_all('r', 'elim_alumno')">
+        </th>
         <th>Codigo</th>
         <th>Nombre</th>
         <th>Carrera</th>
@@ -25,7 +27,10 @@
     </thead>
     <tbody>
       <tr>
-        <td><input type="checkbox" id="{X}"> <label for="{X}">{X}</label></td>
+        <td>
+          <input type="checkbox" id="r{X}" onclick="validar_selecciones('r', 'elim_alumno')">
+          <label for="r{X}">{X}</label>
+        </td>
         <td>{CODIGO}</td>
         <td>{NOMBRE}</td>
         <td>{CARRERA}</td>
@@ -44,7 +49,7 @@
   <div>
     <button type="button">Inscribir Alumno</button>
     <button type="button">Leer Alumnos de CSV</button>
-    <button type="button" disabled>Desinscribir Alumnos</button>
+    <button type="button" id="elim_alumno" disabled>Desinscribir Alumnos</button>
   </div>
 
   <form>
