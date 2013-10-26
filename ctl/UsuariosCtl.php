@@ -3,26 +3,19 @@
 require_once('ctl/BaseCtl.php');
 class UsuariosCtl extends BaseCtl {
   public function ejecutar() {
-    switch (htmlspecialchars($_GET['act'])) {
-      case 'alta':
-        if (!empty($_POST)) {
-          require_once('mdl/UsuariosMdl.php');
-          $mdl = new UsuariosMdl();
-          $codigo = $_POST['codigo'];
-          $nombres = $_POST['nombres'];
-          $apellidos = $_POST['apellidos'];
-          $password = 'asdf';
-          $tipo = 'estudiante';
-          $carrera = $_POST['carrera'];
-          $email = 'email';
-          $activo = 'true';
-          $r = $mdl->alta($codigo, $nombres, $apellidos, $password, $tipo,
-                          $carrera, $email, $activo);
-        }
-        break;
-      case 'display':
-      default:
-        break;
+    if (isset($_GET['alta'])) {
+      require_once('mdl/UsuariosMdl.php');
+      $mdl = new UsuariosMdl();
+      $codigo = $_POST['codigo'];
+      $nombres = $_POST['nombres'];
+      $apellidos = $_POST['apellidos'];
+      $password = 'asdf';
+      $tipo = 'estudiante';
+      $carrera = $_POST['carrera'];
+      $email = 'email';
+      $activo = 'true';
+      $r = $mdl->alta($codigo, $nombres, $apellidos, $password, $tipo,
+                      $carrera, $email, $activo);
     }
     $this->mostrar();
   }

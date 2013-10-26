@@ -3,12 +3,11 @@
 require_once('ctl/BaseCtl.php');
 class MisCursosCtl extends BaseCtl {
   public function ejecutar() {
-    $this->mostrar();
-
-    switch (htmlspecialchars($_GET['act'])) {
-      case 'display':
-      default:
+    if (isset($_GET['alta'])) {
+      require_once('mdl/CursosMdl.php');
+      $mdl = new CursosMdl();
     }
+    $this->mostrar();
   }
 
   public function generarBody() {
