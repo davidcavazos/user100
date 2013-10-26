@@ -3,28 +3,25 @@
 
   <div>
     <select>
-      <option>2013B</option>
-      <option>2013A</option>
-      <option>2012B</option>
-      <option>2012A</option>
+      <option>{CICLO}</option>
     </select>
   </div>
 
-  <form>
+  <form action="index.php?ctl=ciclos&alta" method="post">
     <fieldset>
       <label>Ciclo</label>
       <br />
-      <input type="text" placeholder="Ciclo" />
+      <input type="text" name="ciclo" placeholder="Ciclo" />
       <br />
 
       <label>Fecha Inicio</label>
       <br />
-      <input type="text" placeholder="dd-mm-aaaa" />
+      <input type="text" name="fecha_inicio" placeholder="dd-mm-aaaa" />
       <br />
 
       <label>Fecha Fin</label>
       <br />
-      <input type="text" placeholder="dd-mm-aaaa" />
+      <input type="text" name="fecha_fin" placeholder="dd-mm-aaaa" />
       <br />
 
       <label>Dias Festivos</label>
@@ -36,7 +33,7 @@
     <br />
 
     <div>
-      <button type="button">Agregar Ciclo</button>
+      <button type="submit">Agregar Ciclo</button>
       <button type="button" disabled>Guardar Cambios</button>
     </div>
   </form>

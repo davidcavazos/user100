@@ -33,6 +33,11 @@ abstract class BaseCtl {
            $this->generarFooter();
     echo $vst;
   }
+
+  protected function campo($field, $value, $body) {
+    return str_replace('name="' . $field . '"', 'name="' . $field .
+                       '" value="' . $value . '"', $body);
+  }
 }
 
 ?>

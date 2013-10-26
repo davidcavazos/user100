@@ -3,16 +3,11 @@
 
   <div>
     <select>
-      <option>2013B</option>
-      <option>2013A</option>
-      <option>2012B</option>
-      <option>2012A</option>
+      <option>{CICLO}</option>
     </select>
 
     <select>
-      <option>Programacion Web</option>
-      <option>Compiladores</option>
-      <option>Inteligencia Artificial</option>
+      <option>{CURSO}</option>
     </select>
 
     <button type="button" onclick="location='?ctl=asistencias'">Ver Asistencias</button>
@@ -57,17 +52,17 @@
       <h3>Informacion del curso</h3>
       <label>NRC</label>
       <br />
-      <input type="text" placeholder="NRC" />
+      <input type="text" name="nrc" placeholder="NRC" />
       <br />
 
       <label>Materia</label>
       <br />
-      <input type="text" placeholder="Materia" />
+      <input type="text" name="materia" placeholder="Materia" />
       <br />
 
       <label>Seccion</label>
       <br />
-      <input type="text" placeholder="Seccion" />
+      <input type="text" name="seccion" placeholder="Seccion" />
       <br />
 
       <label>Horarios</label>
