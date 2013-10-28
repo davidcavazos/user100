@@ -52,36 +52,41 @@
     <button type="button" id="elim_alumno" disabled>Desinscribir Alumnos</button>
   </div>
 
-  <form>
-    <fieldset>
-      <h3>Informacion del curso</h3>
-      <label>NRC</label>
-      <br />
-      <input type="text" name="nrc" placeholder="NRC" />
-      <br />
+  <div id="cform">
+    <form>
+      <fieldset>
+        <h3>Informacion del curso</h3>
+        <label>NRC</label>
+        <br />
+        <input type="text" name="nrc" placeholder="NRC" />
+        <br />
 
-      <label>Materia</label>
-      <br />
-      <input type="text" name="materia" placeholder="Materia" />
-      <br />
+        <label>Materia</label>
+        <br />
+        <input type="text" name="materia" placeholder="Materia" />
+        <br />
 
-      <label>Seccion</label>
-      <br />
-      <input type="text" name="seccion" placeholder="Seccion" />
-      <br />
+        <label>Seccion</label>
+        <br />
+        <input type="text" name="seccion" placeholder="Seccion" />
+        <br />
 
-      <label>Horarios</label>
-      <button type="button">+</button>
-      <button type="button" disabled>-</button>
-      <br />
-      {HORARIO}
-    </fieldset>
-  </form>
-  <br />
+        <label>Horarios</label>
+        <button type="button">+</button>
+        <button type="button" disabled>-</button>
+        <br />
+        {HORARIO}
+      </fieldset>
+    </form>
+    <br />
 
-  <div>
-    <button type="button">Clonar Curso</button>
-    <button type="button">Agregar Curso</button>
-    <button type="button" disabled>Guardar Cambios</button>
+    <div id="inputWrapper"></div>
+    <br />
+    
+    <div>
+      <button type="button">Clonar Curso</button>
+      <button type="button">Agregar Curso</button>
+      <button type="button" disabled>Guardar Cambios</button>
+    </div>
   </div>
 </article>

@@ -173,7 +173,8 @@ a:hover {
 h1 {
   margin: auto;
 }
-input {
+input,
+textarea {
   border: 1px solid #ddd;
   font-weight: bold;
   height: 30px;
@@ -189,8 +190,17 @@ input {
   -o-transition: all 0.2s linear;
   transition: all 0.2s linear;
 }
-input:hover {
+input:hover,
+textarea:hover {
   box-shadow: 0 0 0.8em #ccf inset;
+}
+input:focus,
+button:focus,
+select:focus,
+textarea:focus {
+  outline-color: #00b5ec;
+  outline-style: solid;
+  outline-width: 1.4px;
 }
 input:focus {
   outline-color: #aaf;
@@ -347,8 +357,20 @@ table.asistencias {
   font-weight: bold;
 }
 textarea {
-  min-width: 240px;
-  resize: auto;
+  min-width: 200px;
+  resize: none;
+}
+.ifecha {
+  margin: 2px;
+  width: 35%;
+}
+.content {
+  max-width: 350px;
+}
+#cform {
+  min-width: 222px;
+  max-width: 360px;
+  margin: 0 auto;
 }
 #seleccionDeCiclo {
   height: 32px;
