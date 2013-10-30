@@ -1,0 +1,7 @@
+RewriteEngine On
+#RewriteCond %{SCRIPT_FILE} !-f
+#RewriteCond %{SCRIPT_FILE} !-d
+
+RewriteRule ^ciclos$ index.php?ctl=ciclos
+RewriteRule ^ciclos/altas$ index.php?ctl=ciclos&altas
+RewriteRule ^art([0-9]+)$ index.php?ctl
