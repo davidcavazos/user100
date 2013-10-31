@@ -63,7 +63,7 @@ abstract class BaseCtl {
       $url = 'http://' . $server . $script . $variables; 
       print_r($url); 
       $_SESSION['bucle'] = 1;
-      header('location: ' . $url);
+      //header('location: ' . $url);
       exit;
     }
   }
