@@ -32,3 +32,112 @@ function validar_selecciones(prefix, boton) {
 
   document.getElementById(boton).disabled = !activado;
 }
+
+/*-----------Validaciones Javascript Formularios-------------*/
+
+var caja;
+
+function asignaTitle()
+{
+	if(caja.id=='codigo')
+	{
+		caja.title='El codigo debe de tener 9 caracteres numericos';
+	}
+	if(caja.id=='ciclo')
+	{
+		caja.title='El ciclo debe de estar compuesto por 4 numeros y una letra';
+	}
+	if(caja.id=='nombre' || caja.id=='apellido')
+	{
+		caja.title='El nombre/apellido debe de tener al menos 3 caracteres alfabeticos';
+	}
+}
+
+function colorearCaja(bandera)
+{
+	if(bandera)
+	{
+		caja.style.border='1px solid rgba(34,139,34,0.3)';
+		caja.style.background='rgba(34,139,34,0.1)';
+		caja.title='';
+	}
+	else
+	{
+		caja.style.border='1px solid rgba(255,0,0,0.3)';
+		caja.style.background='rgba(255,0,0,0.1)';
+		asignaTitle();
+	}
+}
+
+
+function validarCiclo(prefix)
+{
+	caja = document.getElementById(prefix);
+	caja=caja.replace('/^\s+/','');
+	if(caja.value.lenght!=5 && !caja.value.match('^[0-9]{4}[abAB]$'))
+	{
+		colorearCaja(false);
+	}
+	else
+	{
+		colorearCaja(true);
+	}
+
+}
+
+function validaCodigo(prefix)
+{
+	caja = document.getElementById(prefix);
+	caja.value.replace('/^\s+/','');
+	if(caja.value.lenght!=9 && !caja.value.match('^[0-9]{9}$'))
+	{
+		colorearCaja(false);
+	}
+	else
+	{
+		colorearCaja(true);
+	}
+}
+
+function validaNRC(prefix)
+{
+	
+	caja = document.getElementById(prefix);
+	caja.value.replace('/^\s+/','');
+	if(caja.value.lenght!=5 && !caja.value.match('^[0-9]{5}$'))
+	{
+		colorearCaja(false);
+	}
+	else
+	{
+		colorearCaja(true);
+	}
+}
+
+function validaMateria(prefix)
+{
+	caja = document.getElementById(prefix);
+	caja.value.replace('/^\s+/','');
+	if(caja.value.lenght<1 && !caja.value.match('^[a-zA-Z]{1,}$'))
+	{
+		colorearCaja(false);
+	}
+	else
+	{
+		colorearCaja(true);
+	}
+}
+
+function validaSeccion(prefix)
+{
+	caja = document.getElementById(prefix);
+	caja.value.replace('/^\s+/','');
+	if(caja.value.lenght!=3 && !caja.value.match('^d[0-9]{2}$'))
+	{
+		colorearCaja(false);
+	}
+	else
+	{
+		colorearCaja(true);
+	}
+}
