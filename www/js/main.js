@@ -51,6 +51,18 @@ function asignaTitle()
 	{
 		caja.title='El nombre/apellido debe de tener al menos 3 caracteres alfabeticos';
 	}
+	if(caja.id=='seccion')
+	{
+		caja.title='La seccion debe de tener una letra "d" seguido de dos numeros ';
+	
+	if(caja.id=='materia')
+	{
+		caja.title='El nombre de la materia debe contener solamente caracteres alfabeticos';
+	}
+	if(caja.id=='nrc')
+	{
+		caja.title='El NRC debe de tener 5 numeros';
+	}
 }
 
 function colorearCaja(bandera)
@@ -89,7 +101,21 @@ function validaCodigo(prefix)
 {
 	caja = document.getElementById(prefix);
 	caja.value.replace('/^\s+/','');
-	if(caja.value.lenght!=9 && !caja.value.match('^[0-9]{9}$'))
+	if(caja.value.lenght!=9 || !caja.value.match('^[0-9]{9}$'))
+	{
+		colorearCaja(false);
+	}
+	else
+	{
+		colorearCaja(true);
+	}
+}
+
+function validaNombre(prefix)
+{
+	caja = document.getElementById(prefix);
+	caja.value.replace('/^\s+/','');
+	if(caja.value.lenght<1 || !caja.value.match('^[a-zA-Z]{1,}$'))
 	{
 		colorearCaja(false);
 	}
@@ -104,7 +130,7 @@ function validaNRC(prefix)
 	
 	caja = document.getElementById(prefix);
 	caja.value.replace('/^\s+/','');
-	if(caja.value.lenght!=5 && !caja.value.match('^[0-9]{5}$'))
+	if(caja.value.lenght!=5 || !caja.value.match('^[0-9]{5}$'))
 	{
 		colorearCaja(false);
 	}
@@ -118,7 +144,7 @@ function validaMateria(prefix)
 {
 	caja = document.getElementById(prefix);
 	caja.value.replace('/^\s+/','');
-	if(caja.value.lenght<1 && !caja.value.match('^[a-zA-Z]{1,}$'))
+	if(caja.value.lenght<1 || !caja.value.match('^[a-zA-Z]{1,}$'))
 	{
 		colorearCaja(false);
 	}
@@ -132,7 +158,7 @@ function validaSeccion(prefix)
 {
 	caja = document.getElementById(prefix);
 	caja.value.replace('/^\s+/','');
-	if(caja.value.lenght!=3 && !caja.value.match('^d[0-9]{2}$'))
+	if(caja.value.lenght!=3 || !caja.value.match('^d[0-9]{2}$'))
 	{
 		colorearCaja(false);
 	}
