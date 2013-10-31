@@ -1,7 +1,14 @@
-RewriteEngine On
-#RewriteCond %{SCRIPT_FILENAME} !-f
-#RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteEngine On 
+#RewriteCond %{SCRIPT_FILENAME} !-f 
+#RewriteCond %{SCRIPT_FILENAME} !-d 
 
-#RewriteRule ^ciclos$ index.php?ctl=ciclos
-#RewriteRule ^ciclos/altas$ index.php?ctl=ciclos&altas
-#RewriteRule ^art([0-9]+)$ index.php?ctl
+#RewriteCond %{ENV:REDIRECT_STATUS} ^ $ 
+
+#directorios 
+RewriteRule ^(\w+)/$ index.php?ctl=login 
+
+#enlaces 
+RewriteRule ^(\w+)$ index.php?ctl=$1 
+RewriteRule ^(\w+)/(\w+)$ index.php?ctl=$1&$2 
+RewriteRule ^(\w+)/(\w+)/(\w+)$ index.php?ctl=$1&$2=$3 
+#RewriteRule ^index\.php$ index.php?ctl=login 
