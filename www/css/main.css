@@ -198,7 +198,7 @@ input:focus,
 button:focus,
 select:focus,
 textarea:focus {
-  outline-color: #00b5ec;
+  outline-color: #aaf;
   outline-style: solid;
   outline-width: 1.4px;
 }
@@ -362,10 +362,22 @@ textarea {
 }
 .ifecha {
   margin: 2px;
-  width: 35%;
+  margin-right: 1px;
+  margin-left: 1px;
+  width: 33.2%;
+}
+.idescripcion {
+  margin: 1px;
+  min-width: 100px;
+  max-width: 237px;
+  width: 67.6%;
 }
 .content {
   max-width: 350px;
+  margin-bottom: 11px;
+}
+.content #remove {
+  margin: 5px 1px;
 }
 #cform {
   min-width: 222px;

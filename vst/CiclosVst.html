@@ -28,7 +28,9 @@
       <button type="button">+</button>
       <button type="button" disabled>-</button>
       <br />
-      {DIAS_FESTIVOS}
+      <div id="inputWrapper">
+        {DIAS_FESTIVOS}
+      </div>
     </fieldset>
     <br />
 
@@ -37,5 +39,7 @@
       <button type="button" disabled>Guardar Cambios</button>
     </div>
   </form>
-
+  <script type="text/javascript">
+    jQuery('#add').agregaDiaFestivo('#inputWrapper');
+  </script>
 </article>

@@ -36,24 +36,23 @@ abstract class BaseCtl {
     $this->amigableUrl();
   }
 
-  public function amigableUrl() {
-    $server = $_SERVER['SERVER_NAME'];       /** localhost **/
-    $script = $_SERVER['PHP_SELF'];          /** /user100-ex2/index.php **/
-    $variables = $_SERVER['QUERY_STRING'];   /** ctl ... **/
-    $delimitador = '/';
+  public function amigableUrl() { 
+    $server = $_SERVER['SERVER_NAME'];       /** localhost **/ 
+    $script = $_SERVER['PHP_SELF'];          /** /user100-ex2/index.php **/ 
+    $variables = $_SERVER['QUERY_STRING'];   /** ctl ... **/ 
+    $delimitador = '/'; 
 
-    /** $_SESSION, session_name() y session_start() evitan un bucle infinita de redireccionamiento **/
-    $_SESSION['bucle'] = 0;
-    session_name('url_a');
-    session_start();
-    
-    if ( !empty($variables) && $_SERVER['REQUEST_METHOD']=='GET' && $_SESSION['bucle']!=1) { 
-    //if ( !empty($variables) && $_SERVER['REQUEST_METHOD']=='GET' ) { 
-      $variables = preg_replace('/\//', '', $variables); /** ctl=ciclos/  =  ctl=ciclos**/
-      $variables = preg_replace('/(=|&)/', $delimitador, $variables); /** ctl=ciclos&altas  =  ctl/ciclos/altas**/
-      $variables = preg_replace('/ctl(\/){0,1}/', '', $variables); /**ctl proboca conflicto de redireccionamiento (bucle)**/
-      $aVariables = explode('/', $variables); /** array([0]->ctl [1]->ciclos [2]->altas) **/
-
+    $estaProcesado = preg_match('/^\/\w+(-\w+)?\/(\w+)?(\/\w+)*$/', $_SERVER['REQUEST_URI']); 
+      /** /user100/ o /user100-1/ o /user100-11/ 
+          /user100-ex2/ o /user100-ex2/1 
+          /user100-ex2/ciclos o /user100-ex2/usuarios/act/display 
+      **/ 
+    if ( !empty($variables) && $estaProcesado!=1 ) { 
+      $variables = preg_replace('/\//', '', $variables); /** ctl=ciclos/  =  ctl=ciclos **/ 
+      $variables = preg_replace('/(=|&)/', $delimitador, $variables); /** ctl=ciclos&altas  =  ctl/ciclos/altas **/ 
+      $variables = preg_replace('/ctl(\/){0,1}/', '', $variables); /** elimino ctl (es un directorio) **/ 
+      $aVariables = explode('/', $variables); /** array([0]-> [1]->ciclos [2]->altas) **/ 
+      print_r($aVariables); 
       $variables = ''; 
       for ($i=0; $i < count($aVariables); $i++) { 
         $variables .= $delimitador . $aVariables[$i]; 
@@ -61,12 +60,10 @@ abstract class BaseCtl {
 
       $script = preg_replace('/\/index.php/', '', $script); 
       $url = 'http://' . $server . $script . $variables; 
-      print_r($url); 
-      $_SESSION['bucle'] = 1;
-      header('location: ' . $url);
-      exit;
-    }
-  }
+      header('location: ' . $url); 
+      exit; 
+    } 
+  } 
 
   protected function campo($field, $value, $body) {
     return str_replace('name="' . $field . '"', 'name="' . $field .
