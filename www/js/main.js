@@ -1,12 +1,12 @@
 function toggle_modal() {
-  var e = document.getElementById('modal');
+  e = document.getElementById('modal');
   e.style.visibility = e.style.visibility == 'visible' ? 'hidden' : 'visible';
 }
 
 function toggle_select_all(prefix, boton) {
-  var e = document.getElementById('select_all');
-  var num = 0;
-  var ex;
+  e = document.getElementById('select_all');
+  num = 0;
+  ex;
   do {
     num += 1;
     ex = document.getElementById(prefix + num);
@@ -18,9 +18,9 @@ function toggle_select_all(prefix, boton) {
 }
 
 function validar_selecciones(prefix, boton) {
-  var num = 0;
-  var ex;
-  var activado = false;
+  num = 0;
+  ex;
+  activado = false;
   do {
     num += 1;
     ex = document.getElementById(prefix + num);
@@ -31,4 +31,16 @@ function validar_selecciones(prefix, boton) {
   } while (ex != null);
 
   document.getElementById(boton).disabled = !activado;
+}
+
+function toggle_button(boton) {
+  document.getElementById(boton).disabled ^= true;
+}
+
+function enable_button(boton) {
+  document.getElementById(boton).disabled = false;
+}
+
+function disable_button(boton) {
+  document.getElementById(boton).disabled = true;
 }

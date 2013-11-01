@@ -17,8 +17,8 @@ class MisCursosCtl extends BaseCtl {
 
     $body = file_get_contents($this->vstFile);
 
-    $inicio_fila = strrpos($body, '<option>{CICLO}');
-    $final_fila = $inicio_fila + 24;
+    $inicio_fila = strrpos($body, '<option value="{CICLO}">');
+    $final_fila = $inicio_fila + 40;
     $fila = substr($body, $inicio_fila, $final_fila - $inicio_fila);
 
     $datos = $mdl->datos('SELECT * FROM ciclo_escolar ORDER BY ciclo DESC');
@@ -37,8 +37,8 @@ class MisCursosCtl extends BaseCtl {
     require_once('mdl/CursosMdl.php');
     $mdl = new CursosMdl();
 
-    $inicio_fila = strrpos($body, '<option>{CURSO}');
-    $final_fila = $inicio_fila + 24;
+    $inicio_fila = strrpos($body, '<option value="{CURSO}">');
+    $final_fila = $inicio_fila + 40;
     $fila = substr($body, $inicio_fila, $final_fila - $inicio_fila);
 
     $datos = $mdl->datos('SELECT * FROM curso ORDER BY nombre_materia');

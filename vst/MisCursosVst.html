@@ -3,14 +3,14 @@
 
   <div>
     <select>
-      <option>{CICLO}</option>
+      <option value="{CICLO}">{CICLO}</option>
     </select>
 
     <select>
-      <option>{CURSO}</option>
+      <option value="{CURSO}">{CURSO}</option>
     </select>
 
-    <button type="button" onclick="location='index.php?ctl=asistencias'">Ver Asistencias</button>
+    <input type="button" value="Ver Asistencias" onclick="location='index.php?ctl=asistencias'">
   </div>
 
   <table>
@@ -38,18 +38,18 @@
       </tr>
     </tbody>
   </table>
-  <br />
+  <br>
 
   <div>
-    <button type="button">Agregar Rubro</button>
-    <button type="button">Agregar Subtabla</button>
-    <button type="button" disabled>Eliminar Rubros</button>
+    <input type="button" value="Agregar Rubro">
+    <input type="button" value="Agregar Subtable">
+    <input type="button" value="Eliminar Rubros" disabled>
   </div>
 
   <div>
-    <button type="button">Inscribir Alumno</button>
-    <button type="button">Leer Alumnos de CSV</button>
-    <button type="button" id="elim_alumno" disabled>Desinscribir Alumnos</button>
+    <input type="button" value="Inscribir Alumno">
+    <input type="button" value="Leer Alumnos de CSV">
+    <input type="button" value="Desinscribir Alumnos" id="elim_alumno" disabled>
   </div>
 
   <div id="cform">
@@ -57,36 +57,35 @@
       <fieldset>
         <h3>Informacion del curso</h3>
         <label>NRC</label>
-        <br />
+        <br>
         <input type="text" name="nrc" placeholder="NRC" />
-        <br />
+        <br>
 
         <label>Materia</label>
-        <br />
+        <br>
         <input type="text" name="materia" placeholder="Materia" />
-        <br />
+        <br>
 
         <label>Seccion</label>
-        <br />
+        <br>
         <input type="text" name="seccion" placeholder="Seccion" />
-        <br />
+        <br>
 
         <label>Horarios</label>
-        <button type="button" id="add">+</button>
-        <!--button type="button" disabled>-</button-->
-        <br />
+        <input type="button" id="add" value="+">
+        <br>
         {HORARIO}
       </fieldset>
     </form>
-    <br />
+    <br>
 
     <div id="inputWrapper"></div>
-    <br />
-    
+    <br>
+
     <div>
-      <button type="button">Clonar Curso</button>
-      <button type="button">Agregar Curso</button>
-      <button type="button" disabled>Guardar Cambios</button>
+      <input type="button" value="Clonar Curso">
+      <input type="button" value="Agregar Curso">
+      <input type="button" value="Guardar Cambios" disabled>
     </div>
   </div>
 </article>

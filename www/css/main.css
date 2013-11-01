@@ -215,7 +215,7 @@ input[type="checkbox"] {
   padding-right: auto;
   margin-bottom: auto;
 }
-button {
+button, input[type="button"], input[type="submit"] {
   border: 1px solid #aaa;
   font-weight: bold;
   color: #555;
@@ -230,14 +230,14 @@ button {
   -o-transition: all 0.2s linear;
   transition: all 0.2s linear;
 }
-button:hover {
+button:hover, input[type="button"]:hover, input[type="submit"]:hover {
   color: #558;
   box-shadow: 0 0.1em 0.8em #aaf;
 }
-button:focus {
+button:focus, input[type="button"]:focus, input[type="submit"]:focus {
   outline-color: #aaf;
 }
-button[disabled] {
+button:disabled, input[type="button"]:disabled, input[type="submit"]:disabled {
   border: 1px solid #ccc;
   color: #aaa;
   box-shadow: none;

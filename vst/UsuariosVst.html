@@ -24,11 +24,11 @@
       </tr>
     </tbody>
   </table>
-  <br />
+  <br>
 
   <div>
-    <button type="button" onclick="toggle_modal()">Registrar Usuario</button>
-    <button type="button" id="elim" onclick="" disabled>Marcar como inactivos</button>
+    <input type="button" value="Registrar Usuario" onclick="toggle_modal()">
+    <input type="button" id="elim" value="Marcar como inactivos" onclick="" disabled>
   </div>
 
   <div id="modal">
@@ -36,31 +36,31 @@
       <fieldset>
         <h3>Agregar Usuario</h3>
         <label>Codigo</label>
-        <br />
+        <br>
         <input type="text" name="codigo" placeholder="Codigo" />
-        <br />
+        <br>
 
         <label>Nombres</label>
-        <br />
+        <br>
         <input type="text" name="nombres" placeholder="Nombres" />
-        <br />
+        <br>
 
         <label>Apellidos</label>
-        <br />
+        <br>
         <input type="text" name="apellidos" placeholder="Apellidos" />
-        <br />
+        <br>
 
         <label>Carrera</label>
         <select name="carrera">
           <option>COM</option>
           <option>INF</option>
         </select>
-        <br />
-        <br />
+        <br>
+        <br>
 
         <div>
-          <button type="submit" disabled>Agregar</button>
-          <button type="button" onclick="toggle_modal()">Cancelar</button>
+          <input type="submit" value="Agregar" disabled>
+          <input type="button" value="Cancelar" onclick="toggle_modal()">
         </div>
       </fieldset>
     </form>

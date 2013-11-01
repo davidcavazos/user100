@@ -3,15 +3,30 @@
 require_once('ctl/BaseCtl.php');
 class CiclosCtl extends BaseCtl {
   public function ejecutar() {
-    if (isset($_GET['alta'])) {
-      require_once('mdl/CiclosMdl.php');
-      $mdl = new CiclosMdl();
+    require_once('mdl/CiclosMdl.php');
+    $mdl = new CiclosMdl();
+    if (isset($_POST['llenar_ciclo'])) {
+      $ciclo = $_POST['llenar_ciclo'];
+      $q = $mdl->datos("SELECT * FROM ciclo_escolar WHERE ciclo='$ciclo'")[0];
+      $info = array();
+      $info['ciclo'] = $q['ciclo'];
+      $info['fecha_inicio'] = $q['fecha_inicio'];
+      $info['fecha_fin'] = $q['fecha_fin'];
+      echo json_encode($info);
+    } elseif (isset($_POST['guardar'])) {
+      $ciclo = $_POST['ciclo'];
+      $new_ciclo = $_POST['new_ciclo'];
+      $fecha_inicio = $_POST['fecha_inicio'];
+      $fecha_fin = $_POST['fecha_fin'];
+      $mdl->modificar($ciclo, $new_ciclo, $fecha_inicio, $fecha_fin);
+    } elseif (isset($_POST['agregar'])) {
       $ciclo = $_POST['ciclo'];
       $fecha_inicio = $_POST['fecha_inicio'];
       $fecha_fin = $_POST['fecha_fin'];
-      $r = $mdl->alta($ciclo, $fecha_inicio, $fecha_fin);
+      $mdl->agregar($ciclo, $fecha_inicio, $fecha_fin);
+    } else {
+      $this->mostrar();
     }
-    $this->mostrar();
   }
 
   public function generarBody() {
@@ -20,8 +35,8 @@ class CiclosCtl extends BaseCtl {
 
     $body = file_get_contents($this->vstFile);
 
-    $inicio_fila = strrpos($body, '<option>{CICLO}');
-    $final_fila = $inicio_fila + 24;
+    $inicio_fila = strrpos($body, '<option value="{CICLO}">');
+    $final_fila = $inicio_fila + 40;
     $fila = substr($body, $inicio_fila, $final_fila - $inicio_fila);
 
     $datos = $mdl->datos('SELECT * FROM ciclo_escolar ORDER BY ciclo DESC');
@@ -36,13 +51,7 @@ class CiclosCtl extends BaseCtl {
     }
     $body = str_replace($fila, $filas, $body);
 
-    // Llenar campos
-    if (count($datos) > 0) {
-      $body = $this->campo('ciclo', $datos[0]['ciclo'], $body);
-      $body = $this->campo('fecha_inicio', $datos[0]['fecha_inicio'], $body);
-      $body = $this->campo('fecha_fin', $datos[0]['fecha_fin'], $body);
-    }
-
+    $this->onload_fcn = 'mostrar_ciclo()';
     return $body;
   }
 }

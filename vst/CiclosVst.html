@@ -1,41 +1,73 @@
 <article>
   <h1>Ciclos</h1>
 
-  <div>
-    <select>
-      <option>{CICLO}</option>
-    </select>
-  </div>
+  <select id="ciclo_select" onchange="mostrar_ciclo()">
+    <option value="{CICLO}">{CICLO}</option>
+  </select>
 
-  <form action="index.php?ctl=ciclos&alta" method="post">
+  <form method="post">
     <fieldset>
       <label>Ciclo</label>
-      <br />
-      <input type="text" name="ciclo" placeholder="Ciclo" />
-      <br />
+      <br>
+      <input type="text" id="ciclo" oninput="enable_button('guardar')" placeholder="Ciclo" />
+      <br>
 
       <label>Fecha Inicio</label>
-      <br />
-      <input type="text" name="fecha_inicio" placeholder="dd-mm-aaaa" />
-      <br />
+      <br>
+      <input type="text" id="fecha_inicio" oninput="enable_button('guardar')" placeholder="aaaa-mm-dd" />
+      <br>
 
       <label>Fecha Fin</label>
-      <br />
-      <input type="text" name="fecha_fin" placeholder="dd-mm-aaaa" />
-      <br />
+      <br>
+      <input type="text" id="fecha_fin" oninput="enable_button('guardar')" placeholder="aaaa-mm-dd" />
+      <br>
 
       <label>Dias Festivos</label>
-      <button type="button">+</button>
-      <button type="button" disabled>-</button>
-      <br />
+      <input type="button" value="+">
+      <br>
       {DIAS_FESTIVOS}
-    </fieldset>
-    <br />
+      <br>
+      <br>
 
-    <div>
-      <button type="submit">Agregar Ciclo</button>
-      <button type="button" disabled>Guardar Cambios</button>
-    </div>
+      <div>
+        <input type="button" value="Agregar Ciclo" onclick="toggle_modal()">
+        <input type="button" id="guardar" value="Guardar Cambios" onclick="guardar_ciclo()" disabled>
+      </div>
+    </fieldset>
   </form>
 
+  <div id="modal">
+    <form method="post">
+      <fieldset>
+        <h3>Agregar Ciclo</h3>
+        <label>Ciclo</label>
+        <br>
+        <input type="text" id="new_ciclo" oninput="enable_button('agregar')" placeholder="Ciclo" />
+        <br>
+
+        <label>Fecha Inicio</label>
+        <br>
+        <input type="text" id="new_fecha_inicio" oninput="enable_button('agregar')" placeholder="aaaa-mm-dd" />
+        <br>
+
+        <label>Fecha Fin</label>
+        <br>
+        <input type="text" id="new_fecha_fin" oninput="enable_button('agregar')" placeholder="aaaa-mm-dd" />
+        <br>
+
+        <label>Dias Festivos</label>
+        <input type="button" value="+">
+        <br>
+        {DIAS_FESTIVOS}
+      </fieldset>
+      <br>
+
+      <div>
+        <input type="button" id="agregar" value="Agregar" onclick="agregar_ciclo()" disabled>
+        <input type="button" value="Cancelar" onclick="toggle_modal()">
+      </div>
+    </form>
+  </div>
+
 </article>
+<script src="www/js/ciclos.js"></script>

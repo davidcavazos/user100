@@ -3,10 +3,12 @@
 abstract class BaseCtl {
   protected $titulo;
   protected $vstFile;
+  protected $onload_fcn;
 
   public function __construct($pagina, $titulo) {
     $this->titulo = $titulo;
     $this->vstFile = 'vst/' . $pagina . 'Vst.html';
+    $onload_fcn = '';
   }
 
   public function ejecutar() {
@@ -14,9 +16,15 @@ abstract class BaseCtl {
   }
 
   public function generarHeader() {
-    return str_replace('{TITULO}', $this->titulo,
-                       file_get_contents('vst/BaseHeaderVst.html')) .
-           file_get_contents('vst/BaseMenuVst.html');
+    $head = file_get_contents('vst/BaseHeaderVst.html');
+    $head = str_replace('{TITULO}', $this->titulo, $head);
+    if ($this->onload_fcn == '') {
+      $head = str_replace(' {ONLOAD}', '', $head);
+    } else {
+      $head = str_replace('{ONLOAD}', "onload='$this->onload_fcn'", $head);
+    }
+    $head .= file_get_contents('vst/BaseMenuVst.html');
+    return $head;
   }
 
   public function generarBody() {
@@ -28,10 +36,10 @@ abstract class BaseCtl {
   }
 
   public function mostrar() {
-    $vst = $this->generarHeader() .
-           $this->generarBody() .
-           $this->generarFooter();
-    echo $vst;
+    $body = $this->generarBody();
+    $header = $this->generarHeader();
+    $footer = $this->generarFooter();
+    echo $header . $body . $footer;
   }
 
   protected function campo($field, $value, $body) {
