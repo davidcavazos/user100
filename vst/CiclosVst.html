@@ -9,7 +9,7 @@
     <fieldset>
       <label>Ciclo</label>
       <br>
-      <input type="text" id="ciclo" oninput="enable_button('guardar')" placeholder="Ciclo" />
+      <input type="text" id="ciclo" onblur="validaCiclo('ciclo')" oninput="enable_button('guardar')" placeholder="Ciclo" />
       <br>
 
       <label>Fecha Inicio</label>
@@ -45,7 +45,7 @@
         <h3>Agregar Ciclo</h3>
         <label>Ciclo</label>
         <br>
-        <input type="text" id="new_ciclo" oninput="enable_button('agregar')" placeholder="Ciclo" />
+        <input type="text" id="new_ciclo" onblur="validaCiclo('ciclo')" oninput="enable_button('agregar')" placeholder="Ciclo" />
         <br>
 
         <label>Fecha Inicio</label>

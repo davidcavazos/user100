@@ -94,7 +94,7 @@ function colorearCaja(bandera)
 }
 
 
-function validarCiclo(id)
+function validaCiclo(id)
 {
 	caja = document.getElementById(prefix);
 	caja.value=caja.value.trim();

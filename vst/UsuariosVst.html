@@ -37,17 +37,17 @@
         <h3>Agregar Usuario</h3>
         <label>Codigo</label>
         <br>
-        <input type="text" name="codigo" placeholder="Codigo" />
+        <input type="text" name="codigo" id="codigo" placeholder="Codigo" onblur="validaCodigo('codigo')"/>
         <br>
 
         <label>Nombres</label>
         <br>
-        <input type="text" name="nombres" placeholder="Nombres" />
+        <input type="text" name="nombres" id="nombres" placeholder="Nombres" onblur="validaNombre('nombres')" />
         <br>
 
         <label>Apellidos</label>
         <br>
-        <input type="text" name="apellidos" placeholder="Apellidos" />
+        <input type="text" name="apellidos" id="apellidos" placeholder="Apellidos" onblur="validaNombre('apellidos')"/>
         <br>
 
         <label>Carrera</label>
