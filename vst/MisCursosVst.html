@@ -57,18 +57,19 @@
       <fieldset>
         <h3>Informacion del curso</h3>
         <label>NRC</label>
+
         <br>
-        <input type="text" name="nrc" placeholder="NRC" />
+        <input type="text" name="nrc" placeholder="NRC" id="nrc"  onblur="validaNRC('nrc')"/>
         <br>
 
         <label>Materia</label>
         <br>
-        <input type="text" name="materia" placeholder="Materia" />
+        <input type="text" name="materia" id="materia" placeholder="Materia" onblur="validaMateria('materia')" />
         <br>
 
         <label>Seccion</label>
         <br>
-        <input type="text" name="seccion" placeholder="Seccion" />
+        <input type="text" name="seccion" id="seccion" placeholder="Seccion" onblur="validaSeccion('seccion')"/>
         <br>
 
         <label>Horarios</label>
