@@ -101,10 +101,12 @@ function validaCiclo(id)
 	if(caja.value.length!=5 && !caja.value.match('^[0-9]{4}[abAB]$'))
 	{
 		colorearCaja(false);
+		return false;
 	}
 	else
 	{
 		colorearCaja(true);
+		return true;
 	}
 
 }
@@ -116,10 +118,12 @@ function validaCodigo(id)
 	if(caja.value.length!=9 || !caja.value.match('^[0-9]{9}$'))
 	{
 		colorearCaja(false);
+		return false;
 	}
 	else
 	{
 		colorearCaja(true);
+		return true;
 	}
 }
 
@@ -130,10 +134,12 @@ function validaNombre(id)
 	if(caja.value.length<1 || !caja.value.match('^[ a-zA-Z]{1,}$'))
 	{
 		colorearCaja(false);
+		return false;
 	}
 	else
 	{
 		colorearCaja(true);
+		return true;
 	}
 }
 function validaNRC(id)
@@ -143,10 +149,12 @@ function validaNRC(id)
 	if(caja.value.length!=5 || !caja.value.match('^[0-9]{5}$'))
 	{
 		colorearCaja(false);
+		return false;
 	}
 	else
 	{
 		colorearCaja(true);
+		return true;
 	}
 }
 
@@ -157,10 +165,12 @@ function validaMateria(id)
 	if(caja.value.length<1 || !caja.value.match('^[ a-zA-Z]{1,}$'))
 	{
 		colorearCaja(false);
+		return false;
 	}
 	else
 	{
 		colorearCaja(true);
+		return true;
 	}
 }
 
@@ -171,9 +181,37 @@ function validaSeccion(id)
 	if(caja.value.length!=3 || !caja.value.match('^[dD][0-9]{2}$'))
 	{
 		colorearCaja(false);
+		return false;
 	}
 	else
 	{
 		colorearCaja(true);
+		return true;
 	}
+}
+
+function validaRegistrarUsuario()
+{
+	var validacion=true;
+	if(!validaCodigo('codigo'))
+	{
+		validacion=false;
+	}
+	if(!validaNombre('nombres'))
+	{
+		validacion=false;
+	}
+	if(!validaNombre('apellidos'))
+	{
+		validacion=false;
+	}
+	if(validacion)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+	
 }
