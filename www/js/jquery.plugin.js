@@ -1,14 +1,14 @@
-;/*! Por recomendacion. Evita errores por el mal cierre de scripts */
+/*! Por recomendacion. Evita errores por el mal cierre de scripts */
 /*!
  * función anónima que nos asegura que el símbolo $ 
  * sea del objeto jQuery, en caso que este sea usado como objeto por otras bibliotecas.
  * Uso como parámetro la variable windows para ahorrar tiempo de búsqueda de objetos globales.
  * Uso del parámetro undefined para asegurar que la variable es no definida.
  */
+var numeroDeDiasFestivos=1;
 (function( $, window, undefined ) {
   $.fn.agregaDiaFestivo = function(contenedor) {
     var contenedorDiasFestivos = contenedor,
-        numeroDeDiasFestivos = 1,
         DIAS_MAXIMOS = 7,
         contenedorDiasFestivos;
 
