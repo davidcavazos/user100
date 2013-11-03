@@ -27,10 +27,9 @@
           numeroDeDiasFestivos++; 
         }; 
       }); 
-      $('body').on('click', '#remove', function () { 
+      $('body').on('click', '.quitarFestivo', function () { 
         $(this).parent().remove(); 
       }); 
-      /* console.log($boton); */
     }); 
   } 
   $.fn.limpiarFestivo = function () {
