@@ -1,5 +1,5 @@
 <?php
-:x
+
 require_once('ctl/BaseCtl.php');
 class LoginCtl extends BaseCtl {
   public function generarHeader() {
