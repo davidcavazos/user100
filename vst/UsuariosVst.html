@@ -10,17 +10,19 @@
         <th>Codigo</th>
         <th>Nombre</th>
         <th>Carrera</th>
+        <th>E-mail</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td>
-          <input type="checkbox" id="r{X}" onclick="validar_selecciones('r', 'elim')">
+          <input type="checkbox" id="r{X}" value="{CODIGO}" onclick="validar_selecciones('r', 'elim')">
           <label for="r{X}">{X}</label>
         </td>
         <td>{CODIGO}</td>
         <td>{NOMBRE}</td>
         <td>{CARRERA}</td>
+        <td>{EMAIL}</td>
       </tr>
     </tbody>
   </table>
@@ -28,7 +30,8 @@
 
   <div>
     <input type="button" value="Registrar Usuario" onclick="toggle_modal()">
-    <input type="button" id="elim" value="Marcar como inactivos" onclick="" disabled>
+    <input type="button" value="Guardar Cambios" disabled>
+    <input type="button" id="elim" value="Marcar como inactivos" onclick="desactivar_usuarios()" disabled>
   </div>
 
   <div id="modal">
@@ -37,32 +40,34 @@
         <h3>Agregar Usuario</h3>
         <label>Codigo</label>
         <br>
-        <input type="text" name="codigo" id="codigo" placeholder="Codigo" onblur="validaCodigo('codigo')"/>
+        <input type="text" id="codigo" name="codigo" placeholder="Codigo" onblur="validaCodigo('codigo')"/>
         <br>
 
         <label>Nombres</label>
         <br>
-        <input type="text" name="nombres" id="nombres" placeholder="Nombres" onblur="validaNombre('nombres')" />
+        <input type="text" id="nombres" name="nombres" placeholder="Nombres" onblur="validaNombre('nombres')" />
         <br>
 
         <label>Apellidos</label>
         <br>
-        <input type="text" name="apellidos" id="apellidos" placeholder="Apellidos" onblur="validaNombre('apellidos')"/>
+        <input type="text" id="apellidos" name="apellidos" placeholder="Apellidos" onblur="validaNombre('apellidos')"/>
         <br>
 
         <label>Carrera</label>
-        <select name="carrera">
-          <option>COM</option>
-          <option>INF</option>
+        <select id="carrera" name="carrera">
+          <option value="COM">COM</option>
+          <option value="INF">INF</option>
         </select>
         <br>
         <br>
 
         <div>
-          <input type="submit" value="Agregar"> 
+          <input type="submit" value="Agregar" onclick="agregar_usuario()">
           <input type="button" value="Cancelar" onclick="toggle_modal()">
         </div>
       </fieldset>
     </form>
   </div>
 </article>
+
+<script type="text/javascript" src="www/js/usuarios.js"></script>

@@ -1,14 +1,14 @@
-RewriteEngine On 
-#RewriteCond %{SCRIPT_FILENAME} !-f 
-#RewriteCond %{SCRIPT_FILENAME} !-d 
+RewriteEngine On
+#RewriteCond %{SCRIPT_FILENAME} !-f
+#RewriteCond %{SCRIPT_FILENAME} !-d
 
-#RewriteCond %{ENV:REDIRECT_STATUS} ^ $ 
+#RewriteCond %{ENV:REDIRECT_STATUS} ^ $
 
-#directorios 
-RewriteRule ^(\w+)/$ index.php?ctl=login 
+#directorios
+RewriteRule ^(\w+)/$ index.php?ctl=login
 
-#enlaces 
-RewriteRule ^(\w+)$ index.php?ctl=$1 
-RewriteRule ^(\w+)/(\w+)$ index.php?ctl=$1&$2 
-RewriteRule ^(\w+)/(\w+)/(\w+)$ index.php?ctl=$1&$2=$3 
-#RewriteRule ^index\.php$ index.php?ctl=login 
+#enlaces
+RewriteRule ^(\w+)$ index.php?ctl=$1
+RewriteRule ^(\w+)/(\w+)$ index.php?ctl=$1&$2
+RewriteRule ^(\w+)/(\w+)/(\w+)$ index.php?ctl=$1&$2=$3
+#RewriteRule ^index\.php$ index.php?ctl=login

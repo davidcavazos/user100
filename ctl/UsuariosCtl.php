@@ -3,21 +3,28 @@
 require_once('ctl/BaseCtl.php');
 class UsuariosCtl extends BaseCtl {
   public function ejecutar() {
-    if (isset($_GET['alta'])) {
-      require_once('mdl/UsuariosMdl.php');
-      $mdl = new UsuariosMdl();
+    require_once('mdl/UsuariosMdl.php');
+    $mdl = new UsuariosMdl();
+    if (isset($_POST['agregar'])) {
       $codigo = $_POST['codigo'];
       $nombres = $_POST['nombres'];
       $apellidos = $_POST['apellidos'];
-      $password = 'asdf';
-      $tipo = 'estudiante';
+      $password = $_POST['password'];
+      $tipo = $_POST['tipo'];
       $carrera = $_POST['carrera'];
-      $email = 'email';
-      $activo = 'true';
-      $r = $mdl->alta($codigo, $nombres, $apellidos, $password, $tipo,
-                      $carrera, $email, $activo);
+      $email = $_POST['email'];
+      $activo = $_POST['activo'];
+      $mdl->agregar($codigo, $nombres, $apellidos, $password, $tipo, $carrera,
+                    $email, $activo);
+      echo 'asdf';
+    } elseif (isset($_POST['desactivar'])) {
+      $usuarios = $_POST['usuarios'];
+      foreach ($usuarios as $codigo) {
+        $mdl->desactivar($codigo);
+      }
+    } else {
+      $this->mostrar();
     }
-    $this->mostrar();
   }
 
   public function generarBody() {
@@ -30,11 +37,11 @@ class UsuariosCtl extends BaseCtl {
     $final_fila = strrpos($body, '</tr>') + 5;
     $fila = substr($body, $inicio_fila, $final_fila - $inicio_fila);
 
-    $datos = $mdl->datos('SELECT * FROM usuario ORDER BY codigo');
+    $datos = $mdl->datos('SELECT * FROM usuario ORDER BY apellidos');
     $filas = '';
     $num = 1;
     foreach ($datos as $row) {
-      if ($row['activo'] === 'false') {
+      if ($row['activo'] == 0) {
         continue;
       }
       $new_fila = $fila;
@@ -43,6 +50,7 @@ class UsuariosCtl extends BaseCtl {
         '{CODIGO}' => $row['codigo'],
         '{NOMBRE}' => $row['apellidos'] . ', ' . $row['nombres'],
         '{CARRERA}' => $row['carrera'],
+        '{EMAIL}' => $row['email'],
         '{TOTAL}' => '0'
       );
       $num += 1;

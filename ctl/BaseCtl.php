@@ -40,7 +40,7 @@ abstract class BaseCtl {
     $header = $this->generarHeader();
     $footer = $this->generarFooter();
     echo $header . $body . $footer;
-    $this->amigableUrl();
+    //$this->amigableUrl();
   }
 
   public function amigableUrl() {
