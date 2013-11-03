@@ -23,7 +23,7 @@
       <br>
 
       <label>Dias Festivos</label>
-      <button type="button">+</button>
+      <button id="agregarFestivo" type="button">+</button>
       <button type="button" disabled>-</button>
       <br>
       <div id="inputWrapper">
@@ -33,7 +33,7 @@
     <br>
 
       <div>
-        <input type="button" value="Agregar Ciclo" onclick="toggle_modal()">
+        <input type="button" id="agregarCiclo" value="Agregar Ciclo" onclick="toggle_modal()">
         <input type="button" id="guardar" value="Guardar Cambios" onclick="guardar_ciclo()" disabled>
       </div>
     </fieldset>
@@ -59,9 +59,11 @@
         <br>
 
         <label>Dias Festivos</label>
-        <input type="button" value="+">
+        <input id="agregarFestivom" type="button" value="+">
         <br>
-        {DIAS_FESTIVOS}
+        <div id="inputWrapperm">
+          {DIAS_FESTIVOS}
+        </div>
       </fieldset>
       <br>
 
@@ -76,5 +78,7 @@
 
 <script type="text/javascript" src="www/js/ciclos.js"></script>
 <script type="text/javascript">
-  jQuery('#add').agregaDiaFestivo('#inputWrapper');
+  jQuery('#agregarFestivom').agregaDiaFestivo('#inputWrapperm');
+  jQuery('#agregarFestivo').agregaDiaFestivo('#inputWrapper');
+  jQuery('#agregarCiclo').limpiarFestivo();
 </script>

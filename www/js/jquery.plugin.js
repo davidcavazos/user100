@@ -18,11 +18,11 @@
       $boton.on('click', function () { 
         if ( $('.content').size() < DIAS_MAXIMOS ) { 
           $( contenedorDiasFestivos ).append( 
-            '<div class="content">'+ 
-              '<input class="ifecha" id="inicio_'+numeroDeDiasFestivos+'" type="text" value="'+numeroDeDiasFestivos+'"/>'+ 
-              '<input class="ifecha" id="fin_'+numeroDeDiasFestivos+'" type="text" />'+ 
-              '<button id="remove">-</button>'+ 
+            '<div id="iwcf'+numeroDeDiasFestivos+'" class="content">'+ 
+              '<input class="ifecha" id="inicio_'+numeroDeDiasFestivos+'" type="text" placeholder="aaaa-mm-dd" />'+ 
+              '<input class="ifecha" id="fin_'+numeroDeDiasFestivos+'" type="text" placeholder="aaaa-mm-dd" />'+ 
               '<textarea class="idescripcion" id="descripcion_'+numeroDeDiasFestivos+'"></textarea>'+ 
+              '<button class="quitarFestivo">-</button>'+ 
             '</div>'); 
           numeroDeDiasFestivos++; 
         }; 
@@ -33,4 +33,13 @@
       /* console.log($boton); */
     }); 
   } 
+  $.fn.limpiarFestivo = function () {
+  return this.each(function() { 
+    $boton = $(this);
+    $boton.on('click', function () { 
+      $('.content').remove(); 
+      alert('hola');
+    });
+  });
+}
 })( jQuery, window ); 
