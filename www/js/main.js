@@ -188,6 +188,22 @@ function validaSeccion(id)
   }
 }
 
+function validaEmail(id)
+{
+	caja = document.getElementById(id);
+	caja.value=caja.value.trim();
+	if(caja.value.length<1 || !caja.value.match("[-a-z0-9A-Z._]{1,}@[-a-z0-9A-Z._]{1,}.[a-zA-Z]"))
+	{
+		colorearCaja(false);
+		return false;
+	}
+	else
+	{
+		colorearCaja(true);
+		return true;
+	}
+}
+
 function validaRegistrarUsuario()
 {
   var validacion=true;
@@ -203,9 +219,14 @@ function validaRegistrarUsuario()
   {
     validacion=false;
   }
+  if(!validaEmail('email'))
+  {
+  	validacion=false;
+  }
   if(validacion)
   {
-    return true;
+    agregar_usuario();
+	return true;
   }
   else
   {

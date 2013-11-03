@@ -53,6 +53,11 @@
         <input type="text" id="apellidos" name="apellidos" placeholder="Apellidos" onblur="validaNombre('apellidos')"/>
         <br>
 
+        <label>E-mail</label>
+        <br>
+        <input type="text" id="email" name="email" placeholder="E-mail" onblur="validaEmail('email')"/>
+        <br>
+
         <label>Carrera</label>
         <select id="carrera" name="carrera">
           <option value="COM">COM</option>
@@ -62,7 +67,7 @@
         <br>
 
         <div>
-          <input type="submit" value="Agregar" onclick="agregar_usuario()">
+          <input type="submit" value="Agregar"> 
           <input type="button" value="Cancelar" onclick="toggle_modal()">
         </div>
       </fieldset>

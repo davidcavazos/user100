@@ -13,7 +13,7 @@
 -- Table 'usuario'
 -- 
 -- ---
-
+use cc409_user100;
 DROP TABLE IF EXISTS `usuario`;
 		
 CREATE TABLE `usuario` (
@@ -147,7 +147,7 @@ CREATE TABLE `detalle_calificaciones` (
 -- ---
 -- Foreign Keys 
 -- ---
-
+/*
 ALTER TABLE `calificaciones` ADD FOREIGN KEY (codigo) REFERENCES `usuario` (`codigo`);
 ALTER TABLE `calificaciones` ADD FOREIGN KEY (nrc) REFERENCES `curso` (`nrc`);
 ALTER TABLE `ciclo_escolar` ADD FOREIGN KEY (ciclo) REFERENCES `curso` (`ciclo`);
@@ -158,7 +158,7 @@ ALTER TABLE `asistencias` ADD FOREIGN KEY (nrc) REFERENCES `curso` (`nrc`);
 ALTER TABLE `detalle_ciclo_escolar` ADD FOREIGN KEY (ciclo) REFERENCES `curso` (`ciclo`);
 ALTER TABLE `detalle_curso` ADD FOREIGN KEY (nrc) REFERENCES `curso` (`nrc`);
 ALTER TABLE `detalle_calificaciones` ADD FOREIGN KEY (id_grupo) REFERENCES `calificaciones` (`id_grupo`);
-
+*/
 -- ---
 -- Table Properties
 -- ---

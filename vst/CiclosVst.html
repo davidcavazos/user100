@@ -45,17 +45,17 @@
         <h3>Agregar Ciclo</h3>
         <label>Ciclo</label>
         <br>
-        <input type="text" id="new_ciclo" onblur="validaCiclo('ciclo')" oninput="enable_button('agregar')" placeholder="Ciclo" />
+        <input type="text" id="new_ciclo" onblur="validaCiclo('new_ciclo')" placeholder="Ciclo" />
         <br>
 
         <label>Fecha Inicio</label>
         <br>
-        <input type="text" id="new_fecha_inicio" oninput="enable_button('agregar')" placeholder="aaaa-mm-dd" />
+        <input type="text" id="new_fecha_inicio" placeholder="aaaa-mm-dd" />
         <br>
 
         <label>Fecha Fin</label>
         <br>
-        <input type="text" id="new_fecha_fin" oninput="enable_button('agregar')" placeholder="aaaa-mm-dd" />
+        <input type="text" id="new_fecha_fin" placeholder="aaaa-mm-dd" />
         <br>
 
         <label>Dias Festivos</label>
@@ -66,7 +66,7 @@
       <br>
 
       <div>
-        <input type="button" id="agregar" value="Agregar" onclick="agregar_ciclo()" disabled>
+        <input type="button" id="agregar" value="Agregar" onclick="agregar_ciclo()" enabled>
         <input type="button" value="Cancelar" onclick="toggle_modal()">
       </div>
     </form>

@@ -1,4 +1,5 @@
-function agregar_usuario() {
+function agregar_usuario()
+{
   $.ajax({
     type: 'POST',
     data: {agregar:'',
@@ -8,7 +9,7 @@ function agregar_usuario() {
            password:'asdf',
            tipo:'0',
            carrera:document.getElementById('carrera').value,
-           email:'email@mudle.com',
+           email:document.getElementById('email').value,
            activo:'1'},
     success: function(info) {
       document.getElementById('agregar').disabled = true;
