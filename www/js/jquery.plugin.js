@@ -5,7 +5,8 @@
  * Uso como parámetro la variable windows para ahorrar tiempo de búsqueda de objetos globales.
  * Uso del parámetro undefined para asegurar que la variable es no definida.
  */
-var numeroDeDiasFestivos=1;
+var numeroDeDiasFestivos=0;
+var numeroDeDiasFestivosM=0;
 (function( $, window, undefined ) {
   $.fn.agregaDiaFestivo = function(contenedor) {
     var contenedorDiasFestivos = contenedor,
@@ -17,13 +18,13 @@ var numeroDeDiasFestivos=1;
       $boton = $(this); 
       $boton.on('click', function () { 
         if ( $('.content').size() < DIAS_MAXIMOS ) { 
-          $( contenedorDiasFestivos ).append( 
+          numeroDeDiasFestivos++;
+		  $( contenedorDiasFestivos ).append( 
             '<div id="div_festivos'+numeroDeDiasFestivos+'" class="content">'+ 
               '<input id="inicio_'+numeroDeDiasFestivos+'" type="text" placeholder="aaaa-mm-dd" />'+ 
               '<textarea id="descripcion_'+numeroDeDiasFestivos+'"></textarea>'+ 
               '<button class="quitarFestivo">-</button>'+ 
-            '</div>'); 
-          numeroDeDiasFestivos++; 
+            '</div>');  
         }; 
       }); 
       $('body').on('click', '.quitarFestivo', function () { 
