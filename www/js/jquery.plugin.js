@@ -38,7 +38,6 @@
     $boton = $(this);
     $boton.on('click', function () { 
       $('.content').remove(); 
-      alert('hola');
     });
   });
 }
