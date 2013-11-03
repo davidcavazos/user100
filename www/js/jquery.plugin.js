@@ -18,10 +18,9 @@
       $boton.on('click', function () { 
         if ( $('.content').size() < DIAS_MAXIMOS ) { 
           $( contenedorDiasFestivos ).append( 
-            '<div id="iwcf'+numeroDeDiasFestivos+'" class="content">'+ 
-              '<input class="ifecha" id="inicio_'+numeroDeDiasFestivos+'" type="text" placeholder="aaaa-mm-dd" />'+ 
-              '<input class="ifecha" id="fin_'+numeroDeDiasFestivos+'" type="text" placeholder="aaaa-mm-dd" />'+ 
-              '<textarea class="idescripcion" id="descripcion_'+numeroDeDiasFestivos+'"></textarea>'+ 
+            '<div id="div_festivos'+numeroDeDiasFestivos+'" class="content">'+ 
+              '<input id="inicio_'+numeroDeDiasFestivos+'" type="text" placeholder="aaaa-mm-dd" />'+ 
+              '<textarea id="descripcion_'+numeroDeDiasFestivos+'"></textarea>'+ 
               '<button class="quitarFestivo">-</button>'+ 
             '</div>'); 
           numeroDeDiasFestivos++; 
@@ -38,7 +37,6 @@
     $boton = $(this);
     $boton.on('click', function () { 
       $('.content').remove(); 
-      alert('hola');
     });
   });
 }

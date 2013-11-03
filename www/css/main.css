@@ -357,14 +357,9 @@ table.asistencias {
   font-weight: bold;
 }
 textarea {
-  min-width: 200px;
+  width: 210px;
   resize: none;
-}
-.ifecha {
-  margin: 2px;
-  margin-right: 1px;
-  margin-left: 1px;
-  width: 33.2%;
+  height: 100px;
 }
 .idescripcion {
   margin: 1px;
