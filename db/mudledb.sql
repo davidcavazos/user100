@@ -13,7 +13,7 @@
 -- Table 'usuario'
 -- 
 -- ---
-use cc409_user100;
+use mudledb;
 DROP TABLE IF EXISTS `usuario`;
 		
 CREATE TABLE `usuario` (
@@ -24,8 +24,8 @@ CREATE TABLE `usuario` (
   `tipo_usuario` TINYINT NULL DEFAULT NULL,
   `carrera` VARCHAR(20) NULL DEFAULT NULL,
   `email` VARCHAR(40) NULL DEFAULT NULL,
-  `activo` TINYINT(1) NULL DEFAULT NULL,
-  PRIMARY KEY (`codigo`)
+  `activo` TINYINT(1) NULL DEFAULT NULL
+  /*PRIMARY KEY (`codigo`)*/
 );
 
 -- ---
@@ -38,8 +38,8 @@ DROP TABLE IF EXISTS `calificaciones`;
 CREATE TABLE `calificaciones` (
   `id_grupo` SMALLINT NULL DEFAULT NULL,
   `codigo` VARCHAR(15) NULL DEFAULT NULL,
-  `nrc` VARCHAR(5) NULL DEFAULT NULL,
-  PRIMARY KEY (`id_grupo`)
+  `nrc` VARCHAR(5) NULL DEFAULT NULL
+  /*PRIMARY KEY (`id_grupo`)*/
 );
 
 -- ---
@@ -55,8 +55,8 @@ CREATE TABLE `curso` (
   `nombre_materia` VARCHAR(30) NULL DEFAULT NULL,
   `seccion` VARCHAR(5) NULL DEFAULT NULL,
   `academia` VARCHAR(30) NULL DEFAULT NULL,
-  `carga_horaria` TINYINT(1) NULL DEFAULT NULL,
-  PRIMARY KEY (`nrc`)
+  `carga_horaria` TINYINT(1) NULL DEFAULT NULL
+  /*PRIMARY KEY (`nrc`)*/
 );
 
 -- ---
@@ -69,8 +69,8 @@ DROP TABLE IF EXISTS `ciclo_escolar`;
 CREATE TABLE `ciclo_escolar` (
   `ciclo` VARCHAR(5) NOT NULL DEFAULT 'NULL',
   `fecha_inicio` DATE NULL DEFAULT NULL,
-  `fecha_fin` DATE NULL DEFAULT NULL,
-  PRIMARY KEY (`ciclo`)
+  `fecha_fin` DATE NULL DEFAULT NULL
+  /*PRIMARY KEY (`ciclo`)*/
 );
 
 -- ---
@@ -83,8 +83,8 @@ DROP TABLE IF EXISTS `asistencias`;
 CREATE TABLE `asistencias` (
   `id_grupo` SMALLINT NULL DEFAULT NULL,
   `codigo` VARCHAR(15) NULL DEFAULT NULL,
-  `nrc` VARCHAR(5) NULL DEFAULT NULL,
-  PRIMARY KEY (`id_grupo`)
+  `nrc` VARCHAR(5) NULL DEFAULT NULL
+  /*PRIMARY KEY (`id_grupo`)*/
 );
 
 -- ---
@@ -97,8 +97,8 @@ DROP TABLE IF EXISTS `detalle_ciclo_escolar`;
 CREATE TABLE `detalle_ciclo_escolar` (
   `ciclo` VARCHAR(5) NOT NULL DEFAULT 'NULL',
   `dia_no_efectivo` DATE NULL DEFAULT NULL,
-  `descripcion` VARCHAR(100) NULL DEFAULT NULL,
-  PRIMARY KEY (`ciclo`)
+  `descripcion` VARCHAR(100) NULL DEFAULT NULL
+  /*PRIMARY KEY (`ciclo`)*/
 );
 
 -- ---
@@ -112,8 +112,8 @@ CREATE TABLE `detalle_curso` (
   `nrc` VARCHAR(5) NULL DEFAULT NULL,
   `dia` VARCHAR(10) NULL DEFAULT NULL,
   `horas_por_dia` TINYINT NULL DEFAULT NULL,
-  `horario` VARCHAR(15) NULL DEFAULT NULL,
-  PRIMARY KEY (`nrc`)
+  `horario` VARCHAR(15) NULL DEFAULT NULL
+/*  PRIMARY KEY (`nrc`)*/
 );
 
 -- ---
@@ -126,8 +126,8 @@ DROP TABLE IF EXISTS `detalle_lista`;
 CREATE TABLE `detalle_lista` (
   `id_grupo` SMALLINT NULL DEFAULT NULL,
   `dia_asistencia` DATE NULL DEFAULT NULL,
-  `asistencia` TINYINT NULL DEFAULT NULL,
-  PRIMARY KEY (`id_grupo`)
+  `asistencia` TINYINT NULL DEFAULT NULL
+/*  PRIMARY KEY (`id_grupo`)*/
 );
 
 -- ---
@@ -140,8 +140,8 @@ DROP TABLE IF EXISTS `detalle_calificaciones`;
 CREATE TABLE `detalle_calificaciones` (
   `id_grupo` SMALLINT NULL DEFAULT NULL,
   `numero_tarea` TINYINT NULL DEFAULT NULL,
-  `calificacion` TINYINT NULL DEFAULT NULL,
-  PRIMARY KEY (`id_grupo`)
+  `calificacion` TINYINT NULL DEFAULT NULL
+/*  PRIMARY KEY (`id_grupo`)*/
 );
 
 -- ---

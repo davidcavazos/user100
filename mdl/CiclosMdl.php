@@ -17,12 +17,13 @@ class CiclosMdl extends BaseMdl {
 		$descripcion=trim($descripcion,",");
 		$dia_festivo=explode(",", $dia_festivo);
 		$descripcion=explode(",", $descripcion);
-		for($i=0;$i<sizeof($dia_festivo);$i++){
+		for($i=0;$i<sizeof($dia_festivo);$i++)
+		{
 			$query=
 			"INSERT INTO detalle_ciclo_escolar VALUES(
 			'$ciclo',
-			,'$dia_festivo[0]',
-			'$descripcion[0]')";
+			'".$dia_festivo[$i]."',
+			'".$descripcion[$i]."')";
 			$r = $this->driver->query($query);
 		}
 	}
