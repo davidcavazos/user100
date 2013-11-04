@@ -6,14 +6,16 @@
   <form action="" method="POST" name="formlogin">
     <fieldset>
       <h3>Login</h3>
-      <label for="login">Codigo</label>
+      <div class="error" style="display: none;">{AVISO}</div>
+	  </br>
+	  <label for="login">Codigo</label>
       <br>
-      <input type="text" id="login" onblur="validaCodigo('login')" placeholder="Codigo" />
+      <input type="text" id="login" name="login" onblur="validaCodigo('login')" placeholder="Codigo" />
       <br>
 
       <label for="password">Contrase&ntilde;a</label>
       <br>
-      <input type="password" id="password" onblur="validaPass('password')" placeholder="Contrase&ntilde;a" />
+      <input type="password" id="password" name="password" onblur="validaPass('password')" placeholder="Contrase&ntilde;a" />
       <br>
     </fieldset>
 
