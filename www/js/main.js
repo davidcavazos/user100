@@ -440,6 +440,6 @@ function validaLogin()
 	}
 	if(validacion)
 	{
-		verificaLogin();
+		document.formlogin.submit();
 	}
 }

@@ -7,7 +7,7 @@ class LoginCtl extends BaseCtl {
   {
   	require_once("mdl/LoginMdl.php");
 	$mdl = new LoginMdl();
-	if(isset($_POST['verificar']))
+	if(isset($_POST['password']))
 	{
 		$codigo = $_POST['codigo'];
 		$password = $_POST['password'];
