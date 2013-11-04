@@ -50,12 +50,12 @@
 
         <label>Fecha Inicio</label>
         <br>
-        <input type="text" id="new_fecha_inicio" placeholder="aaaa-mm-dd" />
+        <input type="text" id="new_fecha_inicio" onblur="validaFecha('new_fecha_inicio')" placeholder="aaaa-mm-dd" />
         <br>
 
         <label>Fecha Fin</label>
         <br>
-        <input type="text" id="new_fecha_fin" placeholder="aaaa-mm-dd" />
+        <input type="text" id="new_fecha_fin" onblur="validaFechaFin('new_fecha_inicio', 'new_fecha_fin')" placeholder="aaaa-mm-dd" />
         <br>
 
         <label>Dias Festivos</label>
@@ -67,7 +67,7 @@
       <br>
 
       <div>
-        <input type="button" id="agregar" value="Agregar" onclick="agregar_ciclo()" enabled>
+        <input type="button" id="agregar" value="Agregar" onclick="validaRegistrarCiclo()" enabled>
         <input type="button" value="Cancelar" onclick="toggle_modal()">
       </div>
     </form>
