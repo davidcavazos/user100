@@ -8,6 +8,7 @@
 var numeroDeDiasFestivos=10;
 var numeroDeDiasFestivosM=0;
 var id_horario=0;
+var idnCExtra=0;
 (function( $, window, undefined ) {
   var DIAS_MAXIMOS = 7,
       DIAS_MAXIMOS_CLASE = 7;
@@ -97,4 +98,44 @@ var id_horario=0;
       }); 
     }); 
   } 
+  $.fn.agregaCampoE = function(contenedor) {
+    return this.each(function(){
+      $(this).on('click', function () {
+        idnCExtra++;
+        $(contenedor).append(
+          '<div id="c_E'+idnCExtra+'" class="content">'+
+            '<label>Cuenta Extra</label><br />'+
+            '<input id="campoExtra_"'+idnCExtra+' name="campoExtra_'+idnCExtra+'" type="text" placeholder="Extra" />'+
+            '<button class="quitar">-</button>'+
+          '</div>');
+      });
+      $('body').on('click', '.quitar', function () { 
+        $(this).parent().remove(); 
+      });
+    });
+  }
+  $.fn.datePickerElem = function() {
+    return this.each(function(){
+      $(this).datepicker({
+        clearText: 'Borrar',
+        clearStatus: 'Borrar fecha actual',
+        closeText: 'Cerrar',
+        closeStatus: 'Cerrar sin guardar',
+        dateFormat: 'yy-mm-dd',
+        dayNames: ['Domingo','Lunes','Martes','Miercoles','Jueves','Viernes','Sabado'],
+        dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi', 'Sa'],
+        firstDay: 0,
+        inline: true,
+        monthNames: ['Enero','Febrero','Marzo','Abril',
+                    'Mayo','Junio','Julio','Agosto',
+                    'Septienbre','Octubre','Novienbre','Diciembre'],
+        monthNameShort: ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
+        prevStatus: 'Mostrar mes anterior', 
+        prevBigStatus: 'Mostrar año anterior',
+        selectOtherMonths: true,
+        showOtherMonths: true,
+        showWeek: true
+      });
+    })
+  }
 })( jQuery, window ); 

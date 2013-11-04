@@ -65,7 +65,7 @@
         </select>
         <br>
         <br>
-
+        <div id="inputWrapper"></div>
         <div>
           <input type="submit" value="Agregar"> 
           <input type="button" value="Cancelar" onclick="toggle_modal()">
@@ -76,3 +76,6 @@
 </article>
 
 <script type="text/javascript" src="www/js/usuarios.js"></script>
+<script type="text/javascript">
+  jQuery('#agregarCampoExtra').agregaCampoE('#inputWrapper');
+</script>
