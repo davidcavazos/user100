@@ -75,13 +75,13 @@
         <label>Horarios</label>
         <input type="button" id="add" value="+">
         <br>
-        {HORARIO}
+        <div id="inputWrapper">
+          {HORARIO}
+        </div>
       </fieldset>
     </form>
-    <br>
-
-    <div id="inputWrapper"></div>
-    <br>
+    <br />
+    <br />
 
     <div>
       <input type="button" value="Clonar Curso">
@@ -89,4 +89,7 @@
       <input type="button" value="Guardar Cambios" disabled>
     </div>
   </div>
+  <script type="text/javascript">
+    jQuery('#agregarDiaDeClase').agregaDiaDeClase('#inputWrapper');
+  </script>
 </article>
