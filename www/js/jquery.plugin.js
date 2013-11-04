@@ -73,7 +73,7 @@ var id_horario=0;
         if ( $('.content').size() < DIAS_MAXIMOS_CLASE ) { 
           id_horario++;
           $( contenedor ).append( 
-            '<div id="cClase'+id+'" class="content">'+ 
+            '<div id="cClase_'+id_horario+'" class="content">'+ 
               '<select id="SelectDia_'+id_horario+'" name="dia_'+id_horario+'"></select><br />'+
               '<input id="Hora_inicio_clase'+id_horario+'" type="text" placeholder="Hora inicio clase" />'+
               '<input id="Hora_fin_clase'+id_horario+'" type="text" placeholder="Hora fin clase" />'+
