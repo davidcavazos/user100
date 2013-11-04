@@ -45,14 +45,6 @@ var numeroDeDiasFestivosM=0;
       }); 
     }); 
   } 
-  $.fn.limpiarFestivo = function () {
-    return this.each(function() { 
-      $boton = $(this);
-      $boton.on('click', function () { 
-        $('.content').remove(); 
-      });
-    });
-  } 
   $.fn.agregaDiaFestivom = function(contenedor) {
     return this.each(function () {
       $(this).on('click', function(){
