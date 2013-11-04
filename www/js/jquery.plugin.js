@@ -54,8 +54,13 @@ var numeroDeDiasFestivosM=0;
           numeroDeDiasFestivosM++;
           $( contenedor ).append( 
             '<div id="div_festivos'+numeroDeDiasFestivosM+'" class="content">'+ 
-              '<input id="inicio_m_'+numeroDeDiasFestivosM+'" type="text" placeholder="aaaa-mm-dd" />'+ 
-              '<textarea id="descripcion_m_'+numeroDeDiasFestivosM+'"></textarea>'+ 
+              '<input id="inicio_m_'
+			  +numeroDeDiasFestivosM+
+			  '" type="text" placeholder="aaaa-mm-dd" onblur="validaFecha(\'inicio_m_'
+			  +numeroDeDiasFestivosM+
+			  '\')"/>'+
+
+              '<textarea id="descripcion_m_'+numeroDeDiasFestivosM+'" onblur="validaDescripcion(\'descripcion_m_'+numeroDeDiasFestivosM+'\')"></textarea>'+ 
               '<button class="quitarFestivo">-</button>'+ 
             '</div>'); 
         }

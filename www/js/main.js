@@ -283,6 +283,25 @@ function validaFechaFin(idUno, idDos)
 	
 }
 
+function validaDescripcion(id)
+{
+
+	caja = document.getElementById(id);
+	caja.value=caja.value.trim();
+	if(caja.value.length<1) 
+	{
+		colorearCaja(false);
+    	caja.title="Introduce una descripcion valida";
+		return false;
+	}
+	else
+	{
+		colorearCaja(true);
+		caja.title="";
+		return true;
+	}
+}
+
 function validaRegistrarCiclo()
 {
 	var validacion=true;
@@ -298,9 +317,27 @@ function validaRegistrarCiclo()
   	{
     	validacion=false;
   	}
-  	if(validacion)
+  	if(numeroDeDiasFestivosM>0)
+	{
+		for(i=1;i<=numeroDeDiasFestivosM;i++)
+		{
+			if(document.getElementById('div_festivos'+i))
+			{
+				if(!validaFecha('inicio_m_'+i))
+				{
+					validacion=false;
+				}
+				if(!validaDescripcion('descripcion_m_'+i))
+				{
+					validacion=false;
+				}
+
+			}	
+		}		
+	}
+	if(validacion)
   	{
-    	//agregar_ciclo();
+  		agregar_ciclo();
   	}
   	
 }
