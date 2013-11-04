@@ -2,7 +2,7 @@
 
 require_once('mdl/BaseMdl.php');
 class CiclosMdl extends BaseMdl {
-  public function agregar($ciclo, $fecha_inicio, $fecha_fin, $dia_festivo) {
+  public function agregar($ciclo, $fecha_inicio, $fecha_fin, $dia_festivo, $descripcion) {
     $query =
       "INSERT INTO ciclo_escolar (ciclo, fecha_inicio, fecha_fin)
        VALUES (
@@ -11,6 +11,21 @@ class CiclosMdl extends BaseMdl {
          '$fecha_fin'
        )";
     $r = $this->driver->query($query);
+	if(strlen($dia_festivo)!=0)
+	{
+		$dia_festivo=trim($dia_festivo,",");
+		$descripcion=trim($descripcion,",");
+		$dia_festivo=explode(",", $dia_festivo);
+		$descripcion=explode(",", $descripcion);
+		for($i=0;$i<sizeof($dia_festivo);$i++){
+			$query=
+			"INSERT INTO detalle_ciclo_escolar VALUES(
+			'$ciclo',
+			,'$dia_festivo[0]',
+			'$descripcion[0]')";
+			$r = $this->driver->query($query);
+		}
+	}
     if ($r === FALSE) {
       echo 'Error: ' . $this->driver->error;
       return FALSE;
