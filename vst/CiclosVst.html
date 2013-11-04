@@ -14,12 +14,12 @@
 
       <label>Fecha Inicio</label>
       <br>
-      <input type="text" id="fecha_inicio" onblur="validaFecha('fecha_inicio')" oninput="enable_button('guardar')" placeholder="aaaa-mm-dd" />
+      <input type="text" id="fecha_inicio" onblur="validaFecha('fecha_inicio')" oninput="enable_button('guardar')" placeholder="aaaa-mm-dd" readonly />
       <br>
 
       <label>Fecha Fin</label>
       <br>
-      <input type="text" id="fecha_fin" onblur="validaFechaFin('fecha_inicio','fecha_fin')" oninput="enable_button('guardar')" placeholder="aaaa-mm-dd" />
+      <input type="text" id="fecha_fin" onblur="validaFechaFin('fecha_inicio','fecha_fin')" oninput="enable_button('guardar')" placeholder="aaaa-mm-dd" readonly />
       <br>
 
       <label>Dias Festivos</label>
@@ -49,12 +49,12 @@
 
         <label>Fecha Inicio</label>
         <br>
-        <input type="text" id="new_fecha_inicio" onblur="validaFecha('new_fecha_inicio')" placeholder="aaaa-mm-dd" />
+        <input type="text" id="new_fecha_inicio" onblur="validaFecha('new_fecha_inicio')" placeholder="aaaa-mm-dd" readonly />
         <br>
 
         <label>Fecha Fin</label>
         <br>
-        <input type="text" id="new_fecha_fin" onblur="validaFechaFin('new_fecha_inicio', 'new_fecha_fin')" placeholder="aaaa-mm-dd" />
+        <input type="text" id="new_fecha_fin" onblur="validaFechaFin('new_fecha_inicio', 'new_fecha_fin')" placeholder="aaaa-mm-dd" readonly />
         <br>
 
         <label>Dias Festivos</label>

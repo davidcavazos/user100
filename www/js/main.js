@@ -191,6 +191,10 @@ function validaFecha(id)
 {
 	caja=document.getElementById(id);
 	caja.value=caja.value.trim();
+	if(caja.value.length==0)
+	{
+		return false;
+	}
 	if(caja.value.length!=10 || !caja.value.match("[0-9]{4}-[0-9]{2}-[0-9]{2}"))
 	{
 		colorearCaja(false);
@@ -218,6 +222,10 @@ function validaFechaFin(idUno, idDos)
 {
 	caja = document.getElementById(idDos);
 	cajaDos = document.getElementById(idUno);
+	if(caja.value.length==0)
+	{
+		return false;
+	}
 	if(caja.value.length!=10 || !caja.value.match("[0-9]{4}-[0-9]{2}-[0-9]{2}"))
 	{
 		colorearCaja(false);
