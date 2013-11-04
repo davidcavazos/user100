@@ -81,12 +81,12 @@ var id_horario=0;
             '</div>');
           for (i=0; i<6; i++) {
             switch(i) {
-              case 0: ndia='lunes';break;
-              case 1: ndia='martes';break;
-              case 2: ndia='miercoles';break;
-              case 3: ndia='jueves';break;
-              case 4: ndia='viernes';break;
-              case 5: ndia='sabado';break;
+              case 0: ndia='Lunes';break;
+              case 1: ndia='Martes';break;
+              case 2: ndia='Miercoles';break;
+              case 3: ndia='Jueves';break;
+              case 4: ndia='Viernes';break;
+              case 5: ndia='Sabado';break;
             }
             $('#SelectDia_'+id_horario).append('<option id="dia_'+i+'">'+ndia+'</option>');
           }

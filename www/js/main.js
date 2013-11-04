@@ -227,20 +227,23 @@ function validaFechaFin(idUno, idDos)
 	var hoy;
 	if(cajaDos.value=="")
 	{
-	hoy = new Date();
-	dia=hoy.getDate();
-	if(dia<10)
-	{
-		dia="0"+dia;
-	}
-	mes=hoy.getMonth()+1;
-	if(mes<10)
-	{
-		mes="0"+mes;
-	}
+		hoy = new Date();
+		dia=hoy.getDate();
+		if(dia<10)
+		{
+			dia="0"+dia;
+		}
+		mes=hoy.getMonth()+1;
+		if(mes<10)
+		{
+			mes="0"+mes;
+		}
 
-	cajaDos.value=hoy.getFullYear()+"-"+mes+"-"+dia;
-
+		cajaDos.value=hoy.getFullYear()+"-"+mes+"-"+dia;
+		cajaTemporal = caja;
+		caja = cajaDos;
+		colorearCaja(true);
+		caja = cajaTemporal;
 	}
 	else
 	{
@@ -274,8 +277,6 @@ function validaFechaFin(idUno, idDos)
 		{
 			colorearCaja(true);
 			caja.title="";
-			caja = cajaDos;
-			colorearCaja(true);
 			return true;
 		}
 	}	
@@ -342,7 +343,7 @@ function validaRegistrarCiclo()
 			{
 				if(!validaFecha('inicio_m_'+i))
 				{
-				validacion=false;
+					validacion=false;
 				}
 				if(!validaDescripcion('descripcion_m_'+i))
 				{
