@@ -5,12 +5,19 @@
  * Uso como parámetro la variable windows para ahorrar tiempo de búsqueda de objetos globales.
  * Uso del parámetro undefined para asegurar que la variable es no definida.
  */
+/*! Por recomendacion. Evita errores por el mal cierre de scripts */
+/*!
+ * función anónima que nos asegura que el símbolo $ 
+ * sea del objeto jQuery, en caso que este sea usado como objeto por otras bibliotecas.
+ * Uso como parámetro la variable windows para ahorrar tiempo de búsqueda de objetos globales.
+ * Uso del parámetro undefined para asegurar que la variable es no definida.
+ */
 var numeroDeDiasFestivos=0;
 var numeroDeDiasFestivosM=0;
 (function( $, window, undefined ) {
+  var DIAS_MAXIMOS = 7;
   $.fn.agregaDiaFestivo = function(contenedor) {
     var contenedorDiasFestivos = contenedor,
-        DIAS_MAXIMOS = 7,
         contenedorDiasFestivos;
 
     // Uso de encadenamiento
@@ -19,7 +26,7 @@ var numeroDeDiasFestivosM=0;
       $boton.on('click', function () { 
         if ( $('.content').size() < DIAS_MAXIMOS ) { 
           numeroDeDiasFestivos++;
-		  $( contenedorDiasFestivos ).append( 
+      $( contenedorDiasFestivos ).append( 
             '<div id="div_festivos'+numeroDeDiasFestivos+'" class="content">'+ 
               '<input id="inicio_'+numeroDeDiasFestivos+'" type="text" placeholder="aaaa-mm-dd" />'+ 
               '<textarea id="descripcion_'+numeroDeDiasFestivos+'"></textarea>'+ 
@@ -33,11 +40,30 @@ var numeroDeDiasFestivosM=0;
     }); 
   } 
   $.fn.limpiarFestivo = function () {
-  return this.each(function() { 
-    $boton = $(this);
-    $boton.on('click', function () { 
-      $('.content').remove(); 
+    return this.each(function() { 
+      $boton = $(this);
+      $boton.on('click', function () { 
+        $('.content').remove(); 
+      });
     });
-  });
-}
+  } 
+  $.fn.agregaDiaFestivom = function(contenedor) {
+    return this.each(function () {
+      $(this).on('click', function(){
+        if($('.content').size() < DIAS_MAXIMOS) {
+          numeroDeDiasFestivosM++;
+          $( contenedor ).append( 
+            '<div id="div_festivos'+numeroDeDiasFestivosM+'" class="content">'+ 
+              '<input id="inicio_'+numeroDeDiasFestivosM+'" type="text" placeholder="aaaa-mm-dd" />'+ 
+              '<textarea id="descripcion_'+numeroDeDiasFestivosM+'"></textarea>'+ 
+              '<button class="quitarFestivo">-</button>'+ 
+            '</div>'); 
+        }
+        $('body').on('click', '.quitarFestivo', function () { 
+          $(this).parent().remove(); 
+        });
+      });
+    });
+  }
 })( jQuery, window ); 
+
