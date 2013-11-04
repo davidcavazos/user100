@@ -8,6 +8,10 @@ if (isset($_GET['ctl'])) {
       require_once('ctl/MisCursosCtl.php');
       $ctl = new MisCursosCtl('MisCursos', 'Mis Cursos');
       break;
+    case 'evaluacion':
+      require_once('ctl/EvaluacionCtl.php');
+      $ctl = new EvaluacionCtl('Evaluacion', 'Evaluacion');
+      break;
     case 'asistencias':
       require_once('ctl/AsistenciasCtl.php');
       $ctl = new AsistenciasCtl('Asistencias', 'Asistencias');

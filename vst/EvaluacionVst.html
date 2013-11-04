@@ -1,0 +1,59 @@
+<article>
+  <h1>Evaluacion</h1>
+
+  <div>
+    <select>
+      <option value="{CICLO}">{CICLO}</option>
+    </select>
+
+    <select>
+      <option value="{CURSO}">{CURSO}</option>
+    </select>
+
+    <input type="button" value="Ver Curso" onclick="location='index.php?ctl=mis_cursos'">
+    <input type="button" value="Ver Asistencias" onclick="location='index.php?ctl=asistencias'">
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>
+          <input type="checkbox" id="select_all" onclick="toggle_select_all('r', 'elim_alumno')">
+        </th>
+        <th>Codigo</th>
+        <th>Nombre</th>
+        <th>Carrera</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <input type="checkbox" id="r{X}" onclick="validar_selecciones('r', 'elim_alumno')">
+          <label for="r{X}">{X}</label>
+        </td>
+        <td>{CODIGO}</td>
+        <td>{NOMBRE}</td>
+        <td>{CARRERA}</td>
+        <td>{TOTAL}</td>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+
+  <div>
+    <input type="button" value="Agregar Rubro">
+    <input type="button" value="Agregar Subtabla">
+    <input type="button" value="Eliminar Rubros" disabled>
+  </div>
+
+  <div>
+    <input type="button" value="Inscribir Alumno">
+    <input type="button" value="Leer Alumnos de CSV">
+    <input type="button" value="Desinscribir Alumnos" id="elim_alumno" disabled>
+  </div>
+
+  <script type="text/javascript">
+    jQuery('#agregarDiaDeClase').agregaDiaDeClase('#inputWrapper');
+  </script>
+</article>
