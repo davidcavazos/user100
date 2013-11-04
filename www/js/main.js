@@ -342,6 +342,43 @@ function validaRegistrarCiclo()
   	
 }
 
+function validaGuardarCambiosCiclo()
+{
+	var validacion=true;
+  	if(!validaCiclo('ciclo'))
+  	{
+    	validacion=false;
+  	}
+  	if(!validaFecha('fecha_inicio'))
+  	{
+    	validacion=false;
+  	}
+  	if(!validaFechaFin('fecha_inicio','fecha_fin'))
+  	{
+    	validacion=false;
+  	}
+	for(i=1;i<=numeroDeDiasFestivos;i++)
+	{
+		if(document.getElementById('div_festivos'+i))
+		{
+			if(!validaFecha('inicio_'+i))
+			{
+				validacion=false;
+			}
+			if(!validaDescripcion('descripcion_'+i))
+			{
+				validacion=false;
+			}
+			}	
+	}		
+
+	if(validacion)
+  	{
+  		guardar_ciclo();
+  	}
+  	
+}
+
 function validaRegistrarUsuario()
 {
   var validacion=true;

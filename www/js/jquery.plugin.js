@@ -12,24 +12,30 @@
  * Uso como parámetro la variable windows para ahorrar tiempo de búsqueda de objetos globales.
  * Uso del parámetro undefined para asegurar que la variable es no definida.
  */
-var numeroDeDiasFestivos=0;
+var numeroDeDiasFestivos=10;
 var numeroDeDiasFestivosM=0;
 (function( $, window, undefined ) {
   var DIAS_MAXIMOS = 7;
   $.fn.agregaDiaFestivo = function(contenedor) {
-    var contenedorDiasFestivos = contenedor,
+	var contenedorDiasFestivos = contenedor,
         contenedorDiasFestivos;
 
     // Uso de encadenamiento
     return this.each(function() { 
       $boton = $(this); 
       $boton.on('click', function () { 
+		$("#guardar").removeAttr("disabled");
         if ( $('.content').size() < DIAS_MAXIMOS ) { 
           numeroDeDiasFestivos++;
       $( contenedorDiasFestivos ).append( 
             '<div id="div_festivos'+numeroDeDiasFestivos+'" class="content">'+ 
-              '<input id="inicio_'+numeroDeDiasFestivos+'" type="text" placeholder="aaaa-mm-dd" />'+ 
-              '<textarea id="descripcion_'+numeroDeDiasFestivos+'"></textarea>'+ 
+              '<input id="inicio_'
+			  +numeroDeDiasFestivos+
+			  '" type="text" placeholder="aaaa-mm-dd" onblur="validaFecha(\'inicio_'
+			  +numeroDeDiasFestivos+
+			  '\')"/>'+
+
+              '<textarea id="descripcion_'+numeroDeDiasFestivos+'" onblur="validaDescripcion(\'descripcion_'+numeroDeDiasFestivos+'\')"></textarea>'+ 
               '<button class="quitarFestivo">-</button>'+ 
             '</div>');  
         }; 

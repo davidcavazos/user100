@@ -18,9 +18,25 @@ function guardar_ciclo() {
   nc = document.getElementById('ciclo').value;
   fi = document.getElementById('fecha_inicio').value;
   ff = document.getElementById('fecha_fin').value;
+  var dia_festivo="";
+  var descripcion="";
+  
+  for(i=1;i<=numeroDeDiasFestivos;i++)
+  {
+	if(document.getElementById('div_festivos'+i))
+	{
+		dia_festivo_actual=document.getElementById('inicio_'+i).value.trim();
+		descripcion_actual=document.getElementById('descripcion_'+i).value.trim();
+		if(dia_festivo_actual.length!=0 || descripcion_actual.length!=0)
+		{
+			dia_festivo+=dia_festivo_actual+",";
+			descripcion+=descripcion_actual+",";
+		}
+	}
+  }
   $.ajax({
     type: 'POST',
-    data: {guardar:'',ciclo:c,new_ciclo:nc,fecha_inicio:fi,fecha_fin:ff},
+    data: {guardar:'',ciclo:c,new_ciclo:nc,fecha_inicio:fi,fecha_fin:ff,diafestivo:dia_festivo,descripciondia:descripcion},
     success: function() {
       document.getElementById('guardar').disabled = true;
       location.reload();

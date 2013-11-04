@@ -14,17 +14,16 @@
 
       <label>Fecha Inicio</label>
       <br>
-      <input type="text" id="fecha_inicio" oninput="enable_button('guardar')" placeholder="aaaa-mm-dd" />
+      <input type="text" id="fecha_inicio" onblur="validaFecha('fecha_inicio')" oninput="enable_button('guardar')" placeholder="aaaa-mm-dd" />
       <br>
 
       <label>Fecha Fin</label>
       <br>
-      <input type="text" id="fecha_fin" oninput="enable_button('guardar')" placeholder="aaaa-mm-dd" />
+      <input type="text" id="fecha_fin" onblur="validaFechaFin('fecha_inicio','fecha_fin')" oninput="enable_button('guardar')" placeholder="aaaa-mm-dd" />
       <br>
 
       <label>Dias Festivos</label>
       <button id="agregarFestivo" type="button">+</button>
-      <button type="button" disabled>-</button>
       <br>
       <div id="inputWrapper">
         {DIAS_FESTIVOS}
@@ -34,7 +33,7 @@
 
       <div>
         <input type="button" id="agregarCiclo" value="Agregar Ciclo" onclick="toggle_modal()">
-        <input type="button" id="guardar" value="Guardar Cambios" onclick="guardar_ciclo()" disabled>
+        <input type="button" id="guardar" value="Guardar Cambios" onclick="validaGuardarCambiosCiclo()" disabled>
       </div>
     </fieldset>
   </form>

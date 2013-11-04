@@ -18,7 +18,9 @@ class CiclosCtl extends BaseCtl {
       $new_ciclo = $_POST['new_ciclo'];
       $fecha_inicio = $_POST['fecha_inicio'];
       $fecha_fin = $_POST['fecha_fin'];
-      $mdl->modificar($ciclo, $new_ciclo, $fecha_inicio, $fecha_fin);
+	  $dia_festivo = $_POST['diafestivo'];
+	  $descripcion = $_POST['descripciondia'];
+      $mdl->modificar($ciclo, $new_ciclo, $fecha_inicio, $fecha_fin, $dia_festivo, $descripcion);
     } elseif (isset($_POST['agregar'])) {
       $ciclo = $_POST['ciclo'];
       $fecha_inicio = $_POST['fecha_inicio'];
