@@ -7,6 +7,7 @@
  */
 var numeroDeDiasFestivos=10;
 var numeroDeDiasFestivosM=0;
+var id_horario=0;
 (function( $, window, undefined ) {
   var DIAS_MAXIMOS = 7,
       DIAS_MAXIMOS_CLASE = 7;
@@ -63,19 +64,32 @@ var numeroDeDiasFestivosM=0;
     });
   }
   $.fn.agregaDiaDeClase = function(contenedor) {
-    var id;
+    var id, ndia;
     // Uso de encadenamiento
     return this.each(function() { 
       $boton = $(this); 
       $boton.on('click', function () { 
       $("#guardar").removeAttr("disabled");
         if ( $('.content').size() < DIAS_MAXIMOS_CLASE ) { 
-          numeroDeDiasFestivos++;
+          id_horario++;
           $( contenedor ).append( 
             '<div id="cClase'+id+'" class="content">'+ 
-              '<input id="fechaId'+id+'" type="text" placeholder="aaaa-mm-dd" onblur="validaFecha(\'cClase'+id+'\')"/>'+
+              '<select id="SelectDia_'+id_horario+'" name="dia_'+id_horario+'"></select><br />'+
+              '<input id="Hora_inicio_clase'+id_horario+'" type="text" placeholder="Hora inicio clase" />'+
+              '<input id="Hora_fin_clase'+id_horario+'" type="text" placeholder="Hora fin clase" />'+
               '<button class="quitarDia">-</button>'+ 
-            '</div>');  
+            '</div>');
+          for (i=0; i<6; i++) {
+            switch(i) {
+              case 0: ndia='lunes';break;
+              case 1: ndia='martes';break;
+              case 2: ndia='miercoles';break;
+              case 3: ndia='jueves';break;
+              case 4: ndia='viernes';break;
+              case 5: ndia='sabado';break;
+            }
+            $('#SelectDia_'+id_horario).append('<option id="dia_'+i+'">'+ndia+'</option>');
+          }
         }; 
       }); 
       $('body').on('click', '.quitarDia', function () { 
