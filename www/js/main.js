@@ -303,125 +303,127 @@ function validaDescripcion(id)
 
 function validaPass(id)
 {
-caja = document.getElementById(id);
-caja.value = caja.value.trim();
-if(caja.value.length<1)
-{
-colorearCaja(false);
-caja.title="Introduce una contraseña";
-}
-else
-{
-colorearCaja(true);
-caja.title="";
-}
+	caja = document.getElementById(id);
+	caja.value = caja.value.trim();
+	if(caja.value.length<1)
+	{
+	colorearCaja(false);
+	caja.title="Introduce una contraseña";
+	return false;
+	}
+	else
+	{
+	colorearCaja(true);
+	caja.title="";
+	return true;
+	}
 }
 
 function validaRegistrarCiclo()
 {
-var validacion=true;
-if(!validaCiclo('new_ciclo'))
-{
-validacion=false;
-}
-if(!validaFecha('new_fecha_inicio'))
-{
-validacion=false;
-}
-if(!validaFechaFin('new_fecha_inicio','new_fecha_fin'))
-{
-validacion=false;
-}
-if(numeroDeDiasFestivosM>0)
-{
-for(i=1;i<=numeroDeDiasFestivosM;i++)
-{
-	if(document.getElementById('div_festivos'+i))
+	var validacion=true;
+	if(!validaCiclo('new_ciclo'))
 	{
-		if(!validaFecha('inicio_m_'+i))
-		{
-			validacion=false;
-		}
-		if(!validaDescripcion('descripcion_m_'+i))
-		{
-			validacion=false;
-		}
-
+		validacion=false;
 	}	
-}		
-}
-if(validacion)
-{
-agregar_ciclo();
-}
+	if(!validaFecha('new_fecha_inicio'))
+	{
+		validacion=false;
+	}
+	if(!validaFechaFin('new_fecha_inicio','new_fecha_fin'))
+	{
+		validacion=false;
+	}
+	if(numeroDeDiasFestivosM>0)
+	{
+		for(i=1;i<=numeroDeDiasFestivosM;i++)
+		{
+			if(document.getElementById('div_festivos'+i))
+			{
+				if(!validaFecha('inicio_m_'+i))
+				{
+				validacion=false;
+				}
+				if(!validaDescripcion('descripcion_m_'+i))
+				{
+					validacion=false;
+				}
+
+			}	
+		}		
+	}
+	if(validacion)
+	{
+	agregar_ciclo();
+	}
 
 }
 
 function validaGuardarCambiosCiclo()
 {
-var validacion=true;
-if(!validaCiclo('ciclo'))
-{
-validacion=false;
-}
-if(!validaFecha('fecha_inicio'))
-{
-validacion=false;
-}
-if(!validaFechaFin('fecha_inicio','fecha_fin'))
-{
-validacion=false;
-}
-for(i=1;i<=numeroDeDiasFestivos;i++)
-{
-if(document.getElementById('div_festivos'+i))
-{
-	if(!validaFecha('inicio_'+i))
+	var validacion=true;
+	if(!validaCiclo('ciclo'))
+	{
+	validacion=false;
+	}
+		if(!validaFecha('fecha_inicio'))
 	{
 		validacion=false;
 	}
-	if(!validaDescripcion('descripcion_'+i))
+		if(!validaFechaFin('fecha_inicio','fecha_fin'))
 	{
 		validacion=false;
 	}
-	}	
-}		
+	for(i=1;i<=numeroDeDiasFestivos;i++)
+	{
+		if(document.getElementById('div_festivos'+i))
+		{
+			if(!validaFecha('inicio_'+i))
+			{
+				validacion=false;
+			}
+			if(!validaDescripcion('descripcion_'+i))
+			{
+				validacion=false;
+			}
+		}	
+	}		
 
-if(validacion)
-{
-guardar_ciclo();
-}
+	if(validacion)
+	{
+	guardar_ciclo();
+	}
 
-}
+}	
 
 function validaRegistrarUsuario()
 {
-var validacion=true;
-if(!validaCodigo('codigo'))
-{
-validacion=false;
-}
-if(!validaNombre('nombres'))
-{
-validacion=false;
-}
-if(!validaNombre('apellidos'))
-{
-validacion=false;
-}
-if(!validaEmail('email'))
-{
-validacion=false;
-}
-if(validacion)
-{
-agregar_usuario();
-return true;
-}
-else
-{
-return false;
-}
+	var validacion=true;
+	if(!validaCodigo('codigo'))
+	{
+		validacion=false;
+	}
+		if(!validaNombre('nombres'))
+	{
+		validacion=false;
+	}
+	if(!validaNombre('apellidos'))
+	{
+		validacion=false;
+	}
+	if(!validaEmail('email'))
+	{
+		validacion=false;
+	}
+	if(validacion)
+	{
+		agregar_usuario();
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 
 }
 
@@ -435,5 +437,9 @@ function validaLogin()
     if(!validaPass('password'))
 	{
 		validacion=false;
+	}
+	if(validacion)
+	{
+		verificaLogin();
 	}
 }
