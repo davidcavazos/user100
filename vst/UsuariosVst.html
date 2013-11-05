@@ -35,7 +35,7 @@
   </div>
 
   <div id="modal">
-    <form action="" method="post" onsubmit="return validaRegistrarUsuario()">
+    <form method="post">
       <fieldset>
         <h3>Agregar Usuario</h3>
         <label>Codigo</label>
@@ -69,7 +69,7 @@
         <div id="inputWrapper"></div>
         <div>
           <input id="agregarCampoExtra" type="button" value="Campo Extra" />
-          <input type="submit" value="Agregar" />
+          <input type="button" value="Agregar" onclick="validaRegistrarUsuario()"/>
           <input type="button" value="Cancelar" onclick="toggle_modal()" />
         </div>
       </fieldset>

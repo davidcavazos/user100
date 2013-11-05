@@ -104,9 +104,9 @@ var idnCExtra=0;
         idnCExtra++;
         $(contenedor).append(
           '<div id="c_E'+idnCExtra+'" class="content">'+
-            '<input id="campoExtraTipo_'+idnCExtra+'" name="campoExtraTipo_'+idnCExtra+'" type="text" placeholder="tipo de cuenta" style="width:55%" />'+
+            '<input id="campoExtraTipo_'+idnCExtra+'" name="campoExtraTipo_'+idnCExtra+'" type="text" placeholder="tipo de cuenta" style="width:55%" onblur="validaCampoExtra(\'campoExtraTipo_'+idnCExtra+'\')" />'+
             '<button class="quitar">-</button>'+
-            '<input id="campoExtra_"'+idnCExtra+' name="campoExtra_'+idnCExtra+'" type="text" placeholder="Nombre de cuenta" />'+
+            '<input id="campoExtra_'+idnCExtra+'" name="campoExtra_'+idnCExtra+'" type="text" placeholder="Nombre de cuenta" onblur="validaCampoExtra(\'campoExtra_'+idnCExtra+'\')"/>'+
             '<button class="quitar">-</button>'+
           '</div>');
       });

@@ -328,6 +328,24 @@ function validaPass(id)
 	}
 }
 
+function validaCampoExtra(id)
+{
+	caja = document.getElementById(id);
+	caja.value = caja.value.trim();
+	if(caja.value.length<1)
+	{
+		colorearCaja(false);
+		caja.title="Este campo no puede quedar vacio";
+		return false;
+	}
+	else
+	{
+		colorearCaja(true);
+		caja.title="";
+		return true;
+	}
+}
+
 function validaRegistrarCiclo()
 {
 	var validacion=true;
@@ -400,7 +418,7 @@ function validaGuardarCambiosCiclo()
 
 	if(validacion)
 	{
-	guardar_ciclo();
+		guardar_ciclo();
 	}
 
 }	
@@ -423,6 +441,24 @@ function validaRegistrarUsuario()
 	if(!validaEmail('email'))
 	{
 		validacion=false;
+	}
+	if(idnCExtra>0)
+	{
+		for(i=1;i<=idnCExtra;i++)
+		{
+			if(document.getElementById('c_E'+i))
+			{
+				if(!validaCampoExtra('campoExtraTipo_'+i))
+				{
+					validacion=false;
+				}
+				if(!validaCampoExtra('campoExtra_'+i))
+				{
+					validacion=false;
+				}
+
+			}	
+		}		
 	}
 	if(validacion)
 	{

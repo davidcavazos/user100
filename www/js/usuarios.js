@@ -12,7 +12,6 @@ function agregar_usuario()
            email:document.getElementById('email').value,
            activo:'1'},
     success: function(info) {
-      document.getElementById('agregar').disabled = true;
       console.log('success: '+info);
       location.reload();
     }
