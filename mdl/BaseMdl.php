@@ -5,7 +5,7 @@ class BaseMdl {
 
   function __construct() {
     //$this->driver = new mysqli('148.202.152.110', 'cc409_user100', 'IDRfhfim5k', 'cc409_user100');
-    $this->driver = new mysqli('127.0.0.1', 'root', 'root', 'mudledb');
+    $this->driver = new mysqli('localhost', 'root', 'root', 'mudledb');
     if ($this->driver->connect_errno) {
       die('Error: ' . $this->driver->connect_error);
     }
