@@ -13,8 +13,8 @@ function agregar_usuario()
            activo:'1'},
     success: function(info) {
       document.getElementById('agregar').disabled = true;
-      location.reload();
       console.log('success: '+info);
+      location.reload();
     }
   });
 }

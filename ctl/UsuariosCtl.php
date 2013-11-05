@@ -6,7 +6,7 @@ class UsuariosCtl extends BaseCtl {
     require_once('mdl/UsuariosMdl.php');
     $mdl = new UsuariosMdl();
     if (isset($_POST['agregar'])) {
-      $codigo = $_POST['codigo'];
+	  $codigo = $_POST['codigo'];
       $nombres = $_POST['nombres'];
       $apellidos = $_POST['apellidos'];
       $password = $_POST['password'];
@@ -14,9 +14,9 @@ class UsuariosCtl extends BaseCtl {
       $carrera = $_POST['carrera'];
       $email = $_POST['email'];
       $activo = $_POST['activo'];
+      $this->limpiarVariablesPost();
       $mdl->agregar($codigo, $nombres, $apellidos, $password, $tipo, $carrera,
                     $email, $activo);
-      echo 'asdf';
     } elseif (isset($_POST['desactivar'])) {
       $usuarios = $_POST['usuarios'];
       foreach ($usuarios as $codigo) {

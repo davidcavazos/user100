@@ -76,6 +76,18 @@ abstract class BaseCtl {
     return str_replace('name="' . $field . '"', 'name="' . $field .
                        '" value="' . $value . '"', $body);
   }
+
+  public function limpiarVariablesPost()
+  {
+  	if(isset($_POST))
+	{
+		foreach ($_POST as $key => $input_arr) 
+		{ 
+			unset($_POST[$key]); 
+		}
+	}
+  }
+
 }
 
 ?>

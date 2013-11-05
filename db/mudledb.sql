@@ -6,7 +6,7 @@
 -- Generation Time: Nov 04, 2013 at 09:30 PM
 -- Server version: 5.5.33a-MariaDB
 -- PHP Version: 5.5.5
-
+USE mudledb;
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 

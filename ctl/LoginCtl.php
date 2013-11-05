@@ -11,6 +11,7 @@ class LoginCtl extends BaseCtl {
 	{
 		$codigo = $_POST['login'];
 		$password = $_POST['password'];
+		$this->limpiarVariablesPost();
 		if(!$mdl -> verificar($codigo, $password))
 		{
 			echo $this->generarHeader() . 
