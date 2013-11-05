@@ -15,10 +15,10 @@ class UsuariosCtl extends BaseCtl {
       $email = $_POST['email'];
       $activo = $_POST['activo'];
 	  $campoExtra = $_POST['campoextra'];
-	  $tipo = $_POST['tipo'];
+	  $tipoCampo = $_POST['tipoCampo'];
       $this->limpiarVariablesPost();
       $mdl->agregar($codigo, $nombres, $apellidos, $password, $tipo, $carrera,
-                    $email, $activo, $campoExtra, $tipo);
+                    $email, $activo, $campoExtra, $tipoCampo);
     } elseif (isset($_POST['desactivar'])) {
       $usuarios = $_POST['usuarios'];
       foreach ($usuarios as $codigo) {

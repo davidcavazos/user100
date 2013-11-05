@@ -8,14 +8,14 @@ function agregar_usuario()
     {
         campoExtraTipoA=document.getElementById('campoExtraTipo_'+i).value;
         campoExtraA=document.getElementById('campoExtra_'+i).value;
-        if(campoExtraTipo!=0 || campoExtra!=0)
+
+        if(campoExtraTipoA!=0 || campoExtraA!=0)
         {
             campoExtraTipo+=campoExtraTipoA+",";
             campoExtra+=campoExtraA+",";
         }
     }
   }
-  
   $.ajax({
     type: 'POST',
     data: {agregar:'',
@@ -27,11 +27,11 @@ function agregar_usuario()
            carrera:document.getElementById('carrera').value,
            email:document.getElementById('email').value,
            activo:'1',
-		   campoextra:CampoExtra,
-		   tipo:campoExtraTipo},
+		   campoextra:campoExtra,
+		   tipoCampo:campoExtraTipo},
     success: function(info) {
       console.log('success: '+info);
-      location.reload();
+     // location.reload();
     }
   });
 }

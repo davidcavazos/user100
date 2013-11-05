@@ -3,10 +3,10 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 04, 2013 at 09:30 PM
+-- Generation Time: Nov 05, 2013 at 09:58 PM
 -- Server version: 5.5.33a-MariaDB
 -- PHP Version: 5.5.5
-USE mudledb;
+
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
@@ -118,6 +118,18 @@ CREATE TABLE IF NOT EXISTS `detalle_lista` (
   `id_grupo` smallint(6) DEFAULT NULL,
   `dia_asistencia` date DEFAULT NULL,
   `asistencia` tinyint(4) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `detalle_usuario`
+--
+
+CREATE TABLE IF NOT EXISTS `detalle_usuario` (
+  `codigo` varchar(9) NOT NULL,
+  `campo_extra` varchar(50) NOT NULL,
+  `valor` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
