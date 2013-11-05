@@ -104,8 +104,9 @@ var idnCExtra=0;
         idnCExtra++;
         $(contenedor).append(
           '<div id="c_E'+idnCExtra+'" class="content">'+
-            '<label>Cuenta Extra</label><br />'+
-            '<input id="campoExtra_"'+idnCExtra+' name="campoExtra_'+idnCExtra+'" type="text" placeholder="Extra" />'+
+            '<input id="campoExtraTipo_'+idnCExtra+'" name="campoExtraTipo_'+idnCExtra+'" type="text" placeholder="tipo de cuenta" style="width:55%" />'+
+            '<button class="quitar">-</button>'+
+            '<input id="campoExtra_"'+idnCExtra+' name="campoExtra_'+idnCExtra+'" type="text" placeholder="Nombre de cuenta" />'+
             '<button class="quitar">-</button>'+
           '</div>');
       });
