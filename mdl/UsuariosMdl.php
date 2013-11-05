@@ -3,7 +3,7 @@
 require_once('mdl/BaseMdl.php');
 class UsuariosMdl extends BaseMdl {
   public function agregar($codigo, $nombres, $apellidos, $password, $tipo,
-                          $carrera, $email, $activo)
+                          $carrera, $email, $activo, $campoExtra, $tipo)
   {
     $query =
       "INSERT INTO usuario (codigo, nombres, apellidos, password, tipo_usuario,
