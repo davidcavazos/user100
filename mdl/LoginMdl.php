@@ -1,6 +1,7 @@
 <?php
 
 require_once('mdl/BaseMdl.php');
+<<<<<<< HEAD
 
 class LoginMdl extends BaseMdl
 {
@@ -17,3 +18,9 @@ class LoginMdl extends BaseMdl
 		}
 	}
 }
+=======
+class LoginMdl extends BaseMdl {
+}
+
+?>
+>>>>>>> b541d415210c07e2b93943629802713784bde6f8

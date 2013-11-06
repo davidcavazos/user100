@@ -61,7 +61,7 @@ class EvaluacionCtl extends BaseCtl {
     $filas = '';
     $num = 1;
     foreach ($datos as $row) {
-      if ($row['activo'] === 'false') {
+      if ($row['activo'] == 0) {
         continue;
       }
       $new_fila = $fila;
@@ -78,6 +78,7 @@ class EvaluacionCtl extends BaseCtl {
     }
     $body = str_replace($fila, $filas, $body);
 
+    $this->onload_fcn = 'on_load()';
     return $body;
   }
 }

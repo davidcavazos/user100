@@ -5,7 +5,7 @@
     <thead>
       <tr>
         <th>
-          <input type="checkbox" id="select_all" onclick="toggle_select_all('r', 'elim')">
+          <input type="checkbox" id="select_all" onclick="toggle_select_all(toggle_botones)">
         </th>
         <th>Codigo</th>
         <th>Nombre</th>
@@ -16,8 +16,7 @@
     <tbody>
       <tr>
         <td>
-          <input type="checkbox" id="r{X}" value="{CODIGO}" onclick="validar_selecciones('r', 'elim')">
-          <label for="r{X}">{X}</label>
+          <input type="checkbox" id="{X}" value="{CODIGO}" onclick="toggle_botones()">
         </td>
         <td>{CODIGO}</td>
         <td>{NOMBRE}</td>
@@ -29,51 +28,54 @@
   <br>
 
   <div>
-    <input type="button" value="Registrar Usuario" onclick="toggle_modal()">
-    <input type="button" value="Guardar Cambios" disabled>
+    <input type="button" value="Registrar Usuario" onclick="toggle_modal_agregar_usuario()">
+    <input type="button" id="modificar" value="Modificar" onclick="toggle_modal_modificar_usuario()" disabled>
     <input type="button" id="elim" value="Marcar como inactivos" onclick="desactivar_usuarios()" disabled>
   </div>
 
   <div id="modal">
-    <form method="post">
-      <fieldset>
-        <h3>Agregar Usuario</h3>
-        <label>Codigo</label>
-        <br>
-        <input type="text" id="codigo" name="codigo" placeholder="Codigo" onblur="validaCodigo('codigo')"/>
-        <br>
+    <div id="modal_bg"></div>
+    <div id="modal_win">
+      <form method="post">
+        <fieldset>
+          <h3>Usuario</h3>
+          <label>Codigo</label>
+          <br>
+          <input type="text" id="codigo" name="codigo" placeholder="Codigo" onblur="validaCodigo('codigo')"/>
+          <br>
 
-        <label>Nombres</label>
-        <br>
-        <input type="text" id="nombres" name="nombres" placeholder="Nombres" onblur="validaNombre('nombres')" />
-        <br>
+          <label>Nombres</label>
+          <br>
+          <input type="text" id="nombres" name="nombres" placeholder="Nombres" onblur="validaNombre('nombres')" />
+          <br>
 
-        <label>Apellidos</label>
-        <br>
-        <input type="text" id="apellidos" name="apellidos" placeholder="Apellidos" onblur="validaNombre('apellidos')"/>
-        <br>
+          <label>Apellidos</label>
+          <br>
+          <input type="text" id="apellidos" name="apellidos" placeholder="Apellidos" onblur="validaNombre('apellidos')"/>
+          <br>
 
-        <label>E-mail</label>
-        <br>
-        <input type="text" id="email" name="email" placeholder="E-mail" onblur="validaEmail('email')"/>
-        <br>
+          <label>E-mail</label>
+          <br>
+          <input type="text" id="email" name="email" placeholder="E-mail" onblur="validaEmail('email')"/>
+          <br>
 
-        <label>Carrera</label>
-        <select id="carrera" name="carrera">
-          <option value="COM">COM</option>
-          <option value="INF">INF</option>
-        </select>
-        <br>
-        <br>
+          <label>Carrera</label>
+          <select id="carrera" name="carrera">
+            <option value="COM">COM</option>
+            <option value="INF">INF</option>
+          </select>
+          <br>
+          <br>
 
-        <div id="inputWrapper"></div>
-        <div>
+          <div id="inputWrapper"></div>
           <input id="agregarCampoExtra" type="button" value="Campo Extra" />
-          <input type="button" value="Agregar" onclick="validaRegistrarUsuario()"/>
-          <input type="button" value="Cancelar" onclick="toggle_modal()" />
-        </div>
-      </fieldset>
-    </form>
+          <div>
+            <input type="button" id="aceptar" value="Aceptar" onclick="validaRegistrarUsuario()"/>
+            <input type="button" id="cancelar" value="Cancelar" onclick="toggle_modal()" />
+          </div>
+        </fieldset>
+      </form>
+    </div>
   </div>
 </article>
 

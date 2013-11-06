@@ -8,7 +8,7 @@ abstract class BaseCtl {
   public function __construct($pagina, $titulo) {
     $this->titulo = $titulo;
     $this->vstFile = 'vst/' . $pagina . 'Vst.html';
-    $onload_fcn = '';
+    $this->onload_fcn = '';
   }
 
   public function ejecutar() {

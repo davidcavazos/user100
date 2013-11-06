@@ -2,41 +2,41 @@
   <h1>Mis Cursos</h1>
 
   <div>
-    <select>
+    <select id="ciclo_select">
       <option value="{CICLO}">{CICLO}</option>
     </select>
 
-    <select>
+    <select id="curso_select">
       <option value="{CURSO}">{CURSO}</option>
     </select>
 
-    <input type="button" value="Ver Evaluacion" onclick="location='index.php?ctl=evaluacion'">
-    <input type="button" value="Ver Asistencias" onclick="location='index.php?ctl=asistencias'">
+    <input type="button" id="ver_evaluacion" value="Ver Evaluacion" onclick="location='index.php?ctl=evaluacion'" />
+    <input type="button" id="ver_asistencias" value="Ver Asistencias" onclick="location='index.php?ctl=asistencias'" />
   </div>
 
   <form>
     <fieldset>
-      <h3>Informacion del curso</h3>
       <label>NRC</label>
       <br>
-      <input type="text" name="nrc" placeholder="NRC" id="nrc"  onblur="validaNRC('nrc')"/>
+      <input type="text" name="nrc" placeholder="NRC" id="nrc" onblur="validaNRC('nrc')" oninput="enable_button('guardar')" />
       <br>
 
       <label>Materia</label>
       <br>
-      <input type="text" name="materia" id="materia" placeholder="Materia" onblur="validaMateria('materia')" />
+      <input type="text" name="materia" id="materia" placeholder="Materia" onblur="validaMateria('materia')" oninput="enable_button('guardar')" />
       <br>
 
       <label>Seccion</label>
       <br>
-      <input type="text" name="seccion" id="seccion" placeholder="Seccion" onblur="validaSeccion('seccion')"/>
+      <input type="text" name="seccion" id="seccion" placeholder="Seccion" onblur="validaSeccion('seccion')" oninput="enable_button('guardar')" />
       <br>
 
       <label>Academia</label>
       <br>
-      <select>
+      <select id="academia_select">
         <option></option>
       </select>
+      <br>
 
       <label>Horarios</label>
       <input type="button" id="agregarDiaDeClase" value="+">
@@ -50,53 +50,57 @@
   <br>
 
   <div>
-    <input type="button" value="Clonar Curso" onclick="toggle_modal()">
-    <input type="button" value="Agregar Curso" onclick="toggle_modal()">
-    <input type="button" value="Guardar Cambios" disabled>
+    <input type="button" id="agregr" value="Agregar Curso" onclick="toggle_modal_agregar()">
+    <input type="button" id="clonar" value="Clonar Curso" onclick="toggle_modal_clonar()">
+    <input type="button" id="guardar" value="Guardar Cambios" disabled>
   </div>
 
   <div id="modal">
-    <form>
-      <fieldset>
-        <h3>Agregar curso</h3>
-        <label>NRC</label>
-        <br>
-        <input type="text" name="nrc" placeholder="NRC" id="nrc"  onblur="validaNRC('nrc')"/>
-        <br>
+    <div id="modal_bg"></div>
+    <div id="modal_win">
+      <form>
+        <fieldset>
+          <h3>Agregar curso</h3>
+          <label>NRC</label>
+          <br>
+          <input type="text" name="nrc" placeholder="NRC" id="new_nrc" onblur="validaNRC('new_nrc')"/>
+          <br>
 
-        <label>Materia</label>
-        <br>
-        <input type="text" name="materia" id="materia" placeholder="Materia" onblur="validaMateria('materia')" />
-        <br>
+          <label>Materia</label>
+          <br>
+          <input type="text" name="materia" id="new_materia" placeholder="Materia" onblur="validaMateria('new_materia')" />
+          <br>
 
-        <label>Seccion</label>
-        <br>
-        <input type="text" name="seccion" id="seccion" placeholder="Seccion" onblur="validaSeccion('seccion')"/>
-        <br>
+          <label>Seccion</label>
+          <br>
+          <input type="text" name="seccion" id="new_seccion" placeholder="Seccion" onblur="validaSeccion('new_seccion')"/>
+          <br>
 
-        <label>Academia</label>
-        <br>
-        <select>
-          <option></option>
-        </select>
+          <label>Academia</label>
+          <br>
+          <select>
+            <option></option>
+          </select>
 
-        <label>Horarios</label>
-        <input type="button" id="agregarDiaDeClase" value="+">
-        <br>
-        <div id="inputWrapper">
-          {HORARIO}
-        </div>
-        <br>
-        <br>
+          <label>Horarios</label>
+          <input type="button" id="agregarDiaDeClase" value="+">
+          <br>
+          <div id="inputWrapper">
+            {HORARIO}
+          </div>
+          <br>
+          <br>
 
-        <div>
-          <input type="submit" value="Agregar" />
-          <input type="button" value="Cancelar" onclick="toggle_modal()" />
-        </div>
-      </fieldset>
-    </form>
+          <div>
+            <input type="submit" id="agregar" value="Agregar" />
+            <input type="button" value="Cancelar" onclick="toggle_modal()" />
+          </div>
+        </fieldset>
+      </form>
+    </div>
   </div>
 
+  <script type="text/javascript" src="www/js/cursos.js">
   <script type="text/javascript">
     jQuery('#agregarDiaDeClase').agregaDiaDeClase('#inputWrapper');
   </script>

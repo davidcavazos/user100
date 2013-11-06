@@ -3,16 +3,11 @@
 
   <div>
     <select>
-      <option>2013B</option>
-      <option>2013A</option>
-      <option>2012B</option>
-      <option>2012A</option>
+      <option value="{CICLO}">{CICLO}</option>
     </select>
 
     <select>
-      <option>Programacion Web</option>
-      <option>Compiladores</option>
-      <option>Inteligencia Artificial</option>
+      <option value="{CURSO}">{CURSO}</option>
     </select>
 
     <input type="button" value="Ver Curso" onclick="location='index.php?ctl=mis_cursos'">
@@ -22,8 +17,9 @@
   <table>
     <thead>
       <tr>
-        <th></th>
-        <th>Lista</th>
+        <th>
+          <input type="checkbox" id="select_all" onclick="toggle_select_all(toggle_botones)">
+        </th>
         <th>Codigo</th>
         <th>Nombre</th>
         <th>Carrera</th>
@@ -32,8 +28,10 @@
     </thead>
     <tbody>
       <tr>
-        <td>{X}</td>
-        <td>{LISTA}</td>
+        <td>
+          <input type="checkbox" id="{X}" onclick="toggle_botones()">
+          <label for="{X}">{X}</label>
+        </td>
         <td>{CODIGO}</td>
         <td>{NOMBRE}</td>
         <td>{CARRERA}</td>
@@ -47,3 +45,5 @@
     <input type="button" value="Guardar Cambios" disabled>
   </div>
 </article>
+
+<script type="text/javascript" src="www/js/asistencias.js"></script>
