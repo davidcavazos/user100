@@ -13,6 +13,10 @@ class MisCursosCtl extends BaseCtl {
       $info['nrc'] = $q['nrc'];
       $info['materia'] = $q['nombre_materia'];
       $info['seccion'] = $q['seccion'];
+      //$q = $mdl->datos("SELECT * FROM detalle_curso")[0];
+      $info['dia'] = array();
+      $info['horas_por_dia'] = array();
+      $info['horario'] = array();
       echo json_encode($info);
     } else {
       $this->mostrar();
