@@ -3,11 +3,20 @@
 require_once('ctl/BaseCtl.php');
 class MisCursosCtl extends BaseCtl {
   public function ejecutar() {
-    if (isset($_GET['alta'])) {
-      require_once('mdl/CursosMdl.php');
-      $mdl = new CursosMdl();
+    require_once('mdl/CursosMdl.php');
+    $mdl = new CursosMdl();
+    if (isset($_POST['llenar_curso'])) {
+      $ciclo = $_POST['ciclo'];
+      $curso = $_POST['curso'];
+      $q = $mdl->datos("SELECT * FROM curso")[0];
+      $info = array();
+      $info['nrc'] = $q['nrc'];
+      $info['materia'] = $q['nombre_materia'];
+      $info['seccion'] = $q['seccion'];
+      echo json_encode($info);
+    } else {
+      $this->mostrar();
     }
-    $this->mostrar();
   }
 
   public function generarBody() {
@@ -52,13 +61,6 @@ class MisCursosCtl extends BaseCtl {
       $filas .= $new_fila;
     }
     $body = str_replace($fila, $filas, $body);
-
-    // Llenar campos
-    if (count($datos) > 0) {
-      $body = $this->campo('nrc', $datos[0]['nrc'], $body);
-      $body = $this->campo('materia', $datos[0]['nombre_materia'], $body);
-      $body = $this->campo('seccion', $datos[0]['seccion'], $body);
-    }
 
     $this->onload_fcn = 'on_load()';
     return $body;

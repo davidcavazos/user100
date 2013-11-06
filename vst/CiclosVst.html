@@ -9,17 +9,17 @@
     <fieldset>
       <label>Ciclo</label>
       <br>
-      <input type="text" id="ciclo" onblur="validaCiclo('ciclo')" oninput="enable_button('guardar')" placeholder="Ciclo" />
+      <input type="text" id="ciclo" onblur="validaCiclo('ciclo')" onchange="enable_button('guardar')" placeholder="Ciclo" />
       <br>
 
       <label>Fecha Inicio</label>
       <br>
-      <input type="text" id="fecha_inicio" onblur="validaFecha('fecha_inicio')" oninput="enable_button('guardar')" placeholder="aaaa-mm-dd" readonly />
+      <input type="text" id="fecha_inicio" onblur="validaFecha('fecha_inicio')" onchange="enable_button('guardar')" placeholder="aaaa-mm-dd" readonly />
       <br>
 
       <label>Fecha Fin</label>
       <br>
-      <input type="text" id="fecha_fin" onblur="validaFechaFin('fecha_inicio','fecha_fin')" oninput="enable_button('guardar')" placeholder="aaaa-mm-dd" readonly />
+      <input type="text" id="fecha_fin" onblur="validaFechaFin('fecha_inicio','fecha_fin')" onchange="enable_button('guardar')" placeholder="aaaa-mm-dd" readonly />
       <br>
 
       <label>Dias Festivos</label>
@@ -38,37 +38,40 @@
   </form>
 
   <div id="modal">
-    <form method="post">
-      <fieldset>
-        <h3>Agregar Ciclo</h3>
-        <label>Ciclo</label>
-        <br>
-        <input type="text" id="new_ciclo" onblur="validaCiclo('new_ciclo')" placeholder="Ciclo" />
+    <div id="modal_bg"></div>
+    <div id="modal_win">
+      <form method="post">
+        <fieldset>
+          <h3>Agregar Ciclo</h3>
+          <label>Ciclo</label>
+          <br>
+          <input type="text" id="new_ciclo" onblur="validaCiclo('new_ciclo')" placeholder="Ciclo" />
+          <br>
+
+          <label>Fecha Inicio</label>
+          <br>
+          <input type="text" id="new_fecha_inicio" onblur="validaFecha('new_fecha_inicio')" placeholder="aaaa-mm-dd" readonly />
+          <br>
+
+          <label>Fecha Fin</label>
+          <br>
+          <input type="text" id="new_fecha_fin" onblur="validaFechaFin('new_fecha_inicio', 'new_fecha_fin')" placeholder="aaaa-mm-dd" readonly />
+          <br>
+
+          <label>Dias Festivos</label>
+          <input id="agregarFestivom" type="button" value="+">
+          <br>
+          <div id="inputWrapperm">
+          </div>
+        </fieldset>
         <br>
 
-        <label>Fecha Inicio</label>
-        <br>
-        <input type="text" id="new_fecha_inicio" onblur="validaFecha('new_fecha_inicio')" placeholder="aaaa-mm-dd" readonly />
-        <br>
-
-        <label>Fecha Fin</label>
-        <br>
-        <input type="text" id="new_fecha_fin" onblur="validaFechaFin('new_fecha_inicio', 'new_fecha_fin')" placeholder="aaaa-mm-dd" readonly />
-        <br>
-
-        <label>Dias Festivos</label>
-        <input id="agregarFestivom" type="button" value="+">
-        <br>
-        <div id="inputWrapperm">
+        <div>
+          <input type="button" id="agregar" value="Agregar" onclick="validaRegistrarCiclo()" enabled>
+          <input type="button" value="Cancelar" onclick="toggle_modal()">
         </div>
-      </fieldset>
-      <br>
-
-      <div>
-        <input type="button" id="agregar" value="Agregar" onclick="validaRegistrarCiclo()" enabled>
-        <input type="button" value="Cancelar" onclick="toggle_modal()">
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
 
 </article>

@@ -12,6 +12,13 @@ class CiclosCtl extends BaseCtl {
       $info['ciclo'] = $q['ciclo'];
       $info['fecha_inicio'] = $q['fecha_inicio'];
       $info['fecha_fin'] = $q['fecha_fin'];
+      $q = $mdl->datos("SELECT * FROM detalle_ciclo_escolar WHERE ciclo='$ciclo'");
+      $info['dia_no_efectivo'] = array();
+      $info['descripcion'] = array();
+      foreach ($q as $dia) {
+        array_push($info['dia_no_efectivo'], $dia['dia_no_efectivo']);
+        array_push($info['descripcion'], $dia['descripcion']);
+      }
       echo json_encode($info);
     } elseif (isset($_POST['guardar'])) {
       $ciclo = $_POST['ciclo'];

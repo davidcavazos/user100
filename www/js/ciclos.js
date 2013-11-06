@@ -13,6 +13,18 @@ function mostrar_ciclo() {
       document.getElementById('ciclo').value = info['ciclo'];
       document.getElementById('fecha_inicio').value = info['fecha_inicio'];
       document.getElementById('fecha_fin').value = info['fecha_fin'];
+      var dias = info['dia_no_efectivo'].length;
+      console.log('dias no efectivos: '+dias);
+      for (var i = 0; i < dias; i++) {
+        console.log(info['dia_no_efectivo'][i]+': '+info['descripcion']);
+      }
+    },
+    error: function() {
+      document.getElementById('ciclo_select').disabled = true;
+      document.getElementById('ciclo').disabled = true;
+      document.getElementById('fecha_inicio').disabled = true;
+      document.getElementById('fecha_fin').disabled = true;
+      document.getElementById('agregarFestivo').disabled = true;
     }
   });
 }
