@@ -6,7 +6,7 @@ class UsuariosCtl extends BaseCtl {
     require_once('mdl/UsuariosMdl.php');
     $mdl = new UsuariosMdl();
     if (isset($_POST['agregar'])) {
-	  $codigo = $_POST['codigo'];
+      $codigo = $_POST['codigo'];
       $nombres = $_POST['nombres'];
       $apellidos = $_POST['apellidos'];
       $password = $_POST['password'];
@@ -14,8 +14,8 @@ class UsuariosCtl extends BaseCtl {
       $carrera = $_POST['carrera'];
       $email = $_POST['email'];
       $activo = $_POST['activo'];
-	  $campoExtra = $_POST['campoextra'];
-	  $tipoCampo = $_POST['tipoCampo'];
+      $campoExtra = $_POST['campoextra'];
+      $tipoCampo = $_POST['tipoCampo'];
       $this->limpiarVariablesPost();
       $mdl->agregar($codigo, $nombres, $apellidos, $password, $tipo, $carrera,
                     $email, $activo, $campoExtra, $tipoCampo);
@@ -59,6 +59,8 @@ class UsuariosCtl extends BaseCtl {
       $new_fila = strtr($new_fila, $dict);
       $filas .= $new_fila;
     }
+
+    $this->onload_fcn = 'on_load()';
     return str_replace($fila, $filas, $body);
   }
 }

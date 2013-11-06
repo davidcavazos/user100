@@ -18,15 +18,15 @@ class CiclosCtl extends BaseCtl {
       $new_ciclo = $_POST['new_ciclo'];
       $fecha_inicio = $_POST['fecha_inicio'];
       $fecha_fin = $_POST['fecha_fin'];
-	  $dia_festivo = $_POST['diafestivo'];
-	  $descripcion = $_POST['descripciondia'];
+      $dia_festivo = $_POST['diafestivo'];
+      $descripcion = $_POST['descripciondia'];
       $mdl->modificar($ciclo, $new_ciclo, $fecha_inicio, $fecha_fin, $dia_festivo, $descripcion);
     } elseif (isset($_POST['agregar'])) {
       $ciclo = $_POST['ciclo'];
       $fecha_inicio = $_POST['fecha_inicio'];
       $fecha_fin = $_POST['fecha_fin'];
-	  $dia_festivo = $_POST['diafestivo'];
-	  $descripcion = $_POST['descripciondia'];
+      $dia_festivo = $_POST['diafestivo'];
+      $descripcion = $_POST['descripciondia'];
       $mdl->agregar($ciclo, $fecha_inicio, $fecha_fin, $dia_festivo, $descripcion);
     } else {
       $this->mostrar();
@@ -55,7 +55,7 @@ class CiclosCtl extends BaseCtl {
     }
     $body = str_replace($fila, $filas, $body);
 
-    $this->onload_fcn = 'mostrar_ciclo()';
+    $this->onload_fcn = 'on_load()';
     return $body;
   }
 }

@@ -1,3 +1,7 @@
+function on_load() {
+  mostrar_ciclo();
+}
+
 function mostrar_ciclo() {
   ciclo = document.getElementById('ciclo_select').value;
 
@@ -20,19 +24,19 @@ function guardar_ciclo() {
   ff = document.getElementById('fecha_fin').value;
   var dia_festivo="";
   var descripcion="";
-  
+
   for(i=1;i<=numeroDeDiasFestivos;i++)
   {
-	if(document.getElementById('div_festivos'+i))
-	{
-		dia_festivo_actual=document.getElementById('inicio_'+i).value.trim();
-		descripcion_actual=document.getElementById('descripcion_'+i).value.trim();
-		if(dia_festivo_actual.length!=0 || descripcion_actual.length!=0)
-		{
-			dia_festivo+=dia_festivo_actual+",";
-			descripcion+=descripcion_actual+",";
-		}
-	}
+    if(document.getElementById('div_festivos'+i))
+    {
+      dia_festivo_actual=document.getElementById('inicio_'+i).value.trim();
+      descripcion_actual=document.getElementById('descripcion_'+i).value.trim();
+      if(dia_festivo_actual.length!=0 || descripcion_actual.length!=0)
+      {
+        dia_festivo+=dia_festivo_actual+",";
+        descripcion+=descripcion_actual+",";
+      }
+    }
   }
   $.ajax({
     type: 'POST',
@@ -52,16 +56,16 @@ function agregar_ciclo() {
   var descripcion="";
   for(i=1;i<=numeroDeDiasFestivosM;i++)
   {
-	if(document.getElementById('div_festivos'+i))
-	{
-		dia_festivo_actual=document.getElementById('inicio_m_'+i).value.trim();
-		descripcion_actual=document.getElementById('descripcion_m_'+i).value.trim();
-		if(dia_festivo_actual.length!=0 || descripcion_actual.length!=0)
-		{
-			dia_festivo+=dia_festivo_actual+",";
-			descripcion+=descripcion_actual+",";
-		}
-	}
+    if(document.getElementById('div_festivos'+i))
+    {
+      dia_festivo_actual=document.getElementById('inicio_m_'+i).value.trim();
+      descripcion_actual=document.getElementById('descripcion_m_'+i).value.trim();
+      if(dia_festivo_actual.length!=0 || descripcion_actual.length!=0)
+      {
+        dia_festivo+=dia_festivo_actual+",";
+        descripcion+=descripcion_actual+",";
+      }
+    }
   }
   $.ajax({
     type: 'POST',

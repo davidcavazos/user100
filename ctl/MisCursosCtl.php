@@ -60,6 +60,7 @@ class MisCursosCtl extends BaseCtl {
       $body = $this->campo('seccion', $datos[0]['seccion'], $body);
     }
 
+    $this->onload_fcn = 'on_load()';
     return $body;
   }
 }

@@ -5,7 +5,7 @@
     <thead>
       <tr>
         <th>
-          <input type="checkbox" id="select_all" onclick="toggle_select_all('r', 'elim')">
+          <input type="checkbox" id="select_all" onclick="toggle_select_all(toggle_botones)">
         </th>
         <th>Codigo</th>
         <th>Nombre</th>
@@ -16,8 +16,7 @@
     <tbody>
       <tr>
         <td>
-          <input type="checkbox" id="r{X}" value="{CODIGO}" onclick="validar_selecciones('r', 'elim')">
-          <label for="r{X}">{X}</label>
+          <input type="checkbox" id="{X}" value="{CODIGO}" onclick="toggle_botones()">
         </td>
         <td>{CODIGO}</td>
         <td>{NOMBRE}</td>
@@ -30,7 +29,7 @@
 
   <div>
     <input type="button" value="Registrar Usuario" onclick="toggle_modal()">
-    <input type="button" value="Guardar Cambios" disabled>
+    <input type="button" id="modificar" value="Modificar" disabled>
     <input type="button" id="elim" value="Marcar como inactivos" onclick="desactivar_usuarios()" disabled>
   </div>
 

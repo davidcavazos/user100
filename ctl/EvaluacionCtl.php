@@ -78,6 +78,7 @@ class EvaluacionCtl extends BaseCtl {
     }
     $body = str_replace($fila, $filas, $body);
 
+    $this->onload_fcn = 'on_load()';
     return $body;
   }
 }

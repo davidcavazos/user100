@@ -18,7 +18,7 @@
     <thead>
       <tr>
         <th>
-          <input type="checkbox" id="select_all" onclick="toggle_select_all('r', 'elim_alumno')">
+          <input type="checkbox" id="select_all" onclick="toggle_select_all(toggle_botones)">
         </th>
         <th>Codigo</th>
         <th>Nombre</th>
@@ -29,8 +29,8 @@
     <tbody>
       <tr>
         <td>
-          <input type="checkbox" id="r{X}" onclick="validar_selecciones('r', 'elim_alumno')">
-          <label for="r{X}">{X}</label>
+          <input type="checkbox" id="{X}" onclick="toggle_botones()">
+          <label for="{X}">{X}</label>
         </td>
         <td>{CODIGO}</td>
         <td>{NOMBRE}</td>
@@ -50,9 +50,10 @@
   <div>
     <input type="button" value="Inscribir Alumno">
     <input type="button" value="Leer Alumnos de CSV">
-    <input type="button" value="Desinscribir Alumnos" id="elim_alumno" disabled>
+    <input type="button" id="elim_alumno" value="Desinscribir Alumnos" disabled>
   </div>
 
+  <script type="text/javascript" src="www/js/evaluacion.js"></script>
   <script type="text/javascript">
     jQuery('#agregarDiaDeClase').agregaDiaDeClase('#inputWrapper');
   </script>
