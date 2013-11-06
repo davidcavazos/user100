@@ -21,7 +21,6 @@ class BaseMdl {
     return $rows;
   }
 
-  
 }
 
 ?>

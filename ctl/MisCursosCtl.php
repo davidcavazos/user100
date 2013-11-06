@@ -13,11 +13,28 @@ class MisCursosCtl extends BaseCtl {
       $info['nrc'] = $q['nrc'];
       $info['materia'] = $q['nombre_materia'];
       $info['seccion'] = $q['seccion'];
-      //$q = $mdl->datos("SELECT * FROM detalle_curso")[0];
+      $q = $mdl->datos("SELECT * FROM detalle_curso");
       $info['dia'] = array();
       $info['horas_por_dia'] = array();
       $info['horario'] = array();
+      foreach ($q as $dia) {
+        $info['dia'][] = $dia['dia'];
+        $info['horas_por_dia'][] = $dia['horas_por_dia'];
+        $info['horario'][] = $dia['horario'];
+      }
       echo json_encode($info);
+    } elseif (isset($_POST['guardar'])) {
+      $nrc = $_POST['nrc'];
+      $new_nrc = $_POST['new_nrc'];
+      $ciclo = $_POST['ciclo'];
+      $materia = $_POST['nombre_materia'];
+      $seccion = $_POST['seccion'];
+      $academia = $_POST['academia'];
+      $dias = $_POST['dia'];
+      $horas_por_dia = $_POST['horas_por_dia'];
+      $horarios = $_POST['horario'];
+      $mdl->modificar($nrc, $new_nrc, $ciclo, $materia, $seccion, $academia,
+                      $dias, $horas_por_dia, $horarios);
     } else {
       $this->mostrar();
     }

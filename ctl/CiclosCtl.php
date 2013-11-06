@@ -16,8 +16,8 @@ class CiclosCtl extends BaseCtl {
       $info['dia_no_efectivo'] = array();
       $info['descripcion'] = array();
       foreach ($q as $dia) {
-        array_push($info['dia_no_efectivo'], $dia['dia_no_efectivo']);
-        array_push($info['descripcion'], $dia['descripcion']);
+        $info['dia_no_efectivo'][] = $dia['dia_no_efectivo'];
+        $info['descripcion'][] = $dia['descripcion'];
       }
       echo json_encode($info);
     } elseif (isset($_POST['guardar'])) {
@@ -25,9 +25,10 @@ class CiclosCtl extends BaseCtl {
       $new_ciclo = $_POST['new_ciclo'];
       $fecha_inicio = $_POST['fecha_inicio'];
       $fecha_fin = $_POST['fecha_fin'];
-      $dia_festivo = $_POST['diafestivo'];
-      $descripcion = $_POST['descripciondia'];
-      $mdl->modificar($ciclo, $new_ciclo, $fecha_inicio, $fecha_fin, $dia_festivo, $descripcion);
+      $dias_festivo = $_POST['diafestivo'];
+      $descripciones = $_POST['descripciondia'];
+      $mdl->modificar($ciclo, $new_ciclo, $fecha_inicio, $fecha_fin,
+                      $dias_festivo, $descripciones);
     } elseif (isset($_POST['agregar'])) {
       $ciclo = $_POST['ciclo'];
       $fecha_inicio = $_POST['fecha_inicio'];
