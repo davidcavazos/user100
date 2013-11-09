@@ -40,8 +40,9 @@ function mostrar_curso() {
       document.getElementById('nrc').disabled = true;
       document.getElementById('materia').disabled = true;
       document.getElementById('seccion').disabled = true;
-      document.getElementById('academia_select').disabled = true;
-      document.getElementById('agregarDiaDeClase').disabled = true;
+      //document.getElementById('academia_select').disabled = true;
+      document.getElementById('b_diaclase').disabled = true;
+      document.getElementById('b_diaclase_m').disabled = true;
       document.getElementById('ver_evaluacion').disabled = true;
       document.getElementById('ver_asistencias').disabled = true;
       document.getElementById('clonar').disabled = true;

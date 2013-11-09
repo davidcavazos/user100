@@ -30,7 +30,7 @@
       <input type="text" name="nrc" placeholder="NRC" id="nrc" onblur="validaNRC('nrc')" oninput="enable_button('guardar')" />
       <br>
     
-	<label>Materia</label>
+      <label>Materia</label>
       <br>
       <input type="text" name="materia" id="materia" placeholder="Materia" onblur="validaMateria('materia')" oninput="enable_button('guardar')" />
       <br>
@@ -42,15 +42,15 @@
 
       <label>Academia</label>
       <br>
-      <input type="text" name="academia" id="academia" placeholder="Academia" oninput="enable=button('guardar')">
+      <input type="text" name="academia" id="academia" placeholder="Academia" oninput="enable_button('guardar')">
         <option></option>
       </select>
       <br>
 
       <label>Horarios</label>
-      <input type="button" id="agregarDiaDeClase" value="+">
+      <input type="button" id="b_diaclase" class="diaClase" value="+">
       <br>
-      <div id="inputWrapper">
+      <div id="wrapper" class="wrapper">
         {HORARIO}
       </div>
     </fieldset>
@@ -71,46 +71,46 @@
         <fieldset>
           <h3>Agregar curso</h3>
          
-		  <label>Ciclo</label>
-		  <br>
-		  <select id="new_ciclo">
-		  <option id="{NEWCICLO}">{NEWCICLO}</option>
-		  </select>
-		  <br>
+          <label>Ciclo</label>
+		      <br />
+		      <select id="new_ciclo">
+		        <option id="{NEWCICLO}">{NEWCICLO}</option>
+		      </select>
+		      <br />
 
-		  <label>Clave de la materia</label>
-		  <br>
-		  <input type="text" name="clave" id="clave" placeholder="Clave de la materia">
-          <br>
+		      <label>Clave de la materia</label>
+		      <br />
+		      <input type="text" name="clave" id="clave" placeholder="Clave de la materia">
+          <br />
 
-		  <label>NRC</label>
-		  <br>
-          <input type="text" name="nrc" placeholder="NRC" id="new_nrc" onblur="validaNRC('new_nrc')"/>
-          <br>
+		      <label>NRC</label>
+		      <br />
+          <input type="text" name="nrc" placeholder="NRC" id="new_nrc" onblur="validaNRC('new_nrc')" />
+          <br />
 
           <label>Materia</label>
           <br>
-          <input type="text" name="materia" id="new_materia" placeholder="Materia" onblur="validaMateria('new_materia')" disabled/>
-          <br>
+          <input type="text" name="materia" id="new_materia" placeholder="Materia" onblur="validaMateria('new_materia')" disabled />
+          <br />
 
           <label>Seccion</label>
-          <br>
-          <input type="text" name="seccion" id="new_seccion" placeholder="Seccion" onblur="validaSeccion('new_seccion')"/>
-          <br>
+          <br />
+          <input type="text" name="seccion" id="new_seccion" placeholder="Seccion" onblur="validaSeccion('new_seccion')" />
+          <br />
 
           <label>Academia</label>
-          <br>
-		  <input type="text" name="new_academia" id="new_academia" placeholder="Academia" disabled>
-          <br>
+          <br />
+		      <input type="text" name="new_academia" id="new_academia" placeholder="Academia" disabled />
+          <br />
 
           <label>Horarios</label>
-          <input type="button" id="agregarDiaDeClase" value="+">
-          <br>
-          <div id="inputWrapper">
+          <input type="button" id="b_diaclase_m" class="diaClase" value="+">
+          <br />
+          <div id="wrapper_m" class="wrapper">
             {HORARIO}
           </div>
-          <br>
-          <br>
+          <br />
+          <br />
 
           <div>
             <input type="submit" id="agregar" value="Agregar" />

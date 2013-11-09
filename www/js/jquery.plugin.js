@@ -64,20 +64,20 @@ var idnCExtra=0;
       });
     });
   }
-  $.fn.agregaDiaDeClase = function(contenedor) {
-    var id, ndia;
-    // Uso de encadenamiento
+  $.fn.agregaDiaDeClase = function(contenedor) { 
+    var ndia, c;
     return this.each(function() { 
-      $boton = $(this); 
-      $boton.on('click', function () { 
-      $("#guardar").removeAttr("disabled");
+      $(this).on('click', function () { 
+        c = $(this).siblings( contenedor ).attr('id'); 
+        if ( c.lastIndexOf('_m') == -1 ) { p = ''; } else { p = 'm' } 
+        $("#guardar").removeAttr("disabled");
         if ( $('.content').size() < DIAS_MAXIMOS_CLASE ) { 
           id_horario++;
-          $( contenedor ).append( 
-            '<div id="cClase_'+id_horario+'" class="content">'+ 
-              '<select id="SelectDia_'+id_horario+'" name="dia_'+id_horario+'"></select><br />'+
-              '<input id="Hora_inicio_clase'+id_horario+'" type="text" placeholder="Hora inicio clase" />'+
-              '<input id="Hora_fin_clase'+id_horario+'" type="text" placeholder="Hora fin clase" />'+
+          $( '#' + c ).append( 
+            '<div id="cClase_'+p+'_'+id_horario+'" class="content">'+ 
+              '<select id="SelectDia_'+p+'_'+id_horario+'" name="dia_'+id_horario+'"></select><br />'+
+              '<input id="Hora_inicio_clase'+p+'_'+id_horario+'" type="text" placeholder="Hora inicio clase" />'+
+              '<input id="Hora_fin_clase'+p+'_'+id_horario+'" type="text" placeholder="Hora fin clase" />'+
               '<button class="quitarDia">-</button>'+ 
             '</div>');
           for (i=0; i<6; i++) {
@@ -89,7 +89,7 @@ var idnCExtra=0;
               case 4: ndia='Viernes';break;
               case 5: ndia='Sabado';break;
             }
-            $('#SelectDia_'+id_horario).append('<option id="dia_'+i+'">'+ndia+'</option>');
+            $('#SelectDia_'+p+'_'+id_horario).append('<option id="dia_'+i+'">'+ndia+'</option>');
           }
         }; 
       }); 
