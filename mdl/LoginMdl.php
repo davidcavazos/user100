@@ -5,8 +5,8 @@ class LoginMdl extends BaseMdl
 {
   public function verificar($codigo, $password)
   {
-    $datos = $this->datos("SELECT * FROM usuario WHERE codigo='".$codigo."'")[0];
-    if($datos['password']==$password)
+    $q = $this->datos("SELECT * FROM usuario WHERE codigo='".$codigo."'");
+    if(count($q) > 0 && $q[0]['password']==$password)
     {
       header('Location: index.php?ctl=mis_cursos');
     }
