@@ -23,6 +23,13 @@ class MisCursosCtl extends BaseCtl {
         $info['horario'][] = $dia['horario'];
       }
       echo json_encode($info);
+    } elseif (isset($_POST['llenar_materia'])) {
+      $clave = $_POST['clave'];
+      $q = $mdl->datos("SELECT * FROM materia WHERE clave='$clave'")[0];
+      $info = array();
+      $info['materia'] = $q['materia'];
+      $info['academia'] = $q['academia'];
+      echo json_encode($info);
     } elseif (isset($_POST['guardar'])) {
       $nrc = $_POST['nrc'];
       $new_nrc = $_POST['new_nrc'];

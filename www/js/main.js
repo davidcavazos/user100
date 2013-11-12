@@ -118,11 +118,11 @@ function validaNRC(id)
   }
 }
 
-function validaMateria(id)
+function validaClaveMateria(id)
 {
   caja = document.getElementById(id);
   caja.value=caja.value.trim();
-  if(caja.value.length<1 || !caja.value.match('^[ a-zA-Z]{1,}$'))
+  if(caja.value.length<1 || !caja.value.match('^[a-zA-Z]\+[0-9]\+$'))
   {
   colorearCaja(false);
   caja.title="La materia esta compuesta por caracteres alfabeticos";

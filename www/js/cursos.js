@@ -37,15 +37,35 @@ function mostrar_curso() {
     error: function() {
       document.getElementById('ciclo_select').disabled = true;
       document.getElementById('curso_select').disabled = true;
+      document.getElementById('clave_materia').disabled = true;
       document.getElementById('nrc').disabled = true;
-      document.getElementById('materia').disabled = true;
       document.getElementById('seccion').disabled = true;
-      //document.getElementById('academia_select').disabled = true;
       document.getElementById('b_diaclase').disabled = true;
       document.getElementById('b_diaclase_m').disabled = true;
       document.getElementById('ver_evaluacion').disabled = true;
       document.getElementById('ver_asistencias').disabled = true;
       document.getElementById('clonar').disabled = true;
+    }
+  });
+}
+
+function mostrar_materia() {
+  clave = document.getElementById('clave_materia').value;
+
+  $.ajax({
+    type: 'POST',
+    data: {llenar_materia:'', clave:clave},
+    dataType: 'json',
+    success: function(info) {
+      document.getElementById('materia').value = info['materia'];
+      document.getElementById('academia').value = info['academia'];
+    },
+    error: function() {
+      caja = document.getElementById('clave_materia');
+      colorearCaja(false);
+      caja.title="La clave de la materia es incorrecta";
+      document.getElementById('materia').value = '';
+      document.getElementById('academia').value = '';
     }
   });
 }
