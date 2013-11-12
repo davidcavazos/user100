@@ -16,7 +16,7 @@ function mostrar_ciclo() {
       var dias = info['dia_no_efectivo'].length;
       console.log('dias no efectivos: '+dias);
       for (var i = 0; i < dias; i++) {
-        console.log(info['dia_no_efectivo'][i]+': '+info['descripcion']);
+        console.log(info['dia_no_efectivo'][i]+': '+info['descripcion'][i]);
       }
     },
     error: function() {

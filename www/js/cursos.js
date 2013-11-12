@@ -31,7 +31,7 @@ function mostrar_curso() {
       var horarios = info['dia'].length;
       console.log('horarios: '+horarios);
       for (var i = 0; i < horarios; i++) {
-        console.log(info['dia'][i]+': '+info['horas_por_dia']+', '+info['horario']);
+        console.log(info['dia'][i]+': '+info['horas_por_dia'][i]+', '+info['horario'][i]);
       }
     },
     error: function() {
