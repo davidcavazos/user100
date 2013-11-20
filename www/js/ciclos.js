@@ -16,7 +16,8 @@ function mostrar_ciclo() {
       var dias = info['dia_no_efectivo'].length;
       console.log('dias no efectivos: '+dias);
       for (var i = 0; i < dias; i++) {
-        console.log(info['dia_no_efectivo'][i]+': '+info['descripcion'][i]);
+        //console.log(info['dia_no_efectivo'][i]+': '+info['descripcion'][i]);
+        jQuery('body').mostrarDiasFestivos('#inputWrapper',info['dia_no_efectivo'][i],info['descripcion'][i]);
       }
     },
     error: function() {
@@ -68,7 +69,7 @@ function agregar_ciclo() {
   var descripcion="";
   for(i=1;i<=numeroDeDiasFestivosM;i++)
   {
-    if(document.getElementById('div_festivos'+i))
+    if(document.getElementById('div_festivos'+i+'_m'))
     {
       dia_festivo_actual=document.getElementById('inicio_m_'+i).value.trim();
       descripcion_actual=document.getElementById('descripcion_m_'+i).value.trim();

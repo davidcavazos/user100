@@ -5,7 +5,7 @@
  * Uso como parámetro la variable windows para ahorrar tiempo de búsqueda de objetos globales.
  * Uso del parámetro undefined para asegurar que la variable es no definida.
  */
-var numeroDeDiasFestivos=10;
+var numeroDeDiasFestivos=0;
 var numeroDeDiasFestivosM=0;
 var id_horario=0;
 var idnCExtra=0;
@@ -20,24 +20,22 @@ var idnCExtra=0;
     return this.each(function() { 
       $boton = $(this); 
       $boton.on('click', function () { 
-    $("#guardar").removeAttr("disabled");
-        if ( $('.content').size() < DIAS_MAXIMOS ) { 
-          numeroDeDiasFestivos++;
-      $( contenedorDiasFestivos ).append( 
+      $("#guardar").removeAttr("disabled");
+      if ( $('.content').size() < DIAS_MAXIMOS ) { 
+        numeroDeDiasFestivos++;
+        $( contenedorDiasFestivos ).append( 
             '<div id="div_festivos'+numeroDeDiasFestivos+'" class="content">'+ 
-              '<input id="inicio_'
-        +numeroDeDiasFestivos+
-        '" type="text" placeholder="aaaa-mm-dd" onblur="validaFecha(\'inicio_'
-        +numeroDeDiasFestivos+
-        '\')"/>'+
-
-              '<textarea id="descripcion_'+numeroDeDiasFestivos+'" onblur="validaDescripcion(\'descripcion_'+numeroDeDiasFestivos+'\')"></textarea>'+ 
+              '<input id="inicio_'+numeroDeDiasFestivos+
+                  '" type="text" placeholder="aaaa-mm-dd" onblur="validaFecha(\'inicio_'
+                  +numeroDeDiasFestivos+'\')"/>'+
+              '<textarea id="descripcion_'+numeroDeDiasFestivos+
+                  '" onblur="validaDescripcion(\'descripcion_'
+                  +numeroDeDiasFestivos+'\')"></textarea>'+ 
               '<button class="quitarFestivo">-</button>'+ 
             '</div>');  
+          $('body').eliminarElemento();
+          $('#inicio_'+numeroDeDiasFestivos).datePickerElem();
         }; 
-      }); 
-      $('body').on('click', '.quitarFestivo', function () { 
-        $(this).parent().remove(); 
       }); 
     }); 
   } 
@@ -47,20 +45,27 @@ var idnCExtra=0;
         if($('.content').size() < DIAS_MAXIMOS) {
           numeroDeDiasFestivosM++;
           $( contenedor ).append( 
-            '<div id="div_festivos'+numeroDeDiasFestivosM+'" class="content">'+ 
-              '<input id="inicio_m_'
-        +numeroDeDiasFestivosM+
-        '" type="text" placeholder="aaaa-mm-dd" onblur="validaFecha(\'inicio_m_'
-        +numeroDeDiasFestivosM+
-        '\')"/>'+
-
-              '<textarea id="descripcion_m_'+numeroDeDiasFestivosM+'" onblur="validaDescripcion(\'descripcion_m_'+numeroDeDiasFestivosM+'\')"></textarea>'+ 
+            '<div id="div_festivos' +numeroDeDiasFestivosM+'_m" class="content">'+ 
+              '<input id="inicio_m_' +numeroDeDiasFestivosM+
+                  '" type="text" placeholder="aaaa-mm-dd" onblur="validaFecha(\'inicio_m_'
+                  +numeroDeDiasFestivosM+'\')"/>'+
+              '<textarea id="descripcion_m_'+numeroDeDiasFestivosM+
+                  '" onblur="validaDescripcion(\'descripcion_m_'
+                  +numeroDeDiasFestivosM+'\')"></textarea>'+ 
               '<button class="quitarFestivo">-</button>'+ 
             '</div>'); 
+          $('body').eliminarElemento();
+          $('#inicio_m_'+numeroDeDiasFestivosM).datePickerElem();
         }
-        $('body').on('click', '.quitarFestivo', function () { 
-          $(this).parent().remove(); 
-        });
+      });
+    });
+  }
+  $.fn.eliminarElemento = function () {
+    return this.each( function () {
+      $('body').on('click', '.quitarFestivo', function () {
+        var elem = ($(this).parent().attr('id'));
+        $('#'+elem).remove();
+        enable_button('guardar');
       });
     });
   }
@@ -104,9 +109,11 @@ var idnCExtra=0;
         idnCExtra++;
         $(contenedor).append(
           '<div id="c_E'+idnCExtra+'" class="content">'+
-            '<input id="campoExtraTipo_'+idnCExtra+'" name="campoExtraTipo_'+idnCExtra+'" type="text" placeholder="tipo de cuenta" style="width:55%" onblur="validaCampoExtra(\'campoExtraTipo_'+idnCExtra+'\')" />'+
+            '<input id="campoExtraTipo_'+idnCExtra+'" name="campoExtraTipo_'+idnCExtra+
+                '" type="text" placeholder="tipo de cuenta" style="width:55%" onblur="validaCampoExtra(\'campoExtraTipo_'+idnCExtra+'\')" />'+
             '<button class="quitar">-</button>'+
-            '<input id="campoExtra_'+idnCExtra+'" name="campoExtra_'+idnCExtra+'" type="text" placeholder="Nombre de cuenta" onblur="validaCampoExtra(\'campoExtra_'+idnCExtra+'\')"/>'+
+            '<input id="campoExtra_'+idnCExtra+'" name="campoExtra_'+idnCExtra+
+                '" type="text" placeholder="Nombre de cuenta" onblur="validaCampoExtra(\'campoExtra_'+idnCExtra+'\')"/>'+
             '<button class="quitar">-</button>'+
           '</div>');
       });
@@ -138,5 +145,23 @@ var idnCExtra=0;
         showWeek: true
       });
     })
+  }
+  $.fn.mostrarDiasFestivos = function (contenedor, diaF, descripcionD) {
+    return this.each( function () {
+      numeroDeDiasFestivos++;
+      numero = numeroDeDiasFestivos;
+      $( contenedor ).append( 
+        '<div id="div_festivos'+numero+'" class="content">'+ 
+            '<input id="inicio_'+numero+
+                '" type="text" placeholder="aaaa-mm-dd" onblur="validaFecha(\'inicio_'+
+                numero+'\')" value="'+diaF+'" onchange="enable_button(\'guardar\')" />'+
+            '<textarea id="descripcion_'+numero+
+                '" onblur="validaDescripcion(\'descripcion_'+
+                numero+'\')" onchange="enable_button(\'guardar\')">'+descripcionD+'</textarea>'+ 
+            '<button class="quitarFestivo">-</button>'+ 
+          '</div>'); 
+          $('#inicio_'+numeroDeDiasFestivos).datePickerElem();
+          $('body').eliminarElemento();
+    });
   }
 })( jQuery, window ); 
