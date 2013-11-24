@@ -15,6 +15,7 @@ function mostrar_ciclo() {
       document.getElementById('fecha_fin').value = info['fecha_fin'];
       var dias = info['dia_no_efectivo'].length;
       console.log('dias no efectivos: '+dias);
+      jQuery('body').limpiarListaDeHijos('#inputWrapper');
       for (var i = 0; i < dias; i++) {
         //console.log(info['dia_no_efectivo'][i]+': '+info['descripcion'][i]);
         jQuery('body').mostrarDiasFestivos('#inputWrapper',info['dia_no_efectivo'][i],info['descripcion'][i]);

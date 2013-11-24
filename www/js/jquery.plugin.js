@@ -164,4 +164,9 @@ var idnCExtra=0;
           $('body').eliminarElemento();
     });
   }
+  $.fn.limpiarListaDeHijos = function (contenedor) {
+    return this.each( function () {
+      $( contenedor ).empty();
+    });
+  }
 })( jQuery, window ); 
