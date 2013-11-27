@@ -81,7 +81,7 @@ function agregar_curso()
   var duracion="";
   for(i=1;i<=id_horario;i++)
   {
-    if(documen t.getElementById('cClase_m_'+i))
+    if(document.getElementById('cClase_m_'+i))
     {
       dia_actual=document.getElementById('SelectDia_m_'+i).value.trim();
       hora_actual=document.getElementById('Hora_inicio_clasem_'+i).value.trim();
