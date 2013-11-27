@@ -49,23 +49,23 @@ function mostrar_curso() {
   });
 }
 
-function mostrar_materia() {
-  clave = document.getElementById('clave_materia').value;
+function mostrar_materia(clave_materia, materia, academia) {
+  clave = document.getElementById(clave_materia).value;
 
   $.ajax({
     type: 'POST',
     data: {llenar_materia:'', clave:clave},
     dataType: 'json',
     success: function(info) {
-      document.getElementById('materia').value = info['materia'];
-      document.getElementById('academia').value = info['academia'];
+      document.getElementById(materia).value = info['materia'];
+      document.getElementById(academia).value = info['academia'];
     },
     error: function() {
-      caja = document.getElementById('clave_materia');
+      caja = document.getElementById(clave_materia);
       colorearCaja(false);
       caja.title="La clave de la materia es incorrecta";
-      document.getElementById('materia').value = '';
-      document.getElementById('academia').value = '';
+      document.getElementById(materia).value = '';
+      document.getElementById(academia).value = '';
     }
   });
 }

@@ -22,9 +22,7 @@
     <fieldset>
       <label>Clave de la Materia</label>
       <br>
-      <input type="text" name="clave_materia" placeholder="Clave de la Materia"
-      id="clave_materia" onblur="validaClaveMateria('clave_materia') &&
-      mostrar_materia()" oninput="enable_button('guardar')" />
+      <input type="text" name="clave_materia" placeholder="Clave de la Materia" id="clave_materia" onblur="validaClaveMateria('clave_materia') && mostrar_materia('clave_materia', 'materia', 'academia')" oninput="enable_button('guardar')" />
       <br>
 
       <label>Materia</label>
@@ -80,7 +78,7 @@
 
           <label>Clave de la materia</label>
           <br />
-          <input type="text" name="new_clave" id="new_clave" placeholder="Clave de la materia" onblur="validaClaveMateria('new_clave')">
+          <input type="text" name="new_clave" id="new_clave" placeholder="Clave de la Materia" onblur="validaClaveMateria('new_clave') && mostrar_materia('new_clave', 'new_materia', 'new_academia')" />
           <br />
 
           <label>NRC</label>
