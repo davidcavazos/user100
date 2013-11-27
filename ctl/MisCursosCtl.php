@@ -11,7 +11,7 @@ class MisCursosCtl extends BaseCtl {
       $q = $mdl->datos("SELECT * FROM curso")[0];
       $info = array();
       $info['nrc'] = $q['nrc'];
-      $info['materia'] = $q['nombre_materia'];
+      $info['materia'] = $q['clave_materia'];
       $info['seccion'] = $q['seccion'];
       $q = $mdl->datos("SELECT * FROM detalle_curso");
       $info['dia'] = array();
@@ -34,7 +34,7 @@ class MisCursosCtl extends BaseCtl {
       $nrc = $_POST['nrc'];
       $new_nrc = $_POST['new_nrc'];
       $ciclo = $_POST['ciclo'];
-      $materia = $_POST['nombre_materia'];
+      $materia = $_POST['clave_materia'];
       $seccion = $_POST['seccion'];
       $academia = $_POST['academia'];
       $dias = $_POST['dia'];
@@ -107,12 +107,12 @@ class MisCursosCtl extends BaseCtl {
     $final_fila = $inicio_fila + 40;
     $fila = substr($body, $inicio_fila, $final_fila - $inicio_fila);
 
-    $datos = $mdl->datos('SELECT * FROM curso ORDER BY nombre_materia');
+    $datos = $mdl->datos('SELECT * FROM curso ORDER BY clave_materia');
     $filas = '';
     foreach ($datos as $row) {
       $new_fila = $fila;
       $dict = array(
-        '{CURSO}' => $row['nrc'] . ' - ' . $row['nombre_materia'],
+        '{CURSO}' => $row['nrc'] . ' - ' . $row['clave_materia'],
       );
       $new_fila = strtr($new_fila, $dict);
       $filas .= $new_fila;

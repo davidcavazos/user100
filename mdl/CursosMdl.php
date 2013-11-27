@@ -17,9 +17,9 @@ class CursosMdl extends BaseMdl {
       echo 'Error: ' . $this->driver->error;
       return FALSE;
     }
-    
+
     if(strlen($dia)!=0)
-    {   
+    {
       $dia=trim($dia,",");
       $hora=trim($hora,",");
       $duracion=trim($duracion,",");
@@ -27,7 +27,7 @@ class CursosMdl extends BaseMdl {
       $hora=explode(",", $hora);
       $duracion=explode(",", $duracion);
       for($i=0;$i<sizeof($dia);$i++)
-      {   
+      {
         $query=
         "INSERT INTO detalle_curso VALUES(
         '$nrc',
@@ -35,12 +35,12 @@ class CursosMdl extends BaseMdl {
         '".$duracion[$i]."',
         '".$hora[$i]."')";
         $r = $this->driver->query($query);
-      }   
-    }   
+      }
+    }
     if ($r === FALSE) {
       echo 'Error: ' . $this->driver->error;
       return FALSE;
-    }   
+    }
 
     return $this->driver->insert_id;
   }
