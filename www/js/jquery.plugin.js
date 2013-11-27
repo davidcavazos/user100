@@ -82,7 +82,7 @@ var idnCExtra=0;
             '<div id="cClase_'+p+'_'+id_horario+'" class="content">'+ 
               '<select id="SelectDia_'+p+'_'+id_horario+'" name="dia_'+id_horario+'"></select><br />'+
               '<input id="Hora_inicio_clase'+p+'_'+id_horario+'" type="text" placeholder="Hora inicio clase" />'+
-              '<input id="Hora_fin_clase'+p+'_'+id_horario+'" type="text" placeholder="Hora fin clase" />'+
+              '<input id="duracion_'+p+'_'+id_horario+'" type="text" placeholder="Duracion de la clase" />'+
               '<button class="quitarDia">-</button>'+ 
             '</div>');
           for (i=0; i<6; i++) {

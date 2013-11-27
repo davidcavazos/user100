@@ -69,3 +69,36 @@ function mostrar_materia() {
     }
   });
 }
+
+function agregar_curso()
+{
+  ciclo = document.getElementById('new_ciclo').value;
+  clave = document.getElementById('new_clave').value;
+  nrc = document.getElementById('new_nrc').value;
+  seccion = document.getElementById('new_seccion').value;
+  var dia="";
+  var hora="";
+  var duracion="";
+  for(i=1;i<=id_horario;i++)
+  {
+    if(documen t.getElementById('cClase_m_'+i))
+    {
+      dia_actual=document.getElementById('SelectDia_m_'+i).value.trim();
+      hora_actual=document.getElementById('Hora_inicio_clasem_'+i).value.trim();
+      duracion_actual=document.getElementById('duracion_'+i).value.trim();
+      if(dia_festivo_actual.length!=0 || descripcion_actual.length!=0)
+      {
+        dia_festivo+=dia_festivo_actual+",";
+        descripcion+=descripcion_actual+",";
+      }
+    }
+  }
+  $.ajax({
+    type: 'POST',
+    data: {guardar:'',ciclo:c,new_ciclo:nc,fecha_inicio:fi,fecha_fin:ff,diafestivo:dia_festivo,descripciondia:descripcion},
+    success: function() {
+      document.getElementById('guardar').disabled = true;
+      location.reload();
+    }
+  });
+}
