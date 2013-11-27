@@ -18,15 +18,17 @@ function toggle_modal_clonar() {
 
 function mostrar_curso() {
   ciclo = document.getElementById('ciclo_select').value;
-  curso = document.getElementById('curso_select').value;
+  clave = document.getElementById('curso_select').value.split(" ")[0];
 
   $.ajax({
     type: 'POST',
-    data: {llenar_curso:'', ciclo:ciclo, curso:curso},
+    data: {llenar_curso:'', ciclo:ciclo, clave:clave},
     dataType: 'json',
     success: function(info) {
-      document.getElementById('nrc').value = info['nrc'];
+      document.getElementById('clave_materia').value = info['clave_materia'];
       document.getElementById('materia').value = info['materia'];
+      document.getElementById('academia').value = info['academia'];
+      document.getElementById('nrc').value = info['nrc'];
       document.getElementById('seccion').value = info['seccion'];
       var horarios = info['dia'].length;
       console.log('horarios: '+horarios);
@@ -37,7 +39,6 @@ function mostrar_curso() {
     error: function() {
       document.getElementById('ciclo_select').disabled = true;
       document.getElementById('curso_select').disabled = true;
-      document.getElementById('seccion_select').disabled = true;
       document.getElementById('clave_materia').disabled = true;
       document.getElementById('nrc').disabled = true;
       document.getElementById('seccion').disabled = true;

@@ -7,11 +7,13 @@ class MisCursosCtl extends BaseCtl {
     $mdl = new CursosMdl();
     if (isset($_POST['llenar_curso'])) {
       $ciclo = $_POST['ciclo'];
-      $curso = $_POST['curso'];
-      $q = $mdl->datos("SELECT * FROM curso")[0];
+      $clave = $_POST['clave'];
+      $q = $mdl->datos("SELECT * FROM curso INNER JOIN materia WHERE clave='$clave'")[0];
       $info = array();
+      $info['clave_materia'] = $q['clave'];
+      $info['academia'] = $q['academia'];
+      $info['materia'] = $q['materia'];
       $info['nrc'] = $q['nrc'];
-      $info['materia'] = $q['clave_materia'];
       $info['seccion'] = $q['seccion'];
       $q = $mdl->datos("SELECT * FROM detalle_curso");
       $info['dia'] = array();
@@ -107,12 +109,12 @@ class MisCursosCtl extends BaseCtl {
     $final_fila = $inicio_fila + 40;
     $fila = substr($body, $inicio_fila, $final_fila - $inicio_fila);
 
-    $datos = $mdl->datos('SELECT * FROM curso ORDER BY clave_materia');
+    $datos = $mdl->datos('SELECT * FROM curso INNER JOIN materia WHERE curso.clave_materia=materia.clave ORDER BY curso.clave_materia,curso.seccion');
     $filas = '';
     foreach ($datos as $row) {
       $new_fila = $fila;
       $dict = array(
-        '{CURSO}' => $row['nrc'] . ' - ' . $row['clave_materia'],
+        '{CURSO}' => $row['clave_materia'].' - '.$row['materia'].' ('.$row['seccion'].')',
       );
       $new_fila = strtr($new_fila, $dict);
       $filas .= $new_fila;
