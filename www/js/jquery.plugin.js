@@ -8,6 +8,7 @@
 var numeroDeDiasFestivos=0;
 var numeroDeDiasFestivosM=0;
 var id_horario=0;
+var id_horario_m=0;
 var idnCExtra=0;
 (function( $, window, undefined ) {
   var DIAS_MAXIMOS = 7,
@@ -70,19 +71,32 @@ var idnCExtra=0;
     });
   }
   $.fn.agregaDiaDeClase = function(contenedor) { 
-    var ndia, c;
+    var ndia=0, c, id_horario_f;
     return this.each(function() { 
       $(this).on('click', function () { 
         c = $(this).siblings( contenedor ).attr('id'); 
-        if ( c.lastIndexOf('_m') == -1 ) { p = ''; } else { p = 'm' } 
+        if ( c.lastIndexOf('_m') == -1 ) { p = ''; } else { p = '_m' } 
         $("#guardar").removeAttr("disabled");
         if ( $('.content').size() < DIAS_MAXIMOS_CLASE ) { 
-          id_horario++;
+          if ( c == 'wrapper_m' ) {
+            id_horario_f = id_horario_m;
+            id_horario_m++;
+          } else if (c == 'wrapper') {
+            id_horario_f = id_horario;
+            id_horario++;
+          }
           $( '#' + c ).append( 
+<<<<<<< HEAD
+            '<div id="cClase'+p+'_'+id_horario_f+'" class="content">'+ 
+              '<select id="SelectDia'+p+'_'+id_horario_f+'" name="dia'+p+'_'+id_horario_f+'"></select><br />'+
+              '<input id="Hora_inicio_clase'+p+'_'+id_horario_f+'" type="text" placeholder="Hora inicio clase" />'+
+              '<input id="Hora_fin_clase'+p+'_'+id_horario_f+'" type="text" placeholder="Hora fin clase" />'+
+=======
             '<div id="cClase_'+p+'_'+id_horario+'" class="content">'+ 
               '<select id="SelectDia_'+p+'_'+id_horario+'" name="dia_'+id_horario+'"></select><br />'+
               '<input id="Hora_inicio_clase'+p+'_'+id_horario+'" type="text" placeholder="Hora inicio clase" />'+
               '<input id="duracion_'+p+'_'+id_horario+'" type="text" placeholder="Duracion de la clase" />'+
+>>>>>>> 79c7a115572dd6ad9a5fbdb68ad6ae0de5309dc9
               '<button class="quitarDia">-</button>'+ 
             '</div>');
           for (i=0; i<6; i++) {
@@ -94,7 +108,7 @@ var idnCExtra=0;
               case 4: ndia='Viernes';break;
               case 5: ndia='Sabado';break;
             }
-            $('#SelectDia_'+p+'_'+id_horario).append('<option id="dia_'+i+'">'+ndia+'</option>');
+            $('#SelectDia'+p+'_'+id_horario_f).append('<option id="dia'+p+'_'+i+'">'+ndia+'</option>');
           }
         }; 
       }); 
