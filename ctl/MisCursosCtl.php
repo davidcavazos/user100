@@ -42,7 +42,19 @@ class MisCursosCtl extends BaseCtl {
       $horarios = $_POST['horario'];
       $mdl->modificar($nrc, $new_nrc, $ciclo, $materia, $seccion, $academia,
                       $dias, $horas_por_dia, $horarios);
-    } else {
+    }
+    elseif(isset($_POST['guardar']))
+    {
+      $ciclo=$_POST['ciclo'];
+      $clave=$_POST['clave'];
+      $nrc=$_POST['nrc'];
+      $seccion=$_POST['seccion'];
+      $dia=$_POST['dia'];
+      $hora=$_POST['hora'];
+      $duracion=$_POST['duracion'];
+      $mdl->insertar($ciclo, $clave, $nrc, $seccion, $dia, $hora, $duracion);
+    }
+    else {
       $this->mostrar();
     }
   }

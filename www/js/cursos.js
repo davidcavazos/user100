@@ -81,23 +81,23 @@ function agregar_curso()
   var duracion="";
   for(i=1;i<=id_horario;i++)
   {
-    if(documen t.getElementById('cClase_m_'+i))
+    if(document.getElementById('cClase_'+i))
     {
       dia_actual=document.getElementById('SelectDia_m_'+i).value.trim();
       hora_actual=document.getElementById('Hora_inicio_clasem_'+i).value.trim();
       duracion_actual=document.getElementById('duracion_'+i).value.trim();
       if(dia_festivo_actual.length!=0 || descripcion_actual.length!=0)
       {
-        dia_festivo+=dia_festivo_actual+",";
-        descripcion+=descripcion_actual+",";
+        dia+=dia_actual+",";
+        hora+=hora_actual+",";
+        duracion+=duracion_actual+",";
       }
     }
   }
   $.ajax({
     type: 'POST',
-    data: {guardar:'',ciclo:c,new_ciclo:nc,fecha_inicio:fi,fecha_fin:ff,diafestivo:dia_festivo,descripciondia:descripcion},
+    data: {guardar:'',ciclo:ciclo,clave:clave,nrc:nrc,seccion:seccion,dia:dia,hora:hora, duracion:duracion},
     success: function() {
-      document.getElementById('guardar').disabled = true;
       location.reload();
     }
   });
