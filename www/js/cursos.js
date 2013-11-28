@@ -37,11 +37,11 @@ function mostrar_curso() {
     error: function() {
       document.getElementById('ciclo_select').disabled = true;
       document.getElementById('curso_select').disabled = true;
+      document.getElementById('seccion_select').disabled = true;
       document.getElementById('clave_materia').disabled = true;
       document.getElementById('nrc').disabled = true;
       document.getElementById('seccion').disabled = true;
       document.getElementById('b_diaclase').disabled = true;
-      document.getElementById('b_diaclase_m').disabled = true;
       document.getElementById('ver_evaluacion').disabled = true;
       document.getElementById('ver_asistencias').disabled = true;
       document.getElementById('clonar').disabled = true;

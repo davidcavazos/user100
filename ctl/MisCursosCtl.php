@@ -60,11 +60,11 @@ class MisCursosCtl extends BaseCtl {
   }
 
   public function generarBody() {
+    $body = file_get_contents($this->vstFile);
+
     // Ciclo
     require_once('mdl/CiclosMdl.php');
     $mdl = new CiclosMdl();
-
-    $body = file_get_contents($this->vstFile);
 
     $inicio_fila = strrpos($body, '<option value="{CICLO}">');
     $final_fila = $inicio_fila + 40;
@@ -76,6 +76,23 @@ class MisCursosCtl extends BaseCtl {
       $new_fila = $fila;
       $dict = array(
         '{CICLO}' => $row['ciclo'],
+      );
+      $new_fila = strtr($new_fila, $dict);
+      $filas .= $new_fila;
+    }
+    $body = str_replace($fila, $filas, $body);
+
+    // New Ciclo
+    $inicio_fila = strrpos($body, '<option value="{NEWCICLO}">');
+    $final_fila = $inicio_fila + 43;
+    $fila = substr($body, $inicio_fila, $final_fila - $inicio_fila);
+
+    $datos = $mdl->datos('SELECT * FROM ciclo_escolar ORDER BY ciclo DESC');
+    $filas = '';
+    foreach ($datos as $row) {
+      $new_fila = $fila;
+      $dict = array(
+        '{NEWCICLO}' => $row['ciclo'],
       );
       $new_fila = strtr($new_fila, $dict);
       $filas .= $new_fila;
