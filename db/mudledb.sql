@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.8.1
+-- version 3.5.8.2
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 05, 2013 at 09:58 PM
+-- Generation Time: Nov 28, 2013 at 02:48 AM
 -- Server version: 5.5.33a-MariaDB
 -- PHP Version: 5.5.5
 
@@ -65,9 +65,8 @@ CREATE TABLE IF NOT EXISTS `ciclo_escolar` (
 CREATE TABLE IF NOT EXISTS `curso` (
   `nrc` varchar(5) NOT NULL DEFAULT 'NULL',
   `ciclo` varchar(5) NOT NULL DEFAULT 'NULL',
-  `nombre_materia` varchar(30) DEFAULT NULL,
+  `clave_materia` varchar(30) DEFAULT NULL,
   `seccion` varchar(5) DEFAULT NULL,
-  `academia` varchar(30) DEFAULT NULL,
   `carga_horaria` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

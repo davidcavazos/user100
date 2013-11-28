@@ -5,7 +5,7 @@ class CursosMdl extends BaseMdl {
   public function agregar($ciclo, $clave,$nrc,$seccion, $dia, $hora, $duracion)
   {
     $query =
-      "INSERT INTO curso (nrc, ciclo, nombre_materia, seccion)
+      "INSERT INTO curso (nrc, ciclo, clave_materia, seccion)
        VALUES (
          '$nrc',
          '$ciclo',
