@@ -11,8 +11,10 @@ function toggle_modal_clonar() {
   e = document.getElementById('modal');
   e.style.visibility = e.style.visibility == 'visible' ? 'hidden' : 'visible';
 
-  document.getElementById('new_nrc').value = document.getElementById('nrc').value;
+  document.getElementById('new_clave').value = document.getElementById('clave_materia').value;
   document.getElementById('new_materia').value = document.getElementById('materia').value;
+  document.getElementById('new_academia').value = document.getElementById('academia').value;
+  document.getElementById('new_nrc').value = document.getElementById('nrc').value;
   document.getElementById('new_seccion').value = document.getElementById('seccion').value;
 }
 

@@ -96,7 +96,7 @@ class MisCursosCtl extends BaseCtl {
 
     // New Ciclo
     $inicio_fila = strrpos($body, '<option value="{NEWCICLO}">');
-    $final_fila = $inicio_fila + 43;
+    $final_fila = $inicio_fila + 46;
     $fila = substr($body, $inicio_fila, $final_fila - $inicio_fila);
 
     $datos = $mdl->datos('SELECT * FROM ciclo_escolar ORDER BY ciclo DESC');
