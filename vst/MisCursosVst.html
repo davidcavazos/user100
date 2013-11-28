@@ -2,16 +2,16 @@
   <h1>Mis Cursos</h1>
 
   <div>
-    <select id="ciclo_select">
+    <select id="ciclo_select" onchange="ver_curso()">
       <option value="{CICLO}">{CICLO}</option>
     </select>
 
-    <select id="curso_select">
+    <select id="curso_select" onchange="mostrar_curso()">
       <option value="{CURSO}">{CURSO}</option>
     </select>
 
-    <input type="button" id="ver_evaluacion" value="Ver Evaluacion" onclick="location='index.php?ctl=evaluacion'" />
-    <input type="button" id="ver_asistencias" value="Ver Asistencias" onclick="location='index.php?ctl=asistencias'" />
+    <input type="button" id="ver_evaluacion" value="Ver Evaluacion" onclick="ver_evaluacion()" />
+    <input type="button" id="ver_asistencias" value="Ver Asistencias" onclick="ver_asistencias()" />
   </div>
 
   <form>

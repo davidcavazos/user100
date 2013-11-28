@@ -2,16 +2,16 @@
   <h1>Asistencias</h1>
 
   <div>
-    <select>
+    <select id="ciclo_select" onchange="ver_asistencias()">
       <option value="{CICLO}">{CICLO}</option>
     </select>
 
-    <select>
+    <select id="curso_select">
       <option value="{CURSO}">{CURSO}</option>
     </select>
 
-    <input type="button" value="Ver Curso" onclick="location='index.php?ctl=mis_cursos'">
-    <input type="button" value="Ver Evaluacion" onclick="location='index.php?ctl=evaluacion'">
+    <input type="button" value="Ver Curso" onclick="ver_curso()">
+    <input type="button" value="Ver Evaluacion" onclick="ver_evaluacion()">
   </div>
 
   <table>

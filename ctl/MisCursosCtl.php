@@ -73,6 +73,13 @@ class MisCursosCtl extends BaseCtl {
     $fila = substr($body, $inicio_fila, $final_fila - $inicio_fila);
 
     $datos = $mdl->datos('SELECT * FROM ciclo_escolar ORDER BY ciclo DESC');
+    if (!empty($ciclo)) {
+      $ciclo = $datos[0]['ciclo'];
+    }
+    if (isset($_GET['ciclo'])) {
+      $ciclo = $_GET['ciclo'];
+    }
+
     $filas = '';
     foreach ($datos as $row) {
       $new_fila = $fila;
@@ -80,6 +87,9 @@ class MisCursosCtl extends BaseCtl {
         '{CICLO}' => $row['ciclo'],
       );
       $new_fila = strtr($new_fila, $dict);
+      if ($row['ciclo'] == $ciclo) {
+        $new_fila = strtr($new_fila, array('>' => ' selected>'));
+      }
       $filas .= $new_fila;
     }
     $body = str_replace($fila, $filas, $body);
@@ -109,14 +119,24 @@ class MisCursosCtl extends BaseCtl {
     $final_fila = $inicio_fila + 40;
     $fila = substr($body, $inicio_fila, $final_fila - $inicio_fila);
 
-    $datos = $mdl->datos('SELECT * FROM curso INNER JOIN materia WHERE curso.clave_materia=materia.clave ORDER BY curso.clave_materia,curso.seccion');
+    $datos = $mdl->datos("SELECT * FROM curso INNER JOIN materia WHERE clave_materia=clave AND ciclo='$ciclo' ORDER BY clave, seccion");
+    if (!empty($datos)) {
+      $clave = $datos[0]['clave'];
+    }
+    if (isset($_GET['clave'])) {
+      $clave = $_GET['clave'];
+    }
+
     $filas = '';
     foreach ($datos as $row) {
       $new_fila = $fila;
       $dict = array(
-        '{CURSO}' => $row['clave_materia'].' - '.$row['materia'].' ('.$row['seccion'].')',
+        '{CURSO}' => $row['clave'].' - '.$row['materia'].' ('.$row['seccion'].')',
       );
       $new_fila = strtr($new_fila, $dict);
+      if ($row['clave'] == $clave) {
+        $new_fila = strtr($new_fila, array('>' => ' selected>'));
+      }
       $filas .= $new_fila;
     }
     $body = str_replace($fila, $filas, $body);

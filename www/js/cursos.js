@@ -37,7 +37,6 @@ function mostrar_curso() {
       }
     },
     error: function() {
-      document.getElementById('ciclo_select').disabled = true;
       document.getElementById('curso_select').disabled = true;
       document.getElementById('clave_materia').disabled = true;
       document.getElementById('nrc').disabled = true;
