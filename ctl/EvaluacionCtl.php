@@ -5,18 +5,11 @@ class EvaluacionCtl extends BaseCtl {
   public function ejecutar() {
     require_once('mdl/UsuariosMdl.php');
     $mdl = new UsuariosMdl();
-    if (isset($_POST['get_codigos'])) {
-      $q = $mdl->datos("SELECT codigo FROM usuario");
+    if (isset($_POST['get_alumnos'])) {
+      $q = $mdl->datos("SELECT codigo, apellidos, nombres FROM usuario");
       $info = array();
-      foreach ($q as $codigo) {
-        $info[] = $codigo['codigo'];
-      }
-      echo json_encode($info);
-    } elseif (isset($_POST['get_alumnos'])) {
-      $q = $mdl->datos("SELECT apellidos, nombres FROM usuario");
-      $info = array();
-      foreach ($q as $alumno) {
-        $info[] = $alumno['apellidos'].', '.$alumno['nombres'];
+      foreach ($q as $a) {
+        $info[] = $a['apellidos'].', '.$a['nombres'].' ('.$a['codigo'].')';
       }
       echo json_encode($info);
     } else {

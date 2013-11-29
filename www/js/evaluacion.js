@@ -39,22 +39,11 @@ function toggle_botones() {
   document.getElementById('elim_alumno').disabled = !activado;
 }
 
-function autocomplete_codigo() {
-  $.ajax({
-    type: 'POST',
-    data: {get_codigos:''},
-    dataType: 'json',
-    success: function(info) {
-      var tags = [];
-      for (i = 0; i < info.length; i++) {
-        tags.push(info[i]);
-      }
-      $("#codigo").autocomplete({source: tags});
-    }
-  });
-}
-
 function autocomplete_alumno() {
+  alumno = document.getElementById('alumno').value;
+  button = document.getElementById('inscribir_alumno');
+  button.disabled = true;
+
   $.ajax({
     type: 'POST',
     data: {get_alumnos:''},
@@ -63,6 +52,9 @@ function autocomplete_alumno() {
       var tags = [];
       for (i = 0; i < info.length; i++) {
         tags.push(info[i]);
+        if (info[i] == alumno) {
+          button.disabled = false;
+        }
       }
       $("#alumno").autocomplete({source: tags});
     }
