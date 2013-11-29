@@ -5,6 +5,12 @@ function on_load() {
 function toggle_modal_agregar() {
   e = document.getElementById('modal');
   e.style.visibility = e.style.visibility == 'visible' ? 'hidden' : 'visible';
+
+  document.getElementById('new_clave').value = '';
+  document.getElementById('new_materia').value = '';
+  document.getElementById('new_academia').value = '';
+  document.getElementById('new_nrc').value = '';
+  document.getElementById('new_seccion').value = '';
 }
 
 function toggle_modal_clonar() {
