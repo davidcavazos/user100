@@ -40,31 +40,41 @@ function toggle_botones() {
 }
 
 function autocomplete_codigo() {
+  codigo = document.getElementById('codigo').value;
+  button = document.getElementById('inscribir_alumno');
+  button.disabled = true;
+
   $.ajax({
     type: 'POST',
     data: {get_codigos:''},
     dataType: 'json',
     success: function(info) {
-      var tags = [];
       for (i = 0; i < info.length; i++) {
-        tags.push(info[i]);
+        if (info[i] == codigo) {
+          button.disabled = false;
+        }
       }
-      $("#codigo").autocomplete({source: tags});
+      $("#codigo").autocomplete({source: info});
     }
   });
 }
 
 function autocomplete_alumno() {
+  alumno = document.getElementById('alumno').value;
+  button = document.getElementById('inscribir_alumno');
+  button.disabled = true;
+
   $.ajax({
     type: 'POST',
     data: {get_alumnos:''},
     dataType: 'json',
     success: function(info) {
-      var tags = [];
       for (i = 0; i < info.length; i++) {
-        tags.push(info[i]);
+        if (info[i] == alumno) {
+          button.disabled = false;
+        }
       }
-      $("#alumno").autocomplete({source: tags});
+      $("#alumno").autocomplete({source: info});
     }
   });
 }

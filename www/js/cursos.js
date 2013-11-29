@@ -121,11 +121,7 @@ function autocomplete_materia(idinput) {
     data: {get_claves:''},
     dataType: 'json',
     success: function(info) {
-      var tags = [];
-      for (i = 0; i < info.length; i++) {
-        tags.push(info[i]);
-      }
-      $('#'+idinput).autocomplete({source: tags});
+      $('#'+idinput).autocomplete({source: info});
     }
   });
 }
