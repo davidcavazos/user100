@@ -36,3 +36,33 @@ function toggle_botones() {
 
   document.getElementById('elim_alumno').disabled = !activado;
 }
+
+function autocomplete_codigo() {
+  $.ajax({
+    type: 'POST',
+    data: {get_codigos:''},
+    dataType: 'json',
+    success: function(info) {
+      var tags = [];
+      for (i = 0; i < info.length; i++) {
+        tags.push(info[i]);
+      }
+      $("#codigo").autocomplete({source: tags});
+    }
+  });
+}
+
+function autocomplete_alumno() {
+  $.ajax({
+    type: 'POST',
+    data: {get_alumnos:''},
+    dataType: 'json',
+    success: function(info) {
+      var tags = [];
+      for (i = 0; i < info.length; i++) {
+        tags.push(info[i]);
+      }
+      $("#alumno").autocomplete({source: tags});
+    }
+  });
+}

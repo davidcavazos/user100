@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
 <article>
   <h1>Evaluacion</h1>
 
@@ -42,15 +45,20 @@
   <br>
 
   <div>
-    <input type="button" id="agregar_rubro" value="Agregar Rubro">
-    <input type="button" id="agregar_subtabla" value="Agregar Subtabla">
-    <input type="button" id="elim_rubros" value="Eliminar Rubros" disabled>
+    <input type="text" id="codigo" placeholder="Codigo" oninput="autocomplete_codigo()">
+    <input type="text" id="alumno" placeholder="Alumno" oninput="autocomplete_alumno()">
+    <input type="button" id="inscribir_alumno" value="Inscribir Alumno" disabled>
   </div>
 
   <div>
-    <input type="button" id="inscribir_alumno" value="Inscribir Alumno">
     <input type="button" id="leer_csv_alumnos" value="Leer Alumnos de CSV">
     <input type="button" id="elim_alumno" value="Desinscribir Alumnos" disabled>
+  </div>
+
+  <div>
+    <input type="button" id="agregar_rubro" value="Agregar Rubro">
+    <input type="button" id="agregar_subtabla" value="Agregar Subtabla">
+    <input type="button" id="elim_rubros" value="Eliminar Rubros" disabled>
   </div>
 
   <script type="text/javascript" src="www/js/evaluacion.js"></script>

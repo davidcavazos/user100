@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
 <article>
   <h1>Mis Cursos</h1>
 
@@ -18,7 +21,7 @@
     <fieldset>
       <label>Clave de la Materia</label>
       <br>
-      <input type="text" name="clave_materia" placeholder="Clave de la Materia" id="clave_materia" onblur="validaClaveMateria('clave_materia') && mostrar_materia('clave_materia', 'materia', 'academia')" oninput="enable_button('guardar')" />
+      <input type="text" name="clave_materia" placeholder="Clave de la Materia" id="clave_materia" oninput="autocomplete_materia('clave_materia')" onblur="validaClaveMateria('clave_materia') && mostrar_materia('clave_materia', 'materia', 'academia')" oninput="enable_button('guardar')" />
       <br>
 
       <label>Materia</label>
@@ -74,7 +77,7 @@
 
           <label>Clave de la materia</label>
           <br />
-          <input type="text" name="new_clave" id="new_clave" placeholder="Clave de la Materia" onblur="validaClaveMateria('new_clave') && mostrar_materia('new_clave', 'new_materia', 'new_academia')" />
+          <input type="text" name="new_clave" id="new_clave" placeholder="Clave de la Materia" oninput="autocomplete_materia('new_clave')" onblur="validaClaveMateria('new_clave') && mostrar_materia('new_clave', 'new_materia', 'new_academia')" />
           <br />
 
           <label>Materia</label>

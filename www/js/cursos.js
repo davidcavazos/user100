@@ -114,3 +114,18 @@ function agregar_curso()
     }
   });
 }
+
+function autocomplete_materia(idinput) {
+  $.ajax({
+    type: 'POST',
+    data: {get_claves:''},
+    dataType: 'json',
+    success: function(info) {
+      var tags = [];
+      for (i = 0; i < info.length; i++) {
+        tags.push(info[i]);
+      }
+      $('#'+idinput).autocomplete({source: tags});
+    }
+  });
+}
