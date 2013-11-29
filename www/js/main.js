@@ -313,6 +313,24 @@ function validaPass(id)
   }
 }
 
+function validaDuracionClase(id)
+{
+  caja=document.getElementById(id);
+  caja.value=caja.value.trim();
+  if(!caja.value.match("^[0-9]$"))
+  {
+    colorearCaja(false);
+    caja.title="Este campo debe contener un solo digito";
+    return false;
+  }
+  else
+  {
+    colorearCaja(true);
+    caja.title="";
+    return true;
+  }
+}
+
 function validaCampoExtra(id)
 {
   caja = document.getElementById(id);
@@ -391,13 +409,13 @@ function validaHora(id)
         return false;
 
     }
-    if(parseInt(split[0])<0 || parseInt(split[0])>23 || caja.value.length!=2)
+    if(parseInt(split[0])<0 || parseInt(split[0])>23 || split[0].length!=2)
     {
         colorearCaja(false);
         caja.title="El rango valido de horas es de 00 a 23 y de dos digitos";
         return false;
     }
-    if(parseInt(split[1])<0 || parseInt(split[1])>59 || caja.value.length!=2)
+    if(parseInt(split[1])<0 || parseInt(split[1])>59 || split[1].length!=2)
     {
         colorearCaja(false);
         caja.title="El rango valido de minutos es de 00 a 59 y de dos digitos";
@@ -410,7 +428,6 @@ function validaHora(id)
       return true;
     }
 }
-
 
 
 function validaGuardarCambiosCiclo()
@@ -446,6 +463,42 @@ function validaGuardarCambiosCiclo()
   if(validacion)
   {
     guardar_ciclo();
+  }
+
+}
+
+function validaAltaCursos()
+{
+  var validacion=true;
+  if(!validaClaveMateria('new_clave'))
+  {
+    validacion=false;
+  }
+  if(!validaNRC('new_nrc'))
+  {
+    validacion=false;
+  }
+  if(!validaSeccion('new_seccion'))
+  {
+    validacion=false;
+  }
+  for(i=0;i<=id_horario_m;i++)
+  {
+    if(document.getElementById('cClase_m_'+i))
+    {   
+      if(!validaHora('Hora_inicio_clase_m_'+i))
+      {   
+        validacion=false;
+      }   
+      if(!validaDuracionClase('duracion__m_'+i))
+      {   
+        validacion=false;
+      }   
+    }   
+  }
+  if(validacion)
+  {
+    agregar_curso();
   }
 
 }

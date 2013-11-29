@@ -89,7 +89,7 @@ var idnCExtra=0;
             '<div id="cClase'+p+'_'+id_horario_f+'" class="content">'+ 
               '<select id="SelectDia'+p+'_'+id_horario_f+'" name="dia'+p+'_'+id_horario_f+'"></select><br />'+
               '<input id="Hora_inicio_clase'+p+'_'+id_horario_f+'" type="text" placeholder="Hora inicio clase" onblur="validaHora(\'Hora_inicio_clase'+p+'_'+id_horario_f+'\')"/>'+
-              '<input id="duracion_'+p+'_'+id_horario_f+'" type="text" placeholder="Duracion clase" />'+
+              '<input id="duracion_'+p+'_'+id_horario_f+'" type="text" placeholder="Duracion clase" onblur="validaDuracionClase(\'duracion_'+p+'_'+id_horario_f+'\')"/>'+
               '<button class="quitarDia">-</button>'+ 
             '</div>');
           for (i=0; i<6; i++) {

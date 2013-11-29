@@ -43,7 +43,7 @@ function mostrar_curso() {
       document.getElementById('nrc').value = info['nrc'];
       document.getElementById('seccion').value = info['seccion'];
       var horarios = info['dia'].length;
-      console.log('horarios: '+horarios);
+      //console.log('horarios: '+horarios);
       for (var i = 0; i < horarios; i++) {
         console.log(info['dia'][i]+': '+info['horas_por_dia'][i]+', '+info['horario'][i]);
       }
@@ -91,14 +91,14 @@ function agregar_curso()
   var dia="";
   var hora="";
   var duracion="";
-  for(i=1;i<=id_horario;i++)
+  for(i=0;i<=id_horario_m;i++)
   {
-    if(document.getElementById('cClase_'+i))
+    if(document.getElementById('cClase_m_'+i))
     {
       dia_actual=document.getElementById('SelectDia_m_'+i).value.trim();
-      hora_actual=document.getElementById('Hora_inicio_clasem_'+i).value.trim();
-      duracion_actual=document.getElementById('duracion_'+i).value.trim();
-      if(dia_festivo_actual.length!=0 || descripcion_actual.length!=0)
+      hora_actual=document.getElementById('Hora_inicio_clase_m_'+i).value.trim();
+      duracion_actual=document.getElementById('duracion__m_'+i).value.trim();
+      if(dia_actual.length!=0 || hora_actual.length!=0 || duracion_actual.length!=0)
       {
         dia+=dia_actual+",";
         hora+=hora_actual+",";
@@ -108,8 +108,10 @@ function agregar_curso()
   }
   $.ajax({
     type: 'POST',
-    data: {guardar:'',ciclo:ciclo,clave:clave,nrc:nrc,seccion:seccion,dia:dia,hora:hora, duracion:duracion},
+    data: {agregar:'',new_ciclo:ciclo,new_clave:clave,new_nrc:nrc,
+    new_seccion:seccion,new_dia:dia,new_hora:hora,new_duracion:duracion},
     success: function() {
+      console.log();
       location.reload();
     }
   });
