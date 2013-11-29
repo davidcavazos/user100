@@ -54,7 +54,7 @@ class MisCursosCtl extends BaseCtl {
       $dia=$_POST['new_dia'];
       $hora=$_POST['new_hora'];
       $duracion=$_POST['new_duracion'];
-      $mdl->insertar($ciclo, $clave, $nrc, $seccion, $dia, $hora, $duracion);
+      $mdl->agregar($ciclo, $clave, $nrc, $seccion, $dia, $hora, $duracion);
     } elseif (isset($_POST['get_claves'])) {
       $q = $mdl->datos("SELECT clave FROM materia");
       $info = array();

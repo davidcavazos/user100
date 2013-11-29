@@ -10,7 +10,7 @@ class CursosMdl extends BaseMdl {
          '$nrc',
          '$ciclo',
          '$clave',
-         '$seccion',
+         '$seccion'
        )";
     $r = $this->driver->query($query);
     if ($r === FALSE) {
