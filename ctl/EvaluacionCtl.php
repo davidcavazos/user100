@@ -69,9 +69,6 @@ class EvaluacionCtl extends BaseCtl {
     }
     $body = str_replace($fila, $filas, $body);
 
-    $this->onload_fcn = 'on_load()';
-
-    /*
     // Alumnos
     require_once('mdl/UsuariosMdl.php');
     $mdl = new UsuariosMdl();
@@ -80,7 +77,7 @@ class EvaluacionCtl extends BaseCtl {
     $final_fila = strrpos($body, '</tr>') + 5;
     $fila = substr($body, $inicio_fila, $final_fila - $inicio_fila);
 
-    $datos = $mdl->datos('SELECT * FROM usuario ORDER BY codigo');
+    $datos = $mdl->datos('SELECT * FROM usuario ORDER BY apellidos');
     $filas = '';
     $num = 1;
     foreach ($datos as $row) {
@@ -102,7 +99,6 @@ class EvaluacionCtl extends BaseCtl {
     $body = str_replace($fila, $filas, $body);
 
     $this->onload_fcn = 'on_load()';
-     */
     return $body;
   }
 }

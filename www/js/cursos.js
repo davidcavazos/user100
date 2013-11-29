@@ -22,6 +22,10 @@ function mostrar_curso() {
   ciclo = document.getElementById('ciclo_select').value;
   clave = document.getElementById('curso_select').value.split(" ")[0];
 
+  if (ciclo == '') {
+    document.getElementById('ciclo_select').disabled = true;
+  }
+
   $.ajax({
     type: 'POST',
     data: {llenar_curso:'', ciclo:ciclo, clave:clave},

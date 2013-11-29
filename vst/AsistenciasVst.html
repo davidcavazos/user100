@@ -6,12 +6,12 @@
       <option value="{CICLO}">{CICLO}</option>
     </select>
 
-    <select id="curso_select">
+    <select id="curso_select" onchange="ver_asistencias()">
       <option value="{CURSO}">{CURSO}</option>
     </select>
 
-    <input type="button" value="Ver Curso" onclick="ver_curso()">
-    <input type="button" value="Ver Evaluacion" onclick="ver_evaluacion()">
+    <input type="button" id="ver_curso" value="Ver Curso" onclick="ver_curso()">
+    <input type="button" id="ver_evaluacion" value="Ver Evaluacion" onclick="ver_evaluacion()">
   </div>
 
   <table>

@@ -2,11 +2,11 @@
   <h1>Evaluacion</h1>
 
   <div>
-    <select id="ciclo_select" onclick="ver_evaluacion()">
+    <select id="ciclo_select" onchange="ver_evaluacion()">
       <option value="{CICLO}">{CICLO}</option>
     </select>
 
-    <select id="curso_select">
+    <select id="curso_select" onchange="ver_evaluacion()">
       <option value="{CURSO}">{CURSO}</option>
     </select>
 
@@ -42,14 +42,14 @@
   <br>
 
   <div>
-    <input type="button" value="Agregar Rubro">
-    <input type="button" value="Agregar Subtabla">
-    <input type="button" value="Eliminar Rubros" disabled>
+    <input type="button" id="agregar_rubro" value="Agregar Rubro">
+    <input type="button" id="agregar_subtabla" value="Agregar Subtabla">
+    <input type="button" id="elim_rubros" value="Eliminar Rubros" disabled>
   </div>
 
   <div>
-    <input type="button" value="Inscribir Alumno">
-    <input type="button" value="Leer Alumnos de CSV">
+    <input type="button" id="inscribir_alumno" value="Inscribir Alumno">
+    <input type="button" id="leer_csv_alumnos" value="Leer Alumnos de CSV">
     <input type="button" id="elim_alumno" value="Desinscribir Alumnos" disabled>
   </div>
 
