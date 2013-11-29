@@ -88,8 +88,8 @@ var idnCExtra=0;
           $( '#' + c ).append( 
             '<div id="cClase'+p+'_'+id_horario_f+'" class="content">'+ 
               '<select id="SelectDia'+p+'_'+id_horario_f+'" name="dia'+p+'_'+id_horario_f+'"></select><br />'+
-              '<input id="Hora_inicio_clase'+p+'_'+id_horario_f+'" type="text" placeholder="Hora inicio clase" />'+
-              '<input id="Hora_fin_clase'+p+'_'+id_horario_f+'" type="text" placeholder="Hora fin clase" />'+
+              '<input id="Hora_inicio_clase'+p+'_'+id_horario_f+'" type="text" placeholder="Hora inicio clase" onblur="validaHora(\'Hora_inicio_clase'+p+'_'+id_horario_f+'\')"/>'+
+              '<input id="duracion_'+p+'_'+id_horario_f+'" type="text" placeholder="Duracion clase" />'+
               '<button class="quitarDia">-</button>'+ 
             '</div>');
           for (i=0; i<6; i++) {

@@ -371,6 +371,48 @@ function validaRegistrarCiclo()
 
 }
 
+
+function validaHora(id)
+{
+    caja=document.getElementById(id);
+    caja.value=caja.value.trim();
+    caja.value= caja.value.replace(" ", "");
+    var split = caja.value.split(":");
+    if(caja.value.indexOf(":")<0)
+    {
+        colorearCaja(false);
+        caja.title="La cadena no contiene ':'";
+        return false;
+    }
+    if(caja.value.length != 5 )
+    {
+        colorearCaja(false);
+        caja.title="La hora debe de tener la siguiente estructura: \"hh:mm\"";
+        return false;
+
+    }
+    if(parseInt(split[0])<0 || parseInt(split[0])>23 || caja.value.length!=2)
+    {
+        colorearCaja(false);
+        caja.title="El rango valido de horas es de 00 a 23 y de dos digitos";
+        return false;
+    }
+    if(parseInt(split[1])<0 || parseInt(split[1])>59 || caja.value.length!=2)
+    {
+        colorearCaja(false);
+        caja.title="El rango valido de minutos es de 00 a 59 y de dos digitos";
+        return false;
+    }
+    else
+    {
+      colorearCaja(true);
+      caja.title="";
+      return true;
+    }
+}
+
+
+
 function validaGuardarCambiosCiclo()
 {
   var validacion=true;
