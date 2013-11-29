@@ -13,10 +13,10 @@ class EvaluacionCtl extends BaseCtl {
       }
       echo json_encode($info);
     } elseif (isset($_POST['get_alumnos'])) {
-      $q = $mdl->datos("SELECT apellidos, nombres FROM usuario");
+      $q = $mdl->datos("SELECT codigo, apellidos, nombres FROM usuario");
       $info = array();
-      foreach ($q as $alumno) {
-        $info[] = $alumno['apellidos'].', '.$alumno['nombres'];
+      foreach ($q as $a) {
+        $info[] = $a['apellidos'].', '.$a['nombres'].' ('.$a['codigo'].')';
       }
       echo json_encode($info);
     } else {
