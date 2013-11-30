@@ -8,7 +8,7 @@ class MisCursosCtl extends BaseCtl {
     if (isset($_POST['llenar_curso'])) {
       $ciclo = $_POST['ciclo'];
       $clave = $_POST['clave'];
-      $q = $mdl->datos("SELECT * FROM curso INNER JOIN materia WHERE clave='$clave'")[0];
+      $q = $mdl->datos("SELECT * FROM curso INNER JOIN materia WHERE clave='$clave'" )[0];
       if (count($q) == 0) {
         echo 'Error: no se encontro';
         return;
@@ -19,7 +19,7 @@ class MisCursosCtl extends BaseCtl {
       $info['materia'] = $q['materia'];
       $info['nrc'] = $q['nrc'];
       $info['seccion'] = $q['seccion'];
-      $q = $mdl->datos("SELECT * FROM detalle_curso");
+      $q = $mdl->datos("SELECT * FROM detalle_curso WHERE ciclonrc='".$q['ciclo'].$q['nrc']."'");
       $info['dia'] = array();
       $info['horas_por_dia'] = array();
       $info['horario'] = array();
@@ -43,19 +43,20 @@ class MisCursosCtl extends BaseCtl {
       echo json_encode($info);
     } elseif (isset($_POST['modificar'])) 
     {
+      $ciclonrc = $_POST['ciclonrc'];
       $nrc = $_POST['nrc'];
-      $new_nrc = $_POST['new_nrc'];
       $ciclo = $_POST['ciclo'];
       $clave = $_POST['clave'];
       $seccion = $_POST['seccion'];
       $dias = $_POST['dia'];
       $horas_por_dia = $_POST['hora'];
       $horarios = $_POST['duracion'];
-      $mdl->modificar($nrc, $new_nrc, $ciclo, $clave, $seccion,
+      $mdl->modificar($nrc, $ciclonrc, $ciclo, $clave, $seccion,
                       $dias, $horas_por_dia, $horarios);
     }
     elseif(isset($_POST['agregar']))
     {
+      $ciclonrc=$_POST['ciclonrc'];
       $ciclo=$_POST['new_ciclo'];
       $clave=$_POST['new_clave'];
       $nrc=$_POST['new_nrc'];
@@ -63,7 +64,8 @@ class MisCursosCtl extends BaseCtl {
       $dia=$_POST['new_dia'];
       $hora=$_POST['new_hora'];
       $duracion=$_POST['new_duracion'];
-      $mdl->agregar($ciclo, $clave, $nrc, $seccion, $dia, $hora, $duracion);
+      $mdl->agregar($ciclonrc,$ciclo, $clave, $nrc, $seccion, 
+      $dia, $hora, $duracion);
     } elseif (isset($_POST['get_claves'])) {
       $q = $mdl->datos("SELECT clave FROM materia");
       if (count($q) == 0) {
