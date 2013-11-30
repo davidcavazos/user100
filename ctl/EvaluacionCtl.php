@@ -6,7 +6,7 @@ class EvaluacionCtl extends BaseCtl {
     require_once('mdl/UsuariosMdl.php');
     $mdl = new UsuariosMdl();
     if (isset($_POST['get_alumnos'])) {
-      $q = $mdl->datos("SELECT codigo, apellidos, nombres FROM usuario");
+      $q = $mdl->datos("SELECT codigo, apellidos, nombres FROM usuario WHERE tipo_usuario>0");
       if (count($q) == 0) {
         echo 'Error: no se encontro';
         return;
@@ -33,6 +33,7 @@ class EvaluacionCtl extends BaseCtl {
     $fila = substr($body, $inicio_fila, $final_fila - $inicio_fila);
 
     $datos = $mdl->datos('SELECT * FROM ciclo_escolar ORDER BY ciclo DESC');
+    $ciclo='';
     if (!empty($datos)) {
       $ciclo = $datos[0]['ciclo'];
     }
@@ -92,7 +93,7 @@ class EvaluacionCtl extends BaseCtl {
     $final_fila = strrpos($body, '</tr>') + 5;
     $fila = substr($body, $inicio_fila, $final_fila - $inicio_fila);
 
-    $datos = $mdl->datos('SELECT * FROM usuario ORDER BY apellidos');
+    $datos = $mdl->datos('SELECT * FROM usuario WHERE tipo_usuario>0 ORDER BY apellidos');
     $filas = '';
     $num = 1;
     foreach ($datos as $row) {

@@ -92,6 +92,7 @@ class MisCursosCtl extends BaseCtl {
     $fila = substr($body, $inicio_fila, $final_fila - $inicio_fila);
 
     $datos = $mdl->datos('SELECT * FROM ciclo_escolar ORDER BY ciclo DESC');
+    $ciclo='';
     if (!empty($datos)) {
       $ciclo = $datos[0]['ciclo'];
     }

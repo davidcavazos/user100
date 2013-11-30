@@ -36,6 +36,23 @@ function limpiarVariablesPost()
 }
 
 // Ejecutar
+if (session_status() == PHP_SESSION_NONE) {
+  session_start();
+}
+
+if (isset($_GET['logout'])) {
+  session_unset();
+  session_destroy();
+  setcookie(session_name(), '', time()-3600);
+  header('Location:login.php');
+  die();
+}
+
+if (isset($_SESSION['user'])) {
+  header('Location:index.php?mis_cursos');
+  die();
+}
+
 require_once('mdl/LoginMdl.php');
 $mdl = new LoginMdl();
 if(isset($_POST['login']))
