@@ -1,3 +1,6 @@
+
+var old_nrc="";
+
 function on_load() {
   mostrar_curso();
 }
@@ -42,6 +45,7 @@ function mostrar_curso() {
       document.getElementById('academia').value = info['academia'];
       document.getElementById('nrc').value = info['nrc'];
       document.getElementById('seccion').value = info['seccion'];
+      old_nrc=info['nrc'];
       var horarios = info['dia'].length;
       //console.log('horarios: '+horarios);
       for (var i = 0; i < horarios; i++) {
@@ -84,6 +88,7 @@ function mostrar_materia(clave_materia, materia, academia) {
 
 function agregar_curso()
 {
+  
   ciclo = document.getElementById('new_ciclo').value;
   clave = document.getElementById('new_clave').value;
   nrc = document.getElementById('new_nrc').value;
@@ -119,6 +124,7 @@ function agregar_curso()
 
 function modificar_curso()
 {
+  alert(old_nrc);
   ciclo = document.getElementById('ciclo').value;
   clave = document.getElementById('clave_materia').value;
   nrc = document.getElementById('nrc').value;
@@ -143,7 +149,7 @@ function modificar_curso()
   }
   $.ajax({
     type: 'POST',
-    data: {modificar:'',ciclo:ciclo, clave:clave,nrc:nrc,
+    data: {modificar:'',ciclo:ciclo, clave:clave,new_nrc:nrc,old_nrc:old_nrc,
     seccion:seccion, dia:dia, hora:hora, duracion:duracion},
     success: function() {
       console.log();

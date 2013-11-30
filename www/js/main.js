@@ -534,6 +534,7 @@ function validaCambiosCursos()
   }
   if(validacion)
   {
+    modificar_curso();
   }
 }
 
