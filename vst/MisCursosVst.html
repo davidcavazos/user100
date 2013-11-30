@@ -18,6 +18,10 @@
 
   <form>
     <fieldset>
+      <label>Ciclo Escolar</label>
+      <br>
+      <input type="text" name="ciclo" id="ciclo" placeholder="Ciclo Escolar" />
+      <br>
       <label>Clave de la Materia</label>
       <br>
       <input type="text" name="clave_materia" placeholder="Clave de la Materia" id="clave_materia" oninput="autocomplete_materia('clave_materia')" onblur="validaClaveMateria('clave_materia') && mostrar_materia('clave_materia', 'materia', 'academia')" oninput="enable_button('guardar')" />

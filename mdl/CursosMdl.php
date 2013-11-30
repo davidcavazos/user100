@@ -45,26 +45,25 @@ class CursosMdl extends BaseMdl {
     return $this->driver->insert_id;
   }
 
-  public function modificar($nrc, $new_nrc, $ciclo, $materia, $seccion,
-                            $dias, $horas_por_dia, $horarios)
+  public function modificar($nrc, $new_nrc, $ciclo, $clave, $seccion,
+                            $dia, $hora, $duracion)
   {
     $query =
       "UPDATE curso SET
          nrc='$new_nrc',
          ciclo='$ciclo',
-         nombre='$nombre',
-         seccion='$seccion',
-         academia='$academia'
+         clave_materia='$clave',
+         seccion='$seccion'
        WHERE nrc='$nrc'";
     $r = $this->driver->query($query);
     if ($r === FALSE) {
       echo 'Error: ' . $this->driver->error;
       return FALSE;
     }
+    $query="DELETE FROM detalle_curso WHERE nrc='".$nrc."'";
+    $r = $this->driver->query($query);
     if(strlen($dia)!=0)
     {
-      $query=
-      "DELETE FROM D";
       $dia=trim($dia,",");
       $hora=trim($hora,",");
       $duracion=trim($duracion,",");
@@ -75,7 +74,7 @@ class CursosMdl extends BaseMdl {
       {
         $query=
         "INSERT INTO detalle_curso VALUES(
-        '$nrc',
+        '".$new_nrc."',
         '".$dia[$i]."',
         '".$duracion[$i]."',
         '".$hora[$i]."')";

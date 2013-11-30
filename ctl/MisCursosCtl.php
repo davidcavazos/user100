@@ -42,12 +42,12 @@ class MisCursosCtl extends BaseCtl {
       $nrc = $_POST['nrc'];
       $new_nrc = $_POST['new_nrc'];
       $ciclo = $_POST['ciclo'];
-      $materia = $_POST['clave_materia'];
+      $clave = $_POST['clave'];
       $seccion = $_POST['seccion'];
       $dias = $_POST['dia'];
       $horas_por_dia = $_POST['hora'];
       $horarios = $_POST['duracion'];
-      $mdl->modificar($nrc, $new_nrc, $ciclo, $clave_materia, $seccion,
+      $mdl->modificar($nrc, $new_nrc, $ciclo, $clave, $seccion,
                       $dias, $horas_por_dia, $horarios);
     }
     elseif(isset($_POST['agregar']))
