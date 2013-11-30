@@ -503,6 +503,40 @@ function validaAltaCursos()
 
 }
 
+function validaCambiosCursos()
+{
+  var validacion=true;
+  if(!validaClaveMateria('clave_materia'))
+  {
+    validacion=false;
+  }
+  if(!validaNRC('nrc'))
+  {
+    validacion=false;
+  }
+  if(!validaSeccion('seccion'))
+  {
+    validacion=false;
+  }
+  for(i=0;i<=id_horario;i++)
+  {
+    if(document.getElementById('cClase_'+i))
+    {   
+      if(!validaHora('Hora_inicio_clase_'+i))
+      {   
+        validacion=false;
+      }   
+      if(!validaDuracionClase('duracion__'+i))
+      {   
+        validacion=false;
+      }   
+    }   
+  }
+  if(validacion)
+  {
+  }
+}
+
 function validaRegistrarUsuario()
 {
   var validacion=true;

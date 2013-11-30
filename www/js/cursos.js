@@ -117,6 +117,40 @@ function agregar_curso()
   });
 }
 
+function modificar_curso()
+{
+  ciclo = document.getElementById('ciclo').value;
+  clave = document.getElementById('clave_materia').value;
+  nrc = document.getElementById('nrc').value;
+  seccion = document.getElementById('seccion').value;
+  var dia="";
+  var hora="";
+  var duracion="";
+  for(i=0;i<=id_horario;i++)
+  {
+    if(document.getElementById('cClase_'+i))
+    {
+      dia_actual=document.getElementById('SelectDia_'+i).value.trim();
+      hora_actual=document.getElementById('Hora_inicio_clase_'+i).value.trim();
+      duracion_actual=document.getElementById('duracion__'+i).value.trim();
+      if(dia_actual.length!=0 || hora_actual.length!=0 || duracion_actual.length!=0)
+      {
+        dia+=dia_actual+",";
+        hora+=hora_actual+",";
+        duracion+=duracion_actual+",";
+      }
+    }
+  }
+  $.ajax({
+    type: 'POST',
+    data: {modificar:'',ciclo:ciclo, clave:clave,nrc:nrc,
+    seccion:seccion, dia:dia, hora:hora, duracion:duracion},
+    success: function() {
+      console.log();
+      location.reload();
+    }
+  });
+}
 function autocomplete_materia(idinput) {
   $.ajax({
     type: 'POST',

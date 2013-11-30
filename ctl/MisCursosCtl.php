@@ -25,24 +25,25 @@ class MisCursosCtl extends BaseCtl {
         $info['horario'][] = $dia['horario'];
       }
       echo json_encode($info);
-    } elseif (isset($_POST['llenar_materia'])) {
+    } elseif (isset($_POST['llenar_materia'])) 
+    {
       $clave = $_POST['clave'];
       $q = $mdl->datos("SELECT * FROM materia WHERE clave='$clave'")[0];
       $info = array();
       $info['materia'] = $q['materia'];
       $info['academia'] = $q['academia'];
       echo json_encode($info);
-    } elseif (isset($_POST['guardar'])) {
+    } elseif (isset($_POST['modificar'])) 
+    {
       $nrc = $_POST['nrc'];
       $new_nrc = $_POST['new_nrc'];
       $ciclo = $_POST['ciclo'];
       $materia = $_POST['clave_materia'];
       $seccion = $_POST['seccion'];
-      $academia = $_POST['academia'];
       $dias = $_POST['dia'];
-      $horas_por_dia = $_POST['horas_por_dia'];
-      $horarios = $_POST['horario'];
-      $mdl->modificar($nrc, $new_nrc, $ciclo, $materia, $seccion, $academia,
+      $horas_por_dia = $_POST['hora'];
+      $horarios = $_POST['duracion'];
+      $mdl->modificar($nrc, $new_nrc, $ciclo, $clave_materia, $seccion,
                       $dias, $horas_por_dia, $horarios);
     }
     elseif(isset($_POST['agregar']))
