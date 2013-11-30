@@ -7,6 +7,10 @@ class EvaluacionCtl extends BaseCtl {
     $mdl = new UsuariosMdl();
     if (isset($_POST['get_alumnos'])) {
       $q = $mdl->datos("SELECT codigo, apellidos, nombres FROM usuario");
+      if (count($q) == 0) {
+        echo 'Error: no se encontro';
+        return;
+      }
       $info = array();
       foreach ($q as $a) {
         $info[] = $a['apellidos'].', '.$a['nombres'].' ('.$a['codigo'].')';
