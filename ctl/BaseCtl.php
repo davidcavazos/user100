@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 abstract class BaseCtl {
   protected $titulo;
   protected $vstFile;
@@ -36,11 +38,16 @@ abstract class BaseCtl {
   }
 
   public function mostrar() {
-    $body = $this->generarBody();
-    $header = $this->generarHeader();
-    $footer = $this->generarFooter();
-    echo $header . $body . $footer;
-    //$this->amigableUrl();
+    //if (isset($_SESSION['user'])) {
+      $body = $this->generarBody();
+      $header = $this->generarHeader();
+      $footer = $this->generarFooter();
+      echo $header . $body . $footer;
+      //$this->amigableUrl();
+    //} else {
+    //  header('Location:login.php');
+    //  die();
+    //}
   }
 
   public function amigableUrl() {
@@ -79,13 +86,13 @@ abstract class BaseCtl {
 
   public function limpiarVariablesPost()
   {
-  	if(isset($_POST))
-	{
-		foreach ($_POST as $key => $input_arr) 
-		{ 
-			unset($_POST[$key]); 
-		}
-	}
+    if(isset($_POST))
+    {
+      foreach ($_POST as $key => $input_arr)
+      {
+        unset($_POST[$key]);
+      }
+    }
   }
 
 }

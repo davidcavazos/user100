@@ -601,7 +601,7 @@ function validaLogin()
   if(validacion)
   {
     var pss = document.getElementById('password');
-    pss.value = SHA256( pss.value );
+    //pss.value = SHA256( pss.value );
     document.formlogin.submit();
   }
 }

@@ -4,10 +4,6 @@
 $ctl;
 if (isset($_GET['ctl'])) {
   switch (htmlspecialchars($_GET['ctl'])) {
-    case 'mis_cursos':
-      require_once('ctl/MisCursosCtl.php');
-      $ctl = new MisCursosCtl('MisCursos', 'Mis Cursos');
-      break;
     case 'evaluacion':
       require_once('ctl/EvaluacionCtl.php');
       $ctl = new EvaluacionCtl('Evaluacion', 'Evaluacion');
@@ -28,15 +24,15 @@ if (isset($_GET['ctl'])) {
       require_once('ctl/RecuperarPasswordCtl.php');
       $ctl = new RecuperarPasswordCtl('RecuperarPassword', 'Recuperar Contrase&ntilde;a');
       break;
-    case 'login':
+    case 'mis_cursos':
     default:
-      require_once('ctl/LoginCtl.php');
-      $ctl = new LoginCtl('Login', 'Login');
+      require_once('ctl/MisCursosCtl.php');
+      $ctl = new MisCursosCtl('MisCursos', 'Mis Cursos');
       break;
   }
 } else {
-  require_once('ctl/LoginCtl.php');
-  $ctl = new LoginCtl('Login', 'Login');
+  require_once('ctl/MisCursosCtl.php');
+  $ctl = new MisCursosCtl('MisCursos', 'Mis Cursos');
 }
 
 $ctl->ejecutar();
