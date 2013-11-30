@@ -14,7 +14,6 @@ function on_load() {
   if (!curso_valido) {
     document.getElementById('ver_curso').disabled = true;
     document.getElementById('ver_asistencias').disabled = true;
-    document.getElementById('codigo').disabled = true;
     document.getElementById('alumno').disabled = true;
     document.getElementById('inscribir_alumno').disabled = true;
     document.getElementById('leer_csv_alumnos').disabled = true;
