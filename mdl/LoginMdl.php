@@ -1,9 +1,5 @@
 <?php
 
-if (session_status() == PHP_SESSION_NONE) {
-  session_start();
-}
-
 require_once('mdl/BaseMdl.php');
 class LoginMdl extends BaseMdl
 {

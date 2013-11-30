@@ -78,7 +78,7 @@ class AsistenciasCtl extends BaseCtl {
     $final_fila = strrpos($body, '</tr>') + 5;
     $fila = substr($body, $inicio_fila, $final_fila - $inicio_fila);
 
-    $datos = $mdl->datos('SELECT * FROM usuario WHERE tipo_usuario>0 ORDER BY apellidos');
+    $datos = $mdl->datos('SELECT * FROM usuario WHERE tipo_usuario=2 ORDER BY apellidos');
     $filas = '';
     $num = 1;
     foreach ($datos as $row) {

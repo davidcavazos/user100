@@ -1,15 +1,13 @@
 <?php
 
-if (session_status() == PHP_SESSION_NONE) {
-  session_start();
-}
-
 abstract class BaseCtl {
+  protected $tipo;
   protected $titulo;
   protected $vstFile;
   protected $onload_fcn;
 
   public function __construct($pagina, $titulo) {
+    $this->tipo = $_SESSION['tipo'];
     $this->titulo = $titulo;
     $this->vstFile = 'vst/' . $pagina . 'Vst.html';
     $this->onload_fcn = '';
@@ -29,6 +27,33 @@ abstract class BaseCtl {
     }
     $head .= file_get_contents('vst/BaseMenuVst.html');
     $head = str_replace('{USUARIO}', $_SESSION['user'], $head);
+    $menu = '';
+    switch ($this->tipo) {
+      case -1: // root
+        $menu .= '<li><a href="index.php?ctl=mis_cursos">Mis Cursos</a></li>';
+        $menu .= '<li><a href="index.php?ctl=evaluacion">Evaluacion</a></li>';
+        $menu .= '<li><a href="index.php?ctl=asistencias">Asistencias</a></li>';
+        $menu .= '<li><a href="index.php?ctl=usuarios">Usuarios</a></li>';
+        $menu .= '<li><a href="index.php?ctl=ciclos">Ciclos</a></li>';
+        break;
+      case 0:  // admin
+        $menu .= '<li><a href="index.php?ctl=usuarios">Usuarios</a></li>';
+        $menu .= '<li><a href="index.php?ctl=ciclos">Ciclos</a></li>';
+        break;
+      case 1:  // maestro
+        $menu .= '<li><a href="index.php?ctl=mis_cursos">Mis Cursos</a></li>';
+        $menu .= '<li><a href="index.php?ctl=evaluacion">Evaluacion</a></li>';
+        $menu .= '<li><a href="index.php?ctl=asistencias">Asistencias</a></li>';
+        $menu .= '<li><a href="index.php?ctl=usuarios">Usuarios</a></li>';
+        break;
+      case 2:  // alumno
+        $menu .= '<li><a href="index.php?ctl=mis_cursos">Mis Cursos</a></li>';
+        $menu .= '<li><a href="index.php?ctl=evaluacion">Evaluacion</a></li>';
+        $menu .= '<li><a href="index.php?ctl=asistencias">Asistencias</a></li>';
+        break;
+      default:
+    }
+    $head = str_replace('{MENU}', $menu, $head);
     return $head;
   }
 
