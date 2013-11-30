@@ -39,6 +39,10 @@ class UsuariosCtl extends BaseCtl {
     } elseif (isset($_POST['mostrar'])) {
       $codigo = $_POST['codigo'];
       $q = $mdl->datos("SELECT * FROM usuario WHERE codigo='$codigo'")[0];
+      if (count($q) == 0) {
+        echo 'Error: no se encontro';
+        return;
+      }
       echo json_encode($q);
     } else {
       $this->mostrar();

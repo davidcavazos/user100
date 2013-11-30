@@ -8,6 +8,10 @@ class CiclosCtl extends BaseCtl {
     if (isset($_POST['llenar_ciclo'])) {
       $ciclo = $_POST['llenar_ciclo'];
       $q = $mdl->datos("SELECT * FROM ciclo_escolar WHERE ciclo='$ciclo'")[0];
+      if (count($q) == 0) {
+        echo 'Error: no se encontro';
+        return;
+      }
       $info = array();
       $info['ciclo'] = $q['ciclo'];
       $info['fecha_inicio'] = $q['fecha_inicio'];

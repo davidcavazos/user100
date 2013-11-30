@@ -33,6 +33,10 @@ class MisCursosCtl extends BaseCtl {
     {
       $clave = $_POST['clave'];
       $q = $mdl->datos("SELECT * FROM materia WHERE clave='$clave'")[0];
+      if (count($q) == 0) {
+        echo 'Error: no se encontro';
+        return;
+      }
       $info = array();
       $info['materia'] = $q['materia'];
       $info['academia'] = $q['academia'];
@@ -62,6 +66,10 @@ class MisCursosCtl extends BaseCtl {
       $mdl->agregar($ciclo, $clave, $nrc, $seccion, $dia, $hora, $duracion);
     } elseif (isset($_POST['get_claves'])) {
       $q = $mdl->datos("SELECT clave FROM materia");
+      if (count($q) == 0) {
+        echo 'Error: no se encontro';
+        return;
+      }
       $info = array();
       foreach ($q as $clave) {
         $info[] = $clave['clave'];
