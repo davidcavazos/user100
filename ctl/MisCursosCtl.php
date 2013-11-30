@@ -9,6 +9,10 @@ class MisCursosCtl extends BaseCtl {
       $ciclo = $_POST['ciclo'];
       $clave = $_POST['clave'];
       $q = $mdl->datos("SELECT * FROM curso INNER JOIN materia WHERE clave='$clave'")[0];
+      if (count($q) == 0) {
+        echo 'Error: no se encontro';
+        return;
+      }
       $info = array();
       $info['clave_materia'] = $q['clave'];
       $info['academia'] = $q['academia'];
