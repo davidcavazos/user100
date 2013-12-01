@@ -86,11 +86,8 @@ function agregar_usuario()
            codigo:document.getElementById('codigo').value,
            nombres:document.getElementById('nombres').value,
            apellidos:document.getElementById('apellidos').value,
-           password:'asdf',
-           tipo:'0',
            carrera:document.getElementById('carrera').value,
            email:document.getElementById('email').value,
-           activo:'1',
            campoextra:campoExtra,
            tipoCampo:campoExtraTipo},
     success: function() {

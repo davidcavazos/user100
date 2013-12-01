@@ -9,11 +9,11 @@ class UsuariosCtl extends BaseCtl {
       $codigo = $_POST['codigo'];
       $nombres = $_POST['nombres'];
       $apellidos = $_POST['apellidos'];
-      $password = $_POST['password'];
-      $tipo = $_POST['tipo'];
+      $password = 'asdf';
+      $tipo = $this->tipo + 1;
       $carrera = $_POST['carrera'];
       $email = $_POST['email'];
-      $activo = $_POST['activo'];
+      $activo = 1;
       $campoExtra = $_POST['campoextra'];
       $tipoCampo = $_POST['tipoCampo'];
       $this->limpiarVariablesPost();
@@ -38,7 +38,7 @@ class UsuariosCtl extends BaseCtl {
       }
     } elseif (isset($_POST['mostrar'])) {
       $codigo = $_POST['codigo'];
-      $q = $mdl->datos("SELECT * FROM usuario WHERE codigo='$codigo' AND tipo_usuario>0")[0];
+      $q = $mdl->datos("SELECT * FROM usuario WHERE codigo='$codigo' AND tipo_usuario>'$this->tipo'")[0];
       if (count($q) == 0) {
         echo 'Error: no se encontro';
         return;
@@ -54,12 +54,25 @@ class UsuariosCtl extends BaseCtl {
     $mdl = new UsuariosMdl();
 
     $body = file_get_contents($this->vstFile);
+    $tipo_usuario = 'Usuario';
+    switch ($this->tipo) {
+      case -1: // root
+        $tipo_usuario = 'Admin';
+        break;
+      case 0:  // admin
+        $tipo_usuario = 'Maestro';
+        break;
+      case 1:  // maestro
+        $tipo_usuario = 'Alumno';
+        break;
+    }
+    $body = str_replace('{TIPO_USUARIO}', $tipo_usuario, $body);
 
     $inicio_fila = strrpos($body, '<tr>');
     $final_fila = strrpos($body, '</tr>') + 5;
     $fila = substr($body, $inicio_fila, $final_fila - $inicio_fila);
 
-    $datos = $mdl->datos('SELECT * FROM usuario WHERE tipo_usuario>0 ORDER BY apellidos');
+    $datos = $mdl->datos("SELECT * FROM usuario WHERE tipo_usuario>'$this->tipo' ORDER BY apellidos");
     $filas = '';
     $num = 1;
     foreach ($datos as $row) {

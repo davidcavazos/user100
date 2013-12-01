@@ -6,7 +6,7 @@ class EvaluacionCtl extends BaseCtl {
     require_once('mdl/UsuariosMdl.php');
     $mdl = new UsuariosMdl();
     if (isset($_POST['get_alumnos'])) {
-      $q = $mdl->datos("SELECT codigo, apellidos, nombres FROM usuario WHERE tipo_usuario>0");
+      $q = $mdl->datos("SELECT codigo, apellidos, nombres FROM usuario WHERE tipo_usuario=2");
       if (count($q) == 0) {
         echo 'Error: no se encontro';
         return;
@@ -96,8 +96,7 @@ class EvaluacionCtl extends BaseCtl {
     $final_fila = strrpos($body, '</tr>') + 5;
     $fila = substr($body, $inicio_fila, $final_fila - $inicio_fila);
 
-    //$datos = $mdl->datos("SELECT * FROM curso INNER JOIN materia WHERE clave_materia=clave AND ciclo='$ciclo' ORDER BY clave, seccion");
-    $datos = $mdl->datos("SELECT * FROM usuario WHERE codigo IN( SELECT codigo FROM grupo WHERE ciclonrc='".$ciclo.$nrc."') AND tipo_usuario>0 ORDER BY apellidos");
+    $datos = $mdl->datos("SELECT * FROM usuario WHERE tipo_usuario=2 AND codigo IN( SELECT codigo FROM grupo WHERE ciclonrc='".$ciclo.$nrc."') AND tipo_usuario>0 ORDER BY apellidos");
     $filas = '';
     $num = 1;
     foreach ($datos as $row) {
@@ -112,11 +111,31 @@ class EvaluacionCtl extends BaseCtl {
         '{CARRERA}' => $row['carrera'],
         '{TOTAL}' => '0'
       );
+
+      if ($this->tipo == 2) {
+        $start = strrpos($fila, "<!--B{-->");
+        $end = strrpos($fila, "<!--}B-->") + 9;
+        $control = substr($fila, $start, $end - $start);
+        $new_fila = str_replace($control, '', $fila);
+      }
+
       $num += 1;
       $new_fila = strtr($new_fila, $dict);
       $filas .= $new_fila;
     }
     $body = str_replace($fila, $filas, $body);
+
+    if ($this->tipo == 2) {
+      $start = strrpos($body, '<!--A{-->');
+      $end = strrpos($body, '<!--}A-->') + 9;
+      $control = substr($body, $start, $end - $start);
+      $body = str_replace($control, '', $body);
+
+      $start = strrpos($body, '<!--C{-->');
+      $end = strrpos($body, '<!--}C-->') + 9;
+      $control = substr($body, $start, $end - $start);
+      $body = str_replace($control, '', $body);
+    }
 
     $this->onload_fcn = 'on_load()';
     return $body;

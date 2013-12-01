@@ -78,7 +78,7 @@ class AsistenciasCtl extends BaseCtl {
     $final_fila = strrpos($body, '</tr>') + 5;
     $fila = substr($body, $inicio_fila, $final_fila - $inicio_fila);
 
-    $datos = $mdl->datos('SELECT * FROM usuario WHERE tipo_usuario>0 ORDER BY apellidos');
+    $datos = $mdl->datos('SELECT * FROM usuario WHERE tipo_usuario=2 ORDER BY apellidos');
     $filas = '';
     $num = 1;
     foreach ($datos as $row) {
@@ -93,11 +93,31 @@ class AsistenciasCtl extends BaseCtl {
         '{CARRERA}' => $row['carrera'],
         '{TOTAL}' => '0'
       );
+
+      if ($this->tipo == 2) {
+        $start = strrpos($fila, "<!--B{-->");
+        $end = strrpos($fila, "<!--}B-->") + 9;
+        $control = substr($fila, $start, $end - $start);
+        $new_fila = str_replace($control, '', $fila);
+      }
+
       $num += 1;
       $new_fila = strtr($new_fila, $dict);
       $filas .= $new_fila;
     }
     $body = str_replace($fila, $filas, $body);
+
+    if ($this->tipo == 2) {
+      $start = strrpos($body, '<!--A{-->');
+      $end = strrpos($body, '<!--}A-->') + 9;
+      $control = substr($body, $start, $end - $start);
+      $body = str_replace($control, '', $body);
+
+      $start = strrpos($body, '<!--C{-->');
+      $end = strrpos($body, '<!--}C-->') + 9;
+      $control = substr($body, $start, $end - $start);
+      $body = str_replace($control, '', $body);
+    }
 
     $this->onload_fcn = 'on_load()';
     return $body;
