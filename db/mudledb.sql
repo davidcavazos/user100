@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 28, 2013 at 02:48 AM
+-- Generation Time: Dec 01, 2013 at 01:51 AM
 -- Server version: 5.5.33a-MariaDB
 -- PHP Version: 5.5.5
 
@@ -23,25 +23,14 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `asistencias`
+-- Table structure for table `calificacion`
 --
 
-CREATE TABLE IF NOT EXISTS `asistencias` (
-  `id_grupo` smallint(6) DEFAULT NULL,
-  `codigo` varchar(15) DEFAULT NULL,
-  `nrc` varchar(5) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `calificaciones`
---
-
-CREATE TABLE IF NOT EXISTS `calificaciones` (
-  `id_grupo` smallint(6) DEFAULT NULL,
-  `codigo` varchar(15) DEFAULT NULL,
-  `nrc` varchar(5) DEFAULT NULL
+CREATE TABLE IF NOT EXISTS `calificacion` (
+  `ciclonrc` varchar(10) DEFAULT NULL,
+  `codigo` varchar(9) DEFAULT NULL,
+  `rubro` varchar(30) DEFAULT NULL,
+  `calificacion` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -63,23 +52,11 @@ CREATE TABLE IF NOT EXISTS `ciclo_escolar` (
 --
 
 CREATE TABLE IF NOT EXISTS `curso` (
+  `ciclonrc` varchar(10) NOT NULL,
   `nrc` varchar(5) NOT NULL DEFAULT 'NULL',
   `ciclo` varchar(5) NOT NULL DEFAULT 'NULL',
-  `clave_materia` varchar(30) DEFAULT NULL,
-  `seccion` varchar(5) DEFAULT NULL,
-  `carga_horaria` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `detalle_calificaciones`
---
-
-CREATE TABLE IF NOT EXISTS `detalle_calificaciones` (
-  `id_grupo` smallint(6) DEFAULT NULL,
-  `numero_tarea` tinyint(4) DEFAULT NULL,
-  `calificacion` tinyint(4) DEFAULT NULL
+  `clave_materia` varchar(5) DEFAULT NULL,
+  `seccion` varchar(5) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -101,22 +78,10 @@ CREATE TABLE IF NOT EXISTS `detalle_ciclo_escolar` (
 --
 
 CREATE TABLE IF NOT EXISTS `detalle_curso` (
-  `nrc` varchar(5) DEFAULT NULL,
+  `ciclonrc` varchar(10) DEFAULT NULL,
   `dia` varchar(10) DEFAULT NULL,
   `horas_por_dia` tinyint(4) DEFAULT NULL,
   `horario` varchar(15) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `detalle_lista`
---
-
-CREATE TABLE IF NOT EXISTS `detalle_lista` (
-  `id_grupo` smallint(6) DEFAULT NULL,
-  `dia_asistencia` date DEFAULT NULL,
-  `asistencia` tinyint(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -129,6 +94,22 @@ CREATE TABLE IF NOT EXISTS `detalle_usuario` (
   `codigo` varchar(9) NOT NULL,
   `campo_extra` varchar(50) NOT NULL,
   `valor` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `grupo`
+--
+
+CREATE TABLE IF NOT EXISTS `grupo` (
+  `ciclonrc` varchar(10) NOT NULL,
+  `codigo` varchar(9) NOT NULL,
+  `mes1` int(11) NOT NULL,
+  `mes2` int(11) NOT NULL,
+  `mes3` int(11) NOT NULL,
+  `mes4` int(11) NOT NULL,
+  `mes5` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -276,6 +257,18 @@ INSERT INTO `materia` (`clave`, `materia`, `academia`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `rubro`
+--
+
+CREATE TABLE IF NOT EXISTS `rubro` (
+  `ciclonrc` varchar(10) NOT NULL,
+  `rubro` varchar(30) NOT NULL,
+  `porcentaje` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `usuario`
 --
 
@@ -289,6 +282,14 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `email` varchar(40) DEFAULT NULL,
   `activo` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `usuario`
+--
+
+INSERT INTO `usuario` (`codigo`, `nombres`, `apellidos`, `password`, `tipo_usuario`, `carrera`, `email`, `activo`) VALUES
+('000000000', 'root', 'root', 'root', -1, 'root', 'root@root.com', 1),
+('999999999', 'admin', 'admin', 'admin', 0, 'admin', 'admin@admin.com', 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
