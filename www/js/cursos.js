@@ -47,8 +47,13 @@ function mostrar_curso() {
       old_ciclonrc=document.getElementById('ciclo').value+info['nrc'];
       var horarios = info['dia'].length;
       //console.log('horarios: '+horarios);
+      jQuery('body').limpiarListaDeHijos('#wrapper');
       for (var i = 0; i < horarios; i++) {
-        console.log(info['dia'][i]+': '+info['horas_por_dia'][i]+', '+info['horario'][i]);
+        //console.log(info['dia'][i]+': '+info['horas_por_dia'][i]+', '+info['horario'][i]);
+        jQuery('body').mostrarDiaDeClase('#wrapper',
+                                          info['dia'][i],
+                                          info['horas_por_dia'][i],
+                                          info['horario'][i]);
       }
     },
     error: function() {

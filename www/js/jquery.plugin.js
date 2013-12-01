@@ -79,11 +79,11 @@ var idnCExtra=0;
         $("#guardar").removeAttr("disabled");
         if ( $('.content').size() < DIAS_MAXIMOS_CLASE ) { 
           if ( c == 'wrapper_m' ) {
-            id_horario_f = id_horario_m;
             id_horario_m++;
+            id_horario_f = id_horario_m;
           } else if (c == 'wrapper') {
-            id_horario_f = id_horario;
             id_horario++;
+            id_horario_f = id_horario;
           }
           $( '#' + c ).append( 
             '<div id="cClase'+p+'_'+id_horario_f+'" class="content">'+ 
@@ -120,7 +120,7 @@ var idnCExtra=0;
                 '" type="text" placeholder="tipo de cuenta" style="width:55%" onblur="validaCampoExtra(\'campoExtraTipo_'+idnCExtra+'\')" />'+
             '<button class="quitar">-</button>'+
             '<input id="campoExtra_'+idnCExtra+'" name="campoExtra_'+idnCExtra+
-                '" type="text" placeholder="Nombre de cuenta" onblur="validaCampoExtra(\'campoExtra_'+idnCExtra+'\')"/>'+
+                '" type="text" placeholder="Nombre de cuenta" style="width:55%" onblur="validaCampoExtra(\'campoExtra_'+idnCExtra+'\')"/>'+
             '<button class="quitar">-</button>'+
           '</div>');
       });
@@ -169,6 +169,61 @@ var idnCExtra=0;
           '</div>'); 
           $('#inicio_'+numeroDeDiasFestivos).datePickerElem();
           $('body').eliminarElemento();
+    });
+  }
+  $.fn.mostrarDiaDeClase = function (contenedor, dia, hrs_por_dia, inicio) {
+    var ndia=0, c;
+    return this.each(function () {
+      $('#guardar').removeAttr('disabled');
+      if ( $('.content').size() < DIAS_MAXIMOS_CLASE ) {
+        id_horario++;
+        $( '#wrapper' ).append(
+          '<div id="cClase_'+id_horario+'" class="content">'+ 
+              '<select id="SelectDia_'+id_horario+'" name="dia_'+id_horario+'"></select><br />'+
+              '<input id="Hora_inicio_clase_'+id_horario+
+                  '" type="text" placeholder="Hora inicio clase" onblur="validaHora(\'Hora_inicio_clase_'+
+                  id_horario+'\')" value='+inicio+' />'+
+              '<input id="duracion__'+id_horario+
+                  '" type="text" placeholder="Duracion clase" onblur="validaDuracionClase(\'duracion__'+
+                  id_horario+'\')" value='+hrs_por_dia+' />'+
+              '<button class="quitarDia">-</button>'+ 
+            '</div>');
+        for (i=0; i<6; i++) {
+          switch (i) {
+            case 0: ndia='Lunes';break;
+            case 1: ndia='Martes';break;
+            case 2: ndia='Miercoles';break;
+            case 3: ndia='Jueves';break;
+            case 4: ndia='Viernes';break;
+            case 5: ndia='Sabado';break;
+          }
+          if ( ndia == dia ){
+            $('#SelectDia_'+id_horario).append('<option id="dia_'+i+'" selected>'+ndia+'</option>');
+          } else {
+            $('#SelectDia_'+id_horario).append('<option id="dia_'+i+'">'+ndia+'</option>');
+          }
+        }
+        $('body').on('click', '.quitarDia', function () { 
+          $(this).parent().remove(); 
+        }); 
+      }
+    });
+  }
+  $.fn.mostrarCampoE = function (contenedor, tipoCuenta, cuenta) {
+    return this.each(function () {
+      idnCExtra++;
+      $(contenedor).append(
+        '<div id="c_E'+idnCExtra+'" class="content">'+
+          '<input id="campoExtraTipo_'+idnCExtra+'" name="campoExtraTipo_'+idnCExtra+
+              '" type="text" placeholder="tipo de cuenta" style="width:55%" onblur="validaCampoExtra(\'campoExtraTipo_'+idnCExtra+'\')" value='+tipoCuenta+' />'+
+          '<button class="quitar">-</button>'+
+          '<input id="campoExtra_'+idnCExtra+'" name="campoExtra_'+idnCExtra+
+              '" type="text" placeholder="Nombre de cuenta" style="width:55%" onblur="validaCampoExtra(\'campoExtra_'+idnCExtra+'\')" value='+cuenta+' />'+
+          '<button class="quitar">-</button>'+
+        '</div>');
+      $('body').on('click', '.quitar', function () { 
+        $(this).parent().remove(); 
+      });
     });
   }
   $.fn.limpiarListaDeHijos = function (contenedor) {
