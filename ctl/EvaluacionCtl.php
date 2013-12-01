@@ -66,6 +66,7 @@ class EvaluacionCtl extends BaseCtl {
     $datos = $mdl->datos("SELECT * FROM curso INNER JOIN materia WHERE clave_materia=clave AND ciclo='$ciclo' ORDER BY clave, seccion");
     if (!empty($datos)) {
       $clave = $datos[0]['clave'];
+      $nrc = $datos[0]['nrc'];
     }
     if (isset($_GET['clave'])) {
       $clave = $_GET['clave'];
