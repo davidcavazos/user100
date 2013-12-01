@@ -2,7 +2,6 @@ var cciclonrc;
 
 function on_load() {
   ciclo = document.getElementById('ciclo_select').value;
-  clave = document.getElementById('curso_select').value.split(" ")[0];
   nrc = document.getElementById('curso_select').value.split(" ")[0];
   cciclonrc=ciclo+nrc;
   curso_valido = true;
@@ -10,7 +9,7 @@ function on_load() {
     document.getElementById('ciclo_select').disabled = true;
     curso_valido = false;
   }
-  if (clave == '') {
+  if (nrc == '') {
     document.getElementById('curso_select').disabled = true;
     curso_valido = false;
   }
@@ -45,10 +44,9 @@ function autocomplete_alumno() {
   alumno = document.getElementById('alumno').value;
   button = document.getElementById('inscribir_alumno');
   button.disabled = true;
-  alert(cciclonrc);
   $.ajax({
     type: 'POST',
-    data: {get_alumnos:''},
+    data: {get_alumnos:'',ciclonrc:cciclonrc},
     dataType: 'json',
     success: function(info) {
       var tags = [];
