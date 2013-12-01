@@ -23,9 +23,21 @@ class EvaluacionCtl extends BaseCtl {
       $ciclonrc=$_POST['ciclonrc'];
       $mdl->agregar($codigo, $ciclonrc); 
     }
+    elseif(isset($_FILES['archivo']['name']))
+    {
+      $this->procesarArchivo();
+      $this->mostrar();
+    }
     else {
       $this->mostrar();
     }
+  }
+
+  public function procesarArchivo()
+  {
+    $archivo = file_get_contents($_FILES['archivo']['tmp_name']);
+    $renglones = explode(PHP_EOL , $archivo);
+    var_dump($renglones);
   }
 
   public function generarBody() {

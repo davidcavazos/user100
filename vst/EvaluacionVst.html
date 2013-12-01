@@ -54,10 +54,12 @@
   </div>
 
   <div>
-    <input type="file" id="archivo" name="archivo"> 
-    <input type="button" id="leer_csv_alumnos" value="Leer Alumnos de CSV"></br>
-    <input type="button" id="elim_alumno" value="Desinscribir Alumnos" disabled>
-  </div>
+    <form action="" method="POST" enctype="multipart/form-data">
+      <input type="file" id="archivo" name="archivo"> 
+      <input type="submit" id="leer_csv_alumnos" value="Leer Alumnos de CSV"></br>
+      <input type="button" id="elim_alumno" value="Desinscribir Alumnos" disabled>
+    </form>
+ </div>
 
   <div>
     <input type="button" id="agregar_rubro" value="Agregar Rubro">
