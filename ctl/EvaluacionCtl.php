@@ -6,7 +6,7 @@ class EvaluacionCtl extends BaseCtl {
     require_once('mdl/UsuariosMdl.php');
     $mdl = new UsuariosMdl();
     if (isset($_POST['get_alumnos'])) {
-      $q = $mdl->datos("SELECT codigo, apellidos, nombres FROM usuario WHERE tipo_usuario=2");
+      $q = $mdl->datos("SELECT * FROM usuario WHERE tipo_usuario=2 AND codigo NOT IN( SELECT codigo FROM grupo WHERE ciclonrc='".$ciclo.$nrc."') AND tipo_usuario>0 ORDER BY apellidos");
       if (count($q) == 0) {
         echo 'Error: no se encontro';
         return;

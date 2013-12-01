@@ -612,12 +612,14 @@ function ver_curso() {
   location = 'index.php?ctl=mis_cursos&ciclo='+ciclo+'&clave='+clave;
 }
 
+
 function ver_evaluacion() {
   var ciclo = document.getElementById('ciclo_select').value;
   var clave = document.getElementById('curso_select').value.split(' ')[0];
   var nrc = document.getElementById('curso_select').value;
   nrc = nrc.substring(nrc.length,nrc.lastIndexOf(' ')+2);
   nrc = nrc.replace("]","");
+  cciclonrc=ciclo+nrc;
   location = 'index.php?ctl=evaluacion&ciclo='+ciclo+'&clave='+clave+'&nrc='+nrc;
 }
 
