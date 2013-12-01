@@ -50,11 +50,11 @@
   <!--C{-->
   <div>
     <input type="text" id="alumno" placeholder="Alumno" onblur="autocomplete_alumno()" oninput="autocomplete_alumno()">
-    <input type="button" id="inscribir_alumno" value="Inscribir Alumno" disabled>
+    <input type="button" id="inscribir_alumno" value="Inscribir Alumno" onclick="inscribir_alumno()" disabled>
   </div>
 
   <div>
-    <input type="file" id="leer_csv_alumnos"> 
+    <input type="file" id="archivo" name="archivo"> 
     <input type="button" id="leer_csv_alumnos" value="Leer Alumnos de CSV"></br>
     <input type="button" id="elim_alumno" value="Desinscribir Alumnos" disabled>
   </div>

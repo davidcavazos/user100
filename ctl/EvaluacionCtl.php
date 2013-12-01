@@ -3,8 +3,8 @@
 require_once('ctl/BaseCtl.php');
 class EvaluacionCtl extends BaseCtl {
   public function ejecutar() {
-    require_once('mdl/UsuariosMdl.php');
-    $mdl = new UsuariosMdl();
+    require_once('mdl/EvaluacionMdl.php');
+    $mdl = new EvaluacionMdl();
     if (isset($_POST['get_alumnos'])) {
       $q = $mdl->datos("SELECT * FROM usuario WHERE tipo_usuario=2 AND codigo NOT IN( SELECT codigo FROM grupo WHERE ciclonrc='".$_POST['ciclonrc']."') AND tipo_usuario>0 ORDER BY apellidos");
       if (count($q) == 0) {
@@ -16,7 +16,14 @@ class EvaluacionCtl extends BaseCtl {
         $info[] = $a['apellidos'].', '.$a['nombres'].' ('.$a['codigo'].')';
       }
       echo json_encode($info);
-    } else {
+    } 
+    elseif(isset($_POST['alta_cursos']))
+    {
+      $codigo=$_POST['codigo'];
+      $ciclonrc=$_POST['ciclonrc'];
+      $mdl->agregar($codigo, $ciclonrc); 
+    }
+    else {
       $this->mostrar();
     }
   }

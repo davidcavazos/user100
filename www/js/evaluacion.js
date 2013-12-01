@@ -60,3 +60,16 @@ function autocomplete_alumno() {
     }
   });
 }
+
+function inscribir_alumno() {
+  alumno = document.getElementById('alumno').value;
+  alumno=alumno.substring(alumno.indexOf("(")+1,alumno.indexOf(")"));
+  $.ajax({
+    type: 'POST',
+    data: {alta_cursos:'',codigo:alumno, ciclonrc:cciclonrc},
+    success: function(info) 
+    {
+      location.reload(); 
+    }
+  });
+}
