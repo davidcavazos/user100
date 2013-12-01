@@ -29,7 +29,7 @@ class MisCursosCtl extends BaseCtl {
         $info['horario'][] = $dia['horario'];
       }
       echo json_encode($info);
-    } elseif (isset($_POST['llenar_materia'])) 
+    } elseif (isset($_POST['llenar_materia']))
     {
       $clave = $_POST['clave'];
       $q = $mdl->datos("SELECT * FROM materia WHERE clave='$clave'")[0];
@@ -41,7 +41,7 @@ class MisCursosCtl extends BaseCtl {
       $info['materia'] = $q['materia'];
       $info['academia'] = $q['academia'];
       echo json_encode($info);
-    } elseif (isset($_POST['modificar'])) 
+    } elseif (isset($_POST['modificar']))
     {
       $ciclonrc = $_POST['ciclonrc'];
       $nrc = $_POST['nrc'];
@@ -57,6 +57,7 @@ class MisCursosCtl extends BaseCtl {
     elseif(isset($_POST['agregar']))
     {
       $ciclonrc=$_POST['ciclonrc'];
+      $codigo_profesor = $_SESSION['codigo'];
       $ciclo=$_POST['new_ciclo'];
       $clave=$_POST['new_clave'];
       $nrc=$_POST['new_nrc'];
@@ -64,8 +65,7 @@ class MisCursosCtl extends BaseCtl {
       $dia=$_POST['new_dia'];
       $hora=$_POST['new_hora'];
       $duracion=$_POST['new_duracion'];
-      $mdl->agregar($ciclonrc,$ciclo, $clave, $nrc, $seccion, 
-      $dia, $hora, $duracion);
+      $mdl->agregar($ciclonrc, $codigo_profesor, $ciclo, $clave, $nrc, $seccion, $dia, $hora, $duracion);
     } elseif (isset($_POST['get_claves'])) {
       $q = $mdl->datos("SELECT clave FROM materia");
       if (count($q) == 0) {
@@ -94,7 +94,7 @@ class MisCursosCtl extends BaseCtl {
     $fila = substr($body, $inicio_fila, $final_fila - $inicio_fila);
 
     $datos = $mdl->datos('SELECT * FROM ciclo_escolar ORDER BY ciclo DESC');
-    $ciclo='';
+    $ciclo = '';
     if (!empty($datos)) {
       $ciclo = $datos[0]['ciclo'];
     }
@@ -141,7 +141,11 @@ class MisCursosCtl extends BaseCtl {
     $final_fila = $inicio_fila + 40;
     $fila = substr($body, $inicio_fila, $final_fila - $inicio_fila);
 
-    $datos = $mdl->datos("SELECT * FROM curso INNER JOIN materia WHERE clave_materia=clave AND ciclo='$ciclo' ORDER BY clave, seccion");
+    $filtro = '';
+    if ($this->tipo == 1) {
+      $filtro = "AND codigo_profesor='$this->codigo'";
+    }
+    $datos = $mdl->datos("SELECT * FROM curso INNER JOIN materia WHERE clave_materia=clave AND ciclo='$ciclo' $filtro ORDER BY clave, seccion");
     if (!empty($datos)) {
       $clave = $datos[0]['clave'];
       $nrc = $datos[0]['nrc'];

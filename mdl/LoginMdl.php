@@ -9,6 +9,7 @@ class LoginMdl extends BaseMdl
     if(count($q) > 0 && $q[0]['password']==$password)
     {
       $_SESSION['user'] = $q[0]['nombres'];
+      $_SESSION['codigo'] = $q[0]['codigo'];
       $_SESSION['tipo'] = $q[0]['tipo_usuario'];
       switch ($_SESSION['tipo']) {
         case -1: // root

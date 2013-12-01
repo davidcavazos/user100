@@ -2,13 +2,13 @@
 
 require_once('mdl/BaseMdl.php');
 class CursosMdl extends BaseMdl {
-  public function agregar($ciclonrc,$ciclo, $clave,$nrc,
-  $seccion, $dia, $hora, $duracion)
+  public function agregar($ciclonrc, $codigo_profesor, $ciclo, $clave,$nrc, $seccion, $dia, $hora, $duracion)
   {
     $query =
-      "INSERT INTO curso (ciclonrc,nrc, ciclo, clave_materia, seccion)
+      "INSERT INTO curso (ciclonrc, codigo_profesor, nrc, ciclo, clave_materia, seccion)
        VALUES (
          '$ciclonrc',
+         '$codigo_profesor',
          '$nrc',
          '$ciclo',
          '$clave',

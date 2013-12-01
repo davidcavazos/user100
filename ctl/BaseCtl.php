@@ -2,6 +2,7 @@
 
 abstract class BaseCtl {
   protected $tipo;
+  protected $codigo;
   protected $titulo;
   protected $vstFile;
   protected $onload_fcn;
@@ -10,6 +11,10 @@ abstract class BaseCtl {
     $this->tipo = 'invalido';
     if (isset($_SESSION['tipo'])) {
       $this->tipo = $_SESSION['tipo'];
+    }
+    $this->codigo = 'invalido';
+    if (isset($_SESSION['codigo'])) {
+      $this->codigo = $_SESSION['codigo'];
     }
     $this->titulo = $titulo;
     $this->vstFile = 'vst/' . $pagina . 'Vst.html';
