@@ -5,7 +5,7 @@ function on_load() {
 }
 
 function toggle_modal_agregar() {
-  e = document.getElementById('modal');
+  var e = document.getElementById('modal');
   e.style.visibility = e.style.visibility == 'visible' ? 'hidden' : 'visible';
 
   document.getElementById('new_clave').value = '';
@@ -16,14 +16,44 @@ function toggle_modal_agregar() {
 }
 
 function toggle_modal_clonar() {
-  e = document.getElementById('modal');
+  var e = document.getElementById('modal');
   e.style.visibility = e.style.visibility == 'visible' ? 'hidden' : 'visible';
 
-  document.getElementById('new_clave').value = document.getElementById('clave_materia').value;
-  document.getElementById('new_materia').value = document.getElementById('materia').value;
-  document.getElementById('new_academia').value = document.getElementById('academia').value;
-  document.getElementById('new_nrc').value = document.getElementById('nrc').value;
-  document.getElementById('new_seccion').value = document.getElementById('seccion').value;
+  var ciclo = document.getElementById('ciclo_select').value;
+  var nrc = document.getElementById('curso_select').value.split(" ")[0];
+
+  if (ciclo == '') {
+    document.getElementById('ciclo_select').disabled = true;
+  }
+  $.ajax({
+    type: 'POST',
+    data: {llenar_curso:'', ciclo:ciclo, nrc:nrc},
+    dataType: 'json',
+    success: function(info) {
+      document.getElementById('new_clave').value = info['clave_materia'];
+      document.getElementById('new_materia').value = info['materia'];
+      document.getElementById('new_academia').value = info['academia'];
+      document.getElementById('new_nrc').value = info['nrc'];
+      document.getElementById('new_seccion').value = info['seccion'];
+      var horarios = info['dia'].length;
+      //console.log('horarios: '+horarios);
+      jQuery('body').limpiarListaDeHijos('#wrapper');
+      for (var i = 0; i < horarios; i++) {
+        //console.log(info['dia'][i]+': '+info['horas_por_dia'][i]+', '+info['horario'][i]);
+        jQuery('body').mostrarDiaDeClase('#wrapper',
+                                          info['dia'][i],
+                                          info['horas_por_dia'][i],
+                                          info['horario'][i]);
+      }
+    },
+    error: function() {
+      document.getElementById('new_clave').value = '';
+      document.getElementById('new_materia').value = '';
+      document.getElementById('new_academia').value = '';
+      document.getElementById('new_nrc').value = '';
+      document.getElementById('new_seccion').value = '';
+    }
+  });
 }
 
 function mostrar_curso() {
