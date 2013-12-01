@@ -73,3 +73,12 @@ function inscribir_alumno() {
     }
   });
 }
+
+function enviarArchivo()
+{
+  ciclo = document.getElementById('ciclo_select').value;
+  nrc = document.getElementById('curso_select').value.split(" ")[0];
+  document.getElementById('subirarchivo').action='index.php?ctl=evaluacion'+
+  "&ciclo="+ciclo+"&nrc="+nrc+"";
+  document.getElementById('subirarchivo').submit();
+}

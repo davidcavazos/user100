@@ -25,7 +25,7 @@ class EvaluacionCtl extends BaseCtl {
     }
     elseif(isset($_FILES['archivo']['name']))
     {
-      $mdl->insertarDesdeArchivo($this->procesarArchivo());
+      $mdl->insertarDesdeArchivo($this->procesarArchivo(), $_GET['ciclo'], $_GET['nrc']);
       $this->mostrar();
     }
     else {
