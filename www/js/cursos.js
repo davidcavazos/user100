@@ -1,4 +1,4 @@
-var old_nrc;
+var old_ciclonrc;
 
 function on_load() {
   mostrar_curso();
@@ -29,7 +29,7 @@ function toggle_modal_clonar() {
 function mostrar_curso() {
   ciclo = document.getElementById('ciclo_select').value;
   clave = document.getElementById('curso_select').value.split(" ")[0];
-
+  
   if (ciclo == '') {
     document.getElementById('ciclo_select').disabled = true;
   }
@@ -44,7 +44,7 @@ function mostrar_curso() {
       document.getElementById('nrc').value = info['nrc'];
       document.getElementById('seccion').value = info['seccion'];
       document.getElementById('ciclo').value=document.getElementById('ciclo_select').value;
-      old_nrc=info['nrc'];
+      old_ciclonrc=document.getElementById('ciclo').value+info['nrc'];
       var horarios = info['dia'].length;
       //console.log('horarios: '+horarios);
       for (var i = 0; i < horarios; i++) {
@@ -92,6 +92,7 @@ function agregar_curso()
   clave = document.getElementById('new_clave').value;
   nrc = document.getElementById('new_nrc').value;
   seccion = document.getElementById('new_seccion').value;
+  ciclonrc = ciclo + nrc;
   var dia="";
   var hora="";
   var duracion="";
@@ -112,7 +113,7 @@ function agregar_curso()
   }
   $.ajax({
     type: 'POST',
-    data: {agregar:'',new_ciclo:ciclo,new_clave:clave,new_nrc:nrc,
+    data: {agregar:'',ciclonrc:ciclonrc,new_ciclo:ciclo,new_clave:clave,new_nrc:nrc,
     new_seccion:seccion,new_dia:dia,new_hora:hora,new_duracion:duracion},
     success: function() {
       console.log();
@@ -147,7 +148,7 @@ function modificar_curso()
   }
   $.ajax({
     type: 'POST',
-    data: {modificar:'',ciclo:ciclo, clave:clave,new_nrc:nrc,nrc:old_nrc,
+    data: {modificar:'',ciclo:ciclo, clave:clave,nrc:nrc,ciclonrc:old_ciclonrc,
     seccion:seccion, dia:dia, hora:hora, duracion:duracion},
     success: function() {
       console.log();
