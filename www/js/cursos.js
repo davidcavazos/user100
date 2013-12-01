@@ -37,10 +37,10 @@ function toggle_modal_clonar() {
       document.getElementById('new_seccion').value = info['seccion'];
       var horarios = info['dia'].length;
       //console.log('horarios: '+horarios);
-      jQuery('body').limpiarListaDeHijos('#wrapper');
+      jQuery('body').limpiarListaDeHijos('#wrapper_m');
       for (var i = 0; i < horarios; i++) {
         //console.log(info['dia'][i]+': '+info['horas_por_dia'][i]+', '+info['horario'][i]);
-        jQuery('body').mostrarDiaDeClase('#wrapper',
+        jQuery('body').mostrarDiaDeClase('#wrapper_m',
                                           info['dia'][i],
                                           info['horas_por_dia'][i],
                                           info['horario'][i]);
@@ -52,6 +52,7 @@ function toggle_modal_clonar() {
       document.getElementById('new_academia').value = '';
       document.getElementById('new_nrc').value = '';
       document.getElementById('new_seccion').value = '';
+      jQuery('body').limpiarListaDeHijos('#wrapper_m');
     }
   });
 }
@@ -96,6 +97,7 @@ function mostrar_curso() {
       document.getElementById('ver_asistencias').disabled = true;
       document.getElementById('clonar').disabled = true;
       document.getElementById('ciclo').disabled = true;
+      jQuery('body').limpiarListaDeHijos('#wrapper');
     }
   });
 }
