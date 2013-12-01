@@ -615,7 +615,10 @@ function ver_curso() {
 function ver_evaluacion() {
   var ciclo = document.getElementById('ciclo_select').value;
   var clave = document.getElementById('curso_select').value.split(' ')[0];
-  location = 'index.php?ctl=evaluacion&ciclo='+ciclo+'&clave='+clave;
+  var nrc = document.getElementById('curso_select').value;
+  nrc = nrc.substring(nrc.length,nrc.lastIndexOf(' ')+2);
+  nrc = nrc.replace("]","");
+  location = 'index.php?ctl=evaluacion&ciclo='+ciclo+'&clave='+clave+'&nrc='+nrc;
 }
 
 function ver_asistencias() {

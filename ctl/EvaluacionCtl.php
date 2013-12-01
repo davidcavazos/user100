@@ -70,17 +70,20 @@ class EvaluacionCtl extends BaseCtl {
     if (isset($_GET['clave'])) {
       $clave = $_GET['clave'];
     }
+    if (isset($_GET['nrc'])) {
+      $nrc = $_GET['nrc'];
+    }
 
     $filas = '';
     foreach ($datos as $row) {
       $new_fila = $fila;
       $dict = array(
-        '{CURSO}' => $row['clave'].' - '.$row['materia'].' ('.$row['seccion'].')',
+        '{CURSO}' => $row['clave'].' - '.$row['materia'].' ('.$row['seccion'].') ['.$row['nrc'].']',
       );
       $new_fila = strtr($new_fila, $dict);
       if ($row['clave'] == $clave) {
         $new_fila = strtr($new_fila, array('>' => ' selected>'));
-      }
+                }
       $filas .= $new_fila;
     }
     $body = str_replace($fila, $filas, $body);
@@ -93,7 +96,8 @@ class EvaluacionCtl extends BaseCtl {
     $final_fila = strrpos($body, '</tr>') + 5;
     $fila = substr($body, $inicio_fila, $final_fila - $inicio_fila);
 
-    $datos = $mdl->datos('SELECT * FROM usuario WHERE tipo_usuario>0 ORDER BY apellidos');
+    //$datos = $mdl->datos("SELECT * FROM curso INNER JOIN materia WHERE clave_materia=clave AND ciclo='$ciclo' ORDER BY clave, seccion");
+    $datos = $mdl->datos("SELECT * FROM usuario WHERE codigo IN( SELECT codigo FROM grupo WHERE ciclonrc='".$ciclo.$nrc."') AND tipo_usuario>0 ORDER BY apellidos");
     $filas = '';
     $num = 1;
     foreach ($datos as $row) {
