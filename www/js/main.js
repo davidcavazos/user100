@@ -625,6 +625,26 @@ function ver_asistencias() {
   location = 'index.php?ctl=asistencias&ciclo='+ciclo+'&nrc='+nrc;
 }
 
+function recuperar_password() {
+  if (!validaCodigo('codigo')) {
+    return false;
+  }
+  document.getElementById('recuperar').disabled = true;
+
+  var codigo = document.getElementById('codigo').value;
+  $.ajax({
+    type: 'POST',
+    data: {recuperar:'',codigo:codigo},
+    dataType: 'json',
+    success: function(info) {
+      location = 'index.php?ctl=recuperar_password&success';
+    },
+    error: function() {
+      location = 'index.php?ctl=recuperar_password&error';
+    }
+  });
+}
+
 /********               *******
  *                            *
  *           Helper           *

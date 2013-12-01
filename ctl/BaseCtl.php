@@ -7,7 +7,10 @@ abstract class BaseCtl {
   protected $onload_fcn;
 
   public function __construct($pagina, $titulo) {
-    $this->tipo = $_SESSION['tipo'];
+    $this->tipo = 'invalido';
+    if (isset($_SESSION['tipo'])) {
+      $this->tipo = $_SESSION['tipo'];
+    }
     $this->titulo = $titulo;
     $this->vstFile = 'vst/' . $pagina . 'Vst.html';
     $this->onload_fcn = '';
