@@ -19,9 +19,11 @@
   <table>
     <thead>
       <tr>
+        <!--A{-->
         <th>
           <input type="checkbox" id="select_all" onclick="toggle_select_all(toggle_botones)">
         </th>
+        <!--}A-->
         <th>Codigo</th>
         <th>Nombre</th>
         <th>Carrera</th>
@@ -30,10 +32,12 @@
     </thead>
     <tbody>
       <tr>
+        <!--B{-->
         <td>
           <input type="checkbox" id="{X}" onclick="toggle_botones()">
           <label for="{X}">{X}</label>
         </td>
+        <!--}B-->
         <td>{CODIGO}</td>
         <td>{NOMBRE}</td>
         <td>{CARRERA}</td>
@@ -43,6 +47,7 @@
   </table>
   <br>
 
+  <!--C{-->
   <div>
     <input type="text" id="alumno" placeholder="Alumno" onblur="autocomplete_alumno()" oninput="autocomplete_alumno()">
     <input type="button" id="inscribir_alumno" value="Inscribir Alumno" disabled>
@@ -58,6 +63,7 @@
     <input type="button" id="agregar_subtabla" value="Agregar Subtabla">
     <input type="button" id="elim_rubros" value="Eliminar Rubros" disabled>
   </div>
+  <!--}C-->
 
   <script type="text/javascript" src="www/js/evaluacion.js"></script>
   <script type="text/javascript">

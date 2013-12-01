@@ -11,7 +11,7 @@ $pag = '';
 if (isset($_GET['ctl'])) {
   switch (htmlspecialchars($_GET['ctl'])) {
     case 'mis_cursos':
-      if ($tipo == -1 || $tipo == 1 || $tipo == 2) {
+      if ($tipo == -1 || $tipo == 1) {
         $pag = 'mis_cursos';
       }
       break;
@@ -54,7 +54,7 @@ if ($pag == '') {
       $pag = 'mis_cursos';
       break;
     case 2:  // alumno
-      $pag = 'mis_cursos';
+      $pag = 'evaluacion';
       break;
     default:
       $pag = 'mis_cursos';

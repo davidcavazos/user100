@@ -47,7 +47,6 @@ abstract class BaseCtl {
         $menu .= '<li><a href="index.php?ctl=usuarios">Usuarios</a></li>';
         break;
       case 2:  // alumno
-        $menu .= '<li><a href="index.php?ctl=mis_cursos">Mis Cursos</a></li>';
         $menu .= '<li><a href="index.php?ctl=evaluacion">Evaluacion</a></li>';
         $menu .= '<li><a href="index.php?ctl=asistencias">Asistencias</a></li>';
         break;

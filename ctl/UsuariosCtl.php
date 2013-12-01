@@ -9,11 +9,11 @@ class UsuariosCtl extends BaseCtl {
       $codigo = $_POST['codigo'];
       $nombres = $_POST['nombres'];
       $apellidos = $_POST['apellidos'];
-      $password = $_POST['password'];
-      $tipo = $_POST['tipo'];
+      $password = 'asdf';
+      $tipo = $this->tipo + 1;
       $carrera = $_POST['carrera'];
       $email = $_POST['email'];
-      $activo = $_POST['activo'];
+      $activo = 1;
       $campoExtra = $_POST['campoextra'];
       $tipoCampo = $_POST['tipoCampo'];
       $this->limpiarVariablesPost();
@@ -54,6 +54,19 @@ class UsuariosCtl extends BaseCtl {
     $mdl = new UsuariosMdl();
 
     $body = file_get_contents($this->vstFile);
+    $tipo_usuario = 'Usuario';
+    switch ($this->tipo) {
+      case -1: // root
+        $tipo_usuario = 'Admin';
+        break;
+      case 0:  // admin
+        $tipo_usuario = 'Maestro';
+        break;
+      case 1:  // maestro
+        $tipo_usuario = 'Alumno';
+        break;
+    }
+    $body = str_replace('{TIPO_USUARIO}', $tipo_usuario, $body);
 
     $inicio_fila = strrpos($body, '<tr>');
     $final_fila = strrpos($body, '</tr>') + 5;
