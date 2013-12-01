@@ -177,7 +177,7 @@ var idnCExtra=0;
       $('#guardar').removeAttr('disabled');
       if ( $('.content').size() < DIAS_MAXIMOS_CLASE ) {
         id_horario++;
-        $( '#wrapper' ).append(
+        $( contenedor ).append(
           '<div id="cClase_'+id_horario+'" class="content">'+ 
               '<select id="SelectDia_'+id_horario+'" name="dia_'+id_horario+'"></select><br />'+
               '<input id="Hora_inicio_clase_'+id_horario+

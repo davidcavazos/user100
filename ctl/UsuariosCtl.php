@@ -9,7 +9,6 @@ class UsuariosCtl extends BaseCtl {
       $codigo = $_POST['codigo'];
       $nombres = $_POST['nombres'];
       $apellidos = $_POST['apellidos'];
-      $password = 'asdf';
       $tipo = $this->tipo + 1;
       $carrera = $_POST['carrera'];
       $email = $_POST['email'];
@@ -17,7 +16,7 @@ class UsuariosCtl extends BaseCtl {
       $campoExtra = $_POST['campoextra'];
       $tipoCampo = $_POST['tipoCampo'];
       $this->limpiarVariablesPost();
-      $mdl->agregar($codigo, $nombres, $apellidos, $password, $tipo, $carrera,
+      $mdl->agregar($codigo, $nombres, $apellidos, $tipo, $carrera,
                     $email, $activo, $campoExtra, $tipoCampo);
     } elseif (isset($_POST['modificar'])) {
       $codigo = $_POST['codigo'];

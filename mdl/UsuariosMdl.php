@@ -2,7 +2,7 @@
 
 require_once('mdl/BaseMdl.php');
 class UsuariosMdl extends BaseMdl {
-  public function agregar($codigo, $nombres, $apellidos, $password, $tipo,
+  public function agregar($codigo, $nombres, $apellidos, $tipo,
                           $carrera, $email, $activo, $campoExtra, $tipoCampo)
   {
     $query =
@@ -12,7 +12,7 @@ class UsuariosMdl extends BaseMdl {
          '$codigo',
          '$nombres',
          '$apellidos',
-         '$password',
+         '',
          '$tipo',
          '$carrera',
          '$email',
@@ -23,6 +23,7 @@ class UsuariosMdl extends BaseMdl {
       echo 'Error: ' . $this->driver->error;
       return FALSE;
     }
+    asignar_password($codigo);
     if(strlen($campoExtra)!=0)
     {
       $campoExtra=trim($campoExtra,",");
@@ -99,6 +100,33 @@ class UsuariosMdl extends BaseMdl {
       return FALSE;
     }
     return $this->driver->insert_id;
+  }
+
+  public function asignar_password($codigo) {
+    $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $pass = '';
+    for ($i = 0; $i < 8; $i++) {
+      $pass .= $chars[rand(0, strlen($chars) - 1)];
+    }
+    $query = "UPDATE usuario SET password='$pass' WHERE codigo='$codigo'";
+    $r = $this->driver->query($query);
+    if ($r === FALSE) {
+      echo 'Error: ' . $this->driver->error;
+      return FALSE;
+    }
+    $users = $this->datos("SELECT * FROM usuario WHERE codigo='$codigo'");
+    if (count($users) > 0) {
+      $user = $users[0];
+      $nombre = $user['nombres'];
+      $email = $user['email'];
+      $pass = $user['password'];
+      $asunto = 'Cambio de password en Mudle';
+      $contenido = "Estimado $nombre,\n\nSu nuevo password es: $pass";
+      mail($email, $asunto, $contenido);
+      echo json_encode($asunto);
+    } else {
+      echo "Error: usuario con codigo $codigo no encontrado";
+    }
   }
 }
 

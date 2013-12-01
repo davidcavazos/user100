@@ -5,7 +5,10 @@ if (session_status() == PHP_SESSION_NONE) {
   session_start();
 }
 
-$tipo = $_SESSION['tipo'];
+$tipo = 'invalido';
+if (isset($_SESSION['tipo'])) {
+  $tipo = $_SESSION['tipo'];
+}
 
 $pag = '';
 if (isset($_GET['ctl'])) {
