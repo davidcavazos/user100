@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 01, 2013 at 01:51 AM
+-- Generation Time: Dec 01, 2013 at 11:37 PM
 -- Server version: 5.5.33a-MariaDB
 -- PHP Version: 5.5.5
 
@@ -45,6 +45,16 @@ CREATE TABLE IF NOT EXISTS `ciclo_escolar` (
   `fecha_fin` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `ciclo_escolar`
+--
+
+INSERT INTO `ciclo_escolar` (`ciclo`, `fecha_inicio`, `fecha_fin`) VALUES
+('2012a', '2012-02-05', '2012-06-15'),
+('2012b', '2012-08-19', '2012-12-16'),
+('2013a', '2013-02-03', '2013-06-16'),
+('2013b', '2013-08-18', '2013-12-15');
+
 -- --------------------------------------------------------
 
 --
@@ -53,11 +63,27 @@ CREATE TABLE IF NOT EXISTS `ciclo_escolar` (
 
 CREATE TABLE IF NOT EXISTS `curso` (
   `ciclonrc` varchar(10) NOT NULL,
+  `codigo_profesor` varchar(9) NOT NULL,
   `nrc` varchar(5) NOT NULL DEFAULT 'NULL',
   `ciclo` varchar(5) NOT NULL DEFAULT 'NULL',
   `clave_materia` varchar(5) DEFAULT NULL,
   `seccion` varchar(5) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `curso`
+--
+
+INSERT INTO `curso` (`ciclonrc`, `codigo_profesor`, `nrc`, `ciclo`, `clave_materia`, `seccion`) VALUES
+('2013b12345', '', '12345', '2013b', 'cc300', 'd01'),
+('2013b23456', '', '23456', '2013b', 'cc301', 'd02'),
+('2013a12345', '', '12345', '2013a', 'cc100', 'd01'),
+('2013a09876', '', '09876', '2013a', 'cc102', 'd02'),
+('2012b67890', '', '67890', '2012b', 'CC200', 'D01'),
+('2012b34567', '', '34567', '2012b', 'cc202', 'd02'),
+('2012a45678', '', '45678', '2012a', 'CC204', 'D04'),
+('2012a65432', '', '65432', '2012a', 'cc400', 'd05'),
+('2013b67845', '', '67845', '2013b', 'cc300', 'd03');
 
 -- --------------------------------------------------------
 
@@ -70,6 +96,20 @@ CREATE TABLE IF NOT EXISTS `detalle_ciclo_escolar` (
   `dia_no_efectivo` date DEFAULT NULL,
   `descripcion` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `detalle_ciclo_escolar`
+--
+
+INSERT INTO `detalle_ciclo_escolar` (`ciclo`, `dia_no_efectivo`, `descripcion`) VALUES
+('2012a', '2012-04-10', 'Dia Festivo Uno'),
+('2012a', '2012-03-05', 'Dia Festivo Dos'),
+('2012b', '2012-11-12', 'Dia Festivo Uno'),
+('2012b', '2012-09-20', 'Dia Festivo Dos'),
+('2013a', '2013-05-06', 'Dia Festivo Uno'),
+('2013a', '2013-02-21', 'Dia Festivo Dos'),
+('2013b', '2013-11-04', 'Dia Festivo Uno'),
+('2013b', '2013-11-27', 'Dia Festivo Dos');
 
 -- --------------------------------------------------------
 
@@ -84,6 +124,27 @@ CREATE TABLE IF NOT EXISTS `detalle_curso` (
   `horario` varchar(15) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `detalle_curso`
+--
+
+INSERT INTO `detalle_curso` (`ciclonrc`, `dia`, `horas_por_dia`, `horario`) VALUES
+('2013b12345', 'Lunes', 2, '12:00'),
+('2013b12345', 'Miercoles', 2, '12:00'),
+('2013b23456', 'Martes', 2, '07:00'),
+('2013b23456', 'Jueves', 1, '07:00'),
+('2013a12345', 'Miercoles', 2, '20:00'),
+('2013a12345', 'Lunes', 2, '20:00'),
+('2013a09876', 'Miercoles', 1, '08:00'),
+('2013a09876', 'Sabado', 2, '07:00'),
+('2012b67890', 'Sabado', 4, '09:00'),
+('2012b34567', 'Sabado', 4, '10:00'),
+('2012a45678', 'Lunes', 2, '16:00'),
+('2012a45678', 'Viernes', 2, '16:00'),
+('2012a65432', 'Martes', 2, '12:00'),
+('2012a65432', 'Jueves', 1, '12:00'),
+('2013b67845', 'Sabado', 4, '10:00');
+
 -- --------------------------------------------------------
 
 --
@@ -95,6 +156,18 @@ CREATE TABLE IF NOT EXISTS `detalle_usuario` (
   `campo_extra` varchar(50) NOT NULL,
   `valor` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `detalle_usuario`
+--
+
+INSERT INTO `detalle_usuario` (`codigo`, `campo_extra`, `valor`) VALUES
+('210224667', 'github', 'noiarek'),
+('210224667', 'facebook', 'noiarek'),
+('210223806', 'github', 'davido262'),
+('210223806', 'facebook', 'davido262'),
+('210769576', 'github', 'ntmichell'),
+('210769576', 'twitter', 'ntmichell');
 
 -- --------------------------------------------------------
 
@@ -289,7 +362,10 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 
 INSERT INTO `usuario` (`codigo`, `nombres`, `apellidos`, `password`, `tipo_usuario`, `carrera`, `email`, `activo`) VALUES
 ('000000000', 'root', 'root', 'root', -1, 'root', 'root@root.com', 1),
-('999999999', 'admin', 'admin', 'admin', 0, 'admin', 'admin@admin.com', 1);
+('999999999', 'admin', 'admin', 'admin', 0, 'admin', 'admin@admin.com', 1),
+('210224667', 'Gustavo Rodrigo', 'Guillen Villarreal', 'asdf', 2, 'COM', 'noiarek@gmail.com', 1),
+('210223806', 'David', 'Cavazos Woo', 'asdf', 2, 'COM', 'david0262@gmail.com', 1),
+('210769576', 'Nancy Michelle', 'Torres Villanueva', 'asdf', 1, 'COM', 'michelletorres@gmail.com', 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

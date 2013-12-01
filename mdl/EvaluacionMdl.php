@@ -23,6 +23,33 @@ class EvaluacionMdl extends BaseMdl {
     return $this->driver->insert_id;
   }
 
+  public function insertarDesdeArchivo($codigo)
+  {
+    foreach($codigo as $c)
+    {
+      $q=$this->datos("SELECT codigo FROM usuario WHERE codigo = '$c' AND tipo_usuario=2");
+      if(count($q)==0)
+      {
+        continue;
+      }
+      if(strcmp($c,$q[0]['codigo']))
+      {
+        $query="INSERT INTO grupo VALUES('".$_POST['ciclo'].$_POST['nrc']."',
+        '$c',
+        1,
+        1,
+        1,
+        1,
+        1)";
+        $r = $this->driver->query($query);
+        if ($r === FALSE) 
+        {
+          echo 'Error: ' . $this->driver->error;
+        }
+    
+      }
+    }
+  }
   /*public function modificar($codigo, $new_codigo, $nombres, $apellidos,
                             $carrera, $email, $campoExtra, $tipoCampo)
   {

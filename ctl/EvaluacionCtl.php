@@ -25,7 +25,7 @@ class EvaluacionCtl extends BaseCtl {
     }
     elseif(isset($_FILES['archivo']['name']))
     {
-      $this->procesarArchivo();
+      $mdl->insertarDesdeArchivo($this->procesarArchivo());
       $this->mostrar();
     }
     else {
@@ -37,7 +37,12 @@ class EvaluacionCtl extends BaseCtl {
   {
     $archivo = file_get_contents($_FILES['archivo']['tmp_name']);
     $renglones = explode(PHP_EOL , $archivo);
-    var_dump($renglones);
+    $codigo = array();
+    foreach($renglones as $r)
+    {
+      $codigo[]= substr($r,0,9);
+    }
+    return $codigo;
   }
 
   public function generarBody() {
