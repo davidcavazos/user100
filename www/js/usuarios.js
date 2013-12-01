@@ -14,19 +14,18 @@ function toggle_modal_modificar_usuario() {
   e.style.visibility = e.style.visibility == 'visible' ? 'hidden' : 'visible';
 
   codigo = 0;
-  num = 0;
+  num = 1;
   do {
-    num += 1;
     ex = document.getElementById(num);
-    if (ex != null) {
+    if (ex != null && ex.checked) {
       codigo = ex.value;
-      break;
     }
+    num += 1;
   } while (ex != null);
 
   $.ajax({
     type: 'POST',
-    data: {mostrar:'', codigo:codigo,},
+    data: {mostrar:'', codigo:codigo},
     dataType: 'json',
     success: function(usuario) {
       document.getElementById('codigo').value = usuario['codigo'];
