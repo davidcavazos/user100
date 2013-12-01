@@ -1,6 +1,8 @@
 <?php
 
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+  session_start();
+}
 
 abstract class BaseCtl {
   protected $titulo;
@@ -26,6 +28,7 @@ abstract class BaseCtl {
       $head = str_replace('{ONLOAD}', "onload='$this->onload_fcn'", $head);
     }
     $head .= file_get_contents('vst/BaseMenuVst.html');
+    $head = str_replace('{USUARIO}', $_SESSION['user'], $head);
     return $head;
   }
 
@@ -38,16 +41,16 @@ abstract class BaseCtl {
   }
 
   public function mostrar() {
-    //if (isset($_SESSION['user'])) {
+    if (isset($_SESSION['user'])) {
       $body = $this->generarBody();
       $header = $this->generarHeader();
       $footer = $this->generarFooter();
       echo $header . $body . $footer;
       //$this->amigableUrl();
-    //} else {
-    //  header('Location:login.php');
-    //  die();
-    //}
+    } else {
+      header('Location:login.php');
+      die();
+    }
   }
 
   public function amigableUrl() {

@@ -1,5 +1,9 @@
 <?php
 
+if (session_status() == PHP_SESSION_NONE) {
+  session_start();
+}
+
 require_once('mdl/BaseMdl.php');
 class LoginMdl extends BaseMdl
 {
@@ -8,8 +12,9 @@ class LoginMdl extends BaseMdl
     $q = $this->datos("SELECT * FROM usuario WHERE codigo='".$codigo."'");
     if(count($q) > 0 && $q[0]['password']==$password)
     {
-      //header('Location:index.php?ctl=mis_cursos');
-      header('Location:index.php');
+      $_SESSION['user'] = $q[0]['nombres'];
+      $_SESSION['tipo'] = $q[0]['tipo_usuario'];
+      header('Location:index.php?ctl=mis_cursos');
       die();
     }
     else

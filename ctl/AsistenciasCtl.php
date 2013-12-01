@@ -18,6 +18,7 @@ class AsistenciasCtl extends BaseCtl {
     $fila = substr($body, $inicio_fila, $final_fila - $inicio_fila);
 
     $datos = $mdl->datos('SELECT * FROM ciclo_escolar ORDER BY ciclo DESC');
+    $ciclo='';
     if (!empty($datos)) {
       $ciclo = $datos[0]['ciclo'];
     }
@@ -77,7 +78,7 @@ class AsistenciasCtl extends BaseCtl {
     $final_fila = strrpos($body, '</tr>') + 5;
     $fila = substr($body, $inicio_fila, $final_fila - $inicio_fila);
 
-    $datos = $mdl->datos('SELECT * FROM usuario ORDER BY apellidos');
+    $datos = $mdl->datos('SELECT * FROM usuario WHERE tipo_usuario>0 ORDER BY apellidos');
     $filas = '';
     $num = 1;
     foreach ($datos as $row) {
