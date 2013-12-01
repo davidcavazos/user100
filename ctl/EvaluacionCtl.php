@@ -82,7 +82,7 @@ class EvaluacionCtl extends BaseCtl {
         '{CURSO}' => $row['clave'].' - '.$row['materia'].' ('.$row['seccion'].') ['.$row['nrc'].']',
       );
       $new_fila = strtr($new_fila, $dict);
-      if ($row['clave'] == $clave) {
+      if ($row['nrc'] == $nrc) {
         $new_fila = strtr($new_fila, array('>' => ' selected>'));
                 }
       $filas .= $new_fila;
