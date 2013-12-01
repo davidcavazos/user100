@@ -79,7 +79,7 @@ class EvaluacionCtl extends BaseCtl {
     foreach ($datos as $row) {
       $new_fila = $fila;
       $dict = array(
-        '{CURSO}' => $row['clave'].' - '.$row['materia'].' ('.$row['seccion'].') ['.$row['nrc'].']',
+        '{CURSO}' => $row['nrc'].' - '.$row['clave'].' - '.$row['materia'].' ('.$row['seccion'].')',
       );
       $new_fila = strtr($new_fila, $dict);
       if ($row['nrc'] == $nrc) {

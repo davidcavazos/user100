@@ -7,8 +7,8 @@ class MisCursosCtl extends BaseCtl {
     $mdl = new CursosMdl();
     if (isset($_POST['llenar_curso'])) {
       $ciclo = $_POST['ciclo'];
-      $clave = $_POST['clave'];
-      $q = $mdl->datos("SELECT * FROM curso INNER JOIN materia WHERE clave='$clave'" )[0];
+      $nrc = $_POST['nrc'];
+      $q = $mdl->datos("SELECT * FROM curso INNER JOIN materia WHERE clave_materia=clave AND ciclonrc='$ciclo$nrc'")[0];
       if (count($q) == 0) {
         echo 'Error: no se encontro';
         return;
@@ -144,16 +144,20 @@ class MisCursosCtl extends BaseCtl {
     $datos = $mdl->datos("SELECT * FROM curso INNER JOIN materia WHERE clave_materia=clave AND ciclo='$ciclo' ORDER BY clave, seccion");
     if (!empty($datos)) {
       $clave = $datos[0]['clave'];
+      $nrc = $datos[0]['nrc'];
     }
     if (isset($_GET['clave'])) {
       $clave = $_GET['clave'];
+    }
+    if (isset($_GET['nrc'])) {
+      $nrc = $_GET['nrc'];
     }
 
     $filas = '';
     foreach ($datos as $row) {
       $new_fila = $fila;
       $dict = array(
-        '{CURSO}' => $row['clave'].' - '.$row['materia'].' ('.$row['seccion'].')',
+        '{CURSO}' => $row['nrc'].' - '.$row['clave'].' - '.$row['materia'].' ('.$row['seccion'].')',
       );
       $new_fila = strtr($new_fila, $dict);
       if ($row['clave'] == $clave) {

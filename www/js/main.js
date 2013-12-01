@@ -608,23 +608,20 @@ function validaLogin()
 
 function ver_curso() {
   var ciclo = document.getElementById('ciclo_select').value;
-  var clave = document.getElementById('curso_select').value.split(' ')[0];
-  location = 'index.php?ctl=mis_cursos&ciclo='+ciclo+'&clave='+clave;
+  var nrc = document.getElementById('curso_select').value.split(" ")[0];
+  location = 'index.php?ctl=mis_cursos&ciclo='+ciclo+'&nrc='+nrc;
 }
 
 function ver_evaluacion() {
   var ciclo = document.getElementById('ciclo_select').value;
-  var clave = document.getElementById('curso_select').value.split(' ')[0];
-  var nrc = document.getElementById('curso_select').value;
-  nrc = nrc.substring(nrc.length,nrc.lastIndexOf(' ')+2);
-  nrc = nrc.replace("]","");
-  location = 'index.php?ctl=evaluacion&ciclo='+ciclo+'&clave='+clave+'&nrc='+nrc;
+  var nrc = document.getElementById('curso_select').value.split(' ')[0];
+  location = 'index.php?ctl=evaluacion&ciclo='+ciclo+'&nrc='+nrc;
 }
 
 function ver_asistencias() {
   var ciclo = document.getElementById('ciclo_select').value;
-  var clave = document.getElementById('curso_select').value.split(' ')[0];
-  location = 'index.php?ctl=asistencias&ciclo='+ciclo+'&clave='+clave;
+  var nrc = document.getElementById('curso_select').value.split(' ')[0];
+  location = 'index.php?ctl=asistencias&ciclo='+ciclo+'&nrc='+nrc;
 }
 
 /********               *******
