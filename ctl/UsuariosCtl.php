@@ -42,7 +42,25 @@ class UsuariosCtl extends BaseCtl {
         echo 'Error: no se encontro';
         return;
       }
-      echo json_encode($q);
+      $info = array();
+      $info['codigo'] = $q['codigo'];
+      $info['nombres'] = $q['nombres'];
+      $info['apellidos'] = $q['apellidos'];
+      $info['password'] = $q['password'];
+      $info['tipo_usuario'] = $q['tipo_usuario'];
+      $info['carrera'] = $q['carrera'];
+      $info['email'] = $q['email'];
+      $info['activo'] = $q['activo'];
+
+      $q = $mdl->datos("SELECT * FROM detalle_usuario WHERE codigo='$codigo'");
+      
+      $info['tipo'] = array();
+      $info['cuenta'] = array();
+      foreach ($q as $detalle) {
+        $info['tipo'][] = $detalle['campo_extra'];
+        $info['cuenta'][] = $detalle['valor'];
+      }
+      echo json_encode($info);
     } else {
       $this->mostrar();
     }

@@ -34,15 +34,16 @@ function toggle_modal_modificar_usuario() {
       document.getElementById('email').value = usuario['email'];
       document.getElementById('carrera').value = usuario['carrera'];
       
-      console.log(usuario);
-      /*var nCampos = algo['camposExtra'].length;
+      //console.log(usuario);
+      var nCampos = usuario['tipo'].length;
+      //console.log(nCampos);
       jQuery('body').limpiarListaDeHijos('#inputWrapper');
       for (var i = 0; i < nCampos; i++) {
+        console.log(usuario['tipo'][i]+" : "+usuario['cuenta'][i]);
         jQuery('body').mostrarCampoE('#inputWrapper', 
-                                      algo['tipo'][i], 
-                                      algo['cuanta'][i]);
-      }*/
-
+                                      usuario['tipo'][i], 
+                                      usuario['cuenta'][i]);
+      }
       btn = document.getElementById('aceptar');
       btn.value = 'Modificar';
       btn.onclick = modificar_usuario;
