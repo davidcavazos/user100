@@ -23,7 +23,7 @@ class EvaluacionMdl extends BaseMdl {
     return $this->driver->insert_id;
   }
 
-  public function insertarDesdeArchivo($codigo)
+  public function insertarDesdeArchivo($codigo,$ciclo, $nrc)
   {
     foreach($codigo as $c)
     {
@@ -32,9 +32,14 @@ class EvaluacionMdl extends BaseMdl {
       {
         continue;
       }
-      if(strcmp($c,$q[0]['codigo']))
+      if(!strcmp($c,$q[0]['codigo']))
       {
-        $query="INSERT INTO grupo VALUES('".$_POST['ciclo'].$_POST['nrc']."',
+        $q=$this->datos("SELECT codigo FROM grupo WHERE codigo = '$c' AND ciclonrc='".$ciclo.$nrc."'");
+        if(count($q)!=0)
+        {
+          continue;
+        }
+        $query="INSERT INTO grupo VALUES('".$ciclo.$nrc."',
         '$c',
         1,
         1,
