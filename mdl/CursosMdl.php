@@ -5,14 +5,19 @@ class CursosMdl extends BaseMdl {
   public function agregar($ciclonrc, $codigo_profesor, $ciclo, $clave,$nrc, $seccion, $dia, $hora, $duracion)
   {
     $query =
-      "INSERT INTO curso (ciclonrc, codigo_profesor, nrc, ciclo, clave_materia, seccion)
+      "INSERT INTO curso (ciclonrc, codigo_profesor, nrc, ciclo, clave_materia, seccion, mes1, mes2, mes3, mes4, mes5)
        VALUES (
          '$ciclonrc',
          '$codigo_profesor',
          '$nrc',
          '$ciclo',
          '$clave',
-         '$seccion'
+         '$seccion',
+         '-1',
+         '-1',
+         '-1',
+         '-1',
+         '-1'
        )";
     $r = $this->driver->query($query);
     if ($r === FALSE) {
