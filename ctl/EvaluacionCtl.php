@@ -92,6 +92,10 @@ class EvaluacionCtl extends BaseCtl {
     } elseif ($this->tipo == 2) {
       $filtro = "AND ciclonrc IN (SELECT ciclonrc FROM grupo WHERE codigo='$this->codigo')";
     }
+    else
+    {
+      $filtro = "";
+    }
     $datos = $mdl->datos("SELECT * FROM curso INNER JOIN materia WHERE clave_materia=clave AND ciclo='$ciclo' $filtro ORDER BY clave, seccion");
     if (!empty($datos)) {
       $clave = $datos[0]['clave'];
