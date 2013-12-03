@@ -90,6 +90,22 @@ class CursosMdl extends BaseMdl {
     }
     return $this->driver->insert_id;
   }
+
+  public function get_info_curso($ciclo, $nrc) {
+    return $this->datos("SELECT * FROM curso INNER JOIN materia WHERE clave_materia=clave AND ciclonrc='$ciclo$nrc'")[0];
+  }
+
+  public function get_info_detalle_curso($ciclo, $nrc) {
+    return $this->datos("SELECT * FROM detalle_curso WHERE ciclonrc='$ciclo$nrc'");
+  }
+
+  public function get_info_materia($clave) {
+    return $this->datos("SELECT * FROM materia WHERE clave='$clave'")[0];
+  }
+
+  public function get_claves_materia() {
+    return $this->datos("SELECT clave FROM materia");
+  }
 }
 
 ?>

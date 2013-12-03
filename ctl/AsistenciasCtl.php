@@ -31,7 +31,7 @@ class AsistenciasCtl extends BaseCtl {
     $final_fila = $inicio_fila + 40;
     $fila = substr($body, $inicio_fila, $final_fila - $inicio_fila);
 
-    $datos = $mdl->datos('SELECT * FROM ciclo_escolar ORDER BY ciclo DESC');
+    $datos = $mdl->get_ciclos();
     $ciclo='';
     if (!empty($datos)) {
       $ciclo = $datos[0]['ciclo'];
@@ -59,12 +59,7 @@ class AsistenciasCtl extends BaseCtl {
     $final_fila = $inicio_fila + 40;
     $fila = substr($body, $inicio_fila, $final_fila - $inicio_fila);
 
-    if ($this->tipo == 1) {
-      $filtro = "AND codigo_profesor='$this->codigo'";
-    } elseif ($this->tipo == 2) {
-      $filtro = "AND ciclonrc IN (SELECT ciclonrc FROM grupo WHERE codigo='$this->codigo')";
-    }
-    $datos = $mdl->datos("SELECT * FROM curso INNER JOIN materia WHERE clave_materia=clave AND ciclo='$ciclo' $filtro ORDER BY clave, seccion");
+    $datos = $mdl->get_cursos($ciclo);
     if (!empty($datos)) {
       $clave = $datos[0]['clave'];
       $nrc = $datos[0]['nrc'];
@@ -144,7 +139,7 @@ class AsistenciasCtl extends BaseCtl {
     $final_fila = strrpos($body, '</tr>') + 5;
     $fila = substr($body, $inicio_fila, $final_fila - $inicio_fila);
 
-    $datos = $mdl->datos("SELECT * FROM usuario WHERE tipo_usuario=2 AND codigo IN( SELECT codigo FROM grupo WHERE ciclonrc='".$ciclo.$nrc."') AND tipo_usuario>0 ORDER BY apellidos");
+    $datos = $mdl->get_alumnos_en_curso($ciclo, $nrc);
     $filas = '';
     $num = 1;
     foreach ($datos as $row) {

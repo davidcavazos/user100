@@ -71,6 +71,14 @@ class CiclosMdl extends BaseMdl {
     }
     return $this->driver->insert_id;
   }
+
+  public function get_info_ciclo($ciclo) {
+    return $this->datos("SELECT * FROM ciclo_escolar WHERE ciclo='$ciclo'")[0];
+  }
+
+  public function get_info_detalle_ciclo($ciclo) {
+    return $this->datos("SELECT * FROM detalle_ciclo_escolar WHERE ciclo='$ciclo'");
+  }
 }
 
 ?>

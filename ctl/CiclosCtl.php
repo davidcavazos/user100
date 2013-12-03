@@ -7,7 +7,7 @@ class CiclosCtl extends BaseCtl {
     $mdl = new CiclosMdl();
     if (isset($_POST['llenar_ciclo'])) {
       $ciclo = $_POST['llenar_ciclo'];
-      $q = $mdl->datos("SELECT * FROM ciclo_escolar WHERE ciclo='$ciclo'")[0];
+      $q = $mdl->get_info_ciclo($ciclo);
       if (count($q) == 0) {
         echo 'Error: no se encontro';
         return;
@@ -16,7 +16,7 @@ class CiclosCtl extends BaseCtl {
       $info['ciclo'] = $q['ciclo'];
       $info['fecha_inicio'] = $q['fecha_inicio'];
       $info['fecha_fin'] = $q['fecha_fin'];
-      $q = $mdl->datos("SELECT * FROM detalle_ciclo_escolar WHERE ciclo='$ciclo'");
+      $q = $mdl->get_info_detalle_ciclo($ciclo);
       $info['dia_no_efectivo'] = array();
       $info['descripcion'] = array();
       foreach ($q as $dia) {
@@ -55,7 +55,7 @@ class CiclosCtl extends BaseCtl {
     $final_fila = $inicio_fila + 40;
     $fila = substr($body, $inicio_fila, $final_fila - $inicio_fila);
 
-    $datos = $mdl->datos('SELECT * FROM ciclo_escolar ORDER BY ciclo DESC');
+    $datos = $mdl->get_ciclos();
     $filas = '';
     foreach ($datos as $row) {
       $new_fila = $fila;
