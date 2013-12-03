@@ -500,9 +500,10 @@ table.modificarAlumnos tbody tr td select {
   }
   table.responsive { margin-bottom: 0; }
   .pinned { 
-    position: absolute; 
+    /*position: absolute; 
     left: 0; 
-    top: 0; 
+    top: 0; */
+    float: left; 
     overflow: hidden; 
     overflow-x: scroll; 
     border-right: 1px solid #ccc; 

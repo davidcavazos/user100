@@ -35,7 +35,7 @@ $(document).ready(function() {
     tableCopy.find('td:not(:first-child), th:not(:first-child)').remove();
     tableCopy.removeClass('responsive');
     
-    tableOriginal.closest(".table-wrapper").append(tableCopy);
+    tableOriginal.closest(".table-wrapper").prepend(tableCopy);
     tableCopy.wrap('<div class="pinned"></div>');
     tableOriginal.wrap('<div class="scrollable"></div>');
   }
