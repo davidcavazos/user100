@@ -241,6 +241,7 @@ var rubro = 0;
               .append('<div id="cR">'+
                          '<div id="r'+rubro+'">'+
                             '<input id="ir'+rubro+'" type="text" />'+
+                            '<input id="irp'+rubro+'" type="text" style="padding-left:2px;padding-right:2px;width:40px" />'+
                             '<button id="agregasub'+rubro+'">+</button>'+
                             '<button class="eliminar_rubro">-</button>'+
                          '</div>'+
@@ -249,6 +250,7 @@ var rubro = 0;
           $('#cR').append(
               '<div id="r'+rubro+'">'+
                  '<input id="ir'+rubro+'" type="text" />'+
+                 '<input id="irp'+rubro+'" type="text" style="padding-left:2px;padding-right:2px;width:40px" />'+
                  '<button id="agregasub'+rubro+'">+</button>'+
                  '<button class="eliminar_rubro">-</button>'+
               '</div>');
@@ -259,7 +261,7 @@ var rubro = 0;
     });
   }
   $.fn.eliminarRubro = function () {
-    return this.each(function(){
+    return this.each(function() {
       $(this).on('click', function () {
         $(this).parent().remove();
       });
@@ -274,12 +276,19 @@ var rubro = 0;
           ($(this).parent())
               .append('<div id="cS'+$(this).parent().attr('id')+
                           '" style="margin-left:20px">'+
-                         '<div id="'+$(this).parent().attr('id')+
+                         '<div id="'+
+                              $(this).parent().attr('id')+
                               's'+numero+'">'+
                             '<input id="i'+
-                            $(this).parent().attr('id')+'s'+numero+'" />'+
+                                $(this).parent().attr('id')+
+                                's'+numero+'" style="width:44%" />'+
+                            '<input id="ip'+
+                                $(this).parent().attr('id')+
+                                's'+numero+
+                                '" type="text" style="padding-left:2px;padding-right:2px;width:40px" />'+
                             '<button id="agrega'+
-                                $(this).parent().attr('id')+'s'+numero+'">+</button>'+
+                                $(this).parent().attr('id')+
+                                's'+numero+'">+</button>'+
                             '<button id="elim'+
                                 $(this).parent().attr('id')+
                                 's'+numero+'">-</button>'+
@@ -290,9 +299,16 @@ var rubro = 0;
           $('#cS'+$(this).parent().attr('id')).append(
               '<div id="'+$(this).parent().attr('id')+
                   's'+numero+'">'+
-                '<input id="i'+$(this).parent().attr('id')+'s'+numero+'" />'+
+                '<input id="i'+
+                    $(this).parent().attr('id')+
+                    's'+numero+'" style="width:44%" />'+
+                '<input id="ip'+
+                    $(this).parent().attr('id')+
+                    's'+numero+
+                    '" type="text" style="padding-left:2px;padding-right:2px;width:40px" />'+
                 '<button id="agrega'+
-                    $(this).parent().attr('id')+'s'+numero+'">+</button>'+
+                    $(this).parent().attr('id')+
+                    's'+numero+'">+</button>'+
                 '<button id="elim'+
                     $(this).parent().attr('id')+
                     's'+numero+'">-</button>'+
@@ -304,12 +320,13 @@ var rubro = 0;
     });
   }
   function siguiente(div) {
-    var hijo, index;
-    hijo = document.getElementById(div).lastChild.id;
-    console.log(hijo);
-    index = hijo.lastIndexOf('s');
-    console.log(index);
-    var numero = new Number(hijo.substring((index + 1), hijo.length));
-    return (numero + 1);
+    var hijo, index, n;
+    if (document.getElementById(div).childNodes.length > 0) {
+      hijo = document.getElementById(div).lastChild.id;
+      index = hijo.lastIndexOf('s');
+      var numero = new Number(hijo.substring((index + 1), hijo.length));
+      n = (numero + 1);
+    } else {n = 1;}
+    return n;
   }
 })( jQuery, window ); 
