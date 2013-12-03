@@ -10,6 +10,7 @@ var numeroDeDiasFestivosM=0;
 var id_horario=0;
 var id_horario_m=0;
 var idnCExtra=0;
+var rubro = 0;
 (function( $, window, undefined ) {
   var DIAS_MAXIMOS = 7,
       DIAS_MAXIMOS_CLASE = 7;
@@ -230,5 +231,102 @@ var idnCExtra=0;
     return this.each( function () {
       $( contenedor ).empty();
     });
+  }
+  $.fn.agregarRubro = function () {
+    return this.each( function () {
+      $(this).on('click', function () {
+        rubro++;
+        if ($(this).parent().parent().find('#cR').length == 0) {
+          ($(this).parent().parent())
+              .append('<div id="cR">'+
+                         '<div id="r'+rubro+'">'+
+                            '<input id="ir'+rubro+'" type="text" />'+
+                            '<input id="irp'+rubro+'" type="text" style="padding-left:2px;padding-right:2px;width:40px" />'+
+                            '<button id="agregasub'+rubro+'">+</button>'+
+                            '<button class="eliminar_rubro">-</button>'+
+                         '</div>'+
+                      '</div>');
+        } else {
+          $('#cR').append(
+              '<div id="r'+rubro+'">'+
+                 '<input id="ir'+rubro+'" type="text" />'+
+                 '<input id="irp'+rubro+'" type="text" style="padding-left:2px;padding-right:2px;width:40px" />'+
+                 '<button id="agregasub'+rubro+'">+</button>'+
+                 '<button class="eliminar_rubro">-</button>'+
+              '</div>');
+        }
+        $('#agregasub'+rubro).agregar_sub_rubro();
+        $('.eliminar_rubro').eliminarRubro();
+      });
+    });
+  }
+  $.fn.eliminarRubro = function () {
+    return this.each(function() {
+      $(this).on('click', function () {
+        $(this).parent().remove();
+      });
+    });
+  }
+  $.fn.agregar_sub_rubro = function () {
+    var numero = 0;
+    return this.each(function () {
+      $(this).on('click', function () {
+        if ($(this).parent().find('#cS'+$(this).parent().attr('id')).length == 0) {
+          numero = 1;
+          ($(this).parent())
+              .append('<div id="cS'+$(this).parent().attr('id')+
+                          '" style="margin-left:20px">'+
+                         '<div id="'+
+                              $(this).parent().attr('id')+
+                              's'+numero+'">'+
+                            '<input id="i'+
+                                $(this).parent().attr('id')+
+                                's'+numero+'" style="width:44%" />'+
+                            '<input id="ip'+
+                                $(this).parent().attr('id')+
+                                's'+numero+
+                                '" type="text" style="padding-left:2px;padding-right:2px;width:40px" />'+
+                            '<button id="agrega'+
+                                $(this).parent().attr('id')+
+                                's'+numero+'">+</button>'+
+                            '<button id="elim'+
+                                $(this).parent().attr('id')+
+                                's'+numero+'">-</button>'+
+                          '</div>'+
+                      '</div>');
+        } else {
+          numero = siguiente('cS'+$(this).parent().attr('id'));
+          $('#cS'+$(this).parent().attr('id')).append(
+              '<div id="'+$(this).parent().attr('id')+
+                  's'+numero+'">'+
+                '<input id="i'+
+                    $(this).parent().attr('id')+
+                    's'+numero+'" style="width:44%" />'+
+                '<input id="ip'+
+                    $(this).parent().attr('id')+
+                    's'+numero+
+                    '" type="text" style="padding-left:2px;padding-right:2px;width:40px" />'+
+                '<button id="agrega'+
+                    $(this).parent().attr('id')+
+                    's'+numero+'">+</button>'+
+                '<button id="elim'+
+                    $(this).parent().attr('id')+
+                    's'+numero+'">-</button>'+
+              '</div>');
+        }
+        $('#agrega'+$(this).parent().attr('id')+'s'+numero).agregar_sub_rubro();
+        $('#elim'+$(this).parent().attr('id')+'s'+numero).eliminarRubro();
+      });
+    });
+  }
+  function siguiente(div) {
+    var hijo, index, n;
+    if (document.getElementById(div).childNodes.length > 0) {
+      hijo = document.getElementById(div).lastChild.id;
+      index = hijo.lastIndexOf('s');
+      var numero = new Number(hijo.substring((index + 1), hijo.length));
+      n = (numero + 1);
+    } else {n = 1;}
+    return n;
   }
 })( jQuery, window ); 

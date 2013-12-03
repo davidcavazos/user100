@@ -586,7 +586,56 @@ function validaRegistrarUsuario()
   }
 
 }
+/*
+function validaModificarUsuario()
+{
+  var validacion=true;
+  if(!validaCodigo('codigo'))
+  {
+    validacion=false;
+  }
+    if(!validaNombre('nombres'))
+  {
+    validacion=false;
+  }
+  if(!validaNombre('apellidos'))
+  {
+    validacion=false;
+  }
+  if(!validaEmail('email'))
+  {
+    validacion=false;
+  }
+  if(idnCExtra>0)
+  {
+    for(i=1;i<=idnCExtra;i++)
+    {
+      if(document.getElementById('c_E'+i))
+      {
+        if(!validaCampoExtra('campoExtraTipo_'+i))
+        {
+          validacion=false;
+        }
+        if(!validaCampoExtra('campoExtra_'+i))
+        {
+          validacion=false;
+        }
 
+      }
+    }
+  }
+  if(validacion)
+  {
+    agregar_usuario();
+    return true;
+  }
+  else
+  {
+    return false;
+  }
+
+}
+*/
 function validaLogin()
 {
   var validacion=true;

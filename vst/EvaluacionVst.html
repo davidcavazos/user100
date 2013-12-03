@@ -54,7 +54,7 @@
   </div>
 
   <div>
-    <form action="" id ="subirarchivo" method="POST" enctype="multipart/form-data" onsubmit="enviarArchivo()">
+    <form action="" method="POST" enctype="multipart/form-data">
       <input type="file" id="archivo" name="archivo"> 
       <input type="submit" id="leer_csv_alumnos" value="Leer Alumnos de CSV"></br>
       <input type="button" id="elim_alumno" value="Desinscribir Alumnos" disabled>
@@ -71,6 +71,7 @@
   <script type="text/javascript" src="www/js/evaluacion.js"></script>
   <script type="text/javascript">
     jQuery('#agregarDiaDeClase').agregaDiaDeClase('#inputWrapper');
+    jQuery('#agregar_rubro').agregarRubro();
   </script>
 </article>
 
