@@ -13,13 +13,13 @@
     <input type="button" id="ver_curso" value="Ver Curso" onclick="ver_curso()">
     <input type="button" id="ver_evaluacion" value="Ver Evaluacion" onclick="ver_evaluacion()">
   </div>
-
+  
   <label>Mes:</label>
   <select id="mes_select" onclick="mostrar_mes()">
     <option value="{MES}">{MES_NOM}</option>
   </select>
 
-  <table id="table">
+  <table id="table" class="responsive">
     <thead>
       <tr>
         <!--A{-->
@@ -43,9 +43,9 @@
         <!--}B-->
         <td>{CODIGO}</td>
         <td>{NOMBRE}</td>
-        <!--DATA{-->
-        <td><input type="checkbox" id="{X}_{Y}"{SEL}></td>
-        <!--}DATA-->
+         <!--DATA{-->
+         <td><input type="checkbox" id="{X}_{Y}"{SEL}></td>
+         <!--}DATA-->
         <td>{TOTAL}</td>
       </tr>
     </tbody>
