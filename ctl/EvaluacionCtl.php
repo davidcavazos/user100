@@ -129,6 +129,13 @@ class EvaluacionCtl extends BaseCtl {
         continue;
       }
       $new_fila = $fila;
+      if ($this->tipo == 2) {
+        $start = strrpos($fila, "<!--B{-->");
+        $end = strrpos($fila, "<!--}B-->") + 9;
+        $control = substr($fila, $start, $end - $start);
+        $new_fila = str_replace($control, '', $fila);
+      }
+
       $dict = array(
         '{X}' => $num,
         '{CODIGO}' => $row['codigo'],
@@ -136,13 +143,6 @@ class EvaluacionCtl extends BaseCtl {
         '{CARRERA}' => $row['carrera'],
         '{TOTAL}' => '0'
       );
-
-      if ($this->tipo == 2) {
-        $start = strrpos($fila, "<!--B{-->");
-        $end = strrpos($fila, "<!--}B-->") + 9;
-        $control = substr($fila, $start, $end - $start);
-        $new_fila = str_replace($control, '', $fila);
-      }
 
       $num += 1;
       $new_fila = strtr($new_fila, $dict);

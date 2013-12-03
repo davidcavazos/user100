@@ -146,7 +146,16 @@ class AsistenciasCtl extends BaseCtl {
       if ($row['activo'] == 0) {
         continue;
       }
+      if ($this->tipo == 2 && $row['codigo'] != $this->codigo) {
+        continue;
+      }
       $new_fila = $fila;
+      if ($this->tipo == 2) {
+        $start = strrpos($fila, "<!--B{-->");
+        $end = strrpos($fila, "<!--}B-->") + 9;
+        $control = substr($fila, $start, $end - $start);
+        $new_fila = str_replace($control, '', $fila);
+      }
 
       $mes = $mdl->get_asistencias($ciclo, $nrc, $month, $row['codigo']);
       $start = strpos($fila, '<!--DATA{-->') + 12;
@@ -156,9 +165,9 @@ class AsistenciasCtl extends BaseCtl {
       $n = 1;
       $total = 0;
       foreach ($dias as $dia) {
-        $sel = '';
+        $sel = $this->tipo == 2? ' disabled' : '';
         if ($this->get_dia($mes, $dia)) {
-          $sel = ' checked';
+          $sel .= ' checked';
           $total++;
         }
         $cols .= str_replace('{Y}',$n,str_replace('{SEL}',$sel,$col));
@@ -172,13 +181,6 @@ class AsistenciasCtl extends BaseCtl {
         '{NOMBRE}' => $row['apellidos'] . ', ' . $row['nombres'],
         '{TOTAL}' => number_format(100 * $total / count($dias)).'%'
       );
-
-      if ($this->tipo == 2) {
-        $start = strrpos($fila, "<!--B{-->");
-        $end = strrpos($fila, "<!--}B-->") + 9;
-        $control = substr($fila, $start, $end - $start);
-        $new_fila = str_replace($control, '', $fila);
-      }
 
       $num += 1;
       $new_fila = strtr($new_fila, $dict);
