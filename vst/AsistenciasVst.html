@@ -13,18 +13,23 @@
     <input type="button" id="ver_curso" value="Ver Curso" onclick="ver_curso()">
     <input type="button" id="ver_evaluacion" value="Ver Evaluacion" onclick="ver_evaluacion()">
   </div>
+  
+  <label>Mes:</label>
+  <select id="mes_select" onclick="mostrar_mes()">
+    <option value="{MES}">{MES_NOM}</option>
+  </select>
 
-  <table>
+  <table id="table" class="responsive">
     <thead>
       <tr>
         <!--A{-->
         <th>
-          <input type="checkbox" id="select_all" onclick="toggle_select_all(toggle_botones)">
+          <!--<input type="checkbox" id="select_all" onclick="toggle_select_all(toggle_botones)">-->
         </th>
         <!--}A-->
         <th>Codigo</th>
         <th>Nombre</th>
-        <th>Carrera</th>
+        <th>{DIA}</th>
         <th>Total</th>
       </tr>
     </thead>
@@ -32,22 +37,23 @@
       <tr>
         <!--B{-->
         <td>
-          <input type="checkbox" id="{X}" onclick="toggle_botones()">
+          <!--<input type="checkbox" id="{X}" onclick="toggle_botones()">-->
           <label for="{X}">{X}</label>
         </td>
         <!--}B-->
         <td>{CODIGO}</td>
         <td>{NOMBRE}</td>
-        <td>{CARRERA}</td>
+         <!--DATA{-->
+         <td><input type="checkbox" id="{X}_{Y}"{SEL}></td>
+         <!--}DATA-->
         <td>{TOTAL}</td>
       </tr>
     </tbody>
   </table>
   <br>
-
   <!--C{-->
   <div>
-    <input type="button" value="Guardar Cambios" disabled>
+    <input type="button" value="Guardar" onclick="guardar_asistencias()">
   </div>
   <!--}C-->
 </article>

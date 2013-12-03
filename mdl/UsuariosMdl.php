@@ -128,6 +128,18 @@ class UsuariosMdl extends BaseMdl {
       echo "Error: usuario con codigo $codigo no encontrado";
     }
   }
+
+  public function get_usuarios() {
+    return $this->datos("SELECT * FROM usuario WHERE tipo_usuario>'$this->tipo' ORDER BY apellidos");
+  }
+
+  public function get_info_usuario($codigo) {
+    return $this->datos("SELECT * FROM usuario WHERE codigo='$codigo' AND tipo_usuario>'$this->tipo'")[0];
+  }
+
+  public function get_info_detalle_usuario($codigo) {
+    return $this->datos("SELECT * FROM detalle_usuario WHERE codigo='$codigo'");
+  }
 }
 
 ?>

@@ -47,14 +47,19 @@ class EvaluacionMdl extends BaseMdl {
         1,
         1)";
         $r = $this->driver->query($query);
-        if ($r === FALSE) 
+        if ($r === FALSE)
         {
           echo 'Error: ' . $this->driver->error;
         }
-    
+
       }
     }
   }
+
+  public function get_alumnos($ciclonrc) {
+    return $this->datos("SELECT * FROM usuario WHERE tipo_usuario=2 AND codigo NOT IN (SELECT codigo FROM grupo WHERE ciclonrc='$ciclonrc') AND tipo_usuario>0 ORDER BY apellidos");
+  }
+
   /*public function modificar($codigo, $new_codigo, $nombres, $apellidos,
                             $carrera, $email, $campoExtra, $tipoCampo)
   {

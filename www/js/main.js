@@ -331,6 +331,42 @@ function validaDuracionClase(id)
   }
 }
 
+function validaRubro(id)
+{
+  caja = document.getElementById(id);
+  caja.value = caja.value.trim();
+  if(caja.value.length<1)
+  {
+    colorearCaja(false);
+    caja.title="El rubro debe de tener mas de un caracter";
+    return false;
+  }
+  else
+  {
+    colorearCaja(true);
+    caja.title="";
+    return true;
+  }
+}
+
+function validaPorcentaje(id)
+{
+  caja = document.getElementById(id);
+  caja.value = caja.value.trim();
+  if(!caja.value.match("^[0-9]{1,3}$") || (caja.value<0 || caja.value>100 ))
+  {
+    colorearCaja(false);
+    caja.title="El campo debe de ser numerico entre 0 y 100";
+    return false;
+  }
+  else
+  {
+    colorearCaja(true);
+    caja.title="";
+    return true;
+  }
+}
+
 function validaCampoExtra(id)
 {
   caja = document.getElementById(id);
@@ -537,6 +573,8 @@ function validaCambiosCursos()
     modificar_curso();
   }
 }
+
+
 
 function validaRegistrarUsuario()
 {

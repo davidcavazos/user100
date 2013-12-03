@@ -6,7 +6,7 @@ class EvaluacionCtl extends BaseCtl {
     require_once('mdl/EvaluacionMdl.php');
     $mdl = new EvaluacionMdl();
     if (isset($_POST['get_alumnos'])) {
-      $q = $mdl->datos("SELECT * FROM usuario WHERE tipo_usuario=2 AND codigo NOT IN( SELECT codigo FROM grupo WHERE ciclonrc='".$_POST['ciclonrc']."') AND tipo_usuario>0 ORDER BY apellidos");
+      $q = $mdl->get_alumnos($_POST['ciclonrc']);
       if (count($q) == 0) {
         echo 'Error: no se encontro';
         return;
@@ -56,7 +56,7 @@ class EvaluacionCtl extends BaseCtl {
     $final_fila = $inicio_fila + 40;
     $fila = substr($body, $inicio_fila, $final_fila - $inicio_fila);
 
-    $datos = $mdl->datos('SELECT * FROM ciclo_escolar ORDER BY ciclo DESC');
+    $datos = $mdl->get_ciclos();
     $ciclo='';
     if (!empty($datos)) {
       $ciclo = $datos[0]['ciclo'];
@@ -87,6 +87,7 @@ class EvaluacionCtl extends BaseCtl {
     $final_fila = $inicio_fila + 40;
     $fila = substr($body, $inicio_fila, $final_fila - $inicio_fila);
 
+/*<<<<<<< HEAD
     if ($this->tipo == 1) {
       $filtro = "AND codigo_profesor='$this->codigo'";
     } elseif ($this->tipo == 2) {
@@ -97,6 +98,9 @@ class EvaluacionCtl extends BaseCtl {
       $filtro = "";
     }
     $datos = $mdl->datos("SELECT * FROM curso INNER JOIN materia WHERE clave_materia=clave AND ciclo='$ciclo' $filtro ORDER BY clave, seccion");
+=======*/
+    $datos = $mdl->get_cursos($ciclo);
+//>>>>>>> b84ce3d4e0e8b3ed8c718a6aa9988991b974c791
     if (!empty($datos)) {
       $clave = $datos[0]['clave'];
       $nrc = $datos[0]['nrc'];
@@ -117,7 +121,7 @@ class EvaluacionCtl extends BaseCtl {
       $new_fila = strtr($new_fila, $dict);
       if ($row['nrc'] == $nrc) {
         $new_fila = strtr($new_fila, array('>' => ' selected>'));
-                }
+      }
       $filas .= $new_fila;
     }
     $body = str_replace($fila, $filas, $body);
@@ -130,7 +134,7 @@ class EvaluacionCtl extends BaseCtl {
     $final_fila = strrpos($body, '</tr>') + 5;
     $fila = substr($body, $inicio_fila, $final_fila - $inicio_fila);
 
-    $datos = $mdl->datos("SELECT * FROM usuario WHERE tipo_usuario=2 AND codigo IN( SELECT codigo FROM grupo WHERE ciclonrc='".$ciclo.$nrc."') AND tipo_usuario>0 ORDER BY apellidos");
+    $datos = $mdl->get_alumnos_en_curso($ciclo, $nrc);
     $filas = '';
     $num = 1;
     foreach ($datos as $row) {
@@ -138,6 +142,13 @@ class EvaluacionCtl extends BaseCtl {
         continue;
       }
       $new_fila = $fila;
+      if ($this->tipo == 2) {
+        $start = strrpos($fila, "<!--B{-->");
+        $end = strrpos($fila, "<!--}B-->") + 9;
+        $control = substr($fila, $start, $end - $start);
+        $new_fila = str_replace($control, '', $fila);
+      }
+
       $dict = array(
         '{X}' => $num,
         '{CODIGO}' => $row['codigo'],
@@ -145,13 +156,6 @@ class EvaluacionCtl extends BaseCtl {
         '{CARRERA}' => $row['carrera'],
         '{TOTAL}' => '0'
       );
-
-      if ($this->tipo == 2) {
-        $start = strrpos($fila, "<!--B{-->");
-        $end = strrpos($fila, "<!--}B-->") + 9;
-        $control = substr($fila, $start, $end - $start);
-        $new_fila = str_replace($control, '', $fila);
-      }
 
       $num += 1;
       $new_fila = strtr($new_fila, $dict);

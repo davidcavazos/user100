@@ -36,8 +36,7 @@ class UsuariosCtl extends BaseCtl {
         $mdl->desactivar($codigo);
       }
     } elseif (isset($_POST['mostrar'])) {
-      $codigo = $_POST['codigo'];
-      $q = $mdl->datos("SELECT * FROM usuario WHERE codigo='$codigo' AND tipo_usuario>'$this->tipo'")[0];
+      $q = $mdl->get_info_usuario($_POST['codigo']);
       if (count($q) == 0) {
         echo 'Error: no se encontro';
         return;
@@ -52,8 +51,8 @@ class UsuariosCtl extends BaseCtl {
       $info['email'] = $q['email'];
       $info['activo'] = $q['activo'];
 
-      $q = $mdl->datos("SELECT * FROM detalle_usuario WHERE codigo='$codigo'");
-      
+      $q = $mdl->get_info_detalle_usuario($codigo);
+
       $info['tipo'] = array();
       $info['cuenta'] = array();
       foreach ($q as $detalle) {
@@ -89,7 +88,7 @@ class UsuariosCtl extends BaseCtl {
     $final_fila = strrpos($body, '</tr>') + 5;
     $fila = substr($body, $inicio_fila, $final_fila - $inicio_fila);
 
-    $datos = $mdl->datos("SELECT * FROM usuario WHERE tipo_usuario>'$this->tipo' ORDER BY apellidos");
+    $datos = $mdl->get_usuarios();
     $filas = '';
     $num = 1;
     foreach ($datos as $row) {

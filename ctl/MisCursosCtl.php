@@ -8,7 +8,7 @@ class MisCursosCtl extends BaseCtl {
     if (isset($_POST['llenar_curso'])) {
       $ciclo = $_POST['ciclo'];
       $nrc = $_POST['nrc'];
-      $q = $mdl->datos("SELECT * FROM curso INNER JOIN materia WHERE clave_materia=clave AND ciclonrc='$ciclo$nrc'")[0];
+      $q = $mdl->get_info_curso($ciclo, $nrc);
       if (count($q) == 0) {
         echo 'Error: no se encontro';
         return;
@@ -19,7 +19,7 @@ class MisCursosCtl extends BaseCtl {
       $info['materia'] = $q['materia'];
       $info['nrc'] = $q['nrc'];
       $info['seccion'] = $q['seccion'];
-      $q = $mdl->datos("SELECT * FROM detalle_curso WHERE ciclonrc='".$q['ciclo'].$q['nrc']."'");
+      $q = $mdl->get_info_detalle_curso($q['ciclo'], $q['nrc']);
       $info['dia'] = array();
       $info['horas_por_dia'] = array();
       $info['horario'] = array();
@@ -32,7 +32,7 @@ class MisCursosCtl extends BaseCtl {
     } elseif (isset($_POST['llenar_materia']))
     {
       $clave = $_POST['clave'];
-      $q = $mdl->datos("SELECT * FROM materia WHERE clave='$clave'")[0];
+      $q = $mdl->get_info_materia($clave);
       if (count($q) == 0) {
         echo 'Error: no se encontro';
         return;
@@ -67,7 +67,7 @@ class MisCursosCtl extends BaseCtl {
       $duracion=$_POST['new_duracion'];
       $mdl->agregar($ciclonrc, $codigo_profesor, $ciclo, $clave, $nrc, $seccion, $dia, $hora, $duracion);
     } elseif (isset($_POST['get_claves'])) {
-      $q = $mdl->datos("SELECT clave FROM materia");
+      $q = $mdl->get_claves_materia();
       if (count($q) == 0) {
         echo 'Error: no se encontro';
         return;
@@ -93,7 +93,7 @@ class MisCursosCtl extends BaseCtl {
     $final_fila = $inicio_fila + 40;
     $fila = substr($body, $inicio_fila, $final_fila - $inicio_fila);
 
-    $datos = $mdl->datos('SELECT * FROM ciclo_escolar ORDER BY ciclo DESC');
+    $datos = $mdl->get_ciclos();
     $ciclo = '';
     if (!empty($datos)) {
       $ciclo = $datos[0]['ciclo'];
@@ -121,7 +121,7 @@ class MisCursosCtl extends BaseCtl {
     $final_fila = $inicio_fila + 46;
     $fila = substr($body, $inicio_fila, $final_fila - $inicio_fila);
 
-    $datos = $mdl->datos('SELECT * FROM ciclo_escolar ORDER BY ciclo DESC');
+    $datos = $mdl->get_ciclos();
     $filas = '';
     foreach ($datos as $row) {
       $new_fila = $fila;
@@ -141,11 +141,7 @@ class MisCursosCtl extends BaseCtl {
     $final_fila = $inicio_fila + 40;
     $fila = substr($body, $inicio_fila, $final_fila - $inicio_fila);
 
-    $filtro = '';
-    if ($this->tipo == 1) {
-      $filtro = "AND codigo_profesor='$this->codigo'";
-    }
-    $datos = $mdl->datos("SELECT * FROM curso INNER JOIN materia WHERE clave_materia=clave AND ciclo='$ciclo' $filtro ORDER BY clave, seccion");
+    $datos = $mdl->get_cursos($ciclo);
     if (!empty($datos)) {
       $clave = $datos[0]['clave'];
       $nrc = $datos[0]['nrc'];

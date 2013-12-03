@@ -16,7 +16,7 @@
     <input type="button" id="ver_asistencias" value="Ver Asistencias" onclick="ver_asistencias()">
   </div>
 
-  <table>
+  <table id="table" class="responsive">
     <thead>
       <tr>
         <!--A{-->
@@ -54,7 +54,7 @@
   </div>
 
   <div>
-    <form action="" method="POST" enctype="multipart/form-data">
+    <form action="" id ="subirarchivo" method="POST" enctype="multipart/form-data" onsubmit="enviarArchivo()">
       <input type="file" id="archivo" name="archivo"> 
       <input type="submit" id="leer_csv_alumnos" value="Leer Alumnos de CSV"></br>
       <input type="button" id="elim_alumno" value="Desinscribir Alumnos" disabled>
@@ -63,8 +63,7 @@
 
   <div>
     <input type="button" id="agregar_rubro" value="Agregar Rubro">
-    <input type="button" id="agregar_subtabla" value="Agregar Subtabla">
-    <input type="button" id="elim_rubros" value="Eliminar Rubros" disabled>
+    <input type="button" id="agregar_rubro_base" value="Añadir a Base de Datos">
   </div>
   <!--}C-->
 

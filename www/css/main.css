@@ -491,83 +491,61 @@ table.modificarAlumnos tbody tr td select {
   article {
     width: 95%;
   }
-  table, thead, tr, th, tbody, td {
-    display: block;
-  }
-  td {
-    position: relative;
-    padding-left: 40%;
-  }
-  thead tr {
-    display: none;
-  }
-  td#tareas,
-  td#asistencias {
-    background: #ccc;
-    display: block;
-    text-align: left;
-    font-weight: bold;
-  }
-  td:before {
-    position: absolute;
-    top: 1px;
-    left: 1px;
-    width: 40%;
-    font-weight: bold;
-  }
-  table.resumen td:nth-of-type(1):before {
-    content: "Alumno";
-    background-color: #ccc;
-  }
-  table.resumen td:nth-of-type(2):before {
-    content: "Calificacion";
-  }
-  table.resumen td:nth-of-type(3):before {
-    content: "Asistencia";
-  }
-  table.datosCurso td:nth-of-type(1):before,
-  table.modificarAlumnos td:nth-of-type(1):before {
-    content: "select Item";
-    background-color: #ccc;
-  }
-  table.datosCurso td:nth-of-type(2):before {
-    content: "Evaluación";
-  }
-  table.datosCurso td:nth-of-type(3):before {
-    content: "Porcentaje";
-  }
-  table.modificarAlumnos td:nth-of-type(2):before {
-    content: "Codigo";
-  }
-  table.modificarAlumnos td:nth-of-type(3):before {
-    content: "Nombre";
-  }
-  table.modificarAlumnos td:nth-of-type(4):before {
-    content: "curso";
-  }
-  table.calificaciones td:nth-of-type(1):before,
-  table.asistencias td:nth-of-type(1):before {
-    content: "Codigo";
-    background-color: #ccc;
-  }
-  table.calificaciones td:nth-of-type(2):before,
-  table.asistencias td:nth-of-type(2):before {
-    content: "Nombre";
-  }
-  table.calificaciones td:nth-of-type(3):before,
-  table.asistencias td:nth-of-type(3):before {
-    content: "Carrera";
-  }
-  table.calificaciones td.celda-total:before,
-  table.asistencias td.celda-total:before {
-    content: "Total";
-  }
 }
 
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 916px) {
   article {
     width: 84%;
     margin: 0 auto;
+  }
+  table.responsive { margin-bottom: 0; }
+  .pinned { 
+    /*position: absolute; 
+    left: 0; 
+    top: 0; */
+    float: left; 
+    overflow: hidden; 
+    overflow-x: scroll; 
+    border-right: 1px solid #ccc; 
+    border-left: 1px solid #ccc; 
+  }
+  .pinned table { 
+    background: #ccc;
+    border-right: none; 
+    border-left: none; 
+    width: 34px; 
+  }
+  .pinned table th, 
+  .pinned table td { 
+    white-space: nowrap; 
+  }
+  .pinned td:last-child { 
+    border-bottom: 0; 
+  }
+  div.table-wrapper { 
+    position: relative; 
+    margin-bottom: 20px; 
+    overflow: hidden; 
+    border-right: 1px solid #ccc; 
+  }
+  div.table-wrapper div.scrollable { 
+    margin-left: 36px; 
+  }
+  div.table-wrapper div.scrollable { 
+    overflow: scroll; 
+    overflow-y: hidden; 
+  }
+  table.responsive td, 
+  table.responsive th { 
+    position: relative; 
+    white-space: nowrap; 
+    overflow: hidden; 
+  }
+  table.responsive th:first-child, 
+  table.responsive td:first-child, 
+  table.responsive td:first-child, 
+  table.responsive.pinned td { 
+    display: none; 
   }
 }
 
