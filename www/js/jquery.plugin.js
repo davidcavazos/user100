@@ -236,53 +236,25 @@ var rubro = 0;
     return this.each( function () {
       $(this).on('click', function () {
         rubro++;
-        if ($(this).parent().parent().find('#contenedorRubro').length == 0) {
-          console.log($(this).parent());
+        if ($(this).parent().parent().find('#cR').length == 0) {
           ($(this).parent().parent())
-              .append('<div id="contenedorRubro">'+
-                         '<div id="r_'+rubro+'">'+
-                            '<input id="i_r_'+rubro+'" type="text" />'+
-                            '<button class="agregasub">+</button>'+
-                            '<button id="eliminar_rubro">-</button>'+
+              .append('<div id="cR">'+
+                         '<div id="r'+rubro+'">'+
+                            '<input id="ir'+rubro+'" type="text" />'+
+                            '<button id="agregasub'+rubro+'">+</button>'+
+                            '<button class="eliminar_rubro">-</button>'+
                          '</div>'+
                       '</div>');
         } else {
-          $('#contenedorRubro').append(
-              '<div id="r_'+rubro+'">'+
-                 '<input id="i_r_'+rubro+'" type="text" />'+
-                 '<button id="agregasub">+</button>'+
-                 '<button id="eliminar_rubro">-</button>'+
+          $('#cR').append(
+              '<div id="r'+rubro+'">'+
+                 '<input id="ir'+rubro+'" type="text" />'+
+                 '<button id="agregasub'+rubro+'">+</button>'+
+                 '<button class="eliminar_rubro">-</button>'+
               '</div>');
         }
-        $('.agregasub').agregar_sub_rubro();
-        $('#eliminar_rubro').eliminarRubro();
-      });
-    });
-  }
-  $.fn.agregar_sub_rubro = function () {
-    return this.each(function () {
-      $(this).on('click', function () {
-        if ($(this).parent().find('#c_sub').length == 0) {
-          ($(this).parent())
-              .append('<div id="c_sub" style="margin-left:20px">'+
-                         '<div id="'+$(this).parent().attr('id')+
-                              '_s_">'+
-                            '<input id="i'+$(this).parent().attr('id')+'s" />'+
-                            '<button class="agregasub">+</button>'+
-                            '<button class="eliminarsub">-</button>'+
-                          '</div>'+
-                      '</div>');
-        } else {
-          $('#c_sub').append(
-              '<div id="'+$(this).parent().attr('id')+
-                  '_s_">'+
-                '<input id="i'+$(this).parent().attr('id')+'s" />'+
-                '<button class="agregasub">+</button>'+
-                '<button class="eliminarsub">-</button>'+
-              '</div>');
-        }
-        $('.agregasub').agregar_sub_rubro();
-        $('.eliminarsub').eliminarRubro();
+        $('#agregasub'+rubro).agregar_sub_rubro();
+        $('.eliminar_rubro').eliminarRubro();
       });
     });
   }
@@ -292,5 +264,52 @@ var rubro = 0;
         $(this).parent().remove();
       });
     });
+  }
+  $.fn.agregar_sub_rubro = function () {
+    var numero = 0;
+    return this.each(function () {
+      $(this).on('click', function () {
+        if ($(this).parent().find('#cS'+$(this).parent().attr('id')).length == 0) {
+          numero = 1;
+          ($(this).parent())
+              .append('<div id="cS'+$(this).parent().attr('id')+
+                          '" style="margin-left:20px">'+
+                         '<div id="'+$(this).parent().attr('id')+
+                              's'+numero+'">'+
+                            '<input id="i'+
+                            $(this).parent().attr('id')+'s'+numero+'" />'+
+                            '<button id="agrega'+
+                                $(this).parent().attr('id')+'s'+numero+'">+</button>'+
+                            '<button id="elim'+
+                                $(this).parent().attr('id')+
+                                's'+numero+'">-</button>'+
+                          '</div>'+
+                      '</div>');
+        } else {
+          numero = siguiente('cS'+$(this).parent().attr('id'));
+          $('#cS'+$(this).parent().attr('id')).append(
+              '<div id="'+$(this).parent().attr('id')+
+                  's'+numero+'">'+
+                '<input id="i'+$(this).parent().attr('id')+'s'+numero+'" />'+
+                '<button id="agrega'+
+                    $(this).parent().attr('id')+'s'+numero+'">+</button>'+
+                '<button id="elim'+
+                    $(this).parent().attr('id')+
+                    's'+numero+'">-</button>'+
+              '</div>');
+        }
+        $('#agrega'+$(this).parent().attr('id')+'s'+numero).agregar_sub_rubro();
+        $('#elim'+$(this).parent().attr('id')+'s'+numero).eliminarRubro();
+      });
+    });
+  }
+  function siguiente(div) {
+    var hijo, index;
+    hijo = document.getElementById(div).lastChild.id;
+    console.log(hijo);
+    index = hijo.lastIndexOf('s');
+    console.log(index);
+    var numero = new Number(hijo.substring((index + 1), hijo.length));
+    return (numero + 1);
   }
 })( jQuery, window ); 
