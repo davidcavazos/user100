@@ -113,7 +113,7 @@ class EvaluacionCtl extends BaseCtl {
       $new_fila = strtr($new_fila, $dict);
       if ($row['nrc'] == $nrc) {
         $new_fila = strtr($new_fila, array('>' => ' selected>'));
-                }
+      }
       $filas .= $new_fila;
     }
     $body = str_replace($fila, $filas, $body);
