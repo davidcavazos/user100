@@ -10,6 +10,7 @@ var numeroDeDiasFestivosM=0;
 var id_horario=0;
 var id_horario_m=0;
 var idnCExtra=0;
+var rubro = 0;
 (function( $, window, undefined ) {
   var DIAS_MAXIMOS = 7,
       DIAS_MAXIMOS_CLASE = 7;
@@ -229,6 +230,67 @@ var idnCExtra=0;
   $.fn.limpiarListaDeHijos = function (contenedor) {
     return this.each( function () {
       $( contenedor ).empty();
+    });
+  }
+  $.fn.agregarRubro = function () {
+    return this.each( function () {
+      $(this).on('click', function () {
+        rubro++;
+        if ($(this).parent().parent().find('#contenedorRubro').length == 0) {
+          console.log($(this).parent());
+          ($(this).parent().parent())
+              .append('<div id="contenedorRubro">'+
+                         '<div id="r_'+rubro+'">'+
+                            '<input id="i_r_'+rubro+'" type="text" />'+
+                            '<button class="agregasub">+</button>'+
+                            '<button id="eliminar_rubro">-</button>'+
+                         '</div>'+
+                      '</div>');
+        } else {
+          $('#contenedorRubro').append(
+              '<div id="r_'+rubro+'">'+
+                 '<input id="i_r_'+rubro+'" type="text" />'+
+                 '<button id="agregasub">+</button>'+
+                 '<button id="eliminar_rubro">-</button>'+
+              '</div>');
+        }
+        $('.agregasub').agregar_sub_rubro();
+        $('#eliminar_rubro').eliminarRubro();
+      });
+    });
+  }
+  $.fn.agregar_sub_rubro = function () {
+    return this.each(function () {
+      $(this).on('click', function () {
+        if ($(this).parent().find('#c_sub').length == 0) {
+          ($(this).parent())
+              .append('<div id="c_sub" style="margin-left:20px">'+
+                         '<div id="'+$(this).parent().attr('id')+
+                              '_s_">'+
+                            '<input id="i'+$(this).parent().attr('id')+'s" />'+
+                            '<button class="agregasub">+</button>'+
+                            '<button class="eliminarsub">-</button>'+
+                          '</div>'+
+                      '</div>');
+        } else {
+          $('#c_sub').append(
+              '<div id="'+$(this).parent().attr('id')+
+                  '_s_">'+
+                '<input id="i'+$(this).parent().attr('id')+'s" />'+
+                '<button class="agregasub">+</button>'+
+                '<button class="eliminarsub">-</button>'+
+              '</div>');
+        }
+        $('.agregasub').agregar_sub_rubro();
+        $('.eliminarsub').eliminarRubro();
+      });
+    });
+  }
+  $.fn.eliminarRubro = function () {
+    return this.each(function(){
+      $(this).on('click', function () {
+        $(this).parent().remove();
+      });
     });
   }
 })( jQuery, window ); 
