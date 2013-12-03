@@ -367,6 +367,124 @@ function validaPorcentaje(id)
   }
 }
 
+function validaAñadirRubros()
+{
+  var j=1;
+  var totalrubro=0;
+  var totalsubrubro=0;
+  var totalrubrotemporal=0;
+  var bandera;
+  var validacion;
+  if(rubro>0)
+  {
+    for(i=1;i<=rubro;i++)
+    {
+      if(document.getElementById('r'+i))
+      {
+        if(!validaRubro('ir'+i))
+        {
+          validacion=false;
+        }
+        if(!validaPorcentaje('irp'+i))
+        {
+          validacion=false;
+        }
+        else
+        {
+          totalrubro+=parseInt(document.getElementById('irp'+i).value);
+          totalrubrotemporal=document.getElementById('irp'+i).value;
+          toralsubrubro = 0;
+        }
+
+      }
+      for(j=1;j<20;j++)
+      {
+        if(document.getElementById('ir'+i+'s'+j))
+        {
+          bandera = true;
+          if(!validaRubro('ir'+i+'s'+j))
+          {
+            validacion=false;
+          }
+          if(!validaPorcentaje('ipr'+i+'s'+j))
+          {
+            validacion=false;
+          } 
+          else
+          {
+            totalsubrubro += parseInt(document.getElementById('ipr'+i+'s'+j).value);
+          }
+        }
+      }
+      if(totalsubrubro!=totalrubrotemporal)
+      {
+        for(j=1;j<20;j++)
+        {
+          if(document.getElementById('ir'+i+'s'+j))
+          {
+            caja = document.getElementById('ir'+i+'s'+j);
+            colorearCaja(false);
+            caja.title="La suma total de porcentaje en los subrubros"+
+            " no coincide con el porcentaje de este rubro";
+            caja = document.getElementById('ipr'+i+'s'+j);
+            colorearCaja(false);
+            caja.title="La suma total de porcentaje en los subrubros"+
+            " no coincide con el porcentaje de este rubro";
+            validacion = false;
+          }
+        }
+      }
+      else
+      {
+        for(j=1;j<20;j++)
+        {
+          if(document.getElementById('ir'+i+'s'+j))
+          {
+            caja = document.getElementById('ir'+i+'s'+j);
+            colorearCaja(true);
+            caja.title="";
+            caja = document.getElementById('ipr'+i+'s'+j);
+            colorearCaja(true);
+            caja.title="";
+          }
+        }
+      }
+      totalsubrubro=0;
+    }
+    if(totalrubro!=100)
+    {    
+      for(i=1;i<=rubro;i++)
+      {
+        if(document.getElementById('ir'+i))
+        {
+          caja = document.getElementById('ir'+i);
+          colorearCaja(false);
+          caja.title="La suma total de los rubros debe de ser 100";
+          caja = document.getElementById('irp'+i);
+          colorearCaja(false);
+          caja.title="La suma total de los rubros debe de ser 100";
+          validacion = false;
+        }
+      }
+    }    
+    else 
+    {    
+      for(i=1;i<=rubro;i++)
+      {
+        if(document.getElementById('ir'+i))
+        {
+          caja = document.getElementById('ir'+i);
+          colorearCaja(true);
+          caja.title="";
+          caja = document.getElementById('irp'+i);
+          colorearCaja(true);
+          caja.title="";
+        }
+      }
+    }
+  }
+}
+
 function validaCampoExtra(id)
 {
   caja = document.getElementById(id);
