@@ -118,7 +118,7 @@
 <part>ciclo</part>
 </key>
 </table>
-<table x="96" y="514" name="detalle_curso">
+<table x="153" y="422" name="detalle_curso">
 <row name="ciclonrc" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
 <default>NULL</default><relation table="curso" row="ciclonrc" />
@@ -168,7 +168,7 @@
 <part>codigo</part>
 </key>
 </table>
-<table x="319" y="572" name="materia">
+<table x="301" y="551" name="materia">
 <row name="clave" null="1" autoincrement="1">
 <datatype>VARCHAR(5)</datatype>
 <default>NULL</default></row>
@@ -213,30 +213,12 @@
 <table x="361" y="255" name="rubro">
 <row name="ciclonrc" null="1" autoincrement="1">
 <datatype>VARCHAR</datatype>
-<default>NULL</default><relation table="subrubro" row="ciclonrc" />
-</row>
+<default>NULL</default></row>
 <row name="rubro" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
 <default>NULL</default></row>
 <row name="porcentaje" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
-<default>NULL</default></row>
-<key type="PRIMARY" name="">
-<part>ciclonrc</part>
-</key>
-</table>
-<table x="176" y="357" name="subrubro">
-<row name="ciclonrc" null="1" autoincrement="1">
-<datatype>VARCHAR</datatype>
-<default>NULL</default></row>
-<row name="rubro" null="1" autoincrement="0">
-<datatype>VARCHAR</datatype>
-<default>NULL</default></row>
-<row name="subrubro" null="1" autoincrement="0">
-<datatype>VARCHAR</datatype>
-<default>NULL</default></row>
-<row name="porcentaje" null="1" autoincrement="0">
-<datatype>INT</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>ciclonrc</part>

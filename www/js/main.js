@@ -373,8 +373,13 @@ function validaAñadirRubros()
   var totalrubro=0;
   var totalsubrubro=0;
   var totalrubrotemporal=0;
-  var bandera;
-  var validacion;
+  var bandera=false;
+  var validacion=true;
+  var validacionDos=true;
+  rubros="";
+  rubrosp="";
+  subrubros="";
+  subrubrosp="";
   if(rubro>0)
   {
     for(i=1;i<=rubro;i++)
@@ -385,6 +390,10 @@ function validaAñadirRubros()
         {
           validacion=false;
         }
+        else
+        {
+          rubros=rubros+document.getElementById('ir'+i).value+"|";
+        }
         if(!validaPorcentaje('irp'+i))
         {
           validacion=false;
@@ -393,7 +402,8 @@ function validaAñadirRubros()
         {
           totalrubro+=parseInt(document.getElementById('irp'+i).value);
           totalrubrotemporal=document.getElementById('irp'+i).value;
-          toralsubrubro = 0;
+          totalsubrubro = 0;
+          rubrosp=rubrosp+totalrubrotemporal+"|";
         }
 
       }
@@ -406,6 +416,10 @@ function validaAñadirRubros()
           {
             validacion=false;
           }
+          else
+          {
+            subrubros=subrubros+document.getElementById('ir'+i+'s'+j).value+"|";
+          }
           if(!validaPorcentaje('ipr'+i+'s'+j))
           {
             validacion=false;
@@ -413,15 +427,22 @@ function validaAñadirRubros()
           else
           {
             totalsubrubro += parseInt(document.getElementById('ipr'+i+'s'+j).value);
+            subrubrosp=subrubrosp+document.getElementById('ipr'+i+'s'+j).value+"|";
           }
         }
       }
+      if(!bandera)
+      {
+        subrubros=subrubros+"nr"+"|";
+        subrubrosp=subrubrosp+"nr"+"|";
+      }
+      bandera = false;
       if(totalsubrubro!=totalrubrotemporal)
       {
         for(j=1;j<20;j++)
         {
           if(document.getElementById('ir'+i+'s'+j))
-          {
+         {
             caja = document.getElementById('ir'+i+'s'+j);
             colorearCaja(false);
             caja.title="La suma total de porcentaje en los subrubros"+
@@ -430,7 +451,7 @@ function validaAñadirRubros()
             colorearCaja(false);
             caja.title="La suma total de porcentaje en los subrubros"+
             " no coincide con el porcentaje de este rubro";
-            validacion = false;
+            validacionDos = false;
           }
         }
       }
@@ -463,7 +484,7 @@ function validaAñadirRubros()
           caja = document.getElementById('irp'+i);
           colorearCaja(false);
           caja.title="La suma total de los rubros debe de ser 100";
-          validacion = false;
+          validacionDos = false;
         }
       }
     }    
@@ -482,6 +503,10 @@ function validaAñadirRubros()
         }
       }
     }
+  }
+  if(validacion && validacionDos)
+  {
+    anadirRubros();
   }
 }
 

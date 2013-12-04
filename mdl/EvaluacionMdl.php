@@ -23,6 +23,33 @@ class EvaluacionMdl extends BaseMdl {
     return $this->driver->insert_id;
   }
 
+  public function insertarRubros($rubros, $subrubros, $rubrosp, $subrubrosp)
+  {
+    $rubros=trim($rubros,"|");
+    $subrubros=trim($subrubros,"|");
+    $rubrosp=trim($rubrosp,"|");
+    $subrubrosp=trim($subrubrosp,"|");
+    $rubros=explode("|", $rubros);
+    $subrubros=explode("|", $subrubros);
+    $rubrosp=explode("|", $rubrosp);
+    $subrubrosp=explode("|", $subrubrosp);
+    for($i=0;$i<sizeof($rubros);$i++)
+    {   
+      $query=
+      "INSERT INTO rubros VALUES(
+      '$ciclo',
+      '".$dia_festivo[$i]."',
+      '".$descripcion[$i]."')";
+      $r = $this->driver->query($query);
+    }   
+       
+    if ($r === FALSE) {
+      echo 'Error: ' . $this->driver->error;
+      return FALSE;
+    }
+ 
+  }
+
   public function insertarDesdeArchivo($codigo,$ciclo, $nrc)
   {
     foreach($codigo as $c)

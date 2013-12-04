@@ -23,6 +23,14 @@ class EvaluacionCtl extends BaseCtl {
       $ciclonrc=$_POST['ciclonrc'];
       $mdl->agregar($codigo, $ciclonrc); 
     }
+    elseif(iset($_POST['alta_rubros']))
+    {
+      $rubros = $_POST['rubros'];
+      $subrubros = $_POST['subrubros'];
+      $rubrosp = $_POST['rubrosp'];
+      $subrubrosp = $_POST['subrubrosp'];
+      $mdl -> insertarRubros($rubros, $subrubros, $rubrosp, $subrubrosp);
+    }
     elseif(isset($_FILES['archivo']['name']))
     {
       $mdl->insertarDesdeArchivo($this->procesarArchivo(), $_GET['ciclo'], $_GET['nrc']);

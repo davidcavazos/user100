@@ -1,5 +1,8 @@
 var cciclonrc;
-
+var rubros="";
+var rubrosp="";
+var subrubros="";
+var subrubrosp="";
 function on_load() {
   ciclo = document.getElementById('ciclo_select').value;
   nrc = document.getElementById('curso_select').value.split(" ")[0];
@@ -81,4 +84,16 @@ function enviarArchivo()
   document.getElementById('subirarchivo').action='index.php?ctl=evaluacion'+
   "&ciclo="+ciclo+"&nrc="+nrc+"";
   document.getElementById('subirarchivo').submit();
+}
+
+function anadirRubros()
+{
+  $.ajax({
+    type: 'POST',
+    data: {alta_rubros:'',rubros:rubros, rubrosp:rubrosp, subrubros:subrubros, subrubrosp:subrubrosp},
+    success: function(info) 
+    {
+      location.reload(); 
+    }
+  });
 }
