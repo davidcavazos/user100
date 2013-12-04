@@ -1,6 +1,6 @@
 $(document).ready(function() {
   var bandera = false,
-      tableCopy;
+      tablaCopia;
 
   var updateTables = function() {
     if (($(window).width() < 900) && !bandera ){
@@ -24,34 +24,52 @@ $(document).ready(function() {
    
   
   function separarTabla(table) {
-    tableOriginal = table;
-    tableOriginal.wrap('<div class="table-wrapper"></div>');
+    tablaOriginal = table;
+    tablaOriginal.wrap('<div class="table-wrapper"></div>');
     
-    tableCopy = tableOriginal.clone();
-    tableOriginal.find($('th').children('#select_all')).remove();
+    tablaCopia = tablaOriginal.clone();
+    tablaOriginal.find($('th').children('#select_all')).remove();
     for (i=1; i <= $('tbody tr').length; i++) {
-      tableOriginal.find($('td').children('#'+i)).remove();
+      tablaOriginal.find($('td').children('#'+i)).remove();
     }
+
+    /**
+     * arregla el "bug" cuando el primer th en la tabla original esta vacia
+     * evitando que colapsé ese mismo th en la copia al estar vacio.
+     */
+    tablaCopia.find('thead tr')
+        .height( tablaOriginal.find('thead').height()+'px');
+
+    /**
+     * evita posible "bug" cuando el primer td en la tabla original esta vacio
+     * dando un tamaño fijo a ese td en la tabla copia.
+     */
+    for (i=1; i <=$('tbody tr').length; i++) {
+      tablaCopia.find('tbody tr:nth-child('+i+')')
+          .height(tablaOriginal
+                .find('tbody tr:nth-child('+i+')').height()+'px');
+    }
+
     tableCopy.find('td:not(:first-child), th:not(:first-child)').remove();
     tableCopy.removeClass('responsive');
     
-    tableOriginal.closest(".table-wrapper").prepend(tableCopy);
-    tableCopy.wrap('<div class="pinned"></div>');
-    tableOriginal.wrap('<div class="scrollable"></div>');
+    tablaOriginal.closest(".table-wrapper").prepend(tablaCopia);
+    tablaCopia.wrap('<div class="pinned"></div>');
+    tablaOriginal.wrap('<div class="scrollable"></div>');
   }
   
-  function unirTabla(tableOriginal) {
+  function unirTabla(tablaOriginal) {
     var nodos, i;
-    tableOriginal.closest('.table-wrapper').find('.pinned').remove();
-    tableOriginal.unwrap();
-    tableOriginal.unwrap();
+    tablaOriginal.closest('.table-wrapper').find('.pinned').remove();
+    tablaOriginal.unwrap();
+    tablaOriginal.unwrap();
 
-    nodos = tableCopy.clone();
-    tableOriginal.find('thead tr th:first-child')
+    nodos = tablaCopia.clone();
+    tablaOriginal.find('thead tr th:first-child')
         .append(nodos.find('thead tr th input'));
     
     for (i=1; i<=$('tbody tr').length; i++) {
-      tableOriginal.find('tbody tr:nth-child('+i+') td:first-child')
+      tablaOriginal.find('tbody tr:nth-child('+i+') td:first-child')
           .replaceWith(nodos.find('tr:nth-child('+i+') td:first-child'));
     }
   }

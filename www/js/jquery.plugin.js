@@ -236,6 +236,7 @@ var rubro = 0;
     return this.each( function () {
       $(this).on('click', function () {
         rubro++;
+        document.getElementById('agregar_rubro_base').disabled = false;
         if ($(this).parent().parent().find('#cR').length == 0) {
           ($(this).parent().parent())
               .append('<div id="cR">'+
@@ -264,6 +265,10 @@ var rubro = 0;
     return this.each(function() {
       $(this).on('click', function () {
         $(this).parent().remove();
+        var elem = document.getElementById('cR');
+        if(elem.childNodes.length < 1) {
+          document.getElementById('agregar_rubro_base').disabled = true;
+        }
       });
     });
   }
@@ -286,9 +291,9 @@ var rubro = 0;
                                 $(this).parent().attr('id')+
                                 's'+numero+
                                 '" type="text" style="padding-left:2px;padding-right:2px;width:40px" onblur="validaPorcentaje(\'ip'+$(this).parent().attr('id')+'s'+numero+'\')" />'+
-                            '<button id="agrega'+
-                                $(this).parent().attr('id')+
-                                's'+numero+'">+</button>'+
+                            //'<button id="agrega'+
+                            //    $(this).parent().attr('id')+
+                            //    's'+numero+'">+</button>'+
                             '<button id="elim'+
                                 $(this).parent().attr('id')+
                                 's'+numero+'">-</button>'+
@@ -306,15 +311,15 @@ var rubro = 0;
                     $(this).parent().attr('id')+
                     's'+numero+
                     '" type="text" style="padding-left:2px;padding-right:2px;width:40px" onblur="validaPorcentaje(\'ip'+$(this).parent().attr('id')+'s'+numero+'\'    )" />'+
-                '<button id="agrega'+
-                    $(this).parent().attr('id')+
-                    's'+numero+'">+</button>'+
+                //'<button id="agrega'+
+                //    $(this).parent().attr('id')+
+                //    's'+numero+'">+</button>'+
                 '<button id="elim'+
                     $(this).parent().attr('id')+
                     's'+numero+'">-</button>'+
               '</div>');
         }
-        $('#agrega'+$(this).parent().attr('id')+'s'+numero).agregar_sub_rubro();
+        //$('#agrega'+$(this).parent().attr('id')+'s'+numero).agregar_sub_rubro();
         $('#elim'+$(this).parent().attr('id')+'s'+numero).eliminarRubro();
       });
     });
